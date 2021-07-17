@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+[api-updater (non-obsolete-error-filter)] 7/17/2021 4:53:37 PM : Starting /Applications/Unity/Hub/Editor/2020.3.14f1/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 71.512ms
+moved types parse time: 40ms
+candidates parse time : 1ms
+C# parse time         : 249ms
+=======
 [api-updater (non-obsolete-error-filter)] 2021-07-17 PM 5:17:19 : Starting C:/Program Files/Unity/Hub/Editor/2020.3.14f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
 [api-updater (non-obsolete-error-filter)] Exception caught while loading types from C:\Users\gusah\OneDrive\바탕 화면\2021-summer\해커톤(LINKER)\linker_unity\LINKER_EGGCATION\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll (some types may not be loaded)
 	Exception of type 'System.Reflection.ReflectionTypeLoadException' was thrown.
@@ -32,6 +41,7 @@ jit/startup time      : 67.9953ms
 moved types parse time: 49ms
 candidates parse time : 1ms
 C# parse time         : 156ms
+>>>>>>> 5dc3e5010a2ee011fac7566994075fa21eef1a86
 candidates check time : 26ms
 console write time    : 0ms
 
