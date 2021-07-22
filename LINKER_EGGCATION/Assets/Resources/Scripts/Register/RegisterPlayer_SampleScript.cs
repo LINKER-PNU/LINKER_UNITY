@@ -44,7 +44,7 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
             // Debug.Log("switchSummary" + switchSummary);
             Debug.Log("userId " + userId);
 
-            string url = "http://192.168.219.181:8080/login";
+            string url = "http://34.64.120.83/login";
             json.Add("authToken", authToken);
             json.Add("displayName", displayName);
             json.Add("newPlayer", newPlayer);

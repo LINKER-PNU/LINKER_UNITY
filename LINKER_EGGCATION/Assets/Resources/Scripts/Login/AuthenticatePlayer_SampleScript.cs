@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AuthenticatePlayer_SampleScript : MonoBehaviour
 {
     public InputField displayNameInput, userNameInput, passwordInput;
+    public GameObject LoginObject, RegisterObject;
  
  
     // 계정이름과 비밀번호로 로그인
@@ -18,6 +19,8 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
                 if (!response.HasErrors)
                 {
                     Debug.Log("로그인 성공...");
+                    LoginObject.SetActive(false);
+                    RegisterObject.SetActive(false);
                 }
                 else
                 {
