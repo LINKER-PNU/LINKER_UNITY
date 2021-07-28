@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+using Photon.Pun;
+
+public class CameraController : MonoBehaviourPunCallbacks
 {
     private float   rotateSpeedX  = 3;
     private float   rotateSpeedY  = 5;
