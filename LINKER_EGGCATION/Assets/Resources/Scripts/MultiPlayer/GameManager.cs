@@ -9,6 +9,12 @@ using Photon.Realtime;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+
+    #region Public Fields
+
+    #endregion
+
+
     #region Public Fields
 
     public static GameManager Instance;
@@ -53,7 +59,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("MoScene");
     }
 
-
     #endregion
 
 
@@ -97,6 +102,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
+            Debug.LogFormat("Left room InstanceId : {0}", other.UserId);
+            PhotonNetwork.DestroyPlayerObjects(other);
             Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
             PrintCurrentPlayerCount();

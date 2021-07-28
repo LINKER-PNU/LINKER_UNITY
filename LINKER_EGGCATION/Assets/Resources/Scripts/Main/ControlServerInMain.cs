@@ -53,14 +53,10 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         Debug.Log("Click Create New Room");
         if (PhotonNetwork.IsConnected)
         {
-            if (PhotonNetwork.CreateRoom("linker", new RoomOptions { MaxPlayers = maxPlayersPerRoom }))
+            if (PhotonNetwork.CreateRoom("linker2", new RoomOptions { MaxPlayers = maxPlayersPerRoom }))
             {
                 Debug.Log("CreateRoom is Success");
             }
-            //if (PhotonNetwork.JoinRoom("linker"))
-            //{
-            //    Debug.Log("JoinRoom is Success");
-            //}
 
         }
         else
@@ -76,7 +72,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         Debug.Log("Click Join Room");
         if (PhotonNetwork.IsConnected)
         {
-            if (PhotonNetwork.JoinRoom("linker"))
+            if (PhotonNetwork.JoinRoom("linker2"))
             {
                 Debug.Log("JoinRoom is Success");
             }
