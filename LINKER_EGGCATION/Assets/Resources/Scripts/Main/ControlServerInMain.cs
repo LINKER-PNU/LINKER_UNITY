@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.IO;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 using Photon.Pun;
 using Photon.Realtime;
 
+using Newtonsoft.Json.Linq;
 public class ControlServerInMain : MonoBehaviourPunCallbacks
 {
     #region Private Serializable Fields
@@ -15,7 +20,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     private byte maxPlayersPerRoom = 20;
 
     [SerializeField]
-    private GameObject MainObject;
+    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject;
 
     #endregion
 
@@ -26,6 +31,10 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     /// Users are separated from each other by gameVersion
     string gameVersion = "1";
 
+    #endregion
+
+    #region Public Fields
+    static public string roomName = string.Empty, joinCode = string.Empty;
     #endregion
 
 
@@ -51,11 +60,23 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     public void CreateNewRoomBttn()
     {
         Debug.Log("Click Create New Room");
+        RoomNamePanelObject.SetActive(true);
+    }
+
+    public void CreateNewRoomConfirmBttn()
+    {
+        roomName = RoomNameInputObject.GetComponent<InputField>().text;
         if (PhotonNetwork.IsConnected)
         {
-            if (PhotonNetwork.CreateRoom("linker2", new RoomOptions { MaxPlayers = maxPlayersPerRoom }))
+            if (PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }))
             {
                 Debug.Log("CreateRoom is Success");
+            } 
+            else
+            {
+                CreateRoomFailObject.SetActive(true);
+                System.Threading.Thread.Sleep(1000);
+                CreateRoomFailObject.SetActive(false);
             }
 
         }
@@ -66,6 +87,10 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
             PhotonNetwork.GameVersion = gameVersion;
             PhotonNetwork.ConnectUsingSettings();
         }
+    }
+    public void CreateNewRoomCancelBttn()
+    {
+        RoomNamePanelObject.SetActive(false);
     }
     public void JoinLinkerRoomBttn()
     {
@@ -76,7 +101,6 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
             {
                 Debug.Log("JoinRoom is Success");
             }
-
         }
         else
         {
@@ -86,7 +110,74 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
         }
     }
+
+    public void JoinRoomByCodeBttn()
+    {
+        Debug.Log("Click Join Room");
+
+        InputField joinCode = JoinCodeInputObject.GetComponent<InputField>();
+
+        roomName = JoinCode_To_RoomName(joinCode.text);
+        if (roomName != string.Empty)
+        {
+            if (PhotonNetwork.IsConnected)
+            {
+                PhotonNetwork.JoinRoom(roomName);
+            }
+            else
+            {
+                Debug.LogError("PhotonNetwork is not connected!");
+                // #Critical, we must first and foremost connect to Photon Online Server.
+                PhotonNetwork.GameVersion = gameVersion;
+                PhotonNetwork.ConnectUsingSettings();
+            }
+        }
+        else
+        {
+            Debug.LogError("Invalid Join Code!");
+        }
+
+    }
+
     #endregion
+
+    #region Private Methods
+
+    private string request_server(JObject req, string method)
+    {
+        string url = "http://34.64.85.29:8080/";
+        var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + method);
+        httpWebRequest.ContentType = "application/json";
+        httpWebRequest.Method = "POST";
+
+        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+        {
+            streamWriter.Write(req.ToString());
+        }
+
+        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+        string characterSet = httpResponse.CharacterSet;
+        Debug.Log(characterSet);
+        using (var streamReader = new StreamReader(httpResponse.GetResponseStream(), System.Text.Encoding.UTF8, true))
+        {
+            var result = streamReader.ReadToEnd();
+            Debug.Log(result);
+            return result;
+        }
+    }
+    private string JoinCode_To_RoomName(string joinCode)
+    {
+        var json = new JObject();
+        string method = "auth_room";
+
+        json.Add("joinCode", joinCode);
+
+        roomName = request_server(json, method);
+        return roomName;
+
+    }
+    #endregion
+
 
     #region MonoBehaviourPunCallbacks Callbacks
 
@@ -116,7 +207,8 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
+
+        Debug.Log("JoinRoom is Success");
         // #Critical: We only load if we are the first player, else we rely on `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
         if (PhotonNetwork.CurrentRoom.PlayerCount >= 1)
         {

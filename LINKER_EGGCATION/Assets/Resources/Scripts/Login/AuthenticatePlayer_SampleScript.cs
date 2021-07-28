@@ -7,11 +7,14 @@ using System.IO;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Photon.Pun;
 
 public class AuthenticatePlayer_SampleScript : MonoBehaviour
 {
-    public InputField displayNameInput, userNameInput, passwordInput;
-    public GameObject LoginObject, RegisterObject;
+    static public string gameSparkUserId = "N";
+
+    public InputField userNameInput, passwordInput;
+    public GameObject LoginObject, RegisterObject, MainObject;
  
  
     // 계정이름과 비밀번호로 로그인
@@ -26,34 +29,30 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
                     Debug.Log("로그인 성공...");
                     LoginObject.SetActive(false);
                     RegisterObject.SetActive(false);
+                    MainObject.SetActive(true);
 
                     var json = new JObject();
 
-                    string url = "http://192.168.219.165:8080/login";
+                    string url = "http://34.64.85.29:8080/login";
 
                     string authToken = response.AuthToken;
                     string displayName = response.DisplayName;
                     bool? newPlayer = response.NewPlayer;
                     // GSData scriptData = response.ScriptData;
                     // AuthenticationResponse._Player switchSummary = response.SwitchSummary;
-                    string userId = response.UserId;
+                    gameSparkUserId = response.UserId;
 
-                    Debug.Log("authToken " + authToken);
-                    Debug.Log("displayName " + displayName);
-                    Debug.Log("newPlayer " + newPlayer);
-                    // Debug.Log("scriptData" + scriptData);
-                    // Debug.Log("switchSummary" + switchSummary);
-                    Debug.Log("userId " + userId);
+                    PhotonNetwork.LocalPlayer.NickName = displayName; 
+                    PhotonNetwork.AuthValues = new Photon.Realtime.AuthenticationValues(gameSparkUserId);
 
                     json.Add("authToken", authToken);
                     json.Add("displayName", displayName);
                     json.Add("newPlayer", newPlayer);
-                    json.Add("userId", userId);
+                    json.Add("userId", gameSparkUserId);
 
                     var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
-                    httpWebRequest.Timeout = 2147483647;
 
                     using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                     {
@@ -75,19 +74,19 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
     }
  
     // DisplayName 으로 로그인
-    public void AuthenticateDeviceBttn()
-    {
-        new GameSparks.Api.Requests.DeviceAuthenticationRequest()
-            .SetDisplayName(displayNameInput.text)
-            .Send((response) => {
-                if (!response.HasErrors)
-                {
-                    Debug.Log("Device 로그인 성공...");
-                }
-                else
-                {
-                    Debug.Log("Device 로그인 실패..." + response.Errors.JSON.ToString());
-                }
-            });
-    }
+    //public void AuthenticateDeviceBttn()
+    //{
+    //    new GameSparks.Api.Requests.DeviceAuthenticationRequest()
+    //        .SetDisplayName(displayNameInput.text)
+    //        .Send((response) => {
+    //            if (!response.HasErrors)
+    //            {
+    //                Debug.Log("Device 로그인 성공...");
+    //            }
+    //            else
+    //            {
+    //                Debug.Log("Device 로그인 실패..." + response.Errors.JSON.ToString());
+    //            }
+    //        });
+    //}
 }

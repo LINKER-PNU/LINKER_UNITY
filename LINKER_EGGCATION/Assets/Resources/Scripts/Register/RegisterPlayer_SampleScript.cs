@@ -14,6 +14,7 @@ using Newtonsoft.Json.Linq;
 
 public class RegisterPlayer_SampleScript : MonoBehaviour
 {
+    public GameObject LoginObject, RegisterObject;
     public InputField displayNameInput, userNameInput, passwordInput;
 
     private static string ReadStreamFromResponse(WebResponse response)
@@ -28,7 +29,7 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
     }
     void Main(RegistrationResponse response)
     {
-        string url = "http://192.168.219.165:8080/login";
+        string url = "http://34.64.85.29:8080/login";
 
         var json = new JObject();
 
@@ -61,7 +62,6 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
         request.ContentType = contentType;
         request.Method = "POST";
-        request.Timeout = 2147483647;
         request.Proxy = null;
 
         using (var streamWriter = new StreamWriter(request.GetRequestStream()))
@@ -89,6 +89,8 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
                 {
                     Debug.Log("회원가입 완료");
                     Main(response);
+                    LoginObject.SetActive(true);
+                    RegisterObject.SetActive(false);
                 }
                 else
                 {
