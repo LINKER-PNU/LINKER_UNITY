@@ -1,16 +1,24 @@
 using System;
 using System.Collections;
+using System.Net;
+using System.IO;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 using Photon.Pun;
 using Photon.Realtime;
 
+using Newtonsoft.Json.Linq;
+
 public class GameManager : MonoBehaviourPunCallbacks
 {
 
-    #region Public Fields
+    #region Private Fields
+
+    [SerializeField]
+    private GameObject JoinCodeTextObject;
 
     #endregion
 
@@ -28,7 +36,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        Instance = this;
+           Instance = this;
         if (playerPrefab == null)
         {
             Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
@@ -46,6 +54,11 @@ public class GameManager : MonoBehaviourPunCallbacks
                 Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
             }
         }
+
+        JoinCodeTextObject.SetActive(true);
+        string joinCode = RoomName_To_JoinCode(PhotonNetwork.CurrentRoom.Name);
+        Text JoinCodeText = JoinCodeTextObject.GetComponent<Text>();
+        JoinCodeText.text = joinCode;
     }
 
     #endregion
@@ -79,6 +92,37 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.LogFormat("PhotonNetwork : Current Room Player Count : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
     }
 
+    private string request_server(JObject req, string method)
+    {
+        string url = "http://34.64.85.29:8080/";
+        var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + method);
+        httpWebRequest.ContentType = "application/json";
+        httpWebRequest.Method = "POST";
+
+        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+        {
+            streamWriter.Write(req.ToString());
+        }
+
+        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+        {
+            var result = streamReader.ReadToEnd();
+            Debug.Log(result);
+            return result;
+        }
+    }
+
+    private string RoomName_To_JoinCode(string RoomName)
+    {
+        var json = new JObject();
+        string method = "room_code";
+
+        json.Add("roomName", RoomName);
+
+        return request_server(json, method);
+
+    }
     #endregion
 
 

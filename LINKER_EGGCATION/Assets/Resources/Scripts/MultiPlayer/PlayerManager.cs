@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-using System.Collections;
 using Photon.Pun;
 
 /// <summary>
@@ -41,7 +39,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     #endregion
 
 
-    #region Private Fields
+    #region Private Serialize Field
 
     //[Tooltip("The Beams GameObject to control")]
     //[SerializeField]
@@ -63,6 +61,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     //[Tooltip("The Player's UI GameObject Prefab")]
     //[SerializeField]
     //private GameObject playerUiPrefab;
+    #endregion
+
+
+    #region Private Field
+
+
     #endregion
 
     #region MonoBehaviour CallBacks
@@ -201,4 +205,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     }
 
     #endregion
+
+
 }
