@@ -211,9 +211,7 @@ namespace Photon.Realtime
         /// <summary>Realtime apps are for gaming / interaction. Also used by PUN 2.</summary>
         Realtime,
         /// <summary>Voice apps stream audio.</summary>
-        Voice,
-        /// <summary>Fusion clients are for matchmaking and relay in Photon Fusion.</summary>
-        Fusion
+        Voice
     }
 
     /// <summary>
@@ -865,19 +863,7 @@ namespace Photon.Realtime
                 return false;
             }
 
-            switch (this.ClientType)
-            {
-                case ClientAppType.Realtime:
-                    this.AppId = appSettings.AppIdRealtime;
-                    break;
-                case ClientAppType.Voice: 
-                    this.AppId = appSettings.AppIdVoice;
-                    break;
-                case ClientAppType.Fusion:
-                    this.AppId = appSettings.AppIdFusion;
-                    break;
-            }
-
+            this.AppId = this.ClientType == ClientAppType.Realtime ? appSettings.AppIdRealtime : appSettings.AppIdVoice;
             this.AppVersion = appSettings.AppVersion;
 
             this.IsUsingNameServer = appSettings.UseNameServer;

@@ -326,7 +326,7 @@ namespace Photon.Pun
                             {
                                 bool _ignore = false;
 #if PLAYMAKER
-                                //_ignore = _newType == typeof(PlayMakerFSM);// Photon Integration for PlayMaker will swap at runtime to a proxy using iPunObservable.
+                                _ignore = _newType == typeof(PlayMakerFSM);// Photon Integration for PlayMaker will swap at runtime to a proxy using iPunObservable.
 #endif
 
                                 if (_newType == null || _newType == typeof(Rigidbody) || _newType == typeof(Rigidbody2D))
