@@ -4,14 +4,34 @@ using UnityEngine;
 
 using Photon.Pun;
 
-public class CameraController : MonoBehaviourPunCallbacks
+public class CameraController : MonoBehaviour
 {
+    public GameObject player;
+    private float distance = 3;
     private float   rotateSpeedX  = 3;
     private float   rotateSpeedY  = 5;
     private float   limitMinX = -80;
     private float   limitMaxX = 50;
     private float   eulerAngleX = 3;
     private float   eulerAngleY = 3;
+
+    public void ChangeView(int toggleView)
+    {
+        if(Input.GetKeyDown("v")){
+          Debug.Log("ㅂㅓ튼 클릭~~~");
+          toggleView = toggleView == 1 ? 3 : 1;
+        }
+        if (toggleView == 1)
+        {
+          Vector3 reverseDistance = new Vector3(0.0f, 0.4f, 0.2f); 
+          transform.position = player.transform.position + transform.rotation * reverseDistance; 
+        }
+        else if (toggleView == 3)
+        {
+          Vector3 reverseDistance = new Vector3(0.0f, 0.0f, distance); 
+          transform.position = player.transform.position - transform.rotation * reverseDistance; 
+        }
+    }
 
     public void RotateTo(float mouseX, float mouseY)
     {
