@@ -1030,8 +1030,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 228742547}
   m_TextComponent: {fileID: 1843280054}
   m_Placeholder: {fileID: 2116644654}
-  m_ContentType: 7
-  m_InputType: 2
+  m_ContentType: 0
+  m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -1746,7 +1746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &357614981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8150,7 +8150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1794996319
 RectTransform:
   m_ObjectHideFlags: 0
