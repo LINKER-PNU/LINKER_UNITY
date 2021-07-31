@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.IO;
+using System;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,49 +67,40 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     public void CreateNewRoomConfirmBttn()
     {
         roomName = RoomNameInputObject.GetComponent<InputField>().text;
-        if (PhotonNetwork.IsConnected)
+
+        if (!IsRoomExist(roomName))
         {
-            if (PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }))
+            if (PhotonNetwork.IsConnected)
             {
-                Debug.Log("CreateRoom is Success");
-            } 
+                if (PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }))
+                {
+                    Debug.Log("CreateRoom is Success");
+                } 
+                else
+                {
+                    CreateRoomFailObject.SetActive(true);
+                    System.Threading.Thread.Sleep(1000);
+                    CreateRoomFailObject.SetActive(false);
+                }
+
+            }
             else
             {
-                CreateRoomFailObject.SetActive(true);
-                System.Threading.Thread.Sleep(1000);
-                CreateRoomFailObject.SetActive(false);
+                Debug.LogError("PhotonNetwork is not connected!");
+
+                PhotonNetwork.GameVersion = gameVersion;
+                PhotonNetwork.ConnectUsingSettings();
             }
-
-        }
-        else
+        } else
         {
-            Debug.LogError("PhotonNetwork is not connected!");
-
-            PhotonNetwork.GameVersion = gameVersion;
-            PhotonNetwork.ConnectUsingSettings();
+            CreateRoomFailObject.SetActive(true);
+            System.Threading.Thread.Sleep(1000);
+            CreateRoomFailObject.SetActive(false);
         }
     }
     public void CreateNewRoomCancelBttn()
     {
         RoomNamePanelObject.SetActive(false);
-    }
-    public void JoinLinkerRoomBttn()
-    {
-        Debug.Log("Click Join Room");
-        if (PhotonNetwork.IsConnected)
-        {
-            if (PhotonNetwork.JoinRoom("linker2"))
-            {
-                Debug.Log("JoinRoom is Success");
-            }
-        }
-        else
-        {
-            Debug.LogError("PhotonNetwork is not connected!");
-            // #Critical, we must first and foremost connect to Photon Online Server.
-            PhotonNetwork.GameVersion = gameVersion;
-            PhotonNetwork.ConnectUsingSettings();
-        }
     }
 
     public void JoinRoomByCodeBttn()
@@ -122,7 +114,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsConnected)
             {
-                PhotonNetwork.JoinRoom(roomName);
+                PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }, TypedLobby.Default);
             }
             else
             {
@@ -176,6 +168,16 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         return roomName;
 
     }
+
+    private bool IsRoomExist(string roomName)
+    {
+        var json = new JObject();
+        string method = "room_exist";
+
+        json.Add("roomName", roomName);
+
+        return Convert.ToBoolean(request_server(json, method));
+    }
     #endregion
 
 
@@ -203,6 +205,11 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
         // #Critical: we failed to join a random room, maybe none exists or they are all full. No worries, we create a new room.
         //PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.LogFormat("방생성 실패: {0} {1}", returnCode, message);
     }
 
     public override void OnJoinedRoom()
