@@ -45,7 +45,7 @@ namespace Photon.Pun
         public string PUNWizardLabel = "PUN Wizard";
         public string SettingsButton = "Settings:";
         public string SetupServerCloudLabel = "Setup wizard for setting up your own server or the cloud.";
-        public string WarningPhotonDisconnect = "Disconnecting PUN due to recompile. Exit PlayMode.";
+        public string WarningPhotonDisconnect = "Disconnecting PUN due to recompile.";
         public string StartButton = "Start";
         public string LocateSettingsButton = "Locate PhotonServerSettings";
         public string SettingsHighlightLabel = "Highlights the used photon settings file in the project.";
@@ -258,9 +258,6 @@ namespace Photon.Pun
 
                 PhotonNetwork.Disconnect();
                 PhotonNetwork.NetworkingClient.LoadBalancingPeer.DispatchIncomingCommands();
-                #if UNITY_2019_4_OR_NEWER && UNITY_EDITOR
-                EditorApplication.ExitPlaymode();
-                #endif
             }
         }
 
