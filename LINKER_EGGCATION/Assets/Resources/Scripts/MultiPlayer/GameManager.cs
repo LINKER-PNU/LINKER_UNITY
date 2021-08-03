@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject JoinCodeTextObject;
 
+    private static AudioSource audioSource;
+
     #endregion
 
 
@@ -30,13 +32,23 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Tooltip("The prefab to use for representing the player")]
     public GameObject playerPrefab;
 
+
+    public AudioClip sound;
+    
+
+    
+   
+
     #endregion
 
     #region MonoBehaviour CallBacks
 
     void Start()
     {
-           Instance = this;
+        
+        StartCoroutine(CountTime()); 
+        
+        Instance = this;
         if (playerPrefab == null)
         {
             Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
@@ -63,6 +75,26 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     #endregion
 
+    #region BellAlarm
+
+    IEnumerator CountTime() {
+    
+        while (true)
+        {
+
+            audioSource = Instantiate(playerPrefab.AddComponent<AudioSource>());
+            audioSource.clip = sound;
+            audioSource.playOnAwake = false;
+            audioSource.mute = false;
+            audioSource.loop = false;
+            audioSource.PlayOneShot(sound);
+            DestroyObject(audioSource, 1f);
+            Debug.Log("1분 주기 : 벨 알람");
+            yield return new WaitForSeconds(30.0f);
+        }
+    }  
+
+    #endregion
 
     #region Photon Callbacks
 
