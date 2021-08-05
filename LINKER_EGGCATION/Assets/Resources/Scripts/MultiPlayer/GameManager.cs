@@ -11,6 +11,7 @@ using Photon.Pun;
 using Photon.Realtime;
 
 using Newtonsoft.Json.Linq;
+using eggcation;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -81,7 +82,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     
         while (true)
         {
-
             audioSource = Instantiate(playerPrefab.AddComponent<AudioSource>());
             audioSource.clip = sound;
             audioSource.playOnAwake = false;
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     /// Called when the local player left the room. We need to load the launcher scene.
     public override void OnLeftRoom()
     {
-        SceneManager.LoadScene("MoScene");
+        SceneManager.LoadScene("MoMainScene");
     }
 
     #endregion
@@ -124,27 +124,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.LogFormat("PhotonNetwork : Current Room Player Count : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
     }
 
-    private string request_server(JObject req, string method)
-    {
-        string url = "http://34.64.85.29:8080/";
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + method);
-        httpWebRequest.ContentType = "application/json";
-        httpWebRequest.Method = "POST";
-
-        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-        {
-            streamWriter.Write(req.ToString());
-        }
-
-        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-        {
-            var result = streamReader.ReadToEnd();
-            Debug.Log(result);
-            return result;
-        }
-    }
-
     private string RoomName_To_JoinCode(string RoomName)
     {
         var json = new JObject();
@@ -152,7 +131,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         json.Add("roomName", RoomName);
 
-        return request_server(json, method);
+        return Utility.request_server(json, method);
 
     }
     #endregion
