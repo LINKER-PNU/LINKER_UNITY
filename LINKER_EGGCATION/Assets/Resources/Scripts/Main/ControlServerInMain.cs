@@ -11,6 +11,8 @@ using Photon.Pun;
 using Photon.Realtime;
 
 using Newtonsoft.Json.Linq;
+
+using eggcation;
 public class ControlServerInMain : MonoBehaviourPunCallbacks
 {
     #region Private Serializable Fields
@@ -35,7 +37,16 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     #endregion
 
     #region Public Fields
-    static public string roomName = string.Empty, joinCode = string.Empty;
+
+    public GameObject ClassBttnContentObject, ClassBttnObject;
+
+    [SerializeField]
+    public int y_offset = 220;
+
+    [SerializeField]
+    public int offset = 150;
+
+    static public string joinCode = string.Empty;
     #endregion
 
 
@@ -46,6 +57,8 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         // #Critical, we must first and foremost connect to Photon Online Server.
         PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.ConnectUsingSettings();
+
+        get_user_info();
     }
 
     // Update is called once per frame
@@ -66,20 +79,21 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
     public void CreateNewRoomConfirmBttn()
     {
-        roomName = RoomNameInputObject.GetComponent<InputField>().text;
+        Utility.roomName = RoomNameInputObject.GetComponent<InputField>().text;
 
-        if (!IsRoomExist(roomName))
+        if (!IsRoomExist(Utility.roomName))
         {
             if (PhotonNetwork.IsConnected)
             {
-                if (PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }))
+                if (PhotonNetwork.CreateRoom(Utility.roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }))
                 {
                     Debug.Log("CreateRoom is Success");
                 } 
                 else
                 {
+                    // 수정해야하는부분 ㅠㅠ
                     CreateRoomFailObject.SetActive(true);
-                    System.Threading.Thread.Sleep(1000);
+                    //System.Threading.Thread.Sleep(1000);
                     CreateRoomFailObject.SetActive(false);
                 }
 
@@ -109,12 +123,12 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
         InputField joinCode = JoinCodeInputObject.GetComponent<InputField>();
 
-        roomName = JoinCode_To_RoomName(joinCode.text);
-        if (roomName != string.Empty)
+        Utility.roomName = JoinCode_To_RoomName(joinCode.text);
+        if (Utility.roomName != string.Empty)
         {
             if (PhotonNetwork.IsConnected)
             {
-                PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }, TypedLobby.Default);
+                PhotonNetwork.JoinOrCreateRoom(Utility.roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }, TypedLobby.Default);
             }
             else
             {
@@ -135,28 +149,52 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
     #region Private Methods
 
-    private string request_server(JObject req, string method)
+    private void get_user_info()
     {
-        string url = "http://34.64.85.29:8080/";
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + method);
-        httpWebRequest.ContentType = "application/json";
-        httpWebRequest.Method = "POST";
+        var json = new JObject();
+        string method = "user";
 
-        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-        {
-            streamWriter.Write(req.ToString());
-        }
+        json.Add("user_id", Utility.displayName);
 
-        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-        string characterSet = httpResponse.CharacterSet;
-        Debug.Log(characterSet);
-        using (var streamReader = new StreamReader(httpResponse.GetResponseStream(), System.Text.Encoding.UTF8, true))
-        {
-            var result = streamReader.ReadToEnd();
-            Debug.Log(result);
-            return result;
-        }
+        var user_room = JObject.Parse(Utility.request_server(json, method));
+        createClassBttn(user_room["user_room"]);
     }
+
+    private void createClassBttn(JToken room_list)
+    {
+        int count = 0;
+        foreach (JToken room in room_list)
+        {
+            // 버튼 추가
+            GameObject classBttn = Instantiate(ClassBttnObject);
+            classBttn.transform.SetParent(ClassBttnContentObject.transform);
+            Text classBttnText = classBttn.GetComponentInChildren<Text>();
+            classBttnText.text = room["room_name"].ToString() + " ●" + "(" +
+                room["room_present"].ToString() + " / " +
+                room["room_max"].ToString() + ")";
+            RectTransform classBttnTranform = classBttn.GetComponent<RectTransform>();
+            Vector3 classBttnNewPosition = new Vector3(classBttnTranform.position.x, classBttnTranform.position.y - count * y_offset, classBttnTranform.position.z);
+            classBttnTranform.localPosition = classBttnNewPosition;
+            classBttnTranform.localScale = new Vector3(1, 1, 1);
+            Debug.Log(classBttnTranform.localScale);
+            count += 1;
+
+            // onClick 추가
+            Button classBttnComp = classBttn.GetComponent<Button>();
+            classBttnComp.onClick.AddListener(() => JoinRoomByRoomName(room["room_name"].ToString()));
+
+
+            Debug.LogFormat("방 목록에 추가 : {0}", room["room_name"].ToString());
+        }
+        RectTransform ContentTransform = ClassBttnContentObject.GetComponent<RectTransform>();
+        ContentTransform.sizeDelta = new Vector2(0, offset * 2 + y_offset * (count - 1));
+    }
+
+    private void JoinRoomByRoomName(string roomName)
+    {
+        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }, TypedLobby.Default);
+    }
+
     private string JoinCode_To_RoomName(string joinCode)
     {
         var json = new JObject();
@@ -164,9 +202,8 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
         json.Add("joinCode", joinCode);
 
-        roomName = request_server(json, method);
-        return roomName;
-
+        Utility.roomName = Utility.request_server(json, method);
+        return Utility.roomName;
     }
 
     private bool IsRoomExist(string roomName)
@@ -176,7 +213,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
         json.Add("roomName", roomName);
 
-        return Convert.ToBoolean(request_server(json, method));
+        return Convert.ToBoolean(Utility.request_server(json, method));
     }
     #endregion
 
@@ -186,12 +223,6 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
-        //// #Critical: The first we try to do is to join a potential existing room. If there is, good, else, we'll be called back with OnJoinRandomFailed()
-
-        //if (isConnecting)
-        //{
-        //    PhotonNetwork.JoinRandomRoom();
-        //}
     }
 
     public override void OnDisconnected(DisconnectCause cause)

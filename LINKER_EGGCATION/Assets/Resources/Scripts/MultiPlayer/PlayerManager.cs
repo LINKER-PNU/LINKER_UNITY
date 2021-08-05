@@ -52,7 +52,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     private KeyCode jumpKeyCode = KeyCode.Space;
 
     [SerializeField]
-    private GameObject PlayerCamera;
+    private GameObject TP_PlayerCamera;
+
+    [SerializeField]
+    private GameObject FP_PlayerCamera;
 
     [SerializeField]
     private CameraController cameraController;
@@ -84,7 +87,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             PlayerManager.LocalPlayerInstance = this.gameObject;
             Debug.Log("Control My Camera");
             LocalPlayerInstance.GetComponent<Movement3D>().enabled = true;
-            PlayerCamera.SetActive(true);
+            //PlayerCamera.SetActive(true);
         }
         // #Critical
         // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
