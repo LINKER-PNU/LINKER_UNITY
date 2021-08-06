@@ -18,6 +18,21 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
     public GameObject LoginObject, RegisterObject;
     public InputField displayNameInput, userNameInput, passwordInput;
 
+    public void Update()
+    {
+      if(displayNameInput.isFocused == true) {
+        if(Input.GetKeyDown(KeyCode.Tab)) {
+            userNameInput.Select();
+        }
+      }
+      else if(userNameInput.isFocused == true) {
+        if(Input.GetKeyDown(KeyCode.Tab)) {
+            passwordInput.Select();
+        }
+      }
+      if (Input.GetKeyUp(KeyCode.Return)) { RegisterPlayerBttn(); }
+    }
+
     // 회원가입
     public void RegisterPlayerBttn()
     {

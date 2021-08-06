@@ -18,6 +18,16 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
     public InputField userNameInput, passwordInput;
     public GameObject LoginObject, RegisterObject;
 
+    public void Update()
+    {
+      if(userNameInput.isFocused == true) {
+        if(Input.GetKeyDown(KeyCode.Tab)) {
+            passwordInput.Select();
+        }
+      }
+      if (Input.GetKeyUp(KeyCode.Return)) { AuthorizePlayerBttn(); }
+    }
+
     // 계정이름과 비밀번호로 로그인
     public void AuthorizePlayerBttn()
     {
