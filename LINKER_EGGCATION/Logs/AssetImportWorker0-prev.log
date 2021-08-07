@@ -1,0 +1,251 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+56069
+Successfully changed project path to: /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION
+/Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 136.45 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.14f1 (d0d1bb862f9d)
+[Subsystems] Discovering subsystems at path /Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION/Assets
+GfxDevice: creating device client; threaded=0
+2021-08-07 14:48:11.011 Unity[6476:250780] Color LCD preferred device: AMD Radeon Pro 560X (high power)
+2021-08-07 14:48:11.011 Unity[6476:250780] Metal devices available: 2
+2021-08-07 14:48:11.011 Unity[6476:250780] 0: AMD Radeon Pro 560X (high power)
+2021-08-07 14:48:11.011 Unity[6476:250780] 1: Intel(R) UHD Graphics 630 (low power)
+2021-08-07 14:48:11.011 Unity[6476:250780] Using device AMD Radeon Pro 560X (high power)
+Initializing Metal device caps: AMD Radeon Pro 560X
+Initialize mono
+Mono path[0] = '/Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56476
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.002813 seconds.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 110.83 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  4.256 seconds
+Domain Reload Profiling:
+	ReloadAssembly (4256ms)
+		BeginReloadAssembly (59ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (576ms)
+			LoadAssemblies (60ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (210ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (262ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (111ms)
+				BeforeProcessingInitializeOnLoad (6ms)
+				ProcessInitializeOnLoadAttributes (103ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.035230 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.26 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.548 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1551ms)
+		BeginReloadAssembly (177ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (35ms)
+		EndReloadAssembly (1306ms)
+			LoadAssemblies (166ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (494ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (78ms)
+			SetupLoadedEditorAssemblies (446ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (96ms)
+				ProcessInitializeOnLoadAttributes (292ms)
+				ProcessInitializeOnLoadMethodAttributes (50ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Refreshing native plugins compatible for Editor in 1.40 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4042 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 250.0 MB.
+System memory in use after: 250.2 MB.
+
+Unloading 123 unused Assets to reduce memory usage. Loaded Objects now: 4387.
+Total: 6.276808 ms (FindLiveObjects: 0.388505 ms CreateObjectMapping: 0.213967 ms MarkObjects: 5.550717 ms  DeleteObjects: 0.122858 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Materials/desk.mat
+  artifactKey: Guid(cbc46053e1d4b499fb4e6b9ca2d94203) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/desk.mat using Guid(cbc46053e1d4b499fb4e6b9ca2d94203) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fb65b83a5b932426e187e73c72a9a2d') in 1.315766 seconds 
+  Import took 1.323959 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 144.399103 seconds.
+  path: Assets/Materials/Board.mat
+  artifactKey: Guid(aed5b6ef94c444526801fe684d400308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Board.mat using Guid(aed5b6ef94c444526801fe684d400308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fe4b3e43ed92bc4db26a8820fb32728') in 0.024363 seconds 
+  Import took 0.030830 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 188.983375 seconds.
+  path: Assets/Resources/Images/스크린샷 2021-07-29 오후 9.35.49.png
+  artifactKey: Guid(f78127efe9da94f3fbd878a8d81b14e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/스크린샷 2021-07-29 오후 9.35.49.png using Guid(f78127efe9da94f3fbd878a8d81b14e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf684884f0f8f25e6548e080f17165e4') in 1.150568 seconds 
+  Import took 1.158791 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001099 seconds.
+  path: Assets/Resources/Images/스크린샷 2021-07-29 오후 9.35.49.png
+  artifactKey: Guid(f78127efe9da94f3fbd878a8d81b14e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/스크린샷 2021-07-29 오후 9.35.49.png using Guid(f78127efe9da94f3fbd878a8d81b14e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf684884f0f8f25e6548e080f17165e4') in 0.012147 seconds 
+  Import took 0.021590 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 161.318980 seconds.
+  path: Assets/Resources/Images/classFloor.mat
+  artifactKey: Guid(d25cc8e3c8970446e86bd54da73455eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/classFloor.mat using Guid(d25cc8e3c8970446e86bd54da73455eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '624a2b56ee5f2107c9738da5fcad8ff9') in 0.028630 seconds 
+  Import took 0.035471 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.377297 seconds.
+  path: Assets/Resources/Images/classFloor.shader
+  artifactKey: Guid(c3c7fa152d8c040cfb472f910ef23901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/classFloor.shader using Guid(c3c7fa152d8c040cfb472f910ef23901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fc1ca225ffa4ead9347c1cadcd697ab') in 0.367532 seconds 
+  Import took 0.375605 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 44.414230 seconds.
+  path: Assets/Resources/Images/classFloor.shader
+  artifactKey: Guid(c3c7fa152d8c040cfb472f910ef23901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/classFloor.shader using Guid(c3c7fa152d8c040cfb472f910ef23901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3268827923a378f271a9eb91fdeb99c8') in 0.005688 seconds 
+  Import took 0.014744 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.026764 seconds.
+  path: Assets/Resources/Images/classFloor.shader
+  artifactKey: Guid(c3c7fa152d8c040cfb472f910ef23901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/classFloor.shader using Guid(c3c7fa152d8c040cfb472f910ef23901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3268827923a378f271a9eb91fdeb99c8') in 0.004693 seconds 
+  Import took 0.012756 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 51.002831 seconds.
+  path: Assets/Resources/Images/classFloor.mat
+  artifactKey: Guid(d25cc8e3c8970446e86bd54da73455eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/classFloor.mat using Guid(d25cc8e3c8970446e86bd54da73455eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '046ededf0768bce5ab824e8f5145cd90') in 0.022909 seconds 
+  Import took 0.031639 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.883374 seconds.
+  path: Assets/Materials/Board.mat
+  artifactKey: Guid(aed5b6ef94c444526801fe684d400308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Board.mat using Guid(aed5b6ef94c444526801fe684d400308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d4171b57bbf72e1175cdad2cabb175f') in 0.012550 seconds 
+  Import took 0.020692 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000236 seconds.
+  path: Assets/Materials/floor.mat
+  artifactKey: Guid(b3ff6574a619d497e95ba8d152df974c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/floor.mat using Guid(b3ff6574a619d497e95ba8d152df974c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5447a89e1b8a44a453242e79277fa669') in 0.013971 seconds 
+  Import took 0.020787 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 43.062530 seconds.
+  path: Assets/Materials/desk.mat
+  artifactKey: Guid(cbc46053e1d4b499fb4e6b9ca2d94203) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/desk.mat using Guid(cbc46053e1d4b499fb4e6b9ca2d94203) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b419ff72b59da1960fcdf6db3fac1d7a') in 0.022632 seconds 
+  Import took 0.031351 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 178.271213 seconds.
+  path: Assets/Materials/floor.mat
+  artifactKey: Guid(b3ff6574a619d497e95ba8d152df974c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/floor.mat using Guid(b3ff6574a619d497e95ba8d152df974c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df24bcfb5c8ed064d6f25ee78f76060b') in 0.025170 seconds 
+  Import took 0.033128 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004111 seconds.
+  path: Assets/Materials/floor.mat
+  artifactKey: Guid(b3ff6574a619d497e95ba8d152df974c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/floor.mat using Guid(b3ff6574a619d497e95ba8d152df974c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df24bcfb5c8ed064d6f25ee78f76060b') in 0.020291 seconds 
+  Import took 0.027164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.679584 seconds.
+  path: Assets/Materials/paper.mat
+  artifactKey: Guid(abc0288a30329457d9f1d94728f0b853) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/paper.mat using Guid(abc0288a30329457d9f1d94728f0b853) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '182ab892d43d64f023f5a39f2b818d92') in 0.023514 seconds 
+  Import took 0.030580 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
