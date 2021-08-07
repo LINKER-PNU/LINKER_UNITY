@@ -2,8 +2,9 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class CharacterMainController : MonoBehaviour
+public class CharacterMainController :  MonoBehaviourPunCallbacks
 {
     /***********************************************************************
     *                               Definitions
@@ -146,14 +147,18 @@ public class CharacterMainController : MonoBehaviour
     ***********************************************************************/
     #region .
     private void Start()
-    {
+    {   
+      if(photonView.IsMine){
         InitComponents();
         InitSettings();
+      }
     }
 
 
     private void Update()
     {
+      if (photonView.IsMine)
+      {
         _deltaTime = Time.deltaTime;
         CameraViewToggle();
         Move();
@@ -165,7 +170,7 @@ public class CharacterMainController : MonoBehaviour
 
 
         UpdateCurrentValues();
-        
+      }   
         
     }
 
@@ -188,6 +193,8 @@ public class CharacterMainController : MonoBehaviour
         Com.fpCamObject = Com.fpCamera.gameObject;
         Com.fpRig = Com.fpCamera.transform.parent;
         Com.walker = Com.fpRig.parent;
+
+        DontDestroyOnLoad(this.gameObject);
 
         TryGetComponent(out Com.movement3D);
 

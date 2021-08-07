@@ -1746,7 +1746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &357614981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4315,6 +4315,10 @@ MonoBehaviour:
   RoomNamePanelObject: {fileID: 979347043}
   RoomNameInputObject: {fileID: 982288527}
   CreateRoomFailObject: {fileID: 1059062811}
+  ClassBttnContentObject: {fileID: 0}
+  ClassBttnObject: {fileID: 0}
+  y_offset: 220
+  offset: 150
 --- !u!114 &835014630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8150,7 +8154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1794996319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8191,11 +8195,6 @@ MonoBehaviour:
   passwordInput: {fileID: 932369005}
   LoginObject: {fileID: 1794996318}
   RegisterObject: {fileID: 357614980}
-  MainObject: {fileID: 835014627}
-  ClassBttnContentObject: {fileID: 487569192}
-  ClassBttnObject: {fileID: 8529043770001679354, guid: c5cb039c89456974bbc70d4deccabe99, type: 3}
-  y_offset: 220
-  offset: 150
 --- !u!114 &1794996321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9789,11 +9788,6 @@ MonoBehaviour:
   passwordInput: {fileID: 4857404930943949148}
   LoginObject: {fileID: 9027103735355599176}
   RegisterObject: {fileID: 272388876}
-  MainObject: {fileID: 0}
-  ClassBttnContentObject: {fileID: 0}
-  ClassBttnObject: {fileID: 0}
-  y_offset: 0
-  offset: 150
 --- !u!1 &2048093899
 GameObject:
   m_ObjectHideFlags: 0
