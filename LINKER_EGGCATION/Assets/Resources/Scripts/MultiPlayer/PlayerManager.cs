@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 using Photon.Pun;
 
 /// <summary>
@@ -36,6 +37,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
     public static GameObject LocalPlayerInstance;
 
+    public int CamMode;
+
     #endregion
 
 
@@ -50,15 +53,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private KeyCode jumpKeyCode = KeyCode.Space;
+    [SerializeField]
+    private KeyCode cameraKeyCode = KeyCode.Tab;
 
     [SerializeField]
-    private GameObject TP_PlayerCamera;
+    private GameObject fpCamera;
 
     [SerializeField]
-    private GameObject FP_PlayerCamera;
+    private GameObject tpCamera;
 
     [SerializeField]
-    private CameraController cameraController;
+    private CameraController fpCameraController;
+    
+    [SerializeField]
+    private CameraController tpCameraController;
+
+
     private Movement3D movement3D;
 
     //[Tooltip("The Player's UI GameObject Prefab")]
@@ -87,6 +97,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             PlayerManager.LocalPlayerInstance = this.gameObject;
             Debug.Log("Control My Camera");
             LocalPlayerInstance.GetComponent<Movement3D>().enabled = true;
+            CamMode = 1;
+            fpCamera.SetActive(true);
+            tpCamera.SetActive(false);
             //PlayerCamera.SetActive(true);
         }
         // #Critical
@@ -190,11 +203,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     }
     void ProcessInputs()
     {
+        if(Input.GetKeyDown(cameraKeyCode))
+        {
+          if(CamMode == 1){
+            CamMode = 0;
+          }else{
+            CamMode += 1;
+          }
+          StartCoroutine(CamChange());
+        }
         //x, z 방향이동
         float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
         float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
 
-        this.movement3D.MoveTo(new Vector3(x, 0, z));
+        this.movement3D.MoveTo(CamMode,new Vector3(x, 0, z));
 
         if (Input.GetKeyDown(jumpKeyCode))
         {
@@ -203,10 +225,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
-
-        this.cameraController.RotateTo(mouseX, mouseY);
+        this.fpCameraController.RotateTo(CamMode, mouseX, mouseY);
+        this.tpCameraController.RotateTo(CamMode, mouseX, mouseY);
+        
     }
-
+    IEnumerator CamChange(){
+        yield return new WaitForSeconds(0.01f);
+        if(CamMode == 1){
+          fpCamera.SetActive(false);
+          tpCamera.SetActive(true);
+        }else{
+          fpCamera.SetActive(true);
+          tpCamera.SetActive(false);
+        }
+    }
     #endregion
 
 
