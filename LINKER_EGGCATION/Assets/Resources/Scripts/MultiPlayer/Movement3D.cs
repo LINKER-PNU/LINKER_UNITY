@@ -13,7 +13,11 @@ public class Movement3D : MonoBehaviour
     private Vector3         moveDirection;
 
     [SerializeField]
-    private Transform           cameraTransform;
+    private Transform           fpCameraTransform;
+
+    [SerializeField]
+    private Transform           tpCameraTransform;
+    
     private CharacterController characterController;
     // private NavMeshAgent    navMeshAgent;
 
@@ -31,9 +35,19 @@ public class Movement3D : MonoBehaviour
         characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
 
-    public void MoveTo(Vector3 direction)
+    public void MoveTo(int CamMode,Vector3 direction)
     {
-        Vector3 movedis = cameraTransform.rotation * direction;
+        Vector3 movedis;
+        if(CamMode == 1){
+          movedis = fpCameraTransform.rotation * direction;
+          // lookForward = new Vector3(fpCameraTransform.forward.x, 0f, fpCameraTransform.forward.z).normalized;
+          // lookRight = new Vector3(fpCameraTransform.right.x, 0f, fpCameraTransform.right.z).normalized;
+          // movedis = lookForward*direction.y + lookRight*direction.x;
+          
+        }
+        else{
+          movedis =  tpCameraTransform.rotation * direction;
+        }
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
     }
 

@@ -14,10 +14,12 @@ public class CameraController : MonoBehaviour
     private float   limitMaxX = 50;
     private float   eulerAngleX = 3;
     private float   eulerAngleY = 3;
+    
+    
 
 
 
-    public void RotateTo(float mouseX, float mouseY)
+    public void RotateTo(int CamMode, float mouseX, float mouseY)
     {
         eulerAngleY += mouseX  * rotateSpeedX;
         eulerAngleX -= mouseY  * rotateSpeedY;
