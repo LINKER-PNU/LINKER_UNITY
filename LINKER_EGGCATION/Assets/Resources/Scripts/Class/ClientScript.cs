@@ -206,11 +206,9 @@ public class ClientScript : MonoBehaviour
 
         go.name = goName;
         // set up transform
-        go.transform.Rotate(-90.0f, 0.0f, 0.0f);
-        var yPos = Random.Range(3.0f, 5.0f);
-        var xPos = Random.Range(-2.0f, 2.0f);
-        go.transform.position = new Vector3(xPos, yPos, 0f);
-        go.transform.localScale = new Vector3(0.25f, 0.5f, .5f);
+        go.transform.Rotate(270.0f, 270.0f, 180.0f);
+        go.transform.position = new Vector3(0.9f, 0.09881967f, -0.1224516f);
+        go.transform.localScale = new Vector3(0.5f, 0.25f, .5f);
 
         // configure videoSurface
         var videoSurface = go.AddComponent<VideoSurface>();
