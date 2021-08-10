@@ -23,9 +23,12 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     private byte maxPlayersPerRoom = 20;
 
     [SerializeField]
-    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject;
+    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject, RoleObject;
     
     private Text userNameText;
+    private Text userRoleText;
+
+    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9;
 
     #endregion
 
@@ -74,6 +77,11 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
 
     #region Public Methods
+    public void OnClickColorBttn()
+    {
+      
+    }
+
     public void CreateNewRoomBttn()
     {
         Debug.Log("Click Create New Room");
@@ -162,15 +170,16 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         var user_info = JObject.Parse(Utility.request_server(json, method));
 
         userNameText = NameObject.GetComponent<Text>(); 
+        userRoleText = RoleObject.GetComponent<Text>(); 
         
+        userNameText.text = Utility.displayName; 
         if(user_info["user_skin_role"].ToString() == "S"){
-          userNameText.text = Utility.displayName + " (S)";
+          userRoleText.text = "학생";
         }else{
-          userNameText.text = Utility.displayName + " (T)";
+          userRoleText.text = "선생";
         }
 
-        
-
+      
         createClassBttn(user_info["user_room"]);
     }
 
