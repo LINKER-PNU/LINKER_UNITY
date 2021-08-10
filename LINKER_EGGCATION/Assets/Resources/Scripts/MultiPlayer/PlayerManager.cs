@@ -79,6 +79,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     #region Private Field
 
+    RaycastHit hit;
+    Ray ray;
+    float MaxDistance = 15f;
 
     #endregion
 
@@ -201,6 +204,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         //    return;
         //}
     }
+    IEnumerator ExampleCoroutineColor()
+    {
+        var originColor = hit.transform.GetComponent<MeshRenderer>().material.color;
+        hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1);
+
+        hit.transform.GetComponent<MeshRenderer>().material.color = originColor;
+    }
+
     void ProcessInputs()
     {
         if(Input.GetKeyDown(cameraKeyCode))
@@ -228,6 +242,21 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         this.fpCameraController.RotateTo(CamMode, mouseX, mouseY);
         this.tpCameraController.RotateTo(CamMode, mouseX, mouseY);
         
+        if (Input.GetMouseButtonDown(0))
+        {
+            ray = fpCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+            //var cameraController = CamMode == 1 ? tpCamera : fpCamera;
+            Debug.DrawRay(ray.origin, ray.direction, Color.blue, 0.3f);
+            // 클릭 시 부딪혔을 때
+            if (Physics.Raycast(ray, out hit, MaxDistance))
+            {
+                if (hit.transform.GetComponent<MeshRenderer>().material.color != Color.red)
+                {
+                    StartCoroutine(ExampleCoroutineColor());
+                }
+            }
+        }
     }
     IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);
