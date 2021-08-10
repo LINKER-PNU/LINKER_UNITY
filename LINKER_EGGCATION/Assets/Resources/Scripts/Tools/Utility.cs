@@ -12,6 +12,7 @@ namespace eggcation
     public static class Utility
     {
         public static string displayName = String.Empty;
+        public static string userId = String.Empty;
         public static string roomName = String.Empty;
 
         public static string request_server(JObject req, string method)
