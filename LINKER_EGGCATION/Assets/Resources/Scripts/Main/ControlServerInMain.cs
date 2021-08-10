@@ -23,7 +23,9 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     private byte maxPlayersPerRoom = 20;
 
     [SerializeField]
-    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject;
+    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject;
+    
+    private Text userNameText;
 
     #endregion
 
@@ -57,6 +59,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         // #Critical, we must first and foremost connect to Photon Online Server.
         PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.ConnectUsingSettings();
+         
 
         get_user_info();
     }
@@ -154,10 +157,21 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         var json = new JObject();
         string method = "user";
 
-        json.Add("user_id", Utility.displayName);
+        json.Add("userId", Utility.userId);
 
-        var user_room = JObject.Parse(Utility.request_server(json, method));
-        createClassBttn(user_room["user_room"]);
+        var user_info = JObject.Parse(Utility.request_server(json, method));
+
+        userNameText = NameObject.GetComponent<Text>(); 
+        
+        if(user_info["user_skin_role"].ToString() == "S"){
+          userNameText.text = Utility.displayName + " (S)";
+        }else{
+          userNameText.text = Utility.displayName + " (T)";
+        }
+
+        
+
+        createClassBttn(user_info["user_room"]);
     }
 
     private void createClassBttn(JToken room_list)
@@ -182,7 +196,6 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
             // onClick 추가
             Button classBttnComp = classBttn.GetComponent<Button>();
             classBttnComp.onClick.AddListener(() => JoinRoomByRoomName(room["room_name"].ToString()));
-
 
             Debug.LogFormat("방 목록에 추가 : {0}", room["room_name"].ToString());
         }

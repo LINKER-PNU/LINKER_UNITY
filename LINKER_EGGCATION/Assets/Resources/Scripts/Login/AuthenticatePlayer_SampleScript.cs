@@ -13,7 +13,7 @@ using eggcation;
 
 public class AuthenticatePlayer_SampleScript : MonoBehaviour
 {
-    static public string gameSparkUserId = "N";
+    // static public string gameSparkUserId = "N";
 
     public InputField userNameInput, passwordInput;
     public GameObject LoginObject, RegisterObject;
@@ -41,19 +41,21 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
                     RegisterObject.SetActive(false);
 
                     var json = new JObject();
+                    
 
                     string authToken = response.AuthToken;
                     Utility.displayName = response.DisplayName;
                     bool? newPlayer = response.NewPlayer;
-                    gameSparkUserId = response.UserId;
+                    // gameSparkUserId = response.UserId;
+                    Utility.userId = response.UserId;
 
                     PhotonNetwork.LocalPlayer.NickName = Utility.displayName; 
-                    PhotonNetwork.AuthValues = new Photon.Realtime.AuthenticationValues(gameSparkUserId);
+                    PhotonNetwork.AuthValues = new Photon.Realtime.AuthenticationValues(Utility.userId);
 
                     json.Add("authToken", authToken);
                     json.Add("displayName", Utility.displayName);
                     json.Add("newPlayer", newPlayer);
-                    json.Add("userId", gameSparkUserId);
+                    json.Add("userId", Utility.userId);
 
                     Utility.request_server(json, "login");
                     Debug.Log("로그인 성공...");
