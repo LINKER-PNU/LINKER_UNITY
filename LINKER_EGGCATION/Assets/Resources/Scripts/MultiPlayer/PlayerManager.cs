@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     #endregion
 
 
-    #region Punlic Fields
+    #region Public Fields
 
     //[Tooltip("The current Health of our player")]
     //public float Health = 1f;
@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public static GameObject LocalPlayerInstance;
 
     public int CamMode;
+
 
     #endregion
 
@@ -50,6 +51,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     ////True, when the user is firing
     //bool IsFiring;
+
 
     [SerializeField]
     private KeyCode jumpKeyCode = KeyCode.Space;
@@ -242,21 +244,44 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         this.fpCameraController.RotateTo(CamMode, mouseX, mouseY);
         this.tpCameraController.RotateTo(CamMode, mouseX, mouseY);
         
-        if (Input.GetMouseButtonDown(0))
+        // 상호작용 부분입니다
+        if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시
         {
             ray = fpCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
             //var cameraController = CamMode == 1 ? tpCamera : fpCamera;
             Debug.DrawRay(ray.origin, ray.direction, Color.blue, 0.3f);
-            // 클릭 시 부딪혔을 때
+            // 클릭 시 앞에 물건이 있을 때
             if (Physics.Raycast(ray, out hit, MaxDistance))
             {
-                if (hit.transform.GetComponent<MeshRenderer>().material.color != Color.red)
+                Debug.Log(hit.transform?.name);
+                if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
                 {
-                    StartCoroutine(ExampleCoroutineColor());
+                    Debug.Log("교");
+                    GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
                 }
+                if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
+                {
+                    Debug.Log("책");
+                    GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
+                }
+                //if (hit.transform.GetComponent<MeshRenderer>().material.color != Color.red)
+                //{
+                //    StartCoroutine(ExampleCoroutineColor());
+                //}
             }
         }
+    }
+    bool isTeacherDesk()
+    {
+        return hit.transform.name == "pCube4";
+    }
+
+    bool isDesk()
+    {
+        return hit.transform.name.Length == 7 && hit.transform.name.Substring(0, 5) == "pCube"
+            && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
+            && int.Parse(hit.transform.name.Substring(5, 2)) <= 56;
     }
     IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);

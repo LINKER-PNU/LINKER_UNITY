@@ -60,11 +60,11 @@ namespace Photon.Voice.Unity
             fmt = this.GetFormatString(fmt);
             if (this.context == null)
             {
-                Debug.LogErrorFormat(fmt, args);
+                //Debug.LogErrorFormat(fmt, args);
             }
             else
             {
-                Debug.LogErrorFormat(this.context, fmt, args);
+                //Debug.LogErrorFormat(this.context, fmt, args);
             }
         }
 
@@ -74,11 +74,11 @@ namespace Photon.Voice.Unity
             fmt = this.GetFormatString(fmt);
             if (this.context == null)
             {
-                Debug.LogWarningFormat(fmt, args);
+                //Debug.LogWarningFormat(fmt, args);
             }
             else
             {
-                Debug.LogWarningFormat(this.context, fmt, args);
+                //Debug.LogWarningFormat(this.context, fmt, args);
             }
         }
 
@@ -88,11 +88,11 @@ namespace Photon.Voice.Unity
             fmt = this.GetFormatString(fmt);
             if (this.context == null)
             {
-                Debug.LogFormat(fmt, args);
+                //Debug.LogFormat(fmt, args);
             }
             else
             {
-                Debug.LogFormat(this.context, fmt, args);
+                //Debug.LogFormat(this.context, fmt, args);
             }
         }
 
