@@ -4316,11 +4316,8 @@ MonoBehaviour:
   RoomNameInputObject: {fileID: 982288527}
   CreateRoomFailObject: {fileID: 1059062811}
   NameObject: {fileID: 0}
-<<<<<<< HEAD
-=======
   RoleObject: {fileID: 0}
   EggObject: {fileID: 0}
->>>>>>> origin/master
   ClassBttnContentObject: {fileID: 0}
   ClassBttnObject: {fileID: 0}
   y_offset: 220
