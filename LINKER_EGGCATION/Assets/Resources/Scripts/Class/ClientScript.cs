@@ -162,6 +162,16 @@ public class ClientScript : MonoBehaviour
             IRtcEngine.Destroy();
         }
     }
+    void OnDisable()
+    {
+        Debug.Log("OnDisable");
+        if (mRtcEngine != null)
+        {
+            mRtcEngine.LeaveChannel();
+            mRtcEngine.DisableVideoObserver();
+            IRtcEngine.Destroy();
+        }
+    }
 
     private void DestroyVideoView(uint uid)
     {

@@ -108,6 +108,7 @@ public class ServerScript : MonoBehaviour
     private void PrepareScreenCapture()
     {
         _winIdSelect = GameObject.Find("winIdSelect").GetComponent<Dropdown>();
+        _winIdSelect.interactable = false;
 
         if (_winIdSelect != null)
         {
@@ -244,6 +245,30 @@ public class ServerScript : MonoBehaviour
     void OnApplicationQuit()
     {
         Debug.Log("OnApplicationQuit");
+        var json = new JObject();
+        string method = "delete_class_master";
+
+        json.Add("roomName", CHANNEL_NAME);
+        if (Convert.ToBoolean(request_server(json, method)))
+        {
+            if (mRtcEngine != null)
+            {
+                mRtcEngine.LeaveChannel();
+                mRtcEngine.DisableVideoObserver();
+                IRtcEngine.Destroy();
+            }
+            // Scene 이동
+            Debug.Log("EXIT");
+        }
+        else
+        {
+            Debug.Log("class master 삭제 에러");
+        }
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("OnDisable");
         var json = new JObject();
         string method = "delete_class_master";
 
