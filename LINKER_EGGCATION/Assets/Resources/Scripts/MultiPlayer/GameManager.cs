@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     #region Private Fields
 
     [SerializeField]
+    private GameObject emptyObject;
+
+    [SerializeField]
     private GameObject JoinCodeTextObject;
 
     private static AudioSource audioSource;
@@ -28,6 +31,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     #region Public Fields
 
+    static public GameObject ServerCanvasObject;
+    
+    static public GameObject ClientCanvasObject;
+
     public static GameManager Instance;
 
     [Tooltip("The prefab to use for representing the player")]
@@ -35,10 +42,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
     public AudioClip sound;
-    
-
-    
-   
 
     #endregion
 
@@ -72,6 +75,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         string joinCode = RoomName_To_JoinCode(PhotonNetwork.CurrentRoom.Name);
         Text JoinCodeText = JoinCodeTextObject.GetComponent<Text>();
         JoinCodeText.text = joinCode;
+
+        ServerCanvasObject = emptyObject.transform.Find("ServerVideoCanvas").gameObject;
+        ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
+        Debug.Log(ServerCanvasObject.name);
     }
 
     #endregion
