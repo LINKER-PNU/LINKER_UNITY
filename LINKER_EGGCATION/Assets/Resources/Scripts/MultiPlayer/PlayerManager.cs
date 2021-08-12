@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
@@ -39,6 +42,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public int CamMode;
 
+    static public Camera MainCamera;
 
     #endregion
 
@@ -70,8 +74,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private CameraController tpCameraController;
 
+    [SerializeField]
+    private TextMeshProUGUI nameText;
 
     private Movement3D movement3D;
+
 
     //[Tooltip("The Player's UI GameObject Prefab")]
     //[SerializeField]
@@ -104,8 +111,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             LocalPlayerInstance.GetComponent<Movement3D>().enabled = true;
             CamMode = 1;
             fpCamera.SetActive(true);
+            MainCamera = fpCamera.GetComponent<Camera>();
             tpCamera.SetActive(false);
-            //PlayerCamera.SetActive(true);
         }
         // #Critical
         // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -127,6 +134,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     /// </summary>
     void Start()
     {
+        SetName();
         //if (playerUiPrefab != null)
         //{
         //    GameObject _uiGo = Instantiate(playerUiPrefab);
@@ -217,6 +225,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         hit.transform.GetComponent<MeshRenderer>().material.color = originColor;
     }
 
+    void SetName()
+    {
+        nameText.text = photonView.Owner.NickName;
+    }
     void ProcessInputs()
     {
         if(Input.GetKeyDown(cameraKeyCode))
@@ -286,11 +298,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);
         if(CamMode == 1){
-          fpCamera.SetActive(false);
-          tpCamera.SetActive(true);
-        }else{
-          fpCamera.SetActive(true);
-          tpCamera.SetActive(false);
+            fpCamera.SetActive(false);
+            tpCamera.SetActive(true);
+            MainCamera = tpCamera.GetComponent<Camera>();
+        }
+        else{
+            fpCamera.SetActive(true);
+            tpCamera.SetActive(false);
+            MainCamera = fpCamera.GetComponent<Camera>();
         }
     }
     #endregion
