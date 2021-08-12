@@ -5,6 +5,7 @@ using System.IO;
 using System;
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 using Photon.Pun;
@@ -23,9 +24,14 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     private byte maxPlayersPerRoom = 20;
 
     [SerializeField]
-    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject;
+    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject, RoleObject,EggObject;
+
+    private GameObject ColorObject;
     
     private Text userNameText;
+    private Text userRoleText;
+
+    
 
     #endregion
 
@@ -59,8 +65,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         // #Critical, we must first and foremost connect to Photon Online Server.
         PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.ConnectUsingSettings();
-         
-
+        
         get_user_info();
     }
 
@@ -74,6 +79,26 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
 
     #region Public Methods
+    public void OnClickColorBttn()
+    {
+      ColorObject = EventSystem.current.currentSelectedGameObject;
+      Color newColor = ColorObject.GetComponentInChildren<Image>().color;
+
+      // Debug.Log(ColorObject.GetComponentInChildren<Image>().color);
+
+      EggObject.GetComponent<Renderer>().material.color = newColor;
+
+      var json = new JObject();
+      string method = "skin";
+
+      json.Add("userId", Utility.userId);
+      json.Add("skinColor", Utility.userId);
+      json.Add("skinRole", "S");
+
+      var result = JObject.Parse(Utility.request_server(json, method));
+      // Debug.Log(result);
+    }
+
     public void CreateNewRoomBttn()
     {
         Debug.Log("Click Create New Room");
@@ -162,15 +187,18 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         var user_info = JObject.Parse(Utility.request_server(json, method));
 
         userNameText = NameObject.GetComponent<Text>(); 
+        userRoleText = RoleObject.GetComponent<Text>(); 
         
+        userNameText.text = Utility.displayName; 
         if(user_info["user_skin_role"].ToString() == "S"){
-          userNameText.text = Utility.displayName + " (S)";
+          userRoleText.text = "학생";
         }else{
-          userNameText.text = Utility.displayName + " (T)";
+          userRoleText.text = "선생";
         }
-
-        
-
+        Color myColor;
+        ColorUtility.TryParseHtmlString(user_info["user_skin_color"].ToString(), out myColor);
+        EggObject.GetComponent<Renderer>().material.color = myColor;
+      
         createClassBttn(user_info["user_room"]);
     }
 
