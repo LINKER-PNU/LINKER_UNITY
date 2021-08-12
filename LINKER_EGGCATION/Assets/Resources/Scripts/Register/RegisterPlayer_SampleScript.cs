@@ -17,6 +17,9 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
 {
     public GameObject LoginObject, RegisterObject;
     public InputField displayNameInput, userNameInput, passwordInput;
+    public Toggle teacherToggle, studentToggle;
+
+    
 
     public void Update()
     {
@@ -32,6 +35,7 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
       }
       if (Input.GetKeyUp(KeyCode.Return)) { RegisterPlayerBttn(); }
     }
+
 
     // 회원가입
     public void RegisterPlayerBttn()
@@ -51,16 +55,25 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
                     string displayName = response.DisplayName;
                     bool? newPlayer = response.NewPlayer;
                     string userId = response.UserId;
+                    string userRole;
+                    if(studentToggle.isOn){
+                      userRole ="S";
+                    }else{
+                      userRole ="T";
+                    }
+                
 
                     Debug.Log("authToken " + authToken);
                     Debug.Log("displayName " + displayName);
                     Debug.Log("newPlayer " + newPlayer);
                     Debug.Log("userId " + userId);
+                    Debug.Log("skinRole " + userRole);
 
                     json.Add("authToken", authToken);
                     json.Add("displayName", displayName);
                     json.Add("newPlayer", newPlayer);
                     json.Add("userId", userId);
+                    json.Add("skinRole", userRole);
 
                     Utility.request_server(json, "login");
                     LoginObject.SetActive(true);

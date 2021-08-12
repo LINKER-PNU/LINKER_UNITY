@@ -84,7 +84,8 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
       ColorObject = EventSystem.current.currentSelectedGameObject;
       Color newColor = ColorObject.GetComponentInChildren<Image>().color;
 
-      // Debug.Log(ColorObject.GetComponentInChildren<Image>().color);
+      Debug.Log(newColor);
+      Debug.Log("parsed "+ColorUtility.ToHtmlStringRGBA(newColor));
 
       EggObject.GetComponent<Renderer>().material.color = newColor;
 
@@ -92,7 +93,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
       string method = "skin";
 
       json.Add("userId", Utility.userId);
-      json.Add("skinColor", Utility.userId);
+      json.Add("skinColor", ColorUtility.ToHtmlStringRGBA(newColor));
       json.Add("skinRole", "S");
 
       var result = JObject.Parse(Utility.request_server(json, method));
@@ -196,8 +197,12 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
           userRoleText.text = "선생";
         }
         Color myColor;
-        ColorUtility.TryParseHtmlString(user_info["user_skin_color"].ToString(), out myColor);
+        ColorUtility.TryParseHtmlString("#"+user_info["user_skin_color"].ToString(), out myColor);
+        Debug.Log("userskin" + user_info["user_skin_color"].ToString());
+        Debug.Log(myColor);
         EggObject.GetComponent<Renderer>().material.color = myColor;
+        
+        
       
         createClassBttn(user_info["user_room"]);
     }
