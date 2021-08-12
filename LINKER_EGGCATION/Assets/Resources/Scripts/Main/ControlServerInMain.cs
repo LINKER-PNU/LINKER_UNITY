@@ -5,6 +5,7 @@ using System.IO;
 using System;
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 using Photon.Pun;
@@ -23,12 +24,14 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     private byte maxPlayersPerRoom = 20;
 
     [SerializeField]
-    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject, RoleObject;
+    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject, RoleObject,EggObject;
+
+    private GameObject ColorObject;
     
     private Text userNameText;
     private Text userRoleText;
 
-    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9;
+    
 
     #endregion
 
@@ -62,8 +65,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         // #Critical, we must first and foremost connect to Photon Online Server.
         PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.ConnectUsingSettings();
-         
-
+        
         get_user_info();
     }
 
@@ -79,7 +81,22 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     #region Public Methods
     public void OnClickColorBttn()
     {
-      
+      ColorObject = EventSystem.current.currentSelectedGameObject;
+      Color newColor = ColorObject.GetComponentInChildren<Image>().color;
+
+      // Debug.Log(ColorObject.GetComponentInChildren<Image>().color);
+
+      EggObject.GetComponent<Renderer>().material.color = newColor;
+
+      var json = new JObject();
+      string method = "skin";
+
+      json.Add("userId", Utility.userId);
+      json.Add("skinColor", Utility.userId);
+      json.Add("skinRole", "S");
+
+      var result = JObject.Parse(Utility.request_server(json, method));
+      // Debug.Log(result);
     }
 
     public void CreateNewRoomBttn()
@@ -178,7 +195,9 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         }else{
           userRoleText.text = "선생";
         }
-
+        Color myColor;
+        ColorUtility.TryParseHtmlString(user_info["user_skin_color"].ToString(), out myColor);
+        EggObject.GetComponent<Renderer>().material.color = myColor;
       
         createClassBttn(user_info["user_room"]);
     }
