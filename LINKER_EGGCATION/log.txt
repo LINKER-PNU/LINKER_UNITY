@@ -6936,3 +6936,1845 @@ INFO    23:59:01:649  25212; AgoraRTC::AudioDeviceNotificationWindows::~AudioDev
 INFO    23:59:01:649  25212; [che] chat engine destroyed
 INFO    23:59:01:649  25212; ***CALL END
 INFO    23:59:01:649  25212; onAudioStatusChanged enable audio
+Local Date: 8 13 2021 Local Time: 21:36:44
+Build info: Mar 19 2021 14:28:08 r
+
+INFO    21:36:44:601   6752; [API][rtc_engine_impl.cpp:1639][agora::rtc::RtcEngine::enableVideo]
+INFO    21:36:44:601   6752; API call to enable video
+INFO    21:36:44:601   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:601   6752; [API][media_engine_impl.cpp:61][agora::media::MediaEngineImpl::registerVideoFrameObserver]
+INFO    21:36:44:601  25976; [rp] {"rtc.video.enabled":true}
+INFO    21:36:44:601  25976; API call to enable video
+INFO    21:36:44:601  25976; [remote:164.52.43.58:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    21:36:44:601  25976; [remote:164.52.43.58:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    21:36:44:601  25976; [remote:164.52.43.58:8443] receive server hello piece id: 4, 5/10, complete
+INFO    21:36:44:602   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    21:36:44:604  25976; [remote:164.52.43.58:8443] create connection 00000205221DBD20, self initial seq: 15631479, initial rtt: 17ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    21:36:44:604  25976; [remote:164.52.43.58:8443] create session 00000205B9939920
+INFO    21:36:44:604  25976; [rlbs] request rs list from 164.52.43.58:8443 with fake ch report_lbs_1628858204604.......
+INFO    21:36:44:604  25976; destroy dangling client connection 0000020307708F80
+INFO    21:36:44:604  25976; [rp] ["che.video.video_codec_checked"]
+INFO    21:36:44:604  25976; [rp] res: {"che.video.video_codec_checked":false} 
+INFO    21:36:44:604   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:604  25976; [remote:164.52.43.59:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    21:36:44:604   6752; agora::rtc::RtcEngine::check_codec,first encoder check...
+INFO    21:36:44:604   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    21:36:44:604  25976; [remote:164.52.43.59:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    21:36:44:604  25976; [rp] {"che.video.join_channeled":true}
+INFO    21:36:44:605  25976; [rp] ["che.video.h264.hwenc"]
+INFO    21:36:44:605  25976; [rp] res: {"che.video.h264.hwenc":0} 
+INFO    21:36:44:605  25976; [remote:164.52.43.59:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    21:36:44:605   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    21:36:44:605  25976; [rp] ["che.video.video_decoder_checked"]
+INFO    21:36:44:605  25976; [rp] res: {"che.video.video_decoder_checked":false} 
+INFO    21:36:44:605  25976; [remote:164.52.43.59:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    21:36:44:605   6752; agora::rtc::RtcEngine::check_codec,first decoder check...
+INFO    21:36:44:605   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    21:36:44:605  25976; [remote:164.52.43.59:8443] receive server hello piece id: 4, 5/10, complete
+INFO    21:36:44:607  25976; [remote:164.52.43.59:8443] create connection 00000205221E3AC0, self initial seq: 2944783, initial rtt: 14ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    21:36:44:607  25976; [remote:164.52.43.59:8443] create session 00000205B99395A0
+INFO    21:36:44:607  25976; [ap/aut] connected with 164.52.43.59:8443
+INFO    21:36:44:607  25976; destroy dangling client connection 000002030770A540
+INFO    21:36:44:607  25976; [rp] ["che.video.h264.hwdec"]
+INFO    21:36:44:607  25976; [rp] res: {"che.video.h264.hwdec":0} 
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    21:36:44:607  25976; [rp] ["che.video.hw265_dec_enable"]
+INFO    21:36:44:607  25976; [rp] res: {"che.video.hw265_dec_enable":0} 
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:535][agora::rtc::RtcEngine::joinChannel]
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:3732][agora::rtc::RtcEngine::setChannelProfile]
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    21:36:44:607  25976; [rp] ["rtc.force_old_channel_profile"]
+INFO    21:36:44:607  25976; [rp] res: {"rtc.force_old_channel_profile":false} 
+INFO    21:36:44:607   6752; setChannelProfile type 2
+INFO    21:36:44:607   6752; API call to setChannelProfile 0
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607   6752; doSetClientRole 1 level 2
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607  25976; [rp] {"che.video.h264.hwenc":0}
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:3630][agora::rtc::RtcEngine::setAudioProfile]
+INFO    21:36:44:607  25976; [rp] {"rtc.client_role":1}
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607   6752; doSetClientRole 1 level 2
+INFO    21:36:44:607  25976; [rp] {"rtc.allow_communication_fallback":true}
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:915][agora::rtc::RtcEngine::updateMediaOptions]
+INFO    21:36:44:607  25976; [rp] {"rtc.user_set_channel_profile":0}
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1709][agora::rtc::RtcEngine::muteAllRemoteAudioStreams]
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1725][agora::rtc::RtcEngine::muteAllRemoteVideoStreams]
+INFO    21:36:44:607  25976; [rtls] set playout delay:0 ms
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    21:36:44:607  25976; [rp] {"rtc.suspend_callback_client_role_changed":false}
+INFO    21:36:44:607   6752; API call to join channel 'linker_test' uid 0, SDK ver 3.3.1.71 build 61380, device info 'BIOSTAR Group/B450GT3/x64-based PC/Windows 10.0.19043'
+INFO    21:36:44:607   6752; [API][rtc_engine_impl.cpp:5751][agora::rtc::RtcChannel::initialize]
+INFO    21:36:44:607   6752; API call to initialize rtc channel linker_test
+INFO    21:36:44:607  25976; [rp] {"che.audio.profile":{"config":100,"scenario":100}}
+INFO    21:36:44:607  25976; audioProfile lambda: Audio Profile is set to: (config = 100, scenario = 100)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(0):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(1):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(1)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(2):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(1) is_bluetooth(0) audience_need_record(0)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(3):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(0) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(4):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(5):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(1)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(6):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(7):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(1) is_bluetooth(1) audience_need_record(1)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(8):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(9):
+INFO    21:36:44:607  25976; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(0) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    21:36:44:607  25976; [rp] {"rtc.client_role":1}
+INFO    21:36:44:607  25976; [rp] {"rtc.audio.mute_peers":false}
+INFO    21:36:44:607  25976; [rp] {"rtc.video.mute_peers":false}
+INFO    21:36:44:607  25976; doStopLastmileProbeTest
+INFO    21:36:44:607  25976; ***CALL BEGIN: appid:'c6****************************d7' cname:'linker_test' info:'' sid:'B9C3EA368B3F4C5D89D3AB8A1C0C649D'
+INFO    21:36:44:607  25976; addRef of media engine, ref=1
+INFO    21:36:44:608  25976; [che] create chat engine, ctx:0000000000000000
+INFO    21:36:44:608  25976; [MYDEBUG] large group call false
+INFO    21:36:44:608  25976; applyMediaEngineMode(): 264_Hardware decoding false,265_Hardware decoding false
+INFO    21:36:44:608  25976; agora::media::MediaEngineParameterCollection::setupMediaEngineMode: mode 2
+WARN    21:36:44:608  25976; agora::media::MediaEngineParameterCollection::setupMediaEngineMode: skip updateClientRole as audio engine not created, mode 2
+INFO    21:36:44:608  25976; engine git commit version:8f8b16f643 and branch:release/3.3.1.71
+WARN    21:36:44:609  25976; AINS: Will not open AINS when apm init, listen other command
+INFO    21:36:44:610  25976; output: kPlatformDefaultAudio
+INFO    21:36:44:610  25976; [WIN_CORE] +++++++Code block begins for checking CoreAudio properties++++++
+INFO    21:36:44:611  25976; AgoraRTC::AudioDeviceNotificationWindows::AudioDeviceNotificationWindows created
+INFO    21:36:44:612  25976; [WIN_CORE] *** Windows Core Audio is supported ***
+INFO    21:36:44:612  25976; [WIN_CORE] ++++++++Code block ends for checking CoreAudio properties++++++++
+INFO    21:36:44:613  25976; audio jitterbuffer new smooth
+WARN    21:36:44:613  25976; AINS: Will not open AINS when apm init, listen other command
+INFO    21:36:44:613  25976; OutputMixer: start audio file decoder thread successfully
+INFO    21:36:44:614  25976;   OS info: Microsoft  (build 19043), 64-bit
+INFO    21:36:44:615  25976; [WIN_CORE] Set playout device on Windows by Windows Device Type (-2): friendly name: "ìŠ¤í”¼ì»¤ (Realtek High Definition Audio)"
+INFO    21:36:44:620  25976; [WIN_CORE] Set recording device on Windows by Windows Device Type (-2): friendly name: "Microphone (USB PnP Audio Device)"
+INFO    21:36:44:621  25976; MicrophoneLevelStat Level range, maxLvl = 31.000000 (dB), minLvl = 0.000000 (dB), stepLvl = 0.062500 (dB)
+INFO    21:36:44:621  25976; StereoPlayoutIsAvailable(), output: available=1
+INFO    21:36:44:621  25976; StereoRecordingIsAvailable(), output: available=1
+INFO    21:36:44:621  25976; RegisterVolumeNotify
+WARN    21:36:44:621  25976; agora::media::AudioEngineWrapper::enableLocalRecordingDevice: enable 1 already set
+INFO    21:36:44:621  25976; setMuteStatus, muted: Off
+INFO    21:36:44:621  25976; setMuteOutput, muted: false
+INFO    21:36:44:621  25976; Audio Engine Init success, mSpecMode 2
+INFO    21:36:44:621  25976; Available number of cores:12
+INFO    21:36:44:622  25976; agora::media::PipelineManager::SetVideoEngineRef: VideoEngineRef = 0x1d0015
+INFO    21:36:44:622  25976; agora::media::VideoEngine::CreateVideoSendTrack
+WARN    21:36:44:622  25976; AutoAdjust: "AutoAdjustController Instance Created"
+INFO    21:36:44:622  25976; AutoAdjust: "Setting video fec method 2, real using 2"
+INFO    21:36:44:622  25976; AutoAdjust: "dynamic paced sending rate control set to 2."
+INFO    21:36:44:622  25976; AutoAdjust: "static paced sending rate multiplier set to 1.600000."
+INFO    21:36:44:622  25976; AutoAdjust: "all paced sending interval set to 5."
+INFO    21:36:44:622  25976; agora::media::VideoEngine::init: feature prerotation enabled
+ERROR   21:36:44:624  25976; agora::media::VideoEngine::captureIdFromIndex: failed to get device id for device 0
+WARN    21:36:44:624  25976; Camera index 0 is invalid! Use first camera AgoraCapInvalid instead
+INFO    21:36:44:624  25976; agora::media::VideoEngine::setCaptureDevice: deviceId=AgoraCapInvalid
+ERROR   21:36:44:624  25976; agora::media::VideoEngine::captureIndexFromDeviceId: failed to get device index for device AgoraCapInvalid
+INFO    21:36:44:624  25976; Agora Engine video codec set to standard mode role mode 2
+INFO    21:36:44:624  25976; Agora Engine video codec index 1
+INFO    21:36:44:624  25976; Agora Engine video stream type = 0
+INFO    21:36:44:625  25976; Device type: 0
+INFO    21:36:44:625  25976; Hardware encoding false
+INFO    21:36:44:625  25976; last unique frame idx: -1 - -1
+INFO    21:36:44:625  25976; AVEncoder init is x264
+INFO    21:36:44:625  25976; AVEncoder init is x264
+INFO    21:36:44:625  25976; Device type: 0
+INFO    21:36:44:625  25976; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    21:36:44:625  25976; low stream codec type = 1
+INFO    21:36:44:625  25976; low bit rate limit 3758096384
+INFO    21:36:44:625  25976; soft ware encoder is x264
+INFO    21:36:44:625  25976; soft ware encoder is x264
+INFO    21:36:44:625  25976; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    21:36:44:625  25976; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    21:36:44:625  25976; dont need to increase unique frame idx
+INFO    21:36:44:625  25976; the init unique frame idx: -1 - -1
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setCodec: index=1 width=640 height=360 framerate=15
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setCodec: Intra Request = 0
+INFO    21:36:44:625  25976; Device type: 0
+INFO    21:36:44:625  25976; Hardware encoding false
+INFO    21:36:44:625  25976; last unique frame idx: -1 - -1
+INFO    21:36:44:625  25976; AVEncoder init is x264
+INFO    21:36:44:625  25976; AVEncoder init is x264
+INFO    21:36:44:625  25976; Device type: 0
+INFO    21:36:44:625  25976; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    21:36:44:625  25976; low stream codec type = 1
+INFO    21:36:44:625  25976; low bit rate limit 3758096384
+INFO    21:36:44:625  25976; soft ware encoder is x264
+INFO    21:36:44:625  25976; soft ware encoder is x264
+INFO    21:36:44:625  25976; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    21:36:44:625  25976; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    21:36:44:625  25976; set last big unique frame idx: -1
+INFO    21:36:44:625  25976; set last small unique frame idx: -1
+INFO    21:36:44:625  25976; the init unique frame idx: -1 - -1
+ERROR   21:36:44:625  25976; set video che.hardware_encoding, abandon param , old value 0,  value: -1
+ERROR   21:36:44:625  25976; set video che.hardware_decoding, abandon param , old value 0,  value: -1
+INFO    21:36:44:625  25976; agora::media::VideoEngine::h264WebInteropEnable: enable 0
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setCaptureDevice: index=0
+ERROR   21:36:44:625  25976; agora::media::VideoEngine::captureIdFromIndex: failed to get device id for device 0
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setMaxVideoBitrate: max bitrate=0
+INFO    21:36:44:625  25976; [setupParameterObservers:1699] setting of localViewMirrorSetting[] is invalid!
+INFO    21:36:44:625  25976; [agora::media::VideoEngine::setupParameterObservers::<lambda_86a57a2226b38a205d91d0bba49787d8>::operator ():1714] m_context.parameters.video.renderMode: json is invalid! value:0000000000000000
+INFO    21:36:44:625  25976; [agora::media::VideoEngine::setupParameterObservers::<lambda_1229d8fcdd7934ef9e43951299d053ab>::operator ():1768] m_context.parameters.video.mirrorMode: json is invalid! value:0000000000000000
+INFO    21:36:44:625  25976; SetBandwidthAgressiveLevel to 3.
+INFO    21:36:44:625  25976; videoEngine created and initialize here
+INFO    21:36:44:625  25976; agora::media::VideoEngine::CreateVideoSendTrack
+INFO    21:36:44:625  25976; [MIO] updateCapturer: (0000000000000000), type:(1)
+INFO    21:36:44:625  25976; agora::media::VideoEngine::CreateAgoraDefaultCapture: type=0
+INFO    21:36:44:625  25976; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=0000020521CD7EF0
+INFO    21:36:44:625  25976; agora::media::VideoEngine::CreateVideoCapturer: interface=0000020521CD7EF0
+INFO    21:36:44:625  25976; [MIO] updateLocalRender: (0000000000000000), type:(1)
+INFO    21:36:44:625  25976; agora::media::VideoEngine::CreateAgoraDefaultRender
+INFO    21:36:44:625  25976; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateRenderer, renderer=00000205CB168C60
+INFO    21:36:44:625  25976; agora::media::VideoEngine::CreateVideoRenderer: interface=00000205CB168C60
+INFO    21:36:44:625  25976; [MIO] video send track prepared !!
+INFO    21:36:44:625  25976; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=0000020521CD7EF0
+WARN    21:36:44:625  25976; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer, Ignore updating the same capturer
+INFO    21:36:44:625  25976; [che] applyVideoProfile: 640x360 15 fps  -1 minFps 400 kbps, min -1 kbps orientationMode 0 degradationPrefer 0 mirrorMode 0
+ERROR   21:36:44:625  25976; agora::media::VideoEngine::captureIndexFromDeviceId: failed to get device index for device AgoraCapInvalid
+INFO    21:36:44:625  25976; agora::media::VideoEngine::validateVideoParameters: validate video parameters resolution 640x360, fps 15, rate 400000
+INFO    21:36:44:625  25976; agora::media::VideoEngine::enableMirrorMode: enable=0
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setMaxVideoBitrate: max bitrate=400000
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setCodecRates: set frame rate to 15
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setCodec: index=1 width=640 height=360 framerate=15
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setCodec: Intra Request = 0
+INFO    21:36:44:625  25976; Device type: 0
+INFO    21:36:44:625  25976; Hardware encoding false
+INFO    21:36:44:625  25976; last unique frame idx: -1 - -1
+INFO    21:36:44:625  25976; AVEncoder init is x264
+INFO    21:36:44:625  25976; AVEncoder init is x264
+INFO    21:36:44:625  25976; Device type: 0
+INFO    21:36:44:625  25976; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    21:36:44:625  25976; low stream codec type = 1
+INFO    21:36:44:625  25976; low bit rate limit 0
+INFO    21:36:44:625  25976; soft ware encoder is x264
+INFO    21:36:44:625  25976; soft ware encoder is x264
+INFO    21:36:44:625  25976; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    21:36:44:625  25976; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    21:36:44:625  25976; set last big unique frame idx: -1
+INFO    21:36:44:625  25976; set last small unique frame idx: -1
+INFO    21:36:44:625  25976; the init unique frame idx: -1 - -1
+INFO    21:36:44:625  25976; SetTargetWidthHeight width:640, height:360
+INFO    21:36:44:625  25976; agora::media::VideoEngine::setCodecResolution: set to 640 x 360
+INFO    21:36:44:625  25976; Set broadcast min br to -1.
+INFO    21:36:44:625  25976; [che] chat engine initialized
+INFO    21:36:44:625  25976; [time] process EngineInitialize takes 17
+INFO    21:36:44:625  25976; agora::media::VideoEngine::adjustCodecFrameRates: Cannot adjust frame rate when VQC is on
+INFO    21:36:44:625  25976; [tactics] version:3.3.1.71 maxBitrate:400 640X360 15 fps needHandle:1
+INFO    21:36:44:626  25976; [tactics] config json version:20150101-0000 duallinkd:true poor:0
+INFO    21:36:44:626  25976; [tactics] parse config for beckon error for tactics size:15
+INFO    21:36:44:626  25976; [vocs] queryDns ap4-tls.agora.io
+INFO    21:36:44:626  25976; [base_context]queryDns domain is ap4-tls.agora.io
+INFO    21:36:44:627  25976; [vocs] onParsedDns ap4-tls.agora.io with err 0, 52.231.182.176, 54.150.29.65, 
+INFO    21:36:44:627  25976; [cm] queryDns domain is ap4-tls.agora.io
+INFO    21:36:44:627  25976; [base_context]queryDns domain is ap4-tls.agora.io
+INFO    21:36:44:627  25976; [vocs] queryDns ap4.agora.io
+INFO    21:36:44:627  25976; [base_context]queryDns domain is ap4.agora.io
+INFO    21:36:44:627  25976; [vocs] onParsedDns ap4.agora.io with err 0, 164.52.43.58, 164.52.43.59, 
+INFO    21:36:44:628  25976; [vocs] vocs initialized
+INFO    21:36:44:628  25976; [cc] fecRexferEnabled:0
+INFO    21:36:44:628  25976; [cc] sni type:0
+INFO    21:36:44:628  25976; agora::media::VideoEngine::reInit: reset mSpecMode to -1
+INFO    21:36:44:628  25976; [cm] reset channelProfile to NASA(CHANNEL_PROFILE_LIVE_BROADCASTING)
+WARN    21:36:44:628  25976; [cm] session '8FC2B77303C64F28B5F6737183D78014' was not joined successfully
+INFO    21:36:44:629  25976; CacheManager: save cache to storage elapsed 1
+INFO    21:36:44:629  25976; [cm] emit join channel signal, size=4
+INFO    21:36:44:629  25976; [cm] connection state changed from 1 to 2
+INFO    21:36:44:629  25976; agora::media::VideoEngine::adjustCodecFrameRates: Cannot adjust frame rate when VQC is on
+INFO    21:36:44:629  25976; [tactics] version:3.3.1.71 maxBitrate:400 640X360 15 fps needHandle:1
+INFO    21:36:44:629  25976; [vocs] lookup channel...
+INFO    21:36:44:629  25976; [vocs] selected: 164.52.43.58:8443
+INFO    21:36:44:629  25976; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    21:36:44:629  25976; [vocs] aut - creating channel with 164.52.43.58:8443, ts 1628858204629.......
+INFO    21:36:44:629  25976; create session builder 00000203032465C0
+INFO    21:36:44:629  25976; [vocs] selected: 164.52.43.59:8443
+INFO    21:36:44:629  25976; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    21:36:44:629  25976; [vocs] aut - creating channel with 164.52.43.59:8443, ts 1628858204629.......
+INFO    21:36:44:629  25976; create session builder 0000020303245AC0
+INFO    21:36:44:629  25976; [vocs] selected: 52.231.182.176:8443
+INFO    21:36:44:629  25976; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    21:36:44:629  25976; [vocs] aut - creating channel with 52.231.182.176:8443, ts 1628858204629.......
+INFO    21:36:44:629  25976; create session builder 0000020303245EE0
+INFO    21:36:44:629  25976; [vocs] selected: 52.231.182.176:8443
+INFO    21:36:44:629  25976; tcp_client connecting 52.231.182.176:8443
+INFO    21:36:44:630  25976; create dangling client connection 0000020307708F80
+INFO    21:36:44:633  25976; [remote:164.52.43.58:8443] start 0th connect, send client hello 15486934|syn, tags: SNI :3136342d3532...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:44:633  25976; create dangling client connection 000002030770A540
+INFO    21:36:44:636  25976; [remote:164.52.43.59:8443] start 0th connect, send client hello 4687507|syn, tags: SNI :3136342d3532...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:44:636  25976; create dangling client connection 000002030770B760
+INFO    21:36:44:639  25976; [remote:52.231.182.176:8443] start 0th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:44:639  25976; [remote:164.52.43.58:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    21:36:44:640  25976; [dns] parsed ip 54.150.29.65
+INFO    21:36:44:640  25976; [dns] parsed ip 52.231.182.176
+INFO    21:36:44:640  25976; [cm] save key '192.168.219.136' dns 'ap5-tls.agora.io' ip '54.150.29.65'
+INFO    21:36:44:640  25976; [cm] save key '192.168.219.136' dns 'ap5-tls.agora.io' ip '52.231.182.176'
+INFO    21:36:44:640  43036; agora::media::AudioEngineWrapper::setAecType: aec is set to 3
+INFO    21:36:44:640  43036; agora::media::AudioEngineWrapper::_setAudioOutputRouting: Application Config module:  Route 3, NS on, AEC on, AGC on, MD off, HC off
+INFO    21:36:44:640  43036; agora::media::AudioEngineWrapper::_setAudioOutputRouting: Config para: gmode to 1, TLV to 6, CMG to 25
+INFO    21:36:44:640  43036; agora::media::AudioEngineWrapper::_setAudioOutputRouting: MID = 0, Routing = 3
+INFO    21:36:44:641  25976; CacheManager: save cache to storage elapsed 1
+INFO    21:36:44:641  25976; [dns] parsed ip 164.52.43.59
+INFO    21:36:44:641  25976; [dns] parsed ip 164.52.43.58
+INFO    21:36:44:641  25976; [cm] save key '192.168.219.136' dns 'ap2.agora.io' ip '164.52.43.59'
+INFO    21:36:44:641  25976; [cm] save key '192.168.219.136' dns 'ap2.agora.io' ip '164.52.43.58'
+INFO    21:36:44:641  25976; CacheManager: save cache to storage elapsed 1
+INFO    21:36:44:641  25976; [dns] parsed ip 52.231.182.176
+INFO    21:36:44:641  25976; [dns] parsed ip 54.150.29.65
+INFO    21:36:44:641  25976; [cm] save key '192.168.219.136' dns 'ap4-tls.agora.io' ip '52.231.182.176'
+INFO    21:36:44:641  25976; [cm] save key '192.168.219.136' dns 'ap4-tls.agora.io' ip '54.150.29.65'
+INFO    21:36:44:642  25976; CacheManager: save cache to storage elapsed 0
+INFO    21:36:44:642  25976; [remote:164.52.43.58:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    21:36:44:642  25976; [ap/u] **responsed from 164.52.43.59:8443, CDS(8).
+INFO    21:36:44:642  25976; [ap] onAPCdsRes success with config: ¸Æ¯ßÔÚ¤—ÑúÊÏŸá’–²ÂÛÜ­ÆÉâ“Ï
+INFO    21:36:44:642  25976; [cs] applied directly: {"configs":{},"version":""}, elapsed: 0
+INFO    21:36:44:643  25976; CacheManager: save cache to storage elapsed 1
+INFO    21:36:44:644  25976; [ap/tcp] connected with 52.231.182.176:8443
+INFO    21:36:44:644  25976; [ap] tcp - creating channel with 52.231.182.176:8443, ts 0, flag: 72
+INFO    21:36:44:644  25976; [remote:164.52.43.58:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    21:36:44:644  25976; [ap/u] **responsed from 164.52.43.59:8443, TDS(64).
+INFO    21:36:44:644  25976; [ap] onAPTdsRes success with config: {"_store xdump-3.1":["A",{"rtc.enable_xdump":true,"rtc.enable_xdump_file":true,"rtc.enable_xdump_upload":true},{"retention":"15d","store":true}],"_store Globe: Fix the Voice Delay Problem"
+INFO    21:36:44:648  25976; CacheManager: save cache to storage elapsed 4
+INFO    21:36:44:648  25976; [rp-tds-_store xdump-3.1-A] {"rtc.enable_xdump":true,"rtc.enable_xdump_file":true,"rtc.enable_xdump_upload":true}
+INFO    21:36:44:648  25976; [rp-tds-_store Globe: Fix the Voice Delay Problem-A] {"che.audio.neteq.target_level_set_improve":false}
+INFO    21:36:44:648  25976; [rp] emit abtest event after joinChannel
+INFO    21:36:44:648  25976; [rp] abtest feature:_store xdump-3.1, tag:A, params:{"rtc.enable_xdump":true,"rtc.enable_xdump_file":true,"rtc.enable_xdump_upload":true}
+INFO    21:36:44:648  25976; [rp] abtest feature:_store Globe: Fix the Voice Delay Problem, tag:A, params:{"che.audio.neteq.target_level_set_improve":false}
+INFO    21:36:44:648  25976; [remote:164.52.43.58:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    21:36:44:648  25976; [remote:164.52.43.58:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    21:36:44:649  25976; [remote:164.52.43.58:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    21:36:44:649  25976; [remote:164.52.43.58:8443] receive server hello piece id: 4, 5/10, complete
+INFO    21:36:44:651  25976; [remote:164.52.43.58:8443] create connection 00000205221E53E0, self initial seq: 4801910, initial rtt: 55ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    21:36:44:651  25976; [remote:164.52.43.58:8443] create session 00000205B9938420
+INFO    21:36:44:651  25976; [remote:164.52.43.58:8443] destroy session 00000205B9938420
+INFO    21:36:44:651  25976; destroy dangling client connection 000002030770B3C0
+INFO    21:36:44:651  25976; [remote:164.52.43.58:8443] destroy connection 00000205221E53E0
+INFO    21:36:44:651  25976; [remote:164.52.43.58:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    21:36:44:651  25976; [remote:164.52.43.58:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    21:36:44:651  25976; [remote:164.52.43.58:8443] receive server hello piece id: 4, 5/10, complete
+INFO    21:36:44:654  25976; [remote:164.52.43.58:8443] create connection 00000205221E4750, self initial seq: 15486935, initial rtt: 21ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    21:36:44:654  25976; [remote:164.52.43.58:8443] create session 00000205B9938420
+INFO    21:36:44:654  25976; [vocs/aut] connected with 164.52.43.58:8443
+INFO    21:36:44:654  25976; destroy dangling client connection 0000020307708F80
+INFO    21:36:44:654  25976; [remote:164.52.43.59:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    21:36:44:654  25976; [remote:164.52.43.59:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    21:36:44:654  25976; [remote:164.52.43.59:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    21:36:44:654  25976; [remote:164.52.43.59:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    21:36:44:654  25976; [remote:164.52.43.59:8443] receive server hello piece id: 4, 5/10, complete
+INFO    21:36:44:657  25976; [remote:164.52.43.59:8443] create connection 00000205221E53E0, self initial seq: 4687508, initial rtt: 21ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    21:36:44:657  25976; [remote:164.52.43.59:8443] create session 00000205B99385E0
+INFO    21:36:44:657  25976; [vocs/aut] connected with 164.52.43.59:8443
+INFO    21:36:44:657  25976; destroy dangling client connection 000002030770A540
+INFO    21:36:44:660  25976; [ap/t] **responsed from 52.231.182.176:8443, CDS(8).
+INFO    21:36:44:661  25976; [ap/t] **responsed from 52.231.182.176:8443, TDS(64).
+INFO    21:36:44:665  25976; [remote:164.52.43.59:8443] on connection close received, reason: 0, detail: 
+INFO    21:36:44:665  25976; [remote:164.52.43.59:8443] start time wait, duration: 2000 ms
+ERROR   21:36:44:665  25976; [ap] aut socket error with 164.52.43.59:8443
+INFO    21:36:44:665  25976; [remote:164.52.43.59:8443] destroy session 00000205B99395A0
+INFO    21:36:44:665  25976; [remote:164.52.43.59:8443] destroy connection 00000205221E3AC0
+INFO    21:36:44:667  25976; [vocs/tcp] connected with 52.231.182.176:8443
+INFO    21:36:44:667  25976; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    21:36:44:667  25976; [vocs] tcp - creating channel with 52.231.182.176:8443, ts 1628858204667.......
+INFO    21:36:44:693  25976; [rlbs] request rs list from 54.150.29.65:8443 with fake ch report_lbs_1628858204693.......
+INFO    21:36:44:701  25976; [remote:106.14.12.130:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    21:36:44:701  25976; [remote:106.14.12.130:8443] receive server hello piece id: 2, 2/10, not complete
+INFO    21:36:44:701  25976; [remote:106.14.12.130:8443] receive server hello piece id: 1, 3/10, not complete
+INFO    21:36:44:701  25976; [remote:106.14.12.130:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    21:36:44:701  25976; [remote:106.14.12.130:8443] receive server hello piece id: 4, 5/10, complete
+INFO    21:36:44:705  25976; [remote:106.14.12.130:8443] create connection 00000205221E3AC0, self initial seq: 5767379, initial rtt: 106ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    21:36:44:705  25976; [remote:106.14.12.130:8443] create session 00000205B99387A0
+INFO    21:36:44:705  25976; [remote:106.14.12.130:8443] destroy session 00000205B99387A0
+INFO    21:36:44:705  25976; destroy dangling client connection 000002030770A8E0
+INFO    21:36:44:705  25976; [remote:106.14.12.130:8443] destroy connection 00000205221E3AC0
+INFO    21:36:44:732  25976; [vocs/t] **responsed from 52.231.182.176:8443, 3 vos, elapsed 126, server ts 1628858206098, wan ip 116.******.131
+INFO    21:36:44:733  25976; [vos] vos list: 129.227.234.83:4002
+INFO    21:36:44:733  25976; [vos] added server: 129.227.234.83:4002
+INFO    21:36:44:733  25976; [vos] vos list: 45.255.124.105:4013
+INFO    21:36:44:733  25976; [vos] added server: 45.255.124.105:4013
+INFO    21:36:44:733  25976; [vos] vos list: 202.226.25.199:4004
+INFO    21:36:44:733  25976; [vos] added server: 202.226.25.199:4004
+INFO    21:36:44:733  25976; [ch0] vos initialized
+INFO    21:36:44:733  25976; [vos] selected: 202.226.25.199:4004
+ERROR   21:36:44:733  25976; [ch0] login strategy=2
+INFO    21:36:44:733  25976; [ds]: ver 1 ds '{"streamType":5}'
+INFO    21:36:44:735  25976; av1Enable=0, isDav1dLoaded=1, isSupportDav1d=1
+INFO    21:36:44:735  25976; Engine Capability: Intra Request=1
+INFO    21:36:44:735  25976; [che] getEngineCapabilities: 0:{0:COMMUNICATION,1:BROADCASTING,2:UNIFIED_COMMUNICATION}
+INFO    21:36:44:735  25976; [che] getEngineCapabilities: 1:{0:L16,1:G722,2:OPUS,3:OPUS2ch,4:SILK,5:NOVA,6:AACLC,7:AACLC2ch,8:HEAAC,9:HEAAC2ch,11:kHEAAC2ch_2,12:kHEAAC_2}
+INFO    21:36:44:735  25976; [che] getEngineCapabilities: 2:{0:EVP,1:VP8,2:E264,3:H264}
+INFO    21:36:44:735  25976; [che] getEngineCapabilities: 3:{0:INTRAREQUEST,1:PISE,2:HIGHPROFILE}
+INFO    21:36:44:735  25976; [che] getEngineCapabilities: 4:{0:NONE,1:ULP,2:RS}
+INFO    21:36:44:735  25976; [che] getEngineCapabilities: 5:{0:WEBINTEROP}
+INFO    21:36:44:735  25976; [che] getEngineCapabilities: 7:{0:AUDIORSFEC}
+INFO    21:36:44:735  25976; [ch0] Login VOS (proto:12, cid:3272063152, uid:2986711083, ts:1628858204733, ticket size:96, detail size:452 ds:1 stream:+A+VH encryption: 1) 1: 202.226.25.199:4004
+INFO    21:36:44:803  25976; [remote:52.231.182.176:8443] start 1th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:44:810  25976; [vocs/u] **responsed from 164.52.43.59:8443, 3 vos, elapsed 203, server ts 1628858206132, wan ip 116.******.131
+INFO    21:36:44:811  25976; [remote:164.52.43.59:8443] destroy session 00000205B99385E0
+INFO    21:36:44:811  25976; [remote:164.52.43.59:8443] destroy connection 00000205221E53E0
+INFO    21:36:44:824  25976; [remote:103.230.251.252:8130] start 1th connect, send client hello 347071|syn, tags: SNI :3130332d3233...(29), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:44:842  25976; [rlbs] [report servers]: 45.40.48.115
+INFO    21:36:44:842  25976; [rlbs] [report servers]: 129.227.205.198
+INFO    21:36:44:842  25976; [rlbs] [report servers]: 103.65.41.158
+INFO    21:36:44:842  25976; [rlbs/t] responsed from 54.150.29.65:8443 with servers 45.40.48.115:8130
+INFO    21:36:44:842  25976; [rs] updateServers 45.40.48.115:8130, priority 3
+INFO    21:36:44:842  25976; [rs] updateServers 129.227.205.198:8130, priority 3
+INFO    21:36:44:842  25976; [rs] updateServers 103.65.41.158:8130, priority 3
+INFO    21:36:44:842  25976; create session builder 0000020303245AC0
+INFO    21:36:44:842  25976; destroy dangling client connection 00000203077096C0
+INFO    21:36:44:842  25976; [remote:164.52.43.58:8443] destroy session 00000205B9939920
+INFO    21:36:44:842  25976; [remote:164.52.43.58:8443] destroy connection 00000205221DBD20
+INFO    21:36:44:843  25976; create dangling client connection 0000020307708F80
+INFO    21:36:44:846  25976; [remote:45.40.48.115:8130] start 0th connect, send client hello 12580117|syn, tags: SNI :34352d34302d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:44:849  25976; [cap] synchronise capability set with seq: 1
+INFO    21:36:44:849  25976; updateActiveVosList: ["202.226.25.199:4004"]
+INFO    21:36:44:849  25976; [cm] connection state changed from 2 to 3
+INFO    21:36:44:849  25976; agora::media::VideoEngine::RequestEncodeKeyFrame
+INFO    21:36:44:849  25976; [che] start call begins
+INFO    21:36:44:849  25976; agora::media::AudioEngineWrapper::prepareCall in
+INFO    21:36:44:849  25976; Update settings: mode 3, rec_source -10, rec_fs 16000, builtin aec 0
+INFO    21:36:44:849  25976; Set Application Mode in RTC Engine to No. 0 UC 0
+ERROR   21:36:44:849  25976; GetCodec() invalid index (error=8004)
+INFO    21:36:44:849  25976; SetCodec by type : No. 85, Channel 1
+INFO    21:36:44:849  25976; [che] applyVideoProfile: 640x360 15 fps  -1 minFps 400 kbps, min -1 kbps orientationMode 0 degradationPrefer 0 mirrorMode 0
+INFO    21:36:44:849  43036; SetCodec by type : No. 85, Channel 1
+ERROR   21:36:44:849  25976; agora::media::VideoEngine::captureIndexFromDeviceId: failed to get device index for device AgoraCapInvalid
+INFO    21:36:44:849  25976; agora::media::VideoEngine::validateVideoParameters: validate video parameters resolution 640x360, fps 15, rate 400000
+INFO    21:36:44:849  25976; agora::media::VideoEngine::enableMirrorMode: enable=0
+INFO    21:36:44:849  25976; agora::media::VideoEngine::setMaxVideoBitrate: max bitrate=400000
+INFO    21:36:44:849  25976; agora::media::VideoEngine::setCodecRates: set frame rate to 15
+INFO    21:36:44:849  25976; agora::media::VideoEngine::setCodec: index=1 width=640 height=360 framerate=15
+INFO    21:36:44:849  25976; agora::media::VideoEngine::setCodec: Intra Request = 0
+INFO    21:36:44:849  25976; agora::media::VideoEngine::setCodecResolution: set to 640 x 360
+INFO    21:36:44:849  25976; Set broadcast min br to -1.
+INFO    21:36:44:849  25976; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=0000020521CD7EF0
+WARN    21:36:44:849  25976; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer, Ignore updating the same capturer
+INFO    21:36:44:849  25976; Create video user 0
+INFO    21:36:44:850  25976; agora::media::VideoEngine::startCapture: device? 0 init? 1 local enabled? 1 capturing? 0 rendering? 0
+INFO    21:36:44:850  25976; [rtpSender] set paced sender status 1.
+
+INFO    21:36:44:850  25976; [rtpSender] set paced sender mode 0.
+
+INFO    21:36:44:850  25976; AutoAdjust: "Initializing paced sender for broadcasting, strategy 2."
+INFO    21:36:44:850  25976; Set audio rs-fec 0
+INFO    21:36:44:850  25976; [che] start call returns 0, elapsed 1
+INFO    21:36:44:850  25976; [time] process EngineStartCall takes 1
+WARN    21:36:44:850  25976; cannot find parameter, key='che.video.zerocopy'
+INFO    21:36:44:850  25976; join channel success: cname 'linker_test' uid 2986711083 elapsed 244
+INFO    21:36:44:850   7320; AgoraVideoInput::agora::AgoraVideoInput::Init type=100, device=AgoraCapInvalid
+INFO    21:36:44:850   7320; AgoraCameraCapture::agora::AgoraCameraCapture::Initialize, device=AgoraCapInvalid
+INFO    21:36:44:850   7320; AgoraRTC::videocapturemodule::VideoCaptureDS::Init: id:0,camera id:AgoraCapInvalid,width:640,height:360,fps=15
+INFO    21:36:44:851  25976; CacheManager: save cache to storage elapsed 0
+ERROR   21:36:44:851   7320; Failed to enumerate CLSID_VideoInputDeviceCategory, error 0x1. No webcam exist?
+ERROR   21:36:44:851   7320; Failed to create capture filter.
+INFO    21:36:44:851   7320; capture type:ds capture nRet =-1,dscaptrue=0000000000000000
+INFO    21:36:44:851   7320; CreateDSCapture failed, try CreateMFCapture
+INFO    21:36:44:851   7320; AgoraRTC::videocapturemodule::VideoCaptureMF::Init: id:0,camera id:AgoraCapInvalid,width:640,height:360,fps=15
+INFO    21:36:44:851   7320; AgoraRTC::videocapturemodule::DeviceInfoMF::MFSourceReaderCallbackObj::SetCameraID:current select camera uniqueid=AgoraCapInvalid
+INFO    21:36:44:851  25976; [ch0] **VOS encryption response to login request (res 0 elapsed 244, server ts 1628858206157, s-c:1306) from 202.226.25.199:4004, and current dest server 202.226.25.199:4004
+INFO    21:36:44:851  25976; updateActiveVosList: ["202.226.25.199:4004"]
+WARN    21:36:44:851  25976; cannot find parameter, key='che.video.zerocopy'
+INFO    21:36:44:852  43036; [WIN_CORE] Set recording device on Windows by Windows Device Type (-2): friendly name: "Microphone (USB PnP Audio Device)"
+INFO    21:36:44:852  25976; CacheManager: save cache to storage elapsed 0
+INFO    21:36:44:852  25976; [rp] publish audio old:0,new:2,elapsed:0
+INFO    21:36:44:852   7320; capture type:mf capture mfcapture=0000000000000000
+INFO    21:36:44:852  25976; [API][rtc_engine_impl.cpp:5511][agora::rtc::RtcEngine::onMediaEngineEvent]
+INFO    21:36:44:852  25976; [rp] publish video old:0,new:2,elapsed:0
+INFO    21:36:44:853  43036; MicrophoneLevelStat Level range, maxLvl = 31.000000 (dB), minLvl = 0.000000 (dB), stepLvl = 0.062500 (dB)
+INFO    21:36:44:853  43036; StereoRecordingIsAvailable(), output: available=1
+INFO    21:36:44:853  43036; AgoraRTC::ChEHardwareImpl::SetRecordingDevicePart2:SetStereoRecording, stereo recording=1
+INFO    21:36:44:854  43036; [WIN_CORE] Set playout device on Windows by Windows Device Type (-2): friendly name: "ìŠ¤í”¼ì»¤ (Realtek High Definition Audio)"
+INFO    21:36:44:856  43036; StereoPlayoutIsAvailable(), output: available=1
+INFO    21:36:44:856  43036; setLoopbackRecording, enabled: false, delay 0, aec 1 
+INFO    21:36:44:856  43036; output: volume=255
+INFO    21:36:44:856  43036; output: enabled=0
+INFO    21:36:44:856  43036; output: enabled=0
+INFO    21:36:44:857  43036; output: enabled=0
+INFO    21:36:44:857  43036; output: volume=255
+INFO    21:36:44:860  43036; [WIN_CORE] Audio Engine's current mix format for rendering shared-mode streams:
+INFO    21:36:44:860  43036; [WIN_CORE] wFormatTag     : 0xfffe (65534)
+INFO    21:36:44:860  43036; [WIN_CORE] nChannels      : 2
+INFO    21:36:44:860  43036; [WIN_CORE] nSamplesPerSec : 48000
+INFO    21:36:44:860  43036; [WIN_CORE] nAvgBytesPerSec: 384000
+INFO    21:36:44:860  43036; [WIN_CORE] nBlockAlign    : 8
+INFO    21:36:44:860  43036; [WIN_CORE] wBitsPerSample : 32
+INFO    21:36:44:860  43036; [WIN_CORE] cbSize         : 22
+INFO    21:36:44:864  43036; [WIN_CORE] VoE selected this rendering format:
+INFO    21:36:44:864  43036; [WIN_CORE] wFormatTag         : 0xfffe (65534)
+INFO    21:36:44:864  43036; [WIN_CORE] nChannels          : 2
+INFO    21:36:44:864  43036; [WIN_CORE] nSamplesPerSec     : 48000
+INFO    21:36:44:864  43036; [WIN_CORE] nAvgBytesPerSec    : 384000
+INFO    21:36:44:864  43036; [WIN_CORE] nBlockAlign        : 8
+INFO    21:36:44:864  43036; [WIN_CORE] wBitsPerSample     : 32
+INFO    21:36:44:864  43036; [WIN_CORE] cbSize             : 22
+INFO    21:36:44:864  43036; [WIN_CORE] Additional settings:
+INFO    21:36:44:864  43036; [WIN_CORE] _playAudioFrameSize: 8
+INFO    21:36:44:864  43036; [WIN_CORE] _playBlockSize     : 480
+INFO    21:36:44:864  43036; [WIN_CORE] _playChannels      : 2
+INFO    21:36:44:873  43036; [WIN_CORE] render Initialize time 0  hr 0x0
+INFO    21:36:44:873  43036; [WIN_CORE] IAudioClient::GetBufferSize() => 1056 (<=> 8448 bytes)
+INFO    21:36:44:873  43036; [WIN_CORE] render side is now initialized
+INFO    21:36:44:873   7320; AgoraRTC::videocapturemodule::VideoCaptureVfw::Init: id:0,camera id:AgoraCapInvalid,width:640,height:360,fps=15
+INFO    21:36:44:873   7320; capture type:vfw capture: 00000205B3B82590
+INFO    21:36:44:873   7320; AgoraRTC::videocapturemodule::VideoCaptureImpl::Create camera id:AgoraCapInvalid,capture type:1,status:1
+INFO    21:36:44:873   7320; RegisterCameraCallback called 2224303166056
+INFO    21:36:44:873  25976; agora::media::VideoEngine::h264WebInteropEnable: enable 0
+INFO    21:36:44:873  25976; agora::media::VideoEngine::setCodec: index=1 width=640 height=360 framerate=15
+INFO    21:36:44:873  25976; agora::media::VideoEngine::setCodec: Intra Request = 1
+INFO    21:36:44:873  25976; Device type: 0
+INFO    21:36:44:873  25976; Hardware encoding false
+INFO    21:36:44:873  25976; last unique frame idx: -1 - -1
+INFO    21:36:44:873  25976; AVEncoder init is x264
+INFO    21:36:44:873  25976; AVEncoder init is x264
+INFO    21:36:44:873  25976; Device type: 0
+INFO    21:36:44:873  25976; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    21:36:44:873  25976; low stream codec type = 1
+INFO    21:36:44:873  25976; low bit rate limit 0
+INFO    21:36:44:873  25976; soft ware encoder is x264
+INFO    21:36:44:873  25976; soft ware encoder is x264
+INFO    21:36:44:873  25976; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    21:36:44:873  25976; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    21:36:44:873  25976; set last big unique frame idx: -1
+INFO    21:36:44:873  25976; set last small unique frame idx: -1
+INFO    21:36:44:873  25976; the init unique frame idx: -1 - -1
+INFO    21:36:44:873  25976; SetTargetWidthHeight width:640, height:360
+INFO    21:36:44:873  25976; agora::media::VideoEngine::setMaxVideoBitrate: max bitrate=400000
+INFO    21:36:44:873  25976; SetTargetWidthHeight width:640, height:360
+INFO    21:36:44:873   7320; AgoraVideoInput::agora::AgoraVideoInput::Start width=640, height=360, fps=15
+INFO    21:36:44:873   7320; AgoraCameraCapture::agora::AgoraCameraCapture::Start width=640, height=480, fps=15, rotation=0, captureMode=1
+INFO    21:36:44:873   6720; AgoraRTC::videocapturemodule::VideoCaptureVfw::StartCapture::<lambda_43a9440018fe25032f4700f31119bc38>::operator (), _vfwWnd 00000000005619DA, capDriverConnect result 0.
+INFO    21:36:44:873   6720; AgoraRTC::videocapturemodule::VideoCaptureVfw::StartCapture::<lambda_43a9440018fe25032f4700f31119bc38>::operator (), capCaptureSequenceNoFile result 0.
+ERROR   21:36:44:873   7320; AgoraVideoInput::agora::AgoraVideoInput::Start unable to start capturer, state=3
+ERROR   21:36:44:873   7320; agora::media::VideoEngine::startCapture::<lambda_888fa28bc696c219a155ebea779a2c87>::()::<lambda_74b862537e636842c29c9663a9ae25de>::operator (): failed to start capture
+INFO    21:36:44:873   7320; agora::media::VideoEngine::SetStreamState: localVideoState 3, error 4
+INFO    21:36:44:874  36500; [WIN_CORE] render thread is now registered with MMCSS (taskIndex=5983)
+INFO    21:36:44:874  36500; [WIN_CORE] [REND] size of buffer       : 1056
+INFO    21:36:44:874  36500; [WIN_CORE] [REND] size of interleaved buffer  : 1920 [bytes]
+INFO    21:36:44:874  36500; [WIN_CORE] [REND] max stream latency   : 0 (0.00 ms)
+INFO    21:36:44:874  36500; [WIN_CORE] [REND] device period        : 100000 (10.00 ms)
+INFO    21:36:44:874  36500; [WIN_CORE] [REND] initial delay        : 30
+INFO    21:36:44:874  36500; [WIN_CORE] [REND] endpointBufferSizeMS : 22.00
+INFO    21:36:44:874  43036; [WIN_CORE] rendering audio stream has now started...
+INFO    21:36:44:874  43036; [WIN_CORE] Default endpoint device will be used
+INFO    21:36:44:876  43036; agora::media::AudioEngineWrapper::setAecType: aec is set to 5
+INFO    21:36:44:876  43036; agora::media::AudioEngineWrapper::setAecType: aec is set to 3
+INFO    21:36:44:877  43036; output: enabled=0
+INFO    21:36:44:877  43036; output: volume=255
+INFO    21:36:44:877  43036; => OnWindowsCurrentDeviceChange() : kPlayoutDevice attributes 0
+INFO    21:36:44:877  43036; StartPlayout complete
+INFO    21:36:44:877  43036; agora::media::MediaEngineParameterCollection::Audio::getScenarioRecordConfig: scenario 7 audienceNeedRecord 1
+INFO    21:36:44:877  43036; StartSend
+INFO    21:36:44:879  43036; MicrophoneLevelStat Level range, maxLvl = 31.000000 (dB), minLvl = 0.000000 (dB), stepLvl = 0.062500 (dB)
+INFO    21:36:44:879  43036; [WIN_CORE] Audio Engine's current mix format for capturing shared-mode streams:
+INFO    21:36:44:879  43036; [WIN_CORE] wFormatTag     : 0xfffe (65534)
+INFO    21:36:44:879  43036; [WIN_CORE] nChannels      : 1
+INFO    21:36:44:879  43036; [WIN_CORE] nSamplesPerSec : 48000
+INFO    21:36:44:879  43036; [WIN_CORE] nAvgBytesPerSec: 192000
+INFO    21:36:44:879  43036; [WIN_CORE] nBlockAlign    : 4
+INFO    21:36:44:879  43036; [WIN_CORE] wBitsPerSample : 32
+INFO    21:36:44:879  43036; [WIN_CORE] cbSize         : 22
+INFO    21:36:44:879  43036; [WIN_CORE] VoE selected this capturing format:
+INFO    21:36:44:879  43036; [WIN_CORE] wFormatTag        : 0xfffe (65534)
+INFO    21:36:44:879  43036; [WIN_CORE] nChannels         : 1
+INFO    21:36:44:879  43036; [WIN_CORE] nSamplesPerSec    : 48000
+INFO    21:36:44:879  43036; [WIN_CORE] nAvgBytesPerSec   : 96000
+INFO    21:36:44:879  43036; [WIN_CORE] nBlockAlign       : 2
+INFO    21:36:44:879  43036; [WIN_CORE] wBitsPerSample    : 16
+INFO    21:36:44:879  43036; [WIN_CORE] cbSize            : 22
+INFO    21:36:44:879  43036; [WIN_CORE] Additional settings:
+INFO    21:36:44:879  43036; [WIN_CORE] _recAudioFrameSize: 2
+INFO    21:36:44:879  43036; [WIN_CORE] _recBlockSize     : 480
+INFO    21:36:44:879  43036; [WIN_CORE] _recChannels      : 1
+INFO    21:36:44:879  43036; [WIN_CORE] capture SetClientProperties hr 0
+INFO    21:36:44:882  43036; [WIN_CORE] capture Initialize time 0  hr 0x0
+INFO    21:36:44:882  43036; [WIN_CORE] IAudioClient::GetBufferSize() => 1056 (<=> 2112 bytes)
+INFO    21:36:44:882  43036; [WIN_CORE] capture side is now initialized
+INFO    21:36:44:883  20964; [WIN_CORE] [CAPT] size of buffer       : 1056
+INFO    21:36:44:883  20964; [WIN_CORE] [CAPT] size of sync buffer  : 4224 [bytes]
+INFO    21:36:44:883  20964; [WIN_CORE] [CAPT] max stream latency   : 0 (0.00 ms)
+INFO    21:36:44:884  20964; [WIN_CORE] [CAPT] device period        : 100000 (10.00 ms)
+INFO    21:36:44:884  20964; [WIN_CORE] [CAPT] extraDelayMS         : 10.00
+INFO    21:36:44:884  20964; [WIN_CORE] [CAPT] endpointBufferSizeMS : 22.00
+INFO    21:36:44:884  26912; SetMicrophoneVolume fLevel = 0.847059
+INFO    21:36:44:886  43036; [WIN_CORE] capture audio stream has now started...
+INFO    21:36:44:886  43036; [WIN_CORE] Default endpoint device will be used
+INFO    21:36:44:888  43036; agora::media::AudioEngineWrapper::setAecType: aec is set to 5
+INFO    21:36:44:888  43036; agora::media::AudioEngineWrapper::setAecType: aec is set to 3
+INFO    21:36:44:889  43036; output: enabled=0
+INFO    21:36:44:889  43036; => OnWindowsCurrentDeviceChange() : kRecordingDevice micBoost 0 max:  0.0 min:  0.0 step:  0.0 level:  0.0 volume:255
+INFO    21:36:44:889  43036; SetLocalState: state 1 error 0
+INFO    21:36:44:889  43036; StartRecording complete
+INFO    21:36:44:889  43036; agora::media::AudioEngineWrapper::_startCall: audienceRecord 1, mWillsend 1, enableBuildinAEC 1(call volume), enableLocalAudio 1
+INFO    21:36:44:889  43036; output: kWindowsCoreAudio
+INFO    21:36:44:889  43036;   Output: audioLayer=2
+INFO    21:36:44:889  25976; [API][rtc_engine_impl.cpp:5511][agora::rtc::RtcEngine::onMediaEngineEvent]
+INFO    21:36:44:889  20964; SetLocalState: state 2 error 0
+INFO    21:36:44:900  25976; TRACER: onFirstLocalAudioFrame codec 85 elapsed 293
+INFO    21:36:44:900  25976; TRACER: onFirstLocalAudioFramePublished codec 85 elapsed 293
+INFO    21:36:44:900  25976; [rp] publish audio old:2,new:3,elapsed:51
+INFO    21:36:44:925  25976; [API][rtc_engine_impl.cpp:5511][agora::rtc::RtcEngine::onMediaEngineEvent]
+INFO    21:36:44:975  25976; [ch0] rtt: 124
+INFO    21:36:45:001  25976; [remote:45.40.48.115:8130] start 1th connect, send client hello 12580117|syn, tags: SNI :34352d34302d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:45:049  25976; [cap] synchronise capability set with seq: 1
+INFO    21:36:45:060  25976; [vocs/u] **responsed from 164.52.43.58:8443, 3 vos, elapsed 453, server ts 1628858206093, wan ip 116.******.131
+INFO    21:36:45:061  25976; [remote:164.52.43.58:8443] destroy session 00000205B9938420
+INFO    21:36:45:061  25976; [remote:164.52.43.58:8443] destroy connection 00000205221E4750
+INFO    21:36:45:142  25976; [cap] Received capability set ack seq: 1
+INFO    21:36:45:263  25976; [remote:52.231.182.176:8443] start 2th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:45:435  25976; [remote:45.40.48.115:8130] start 2th connect, send client hello 12580117|syn, tags: SNI :34352d34302d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:46:191  25976; [remote:52.231.182.176:8443] start 3th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:46:312  25976; [remote:45.40.48.115:8130] start 3th connect, send client hello 12580117|syn, tags: SNI :34352d34302d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:46:531  25976; [remote:45.40.48.115:8130] receive server hello piece id: 0, 1/10, not complete
+INFO    21:36:46:531  25976; [remote:45.40.48.115:8130] receive server hello piece id: 1, 2/10, not complete
+INFO    21:36:46:531  25976; [remote:45.40.48.115:8130] receive server hello piece id: 2, 3/10, not complete
+INFO    21:36:46:531  25976; [remote:45.40.48.115:8130] receive server hello piece id: 4, 4/10, not complete
+INFO    21:36:46:531  25976; [remote:45.40.48.115:8130] receive server hello piece id: 5, 5/10, complete
+INFO    21:36:46:533  25976; [remote:45.40.48.115:8130] create connection 00000205221DE2D0, self initial seq: 12580118, initial rtt: 1687ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    21:36:46:533  25976; [remote:45.40.48.115:8130] create session 00000205B9938960
+INFO    21:36:46:533  25976; [rs] link aut to 45.40.48.115:8130 connected
+INFO    21:36:46:534  25976; destroy dangling client connection 0000020307708F80
+INFO    21:36:46:851  25976; agora::media::VideoEngine::notifyPeerCount: cnt 0
+WARN    21:36:46:879  20964; captured signal too small
+WARN    21:36:46:879  20964; audio device captured signal too small
+INFO    21:36:46:951  25976; [remote:45.40.48.115:8130] path MTU to remote increased: 1280 --> 1365
+INFO    21:36:46:951  25976; [remote:45.40.48.115:8130] on max stream frame length changed from 1204 to 1339
+INFO    21:36:47:999  25976; [remote:52.231.182.176:8443] start 4th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:48:630  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    21:36:48:852  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:36:48:852  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:36:48:879  20964; captured signal too small
+WARN    21:36:48:879  20964; audio device captured signal too small
+INFO    21:36:50:630  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    21:36:50:852  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:36:50:852  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:36:50:879  20964; captured signal too small
+WARN    21:36:50:879  20964; audio device captured signal too small
+INFO    21:36:50:885  36500; Audio statistics - play count: playout count = 200  signal level: far_in = 0
+INFO    21:36:50:899  20964; Audio statistics - rec count: record count = 201 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:36:51:071  25976; [remote:52.231.182.176:8443] start 5th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:52:631  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:36:52:853  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:36:52:853  25976; no camera capture frame out.
+INFO    21:36:52:853  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:36:52:879  20964; captured signal too small
+WARN    21:36:52:879  20964; audio device captured signal too small
+INFO    21:36:54:632  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:36:54:853  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:36:54:853  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:36:54:878  20964; captured signal too small
+WARN    21:36:54:878  20964; audio device captured signal too small
+INFO    21:36:56:415  25976; [remote:52.231.182.176:8443] start 6th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:36:56:851  25976; [remote:45.40.48.115:8130] path MTU to remote increased: 1365 --> 1415
+INFO    21:36:56:851  25976; [remote:45.40.48.115:8130] on max stream frame length changed from 1339 to 1389
+INFO    21:36:56:853  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:36:56:853  25976; no camera capture frame out.
+INFO    21:36:56:853  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:36:56:878  20964; captured signal too small
+WARN    21:36:56:878  20964; audio device captured signal too small
+INFO    21:36:58:853  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:36:58:853  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:36:58:878  20964; captured signal too small
+WARN    21:36:58:878  20964; audio device captured signal too small
+INFO    21:37:00:633  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:37:00:854  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:00:854  25976; no camera capture frame out.
+INFO    21:37:00:854  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:00:878  20964; captured signal too small
+WARN    21:37:00:878  20964; audio device captured signal too small
+INFO    21:37:02:855  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:02:855  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:02:878  20964; captured signal too small
+WARN    21:37:02:878  20964; audio device captured signal too small
+INFO    21:37:04:572  25976; [rs] **report stats: seq: 96, report list size 0,       tx/rx: 18979/4608
+INFO    21:37:04:572  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:37:04:855  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:04:855  25976; no camera capture frame out.
+INFO    21:37:04:855  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:37:04:855  25976; agora::media::VideoEngine::adjustCodecFrameRates: Cannot adjust frame rate when VQC is on
+INFO    21:37:04:855  25976; [tactics] handle videobwe:0 fps:5 now:942186723 942191723
+WARN    21:37:04:878  20964; captured signal too small
+WARN    21:37:04:878  20964; audio device captured signal too small
+INFO    21:37:04:885  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:37:04:907  20964; Audio statistics - rec count: record count = 600 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:37:06:634  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 2(500), reason 0x4
+INFO    21:37:06:855  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:06:855  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:06:878  20964; captured signal too small
+WARN    21:37:06:878  20964; audio device captured signal too small
+INFO    21:37:08:855  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:08:855  25976; no camera capture frame out.
+INFO    21:37:08:855  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:08:877  20964; captured signal too small
+WARN    21:37:08:877  20964; audio device captured signal too small
+INFO    21:37:09:408  25976; [remote:52.231.182.176:8443] start 7th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:37:10:856  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:10:856  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:10:878  20964; captured signal too small
+WARN    21:37:10:878  20964; audio device captured signal too small
+INFO    21:37:12:635  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 4(500), reason 0x4
+INFO    21:37:12:857  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:12:857  25976; no camera capture frame out.
+INFO    21:37:12:857  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:12:877  20964; captured signal too small
+WARN    21:37:12:877  20964; audio device captured signal too small
+INFO    21:37:14:857  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:14:857  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:14:877  20964; captured signal too small
+WARN    21:37:14:877  20964; audio device captured signal too small
+INFO    21:37:16:637  25976; **CALL STATS: duration 30s cpu app/total 19.59/34.83 memory size app/ratio app/total 853252KB/3.40/64.30 battery 255 tx/rx: 39/4 kbps 190.441K/111.843K bytes
+INFO    21:37:16:857  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:16:857  25976; no camera capture frame out.
+INFO    21:37:16:857  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:16:877  20964; captured signal too small
+WARN    21:37:16:877  20964; audio device captured signal too small
+INFO    21:37:18:637  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 6(500), reason 0x4
+INFO    21:37:18:858  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:18:858  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:18:877  20964; captured signal too small
+WARN    21:37:18:877  20964; audio device captured signal too small
+INFO    21:37:20:859  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:20:859  25976; no camera capture frame out.
+INFO    21:37:20:859  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:20:877  20964; captured signal too small
+WARN    21:37:20:877  20964; audio device captured signal too small
+INFO    21:37:22:859  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:22:859  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:22:877  20964; captured signal too small
+WARN    21:37:22:877  20964; audio device captured signal too small
+INFO    21:37:22:884  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:37:22:917  20964; Audio statistics - rec count: record count = 600 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:37:24:572  25976; [rs] **report stats: seq: 124, report list size 0,       tx/rx: 23112/5952
+INFO    21:37:24:572  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:37:24:638  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 5(500), reason 0x4
+INFO    21:37:24:859  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:24:859  25976; no camera capture frame out.
+INFO    21:37:24:859  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:24:877  20964; captured signal too small
+WARN    21:37:24:877  20964; audio device captured signal too small
+INFO    21:37:26:860  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:26:860  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:26:877  20964; captured signal too small
+WARN    21:37:26:877  20964; audio device captured signal too small
+INFO    21:37:28:860  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:28:860  25976; no camera capture frame out.
+INFO    21:37:28:860  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:28:876  20964; captured signal too small
+WARN    21:37:28:876  20964; audio device captured signal too small
+INFO    21:37:29:888  25976; [remote:52.231.182.176:8443] start 8th connect, send client hello 10407578|syn, tags: SNI :35322d323331...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    21:37:30:640  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 5(500), reason 0x4
+INFO    21:37:30:860  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:30:860  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:30:876  20964; captured signal too small
+WARN    21:37:30:876  20964; audio device captured signal too small
+INFO    21:37:32:498  25976; [remote:45.40.48.115:8130] path MTU to remote increased: 1415 --> 1450
+INFO    21:37:32:498  25976; [remote:45.40.48.115:8130] on max stream frame length changed from 1389 to 1424
+INFO    21:37:32:860  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:32:860  25976; no camera capture frame out.
+INFO    21:37:32:860  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:32:876  20964; captured signal too small
+WARN    21:37:32:876  20964; audio device captured signal too small
+INFO    21:37:34:860  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:34:860  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:34:876  20964; captured signal too small
+WARN    21:37:34:876  20964; audio device captured signal too small
+INFO    21:37:36:640  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 4(500), reason 0x4
+INFO    21:37:36:860  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:36:860  25976; no camera capture frame out.
+INFO    21:37:36:860  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:36:876  20964; captured signal too small
+WARN    21:37:36:876  20964; audio device captured signal too small
+INFO    21:37:38:860  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:38:860  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:38:876  20964; captured signal too small
+WARN    21:37:38:876  20964; audio device captured signal too small
+INFO    21:37:40:861  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:40:861  25976; no camera capture frame out.
+INFO    21:37:40:861  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:40:876  20964; captured signal too small
+WARN    21:37:40:876  20964; audio device captured signal too small
+INFO    21:37:40:884  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:37:40:925  20964; Audio statistics - rec count: record count = 600 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:37:42:642  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:37:42:861  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:42:861  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:42:876  20964; captured signal too small
+WARN    21:37:42:876  20964; audio device captured signal too small
+INFO    21:37:44:573  25976; [rs] **report stats: seq: 151, report list size 0,       tx/rx: 27272/7248
+INFO    21:37:44:573  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:37:44:635  25976; destroy dangling client connection 000002030770B760
+INFO    21:37:44:862  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:44:862  25976; no camera capture frame out.
+INFO    21:37:44:862  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:44:876  20964; captured signal too small
+WARN    21:37:44:876  20964; audio device captured signal too small
+INFO    21:37:46:642  25976; **CALL STATS: duration 1m0s cpu app/total 18.88/27.66 memory size app/ratio app/total 858664KB/3.42/64.22 battery 255 tx/rx: 38/9 kbps 338.219K/129.482K bytes
+INFO    21:37:46:863  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:46:863  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:46:876  20964; captured signal too small
+WARN    21:37:46:876  20964; audio device captured signal too small
+INFO    21:37:48:643  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 2(500), reason 0x4
+INFO    21:37:48:863  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:48:863  25976; no camera capture frame out.
+INFO    21:37:48:863  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:48:875  20964; captured signal too small
+WARN    21:37:48:875  20964; audio device captured signal too small
+INFO    21:37:50:863  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:50:863  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:50:875  20964; captured signal too small
+WARN    21:37:50:875  20964; audio device captured signal too small
+INFO    21:37:52:863  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:52:863  25976; no camera capture frame out.
+INFO    21:37:52:863  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:52:875  20964; captured signal too small
+WARN    21:37:52:875  20964; audio device captured signal too small
+WARN    21:37:53:803  25976; [ch0] token will expire notification 0 from server
+INFO    21:37:54:643  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:37:54:864  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:54:864  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:54:875  20964; captured signal too small
+WARN    21:37:54:875  20964; audio device captured signal too small
+INFO    21:37:56:864  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:37:56:864  25976; no camera capture frame out.
+INFO    21:37:56:864  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:56:875  20964; captured signal too small
+WARN    21:37:56:875  20964; audio device captured signal too small
+INFO    21:37:58:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:37:58:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:37:58:875  20964; captured signal too small
+WARN    21:37:58:875  20964; audio device captured signal too small
+INFO    21:37:58:885  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:37:58:936  20964; Audio statistics - rec count: record count = 600 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:38:00:645  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:00:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:00:865  25976; no camera capture frame out.
+INFO    21:38:00:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:00:875  20964; captured signal too small
+WARN    21:38:00:875  20964; audio device captured signal too small
+INFO    21:38:02:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:02:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:02:875  20964; captured signal too small
+WARN    21:38:02:875  20964; audio device captured signal too small
+WARN    21:38:03:822  25976; [ch0] token will expire notification 0 from server
+WARN    21:38:03:822  25976; [ch0] notification is already received, discard, 006ee7508ef6b2042e7b6dd141a6a11895aIABcfKkBSw7+p9XE0n4vFMgscvSyTrTeNCtHT6eqsjUcifBKh9kAAAAAIgA/UNPw3bgXYQQAAQDBZxZhAgDBZxZhAwDBZxZhBADBZxZh
+INFO    21:38:04:574  25976; [rs] **report stats: seq: 179, report list size 0,       tx/rx: 33034/8592
+INFO    21:38:04:574  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:38:04:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:04:865  25976; no camera capture frame out.
+INFO    21:38:04:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:04:875  20964; captured signal too small
+WARN    21:38:04:875  20964; audio device captured signal too small
+INFO    21:38:06:647  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:06:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:06:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:06:874  20964; captured signal too small
+WARN    21:38:06:874  20964; audio device captured signal too small
+INFO    21:38:08:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:08:865  25976; no camera capture frame out.
+INFO    21:38:08:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:08:874  20964; captured signal too small
+WARN    21:38:08:874  20964; audio device captured signal too small
+INFO    21:38:10:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:10:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:10:874  20964; captured signal too small
+WARN    21:38:10:874  20964; audio device captured signal too small
+INFO    21:38:12:648  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:12:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:12:865  25976; no camera capture frame out.
+INFO    21:38:12:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:12:874  20964; captured signal too small
+WARN    21:38:12:874  20964; audio device captured signal too small
+WARN    21:38:14:007  25976; [ch0] token will expire notification 0 from server
+WARN    21:38:14:007  25976; [ch0] notification is already received, discard, 006ee7508ef6b2042e7b6dd141a6a11895aIABcfKkBSw7+p9XE0n4vFMgscvSyTrTeNCtHT6eqsjUcifBKh9kAAAAAIgA/UNPw3bgXYQQAAQDBZxZhAgDBZxZhAwDBZxZhBADBZxZh
+INFO    21:38:14:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:14:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:14:874  20964; captured signal too small
+WARN    21:38:14:874  20964; audio device captured signal too small
+INFO    21:38:16:649  25976; **CALL STATS: duration 1m30s cpu app/total 19.72/26.75 memory size app/ratio app/total 857344KB/3.41/64.42 battery 255 tx/rx: 38/4 kbps 488.425K/146.338K bytes
+INFO    21:38:16:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:16:865  25976; no camera capture frame out.
+INFO    21:38:16:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:16:874  20964; captured signal too small
+WARN    21:38:16:874  20964; audio device captured signal too small
+INFO    21:38:16:884  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:38:16:944  20964; Audio statistics - rec count: record count = 601 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:38:18:649  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 3(500), reason 0x4
+INFO    21:38:18:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:18:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:18:874  20964; captured signal too small
+WARN    21:38:18:874  20964; audio device captured signal too small
+INFO    21:38:20:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:20:865  25976; no camera capture frame out.
+INFO    21:38:20:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:20:874  20964; captured signal too small
+WARN    21:38:20:874  20964; audio device captured signal too small
+INFO    21:38:22:865  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:22:865  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:22:874  20964; captured signal too small
+WARN    21:38:22:874  20964; audio device captured signal too small
+WARN    21:38:23:793  25976; [ch0] receive notification 2 from server
+INFO    21:38:23:793  25976; [ch0] connection aborted due to expiration of token
+ERROR   21:38:23:793  25976; [ch0] join vos failed, err 2 - 202.226.25.199:4004
+INFO    21:38:23:793  25976; [cm] connection state changed from 3 to 5
+INFO    21:38:23:793  25976; [vos] [rejected] failed to join vos 202.226.25.199:4004
+ERROR   21:38:23:793  25976; [vos] No available vos can be selected. 0 in list
+INFO    21:38:23:793  25976; [vos] failed to join vos 202.226.25.199:4004
+WARN    21:38:23:793  25976; [vos] reportFailure: cannot find in inuse list: 202.226.25.199:4004
+INFO    21:38:23:793  25976; updateActiveVosList: 
+ERROR   21:38:23:793  25976; [vos] No available vos can be selected. 0 in list
+INFO    21:38:24:574  25976; [rs] **report stats: seq: 208, report list size 0,       tx/rx: 37293/9984
+INFO    21:38:24:574  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:38:24:650  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:24:866  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:24:866  25976; no camera capture frame out.
+INFO    21:38:24:866  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:24:874  20964; captured signal too small
+WARN    21:38:24:874  20964; audio device captured signal too small
+INFO    21:38:26:866  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:26:866  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:26:873  20964; captured signal too small
+WARN    21:38:26:873  20964; audio device captured signal too small
+INFO    21:38:28:867  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:28:867  25976; no camera capture frame out.
+INFO    21:38:28:867  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:28:873  20964; captured signal too small
+WARN    21:38:28:873  20964; audio device captured signal too small
+INFO    21:38:30:652  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:30:869  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:30:869  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:30:874  20964; captured signal too small
+WARN    21:38:30:874  20964; audio device captured signal too small
+INFO    21:38:32:869  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:32:869  25976; no camera capture frame out.
+INFO    21:38:32:869  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:32:874  20964; captured signal too small
+WARN    21:38:32:874  20964; audio device captured signal too small
+INFO    21:38:34:870  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:34:870  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:34:874  20964; captured signal too small
+WARN    21:38:34:874  20964; audio device captured signal too small
+INFO    21:38:34:885  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:38:34:963  20964; Audio statistics - rec count: record count = 601 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:38:36:652  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:36:871  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:36:871  25976; no camera capture frame out.
+INFO    21:38:36:871  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:36:874  20964; captured signal too small
+WARN    21:38:36:874  20964; audio device captured signal too small
+INFO    21:38:38:871  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:38:871  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:38:874  20964; captured signal too small
+WARN    21:38:38:874  20964; audio device captured signal too small
+INFO    21:38:40:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:40:872  25976; no camera capture frame out.
+INFO    21:38:40:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:40:873  20964; captured signal too small
+WARN    21:38:40:873  20964; audio device captured signal too small
+INFO    21:38:42:654  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:42:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:42:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:42:873  20964; captured signal too small
+WARN    21:38:42:873  20964; audio device captured signal too small
+INFO    21:38:44:575  25976; [rs] **report stats: seq: 222, report list size 0,       tx/rx: 39899/10656
+INFO    21:38:44:575  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:38:44:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:44:872  25976; no camera capture frame out.
+INFO    21:38:44:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:44:873  20964; captured signal too small
+WARN    21:38:44:873  20964; audio device captured signal too small
+INFO    21:38:46:654  25976; **CALL STATS: duration 2m0s cpu app/total 18.75/22.91 memory size app/ratio app/total 859568KB/3.42/64.33 battery 255 tx/rx: 2/2 kbps 541.941K/157.297K bytes
+INFO    21:38:46:873  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:46:873  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:46:873  20964; captured signal too small
+WARN    21:38:46:873  20964; audio device captured signal too small
+INFO    21:38:48:655  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:48:873  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:48:873  25976; no camera capture frame out.
+INFO    21:38:48:873  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:48:873  20964; captured signal too small
+WARN    21:38:48:873  20964; audio device captured signal too small
+INFO    21:38:50:873  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:50:873  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:50:873  20964; captured signal too small
+WARN    21:38:50:873  20964; audio device captured signal too small
+WARN    21:38:52:872  20964; captured signal too small
+WARN    21:38:52:872  20964; audio device captured signal too small
+INFO    21:38:52:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:52:872  25976; no camera capture frame out.
+INFO    21:38:52:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:38:52:894  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:38:52:982  20964; Audio statistics - rec count: record count = 601 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:38:54:655  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:38:54:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:54:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:54:872  20964; captured signal too small
+WARN    21:38:54:872  20964; audio device captured signal too small
+INFO    21:38:56:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:38:56:872  25976; no camera capture frame out.
+INFO    21:38:56:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:56:872  20964; captured signal too small
+WARN    21:38:56:872  20964; audio device captured signal too small
+INFO    21:38:58:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:38:58:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:38:58:872  20964; captured signal too small
+WARN    21:38:58:872  20964; audio device captured signal too small
+INFO    21:39:00:655  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:39:00:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:00:872  25976; no camera capture frame out.
+INFO    21:39:00:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:00:872  20964; captured signal too small
+WARN    21:39:00:872  20964; audio device captured signal too small
+WARN    21:39:02:872  20964; captured signal too small
+WARN    21:39:02:872  20964; audio device captured signal too small
+INFO    21:39:02:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:02:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:04:574  25976; [rs] **report stats: seq: 236, report list size 0,       tx/rx: 43228/11328
+INFO    21:39:04:574  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:39:04:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:04:872  25976; no camera capture frame out.
+INFO    21:39:04:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:04:872  20964; captured signal too small
+WARN    21:39:04:872  20964; audio device captured signal too small
+Local Date: 8 13 2021 Local Time: 21:39:06
+Build info: Mar 19 2021 14:28:08 r
+
+INFO    21:39:06:656  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:39:06:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:06:872  20964; captured signal too small
+INFO    21:39:06:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:06:872  20964; audio device captured signal too small
+WARN    21:39:08:872  20964; captured signal too small
+WARN    21:39:08:872  20964; audio device captured signal too small
+INFO    21:39:08:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:08:872  25976; no camera capture frame out.
+INFO    21:39:08:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:10:871  20964; captured signal too small
+WARN    21:39:10:871  20964; audio device captured signal too small
+INFO    21:39:10:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:10:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:10:894  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:39:11:001  20964; Audio statistics - rec count: record count = 601 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:39:12:658  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+WARN    21:39:12:871  20964; captured signal too small
+WARN    21:39:12:871  20964; audio device captured signal too small
+INFO    21:39:12:872  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:12:872  25976; no camera capture frame out.
+INFO    21:39:12:872  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:14:871  20964; captured signal too small
+WARN    21:39:14:871  20964; audio device captured signal too small
+INFO    21:39:14:873  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:14:873  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:16:660  25976; **CALL STATS: duration 2m30s cpu app/total 17.96/24.48 memory size app/ratio app/total 860652KB/3.43/64.42 battery 255 tx/rx: 2/2 kbps 555.283K/165.873K bytes
+WARN    21:39:16:871  20964; captured signal too small
+WARN    21:39:16:871  20964; audio device captured signal too small
+INFO    21:39:16:873  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:16:873  25976; no camera capture frame out.
+INFO    21:39:16:873  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:18:660  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+WARN    21:39:18:871  20964; captured signal too small
+WARN    21:39:18:871  20964; audio device captured signal too small
+INFO    21:39:18:874  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:18:874  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:20:871  20964; captured signal too small
+WARN    21:39:20:871  20964; audio device captured signal too small
+INFO    21:39:20:874  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:20:874  25976; no camera capture frame out.
+INFO    21:39:20:874  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:22:871  20964; captured signal too small
+WARN    21:39:22:871  20964; audio device captured signal too small
+INFO    21:39:22:874  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:22:874  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:24:574  25976; [rs] **report stats: seq: 249, report list size 0,       tx/rx: 45406/11952
+INFO    21:39:24:574  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:39:24:661  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+WARN    21:39:24:871  20964; captured signal too small
+WARN    21:39:24:871  20964; audio device captured signal too small
+INFO    21:39:24:875  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:24:875  25976; no camera capture frame out.
+INFO    21:39:24:875  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:26:871  20964; captured signal too small
+WARN    21:39:26:871  20964; audio device captured signal too small
+INFO    21:39:26:876  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:26:876  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:28:870  20964; captured signal too small
+WARN    21:39:28:870  20964; audio device captured signal too small
+INFO    21:39:28:876  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:28:876  25976; no camera capture frame out.
+INFO    21:39:28:876  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:28:894  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:39:29:011  20964; Audio statistics - rec count: record count = 600 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:39:30:662  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+WARN    21:39:30:870  20964; captured signal too small
+WARN    21:39:30:870  20964; audio device captured signal too small
+INFO    21:39:30:876  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:30:876  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:32:870  20964; captured signal too small
+WARN    21:39:32:870  20964; audio device captured signal too small
+INFO    21:39:32:876  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:32:876  25976; no camera capture frame out.
+INFO    21:39:32:876  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:34:870  20964; captured signal too small
+WARN    21:39:34:870  20964; audio device captured signal too small
+INFO    21:39:34:877  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:34:877  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:36:665  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+WARN    21:39:36:870  20964; captured signal too small
+WARN    21:39:36:870  20964; audio device captured signal too small
+INFO    21:39:36:878  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:36:878  25976; no camera capture frame out.
+INFO    21:39:36:878  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:38:870  20964; captured signal too small
+WARN    21:39:38:870  20964; audio device captured signal too small
+INFO    21:39:38:878  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:38:878  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:40:870  20964; captured signal too small
+WARN    21:39:40:870  20964; audio device captured signal too small
+INFO    21:39:40:879  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:40:879  25976; no camera capture frame out.
+INFO    21:39:40:879  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:42:665  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+WARN    21:39:42:870  20964; captured signal too small
+WARN    21:39:42:870  20964; audio device captured signal too small
+INFO    21:39:42:879  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:42:879  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:44:574  25976; [rs] **report stats: seq: 263, report list size 0,       tx/rx: 48024/12624
+INFO    21:39:44:574  25976; [rs] report server: 45.40.48.115:8130
+WARN    21:39:44:870  20964; captured signal too small
+WARN    21:39:44:870  20964; audio device captured signal too small
+INFO    21:39:44:879  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:44:879  25976; no camera capture frame out.
+INFO    21:39:44:879  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:46:666  25976; **CALL STATS: duration 3m0s cpu app/total 19.20/23.89 memory size app/ratio app/total 863016KB/3.44/64.39 battery 255 tx/rx: 3/3 kbps 568.135K/174.647K bytes
+WARN    21:39:46:869  20964; captured signal too small
+WARN    21:39:46:869  20964; audio device captured signal too small
+INFO    21:39:46:880  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:46:880  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:46:894  36500; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    21:39:47:030  20964; Audio statistics - rec count: record count = 601 signal level: near_in = 30, near_out = 0 farin = 30
+INFO    21:39:48:666  25976; gatewayRtt 2(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+WARN    21:39:48:869  20964; captured signal too small
+WARN    21:39:48:869  20964; audio device captured signal too small
+INFO    21:39:48:880  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:48:880  25976; no camera capture frame out.
+INFO    21:39:48:880  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:50:869  20964; captured signal too small
+WARN    21:39:50:869  20964; audio device captured signal too small
+INFO    21:39:50:881  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+INFO    21:39:50:881  25976; disable audio br ctrl (unmute but sentbytes 0)
+WARN    21:39:52:869  20964; captured signal too small
+WARN    21:39:52:869  20964; audio device captured signal too small
+INFO    21:39:52:882  25976; coefUniformity_=0,coefVariation=0,realCaptureFps=0,targetCaptureFPS=0,captureSnr_=0 ,
+
+WARN    21:39:52:882  25976; no camera capture frame out.
+INFO    21:39:52:882  25976; disable audio br ctrl (unmute but sentbytes 0)
+INFO    21:39:54:667  25976; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 1(500), reason 0x4
+INFO    21:39:54:725   6752; [API][rtc_engine_impl.cpp:790][agora::rtc::RtcEngine::leaveChannel]
+INFO    21:39:54:725   6752; API call to leave channel linker_test
+INFO    21:39:54:725   6752; [API][rtc_engine_impl.cpp:3185][agora::rtc::RtcEngine::clearVideoWatermarks]
+INFO    21:39:54:725   6752; [API][media_engine_impl.cpp:61][agora::media::MediaEngineImpl::registerVideoFrameObserver]
+INFO    21:39:54:725  25976; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+WARN    21:39:54:725  25976; leaving channel that was not joined yet
+INFO    21:39:54:725  25976; [cm] emit leave channel signal
+INFO    21:39:54:726   6752; [API][media_engine_impl.cpp:61][agora::media::MediaEngineImpl::registerVideoFrameObserver]
+INFO    21:39:54:726   6752; [API][media_engine_impl.cpp:38][agora::media::MediaEngineImpl::registerAudioFrameObserver]
+INFO    21:39:54:726   6752; [API][rtc_engine_impl.cpp:3316][agora::rtc::RtcEngine::registerPacketObserver]
+INFO    21:39:54:726   6752; [API][rtc_engine_impl.cpp:5481][agora::rtc::RtcEngine::registerMediaMetadataObserver]
+INFO    21:39:54:726   6752; [API][rtc_engine_impl.cpp:3948][agora::rtc::IRtcEngine::release]
+INFO    21:39:54:789  25976; [rs] **report stats: seq: 274, report list size 4,       tx/rx: 50820/12960
+INFO    21:39:54:789  25976; [rs] report server: 45.40.48.115:8130
+INFO    21:39:54:789  25976; agora::media::VideoEngine::stopLocalRender
+INFO    21:39:54:789  25976; agora::media::VideoEngine::stopLocalRender success
+INFO    21:39:54:789  25976; AgoraVideoInput::agora::AgoraVideoInput::Destroy
+INFO    21:39:54:789  25976; AgoraCameraCapture::agora::AgoraCameraCapture::Dispose
+INFO    21:39:54:789  25976; agora::media::VideoEngine::stopCapture: stopCapture success, cost time 0
+INFO    21:39:54:789  25976; agora::media::VideoEngine::SetStreamState: localVideoState 0, error 0
+INFO    21:39:54:789  25976; [rtpSender] set paced sender status 0.
+
+INFO    21:39:54:789  25976; agora::media::VideoEngine::stopRemoteRender
+INFO    21:39:54:789  25976; [che] stopCall begins
+INFO    21:39:54:789  25976; agora::media::AudioEngineWrapper::stopCall in
+INFO    21:39:54:789  25976; [WIN_CORE] closing down the agora_core_audio_capture_thread...
+INFO    21:39:54:791  20964; [WIN_CORE] _Capturing thread is now terminated properly
+INFO    21:39:54:792  25976; [WIN_CORE] agora_core_audio_capture_thread is now closed
+INFO    21:39:54:792  25976; [WIN_CORE] volume getter thread is now closed
+INFO    21:39:54:792  25976; [WIN_CORE] volume setter thread is now closed
+INFO    21:39:54:792  25976; StopRecording complete
+INFO    21:39:54:792  25976; SetLocalState: state 0 error 0
+INFO    21:39:54:792  25976; StopRecording complete
+INFO    21:39:54:792  25976; [WIN_CORE] closing down the agora_core_audio_render_thread...
+INFO    21:39:54:814  36500; [WIN_CORE] _Rendering thread is now terminated properly
+INFO    21:39:54:815  25976; [WIN_CORE] agora_core_audio_render_thread is now closed
+INFO    21:39:54:816  25976; StopPlayout complete
+INFO    21:39:54:816  25976; agora::media::AudioEngineWrapper::setAecType: aec is set to 5
+INFO    21:39:54:816  25976; [che] stop call returns 0, elapsed 27
+INFO    21:39:54:816  25976; [time] process EngineStopCall takes 27
+INFO    21:39:54:816  25976; [cm] connection state changed from 5 to 1
+INFO    21:39:54:816  25976; **CALL STATS: duration 3m10s, tx 573.725K bytes, rx 177.580K bytes, total 751.281K bytes
+INFO    21:39:54:816  25976; ~ping_server_win32 elapsed: 0, thread quit:0
+INFO    21:39:54:817  25976; CacheManager: save cache to storage elapsed 1
+INFO    21:39:54:817  25976; [ch0] vos destroyed
+INFO    21:39:54:817  25976; delRef of media engine, ref=0
+INFO    21:39:54:817  25976; [che] chat engine destroying
+INFO    21:39:54:817  25976; agora::media::VideoEngine::stopLocalRender
+INFO    21:39:54:817  25976; agora::media::VideoEngine::stopLocalRender success
+INFO    21:39:54:817  25976; agora::media::VideoEngine::stopRemoteRender
+INFO    21:39:54:817  25976; [che] stopCall begins
+INFO    21:39:54:817  25976; [che] stop call returns -1, elapsed 0
+INFO    21:39:54:817  25976; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=0000000000000000
+INFO    21:39:54:817  25976; agora::media::VideoEngine::CreateVideoCapturer: interface=0000000000000000
+INFO    21:39:54:817  25976; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateRenderer, renderer=0000000000000000
+INFO    21:39:54:817  25976; agora::media::VideoEngine::CreateVideoRenderer: interface=0000000000000000
+INFO    21:39:54:817  25976; agora::media::VideoEngine::stopLocalRender: Cannot stop (not exist)
+INFO    21:39:54:817  25976; agora::media::VideoEngine::stopRemoteRender
+INFO    21:39:54:818  25976; agora::media::VideoEngine::stopCapture: startCapture Error: No capturer for video send track
+INFO    21:39:54:818  25976; agora::media::PipelineManager::SetVideoEngineRef: VideoEngineRef = 0xffffffff
+WARN    21:39:54:818  25976; agora::media::VideoEngine::terminate: VideoEngine haven't init
+INFO    21:39:54:819  25976; [DEBUGG] ViERenderManager Destructor, engine_id: 0
+INFO    21:39:54:819  25976; AgoraCameraCapture::agora::AgoraCameraCapture::Dispose
+INFO    21:39:54:820  25976; AgoraRTC::AudioDeviceNotificationWindows::~AudioDeviceNotificationWindows destroyed
+INFO    21:39:54:821  25976; [che] chat engine destroyed
+INFO    21:39:54:821  25976; ***CALL END
+INFO    21:39:54:821  25976; onAudioStatusChanged enable audio
+Local Date: 8 13 2021 Local Time: 22:26:05
+Build info: Mar 19 2021 14:28:08 r
+
+INFO    22:26:05:068  32900; [rp] {"rtc.video.enabled":true}
+INFO    22:26:05:068  32900; API call to enable video
+INFO    22:26:05:068  32900; [rp] ["che.video.video_codec_checked"]
+INFO    22:26:05:068  32900; [rp] res: {"che.video.video_codec_checked":false} 
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068   6752; agora::rtc::RtcEngine::check_codec,first encoder check...
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    22:26:05:068  32900; [rp] {"che.video.join_channeled":true}
+INFO    22:26:05:068  32900; [rp] ["che.video.h264.hwenc"]
+INFO    22:26:05:068  32900; [rp] res: {"che.video.h264.hwenc":0} 
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    22:26:05:068  32900; [rp] ["che.video.video_decoder_checked"]
+INFO    22:26:05:068  32900; [rp] res: {"che.video.video_decoder_checked":false} 
+INFO    22:26:05:068   6752; agora::rtc::RtcEngine::check_codec,first decoder check...
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    22:26:05:068  32900; [rp] ["che.video.h264.hwdec"]
+INFO    22:26:05:068  32900; [rp] res: {"che.video.h264.hwdec":0} 
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    22:26:05:068  32900; [rp] ["che.video.hw265_dec_enable"]
+INFO    22:26:05:068  32900; [rp] res: {"che.video.hw265_dec_enable":0} 
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:535][agora::rtc::RtcEngine::joinChannel]
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:3732][agora::rtc::RtcEngine::setChannelProfile]
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1214][agora::rtc::RtcEngine::getParameters]
+INFO    22:26:05:068  32900; [rp] ["rtc.force_old_channel_profile"]
+INFO    22:26:05:068  32900; [rp] res: {"rtc.force_old_channel_profile":false} 
+INFO    22:26:05:068   6752; setChannelProfile type 2
+INFO    22:26:05:068   6752; API call to setChannelProfile 0
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068   6752; doSetClientRole 1 level 2
+INFO    22:26:05:068  32900; [rp] {"che.video.h264.hwenc":0}
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068  32900; [rp] {"rtc.client_role":1}
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068  32900; [rp] {"rtc.allow_communication_fallback":true}
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:3630][agora::rtc::RtcEngine::setAudioProfile]
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068   6752; doSetClientRole 1 level 2
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068  32900; [rp] {"rtc.user_set_channel_profile":0}
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:915][agora::rtc::RtcEngine::updateMediaOptions]
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1709][agora::rtc::RtcEngine::muteAllRemoteAudioStreams]
+INFO    22:26:05:068  32900; [rtls] set playout delay:0 ms
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1725][agora::rtc::RtcEngine::muteAllRemoteVideoStreams]
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:068   6752; API call to join channel 'linker_test' uid 0, SDK ver 3.3.1.71 build 61380, device info 'BIOSTAR Group/B450GT3/x64-based PC/Windows 10.0.19043'
+INFO    22:26:05:068  32900; [rp] {"rtc.suspend_callback_client_role_changed":false}
+INFO    22:26:05:068   6752; [API][rtc_engine_impl.cpp:5751][agora::rtc::RtcChannel::initialize]
+INFO    22:26:05:068   6752; API call to initialize rtc channel linker_test
+INFO    22:26:05:068  32900; [rp] {"che.audio.profile":{"config":100,"scenario":100}}
+INFO    22:26:05:068  32900; audioProfile lambda: Audio Profile is set to: (config = 100, scenario = 100)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(0):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(1):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(1)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(2):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(1) is_bluetooth(0) audience_need_record(0)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(3):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(0) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(4):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(5):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(1)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(6):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(7):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(1) is_bluetooth(1) audience_need_record(1)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(8):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: scenario(9):
+INFO    22:26:05:068  32900; agora::media::MediaEngineParameterCollection::Audio::updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(0) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    22:26:05:068  32900; [rp] {"rtc.client_role":1}
+INFO    22:26:05:068  32900; [rp] {"rtc.audio.mute_peers":false}
+INFO    22:26:05:068  32900; [rp] {"rtc.video.mute_peers":false}
+INFO    22:26:05:068  32900; doStopLastmileProbeTest
+INFO    22:26:05:068  32900; ***CALL BEGIN: appid:'c6****************************d7' cname:'linker_test' info:'' sid:'4962BDEA27D446C29C1751E283ACF05B'
+INFO    22:26:05:068  32900; addRef of media engine, ref=1
+INFO    22:26:05:069  32900; [che] create chat engine, ctx:0000000000000000
+INFO    22:26:05:069  32900; [MYDEBUG] large group call false
+INFO    22:26:05:069  32900; applyMediaEngineMode(): 264_Hardware decoding false,265_Hardware decoding false
+INFO    22:26:05:069  32900; agora::media::MediaEngineParameterCollection::setupMediaEngineMode: mode 2
+WARN    22:26:05:069  32900; agora::media::MediaEngineParameterCollection::setupMediaEngineMode: skip updateClientRole as audio engine not created, mode 2
+INFO    22:26:05:069  32900; engine git commit version:8f8b16f643 and branch:release/3.3.1.71
+WARN    22:26:05:070  32900; AINS: Will not open AINS when apm init, listen other command
+INFO    22:26:05:071  32900; output: kPlatformDefaultAudio
+INFO    22:26:05:071  32900; [WIN_CORE] +++++++Code block begins for checking CoreAudio properties++++++
+INFO    22:26:05:071  32900; AgoraRTC::AudioDeviceNotificationWindows::AudioDeviceNotificationWindows created
+INFO    22:26:05:073  32900; [WIN_CORE] *** Windows Core Audio is supported ***
+INFO    22:26:05:073  32900; [WIN_CORE] ++++++++Code block ends for checking CoreAudio properties++++++++
+INFO    22:26:05:073  32900; audio jitterbuffer new smooth
+WARN    22:26:05:073  32900; AINS: Will not open AINS when apm init, listen other command
+INFO    22:26:05:074  32900; OutputMixer: start audio file decoder thread successfully
+INFO    22:26:05:074  32900;   OS info: Microsoft  (build 19043), 64-bit
+INFO    22:26:05:076  32900; [WIN_CORE] Set playout device on Windows by Windows Device Type (-2): friendly name: "ìŠ¤í”¼ì»¤ (Realtek High Definition Audio)"
+INFO    22:26:05:080  32900; [WIN_CORE] Set recording device on Windows by Windows Device Type (-2): friendly name: "Microphone (USB PnP Audio Device)"
+INFO    22:26:05:081  32900; MicrophoneLevelStat Level range, maxLvl = 31.000000 (dB), minLvl = 0.000000 (dB), stepLvl = 0.062500 (dB)
+INFO    22:26:05:081   6752; [API][rtc_engine_impl.cpp:4547][agora::rtc::RtcEngine::stopScreenCapture]
+INFO    22:26:05:081   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:081  32900; StereoPlayoutIsAvailable(), output: available=1
+INFO    22:26:05:081  32900; StereoRecordingIsAvailable(), output: available=1
+INFO    22:26:05:082  32900; RegisterVolumeNotify
+WARN    22:26:05:082  32900; agora::media::AudioEngineWrapper::enableLocalRecordingDevice: enable 1 already set
+INFO    22:26:05:082  32900; setMuteStatus, muted: Off
+INFO    22:26:05:082   6752; [API][rtc_engine_impl.cpp:4166][agora::rtc::RtcEngine::addVideoCapture]
+INFO    22:26:05:082  32900; setMuteOutput, muted: false
+INFO    22:26:05:082  32900; Audio Engine Init success, mSpecMode 2
+INFO    22:26:05:082  32900; agora::media::PipelineManager::SetVideoEngineRef: VideoEngineRef = 0x4e0015
+INFO    22:26:05:082  32900; agora::media::VideoEngine::CreateVideoSendTrack
+WARN    22:26:05:082  32900; AutoAdjust: "AutoAdjustController Instance Created"
+INFO    22:26:05:082  32900; AutoAdjust: "Setting video fec method 2, real using 2"
+INFO    22:26:05:082  32900; AutoAdjust: "dynamic paced sending rate control set to 2."
+INFO    22:26:05:082  32900; AutoAdjust: "static paced sending rate multiplier set to 1.600000."
+INFO    22:26:05:082  32900; AutoAdjust: "all paced sending interval set to 5."
+INFO    22:26:05:082  32900; agora::media::VideoEngine::init: feature prerotation enabled
+INFO    22:26:05:084   6752; [API][rtc_engine_impl.cpp:4410][agora::rtc::RtcEngine::startScreenCaptureByScreenRect]
+INFO    22:26:05:084   6752; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+INFO    22:26:05:084   6752; [API][rtc_engine_impl.cpp:4166][agora::rtc::RtcEngine::addVideoCapture]
+ERROR   22:26:05:084  32900; agora::media::VideoEngine::captureIdFromIndex: failed to get device id for device 0
+WARN    22:26:05:084  32900; Camera index 0 is invalid! Use first camera AgoraCapInvalid instead
+INFO    22:26:05:084  32900; agora::media::VideoEngine::setCaptureDevice: deviceId=AgoraCapInvalid
+ERROR   22:26:05:084  32900; agora::media::VideoEngine::captureIndexFromDeviceId: failed to get device index for device AgoraCapInvalid
+INFO    22:26:05:084  32900; Agora Engine video codec set to standard mode role mode 2
+INFO    22:26:05:084  32900; Agora Engine video codec index 1
+INFO    22:26:05:084  32900; Agora Engine video stream type = 0
+INFO    22:26:05:085  32900; Device type: 0
+INFO    22:26:05:085  32900; Hardware encoding false
+INFO    22:26:05:085  32900; last unique frame idx: -1 - -1
+INFO    22:26:05:085  32900; AVEncoder init is x264
+INFO    22:26:05:085  32900; AVEncoder init is x264
+INFO    22:26:05:085  32900; Device type: 0
+INFO    22:26:05:085  32900; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    22:26:05:085  32900; low stream codec type = 1
+INFO    22:26:05:085  32900; low bit rate limit 3758096384
+INFO    22:26:05:085  32900; soft ware encoder is x264
+INFO    22:26:05:085  32900; soft ware encoder is x264
+INFO    22:26:05:085  32900; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    22:26:05:085  32900; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    22:26:05:085  32900; dont need to increase unique frame idx
+INFO    22:26:05:085  32900; the init unique frame idx: -1 - -1
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setCodec: index=1 width=640 height=360 framerate=15
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setCodec: Intra Request = 0
+INFO    22:26:05:085  32900; Device type: 0
+INFO    22:26:05:085  32900; Hardware encoding false
+INFO    22:26:05:085  32900; last unique frame idx: -1 - -1
+INFO    22:26:05:085  32900; AVEncoder init is x264
+INFO    22:26:05:085  32900; AVEncoder init is x264
+INFO    22:26:05:085  32900; Device type: 0
+INFO    22:26:05:085  32900; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    22:26:05:085  32900; low stream codec type = 1
+INFO    22:26:05:085  32900; low bit rate limit 3758096384
+INFO    22:26:05:085  32900; soft ware encoder is x264
+INFO    22:26:05:085  32900; soft ware encoder is x264
+INFO    22:26:05:085  32900; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    22:26:05:085  32900; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    22:26:05:085  32900; set last big unique frame idx: -1
+INFO    22:26:05:085  32900; set last small unique frame idx: -1
+INFO    22:26:05:085  32900; the init unique frame idx: -1 - -1
+ERROR   22:26:05:085  32900; set video che.hardware_encoding, abandon param , old value 0,  value: -1
+ERROR   22:26:05:085  32900; set video che.hardware_decoding, abandon param , old value 0,  value: -1
+INFO    22:26:05:085  32900; agora::media::VideoEngine::h264WebInteropEnable: enable 0
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setCaptureDevice: index=0
+ERROR   22:26:05:085  32900; agora::media::VideoEngine::captureIdFromIndex: failed to get device id for device 0
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setMaxVideoBitrate: max bitrate=0
+INFO    22:26:05:085  32900; [setupParameterObservers:1699] setting of localViewMirrorSetting[] is invalid!
+INFO    22:26:05:085  32900; [agora::media::VideoEngine::setupParameterObservers::<lambda_86a57a2226b38a205d91d0bba49787d8>::operator ():1714] m_context.parameters.video.renderMode: json is invalid! value:0000000000000000
+INFO    22:26:05:085  32900; [agora::media::VideoEngine::setupParameterObservers::<lambda_1229d8fcdd7934ef9e43951299d053ab>::operator ():1768] m_context.parameters.video.mirrorMode: json is invalid! value:0000000000000000
+INFO    22:26:05:085  32900; SetBandwidthAgressiveLevel to 3.
+INFO    22:26:05:085  32900; videoEngine created and initialize here
+INFO    22:26:05:085  32900; agora::media::VideoEngine::CreateVideoSendTrack
+INFO    22:26:05:085  32900; [MIO] updateCapturer: (0000000000000000), type:(1)
+INFO    22:26:05:085  32900; agora::media::VideoEngine::CreateAgoraDefaultCapture: type=0
+INFO    22:26:05:085  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=00000205B062E6B0
+INFO    22:26:05:085  32900; agora::media::VideoEngine::CreateVideoCapturer: interface=00000205B062E6B0
+INFO    22:26:05:085  32900; [MIO] updateLocalRender: (0000000000000000), type:(1)
+INFO    22:26:05:085  32900; agora::media::VideoEngine::CreateAgoraDefaultRender
+INFO    22:26:05:085  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateRenderer, renderer=00000205E2A65AA0
+INFO    22:26:05:085  32900; agora::media::VideoEngine::CreateVideoRenderer: interface=00000205E2A65AA0
+INFO    22:26:05:085  32900; [MIO] video send track prepared !!
+INFO    22:26:05:085  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=00000205B062E6B0
+WARN    22:26:05:085  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer, Ignore updating the same capturer
+INFO    22:26:05:085  32900; [che] applyVideoProfile: 640x360 15 fps  -1 minFps 400 kbps, min -1 kbps orientationMode 0 degradationPrefer 0 mirrorMode 0
+ERROR   22:26:05:085  32900; agora::media::VideoEngine::captureIndexFromDeviceId: failed to get device index for device AgoraCapInvalid
+INFO    22:26:05:085  32900; agora::media::VideoEngine::validateVideoParameters: validate video parameters resolution 640x360, fps 15, rate 400000
+INFO    22:26:05:085  32900; agora::media::VideoEngine::enableMirrorMode: enable=0
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setMaxVideoBitrate: max bitrate=400000
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setCodecRates: set frame rate to 15
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setCodec: index=1 width=640 height=360 framerate=15
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setCodec: Intra Request = 0
+INFO    22:26:05:085  32900; Device type: 0
+INFO    22:26:05:085  32900; Hardware encoding false
+INFO    22:26:05:085  32900; last unique frame idx: -1 - -1
+INFO    22:26:05:085  32900; AVEncoder init is x264
+INFO    22:26:05:085  32900; AVEncoder init is x264
+INFO    22:26:05:085  32900; Device type: 0
+INFO    22:26:05:085  32900; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    22:26:05:085  32900; low stream codec type = 1
+INFO    22:26:05:085  32900; low bit rate limit 0
+INFO    22:26:05:085  32900; soft ware encoder is x264
+INFO    22:26:05:085  32900; soft ware encoder is x264
+INFO    22:26:05:085  32900; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    22:26:05:085  32900; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    22:26:05:085  32900; set last big unique frame idx: -1
+INFO    22:26:05:085  32900; set last small unique frame idx: -1
+INFO    22:26:05:085  32900; the init unique frame idx: -1 - -1
+INFO    22:26:05:085  32900; SetTargetWidthHeight width:640, height:360
+INFO    22:26:05:085  32900; agora::media::VideoEngine::setCodecResolution: set to 640 x 360
+INFO    22:26:05:085  32900; Set broadcast min br to -1.
+INFO    22:26:05:085  32900; [che] chat engine initialized
+INFO    22:26:05:085  32900; [time] process EngineInitialize takes 16
+INFO    22:26:05:086  32900; agora::media::VideoEngine::adjustCodecFrameRates: Cannot adjust frame rate when VQC is on
+INFO    22:26:05:086  32900; [tactics] version:3.3.1.71 maxBitrate:400 640X360 15 fps needHandle:1
+INFO    22:26:05:086  32900; [tactics] config json version:20150101-0000 duallinkd:true poor:0
+INFO    22:26:05:086  32900; [tactics] parse config for beckon error for tactics size:15
+INFO    22:26:05:086  32900; [vocs] queryDns ap3-tls.agora.io
+INFO    22:26:05:086  32900; [base_context]queryDns domain is ap3-tls.agora.io
+INFO    22:26:05:087  32900; [vocs] onParsedDns ap3-tls.agora.io with err 0, 54.150.29.65, 52.231.182.176, 
+INFO    22:26:05:087  32900; [vocs] queryDns ap1.agora.io
+INFO    22:26:05:087  32900; [base_context]queryDns domain is ap1.agora.io
+INFO    22:26:05:088  32900; [cm] queryDns domain is ap1.agora.io
+INFO    22:26:05:088  32900; [base_context]queryDns domain is ap1.agora.io
+INFO    22:26:05:088  32900; [vocs] vocs initialized
+INFO    22:26:05:088  32900; [cc] fecRexferEnabled:0
+INFO    22:26:05:088  32900; [cc] sni type:0
+INFO    22:26:05:088  32900; agora::media::VideoEngine::reInit: reset mSpecMode to -1
+INFO    22:26:05:088  32900; [cm] reset channelProfile to NASA(CHANNEL_PROFILE_LIVE_BROADCASTING)
+INFO    22:26:05:090  32900; CacheManager: save cache to storage elapsed 1
+INFO    22:26:05:090  32900; [cm] emit join channel signal, size=4
+INFO    22:26:05:090  32900; [cm] connection state changed from 1 to 2
+INFO    22:26:05:090  32900; agora::media::VideoEngine::adjustCodecFrameRates: Cannot adjust frame rate when VQC is on
+INFO    22:26:05:090  32900; [tactics] version:3.3.1.71 maxBitrate:400 640X360 15 fps needHandle:1
+INFO    22:26:05:090  32900; [vocs] lookup channel...
+INFO    22:26:05:090  32900; [vocs] selected: 106.14.12.130:8443
+INFO    22:26:05:090  32900; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    22:26:05:090  32900; [vocs] aut - creating channel with 106.14.12.130:8443, ts 1628861165090.......
+INFO    22:26:05:090  32900; create session builder 00000205204B7C80
+INFO    22:26:05:090  32900; [vocs] selected: 50.17.126.121:8443
+INFO    22:26:05:090  32900; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    22:26:05:090  32900; [vocs] aut - creating channel with 50.17.126.121:8443, ts 1628861165090.......
+INFO    22:26:05:090  32900; create session builder 00000205204B7DE0
+INFO    22:26:05:090  32900; [vocs] selected: 52.58.56.244:8443
+INFO    22:26:05:090  32900; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    22:26:05:090  32900; [vocs] aut - creating channel with 52.58.56.244:8443, ts 1628861165090.......
+INFO    22:26:05:090  32900; create session builder 00000205204B8200
+INFO    22:26:05:090  32900; [vocs] selected: 54.150.29.65:8443
+INFO    22:26:05:090  32900; tcp_client connecting 54.150.29.65:8443
+INFO    22:26:05:090  32900; [rp] {"che.video.stop_screen_capture":true}
+INFO    22:26:05:090  32900; VideoEngine::stopScreenCapture
+INFO    22:26:05:090  32900; [MIO] updateCapturer: (0000000000000000), type:(1)
+INFO    22:26:05:090  32900; agora::media::VideoEngine::CreateAgoraDefaultCapture: type=0
+INFO    22:26:05:090  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=00000205B062E6B0
+WARN    22:26:05:090  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer, Ignore updating the same capturer
+INFO    22:26:05:090  32900; [rp] {"che.video.start_screen_capture_screen":{"screenX":0,"screenY":0,"screenWidth":1920,"screenHeight":1080,"regionX":0,"regionY":0,"regionWidth":0,"regionHeight":0,"dimensionWidth":0,"dimensionHeight":0,"frameRate":0,"bitr
+INFO    22:26:05:090  32900; VideoEngine::start screen capture sx: 0, sy: 0, sw: 1920, sh: 1080, rx: 0, ry: 0, rw: 0, rh: 0, width : 1920, height : 1080, fps: 5, bitrate: 0
+INFO    22:26:05:090  32900; agora::media::VideoEngine::stopLocalRender
+INFO    22:26:05:090  32900; agora::media::VideoEngine::stopLocalRender success
+INFO    22:26:05:090  32900; [MIO] updateCapturer: (0000000000000000), type:(3)
+INFO    22:26:05:091  32900; agora::media::VideoEngine::CreateAgoraDefaultCapture: type=1
+INFO    22:26:05:091  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=00000205B0403740
+INFO    22:26:05:091  32900; agora::media::VideoEngine::CreateVideoCapturer: interface=00000205B0403740
+INFO    22:26:05:091  32900; create dangling client connection 000002030770AC80
+INFO    22:26:05:094  32900; [remote:106.14.12.130:8443] start 0th connect, send client hello 8002765|syn, tags: SNI :3130362d3134...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:05:094  32900; create dangling client connection 000002030770BEA0
+INFO    22:26:05:098  32900; [remote:50.17.126.121:8443] start 0th connect, send client hello 10302053|syn, tags: SNI :35302d31372d...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:05:098  32900; create dangling client connection 000002030770C5E0
+INFO    22:26:05:102  32900; [remote:52.58.56.244:8443] start 0th connect, send client hello 11523310|syn, tags: SNI :35322d35382d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:05:102  32900; [remote:164.52.43.58:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    22:26:05:102  32900; [remote:164.52.43.59:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    22:26:05:102  32900; [dns] parsed ip 164.52.43.59
+INFO    22:26:05:102  32900; [dns] parsed ip 164.52.43.58
+INFO    22:26:05:102  32900; [vocs] onParsedDns ap1.agora.io with err 0, 164.52.43.59, 164.52.43.58, 
+INFO    22:26:05:102  14224; agora::media::AudioEngineWrapper::setAecType: aec is set to 3
+INFO    22:26:05:102  32900; [cm] save key '192.168.219.136' dns 'ap1.agora.io' ip '164.52.43.59'
+INFO    22:26:05:102  32900; [cm] save key '192.168.219.136' dns 'ap1.agora.io' ip '164.52.43.58'
+INFO    22:26:05:102  14224; agora::media::AudioEngineWrapper::_setAudioOutputRouting: Application Config module:  Route 3, NS on, AEC on, AGC on, MD off, HC off
+INFO    22:26:05:102  14224; agora::media::AudioEngineWrapper::_setAudioOutputRouting: Config para: gmode to 1, TLV to 6, CMG to 25
+INFO    22:26:05:102  14224; agora::media::AudioEngineWrapper::_setAudioOutputRouting: MID = 0, Routing = 3
+INFO    22:26:05:103  32900; CacheManager: save cache to storage elapsed 1
+INFO    22:26:05:103  32900; [remote:164.52.43.58:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    22:26:05:103  32900; [remote:164.52.43.59:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    22:26:05:104  32900; [ap/tcp] connected with 52.231.182.176:8443
+INFO    22:26:05:104  32900; [ap] tcp - creating channel with 52.231.182.176:8443, ts 0, flag: 72
+INFO    22:26:05:104  32900; [remote:164.52.43.58:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    22:26:05:104  32900; [remote:164.52.43.59:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    22:26:05:104  32900; [remote:164.52.43.58:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    22:26:05:104  32900; [remote:164.52.43.59:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    22:26:05:104  32900; [remote:164.52.43.58:8443] receive server hello piece id: 4, 5/10, complete
+INFO    22:26:05:107  32900; [remote:164.52.43.58:8443] create connection 00000205221DBD20, self initial seq: 9578724, initial rtt: 49ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    22:26:05:107  32900; [remote:164.52.43.58:8443] create session 00000203076E83F0
+INFO    22:26:05:107  32900; [ap/aut] connected with 164.52.43.58:8443
+INFO    22:26:05:107  32900; destroy dangling client connection 000002030770B3C0
+INFO    22:26:05:107  32900; [remote:164.52.43.59:8443] receive server hello piece id: 4, 5/10, complete
+INFO    22:26:05:110  32900; [remote:164.52.43.59:8443] create connection 00000205221E6D00, self initial seq: 5320552, initial rtt: 49ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    22:26:05:110  32900; [remote:164.52.43.59:8443] create session 00000203076E85B0
+INFO    22:26:05:110  32900; [ap/aut] connected with 164.52.43.59:8443
+INFO    22:26:05:110  32900; destroy dangling client connection 0000020307708F80
+INFO    22:26:05:116  32900; [ap/u] **responsed from 164.52.43.58:8443, CDS(8).
+INFO    22:26:05:116  32900; [ap] onAPCdsRes success with config: ¸Æ¯ßÔÚ¤—ÑúÊÏŸá’–²ÂÛÜ­ÆÉâ“Ï
+INFO    22:26:05:116  32900; [cs] applied directly: {"configs":{},"version":""}, elapsed: 0
+INFO    22:26:05:117  32900; CacheManager: save cache to storage elapsed 1
+INFO    22:26:05:117  32900; [ap/u] **responsed from 164.52.43.58:8443, TDS(64).
+INFO    22:26:05:117  32900; [ap] onAPTdsRes success with config: {"_store xdump-3.1":["A",{"rtc.enable_xdump":true,"rtc.enable_xdump_file":true,"rtc.enable_xdump_upload":true},{"retention":"15d","store":true}],"_store Globe: Fix the Voice Delay Problem"
+INFO    22:26:05:117  32900; CacheManager: save cache to storage elapsed 0
+INFO    22:26:05:117  32900; [rp-tds-_store xdump-3.1-A] {"rtc.enable_xdump":true,"rtc.enable_xdump_file":true,"rtc.enable_xdump_upload":true}
+INFO    22:26:05:117  32900; [rp-tds-_store Globe: Fix the Voice Delay Problem-A] {"che.audio.neteq.target_level_set_improve":false}
+INFO    22:26:05:117  32900; [rp] emit abtest event after joinChannel
+INFO    22:26:05:118  32900; [rp] abtest feature:_store xdump-3.1, tag:A, params:{"rtc.enable_xdump":true,"rtc.enable_xdump_file":true,"rtc.enable_xdump_upload":true}
+INFO    22:26:05:118  32900; [rp] abtest feature:_store Globe: Fix the Voice Delay Problem, tag:A, params:{"che.audio.neteq.target_level_set_improve":false}
+INFO    22:26:05:118  32900; [ap/u] **responsed from 164.52.43.59:8443, CDS(8).
+INFO    22:26:05:118  32900; [ap/u] **responsed from 164.52.43.59:8443, TDS(64).
+INFO    22:26:05:120  32900; [ap/t] **responsed from 52.231.182.176:8443, CDS(8).
+INFO    22:26:05:121  32900; [ap/t] **responsed from 52.231.182.176:8443, TDS(64).
+INFO    22:26:05:135  32900; [remote:164.52.43.58:8443] on connection close received, reason: 0, detail: 
+INFO    22:26:05:135  32900; [remote:164.52.43.58:8443] start time wait, duration: 2000 ms
+ERROR   22:26:05:135  32900; [ap] aut socket error with 164.52.43.58:8443
+INFO    22:26:05:135  32900; [remote:164.52.43.58:8443] destroy session 00000203076E83F0
+INFO    22:26:05:135  32900; [remote:164.52.43.58:8443] destroy connection 00000205221DBD20
+INFO    22:26:05:135  32900; [remote:164.52.43.59:8443] on connection close received, reason: 0, detail: 
+INFO    22:26:05:135  32900; [remote:164.52.43.59:8443] start time wait, duration: 2000 ms
+ERROR   22:26:05:135  32900; [ap] aut socket error with 164.52.43.59:8443
+INFO    22:26:05:135  32900; [remote:164.52.43.59:8443] destroy session 00000203076E85B0
+INFO    22:26:05:136  32900; [remote:164.52.43.59:8443] destroy connection 00000205221E6D00
+INFO    22:26:05:150  32900; [rlbs] request rs list from 54.150.29.65:8443 with fake ch report_lbs_1628861165150.......
+INFO    22:26:05:184  32900; [vocs/tcp] connected with 54.150.29.65:8443
+INFO    22:26:05:184  32900; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    22:26:05:184  32900; [vocs] tcp - creating channel with 54.150.29.65:8443, ts 1628861165184.......
+INFO    22:26:05:229  32900; [rlbs] [report servers]: 202.181.136.231
+INFO    22:26:05:229  32900; [rlbs] [report servers]: 129.227.205.198
+INFO    22:26:05:230  32900; [rlbs] [report servers]: 199.190.44.135
+INFO    22:26:05:230  32900; [rlbs/u] responsed from 164.52.43.59:8443 with servers 202.181.136.231:8130
+INFO    22:26:05:230  32900; [rs] updateServers 202.181.136.231:8130, priority 3
+INFO    22:26:05:230  32900; [rs] updateServers 129.227.205.198:8130, priority 3
+INFO    22:26:05:230  32900; [rs] updateServers 199.190.44.135:8130, priority 3
+INFO    22:26:05:230  32900; create session builder 00000205CB6B7270
+INFO    22:26:05:230  32900; destroy dangling client connection 000002030770B760
+INFO    22:26:05:230  32900; [remote:164.52.43.59:8443] destroy session 00000203076E8CB0
+INFO    22:26:05:230  32900; [remote:164.52.43.59:8443] destroy connection 00000205221DE2D0
+INFO    22:26:05:230  32900; create dangling client connection 000002030770B3C0
+INFO    22:26:05:233  32900; [remote:202.181.136.231:8130] start 0th connect, send client hello 8866950|syn, tags: SNI :3230322d3138...(29), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:05:264  32900; [remote:106.14.12.130:8443] start 1th connect, send client hello 10746934|syn, tags: SNI :3130362d3134...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:05:272  32900; [remote:50.17.126.121:8443] start 1th connect, send client hello 10302053|syn, tags: SNI :35302d31372d...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:05:281  32900; [remote:106.14.12.130:8443] start 1th connect, send client hello 8002765|syn, tags: SNI :3130362d3134...(27), PDMD:, CPTO:4e4f4e432000...(129)
+ERROR   22:26:05:304  32900; [vocs/t] responsed from 54.150.29.65:8443 with error: 13, elapsed: 236, server ts: 1628861166948. connection aborted
+INFO    22:26:05:304  32900; [vocs] 54.150.29.65:8443 is reported failure, and will be disabled for 4000 ms
+INFO    22:26:05:304  32900; [cm] connection state changed from 2 to 5
+INFO    22:26:05:310  32900; [remote:50.17.126.121:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    22:26:05:310  32900; [remote:50.17.126.121:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    22:26:05:311  32900; [remote:50.17.126.121:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    22:26:05:311  32900; [remote:50.17.126.121:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    22:26:05:311  32900; [remote:50.17.126.121:8443] receive server hello piece id: 4, 5/10, complete
+INFO    22:26:05:313  32900; [remote:50.17.126.121:8443] create connection 00000205221DBD20, self initial seq: 10302054, initial rtt: 216ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    22:26:05:313  32900; [remote:50.17.126.121:8443] create session 00000203076E8CB0
+INFO    22:26:05:313  32900; [vocs/aut] connected with 50.17.126.121:8443
+INFO    22:26:05:313  32900; destroy dangling client connection 000002030770BEA0
+INFO    22:26:05:324  32900; [remote:52.58.56.244:8443] start 1th connect, send client hello 11523310|syn, tags: SNI :35322d35382d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:05:355  32900; [remote:202.181.136.231:8130] receive server hello piece id: 0, 1/10, not complete
+INFO    22:26:05:355  32900; [remote:202.181.136.231:8130] receive server hello piece id: 1, 2/10, not complete
+INFO    22:26:05:355  32900; [remote:202.181.136.231:8130] receive server hello piece id: 2, 3/10, not complete
+INFO    22:26:05:355  32900; [remote:202.181.136.231:8130] receive server hello piece id: 3, 4/10, not complete
+INFO    22:26:05:355  32900; [remote:202.181.136.231:8130] receive server hello piece id: 4, 5/10, complete
+INFO    22:26:05:358  32900; [remote:202.181.136.231:8130] create connection 00000205221DE2D0, self initial seq: 8866951, initial rtt: 125ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    22:26:05:358  32900; [remote:202.181.136.231:8130] create session 00000203076E83F0
+INFO    22:26:05:358  32900; [rs] link aut to 202.181.136.231:8130 connected
+INFO    22:26:05:358  32900; destroy dangling client connection 000002030770B3C0
+INFO    22:26:05:394  32900; [remote:52.58.56.244:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    22:26:05:394  32900; [remote:52.58.56.244:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    22:26:05:394  32900; [remote:52.58.56.244:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    22:26:05:394  32900; [remote:52.58.56.244:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    22:26:05:394  32900; [remote:52.58.56.244:8443] receive server hello piece id: 4, 5/10, complete
+INFO    22:26:05:397  32900; [remote:52.58.56.244:8443] create connection 00000205221E8620, self initial seq: 11523311, initial rtt: 295ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    22:26:05:397  32900; [remote:52.58.56.244:8443] create session 00000203076E85B0
+INFO    22:26:05:397  32900; [vocs/aut] connected with 52.58.56.244:8443
+INFO    22:26:05:397  32900; destroy dangling client connection 000002030770C5E0
+INFO    22:26:05:596  32900; [remote:106.14.12.130:8443] start 2th connect, send client hello 8002765|syn, tags: SNI :3130362d3134...(27), PDMD:, CPTO:4e4f4e432000...(129)
+ERROR   22:26:05:631  32900; [vocs/u] responsed from 50.17.126.121:8443 with error: 13, elapsed: 563, server ts: 1628861167199. connection aborted
+INFO    22:26:05:631  32900; [remote:50.17.126.121:8443] destroy session 00000203076E8CB0
+INFO    22:26:05:631  32900; [remote:50.17.126.121:8443] destroy connection 00000205221DBD20
+ERROR   22:26:05:688  32900; [vocs/u] responsed from 52.58.56.244:8443 with error: 13, elapsed: 620, server ts: 1628861167248. connection aborted
+INFO    22:26:05:689  32900; [remote:52.58.56.244:8443] destroy session 00000203076E85B0
+INFO    22:26:05:689  32900; [remote:52.58.56.244:8443] destroy connection 00000205221E8620
+INFO    22:26:05:705  32900; [remote:106.14.12.130:8443] start 2th connect, send client hello 10746934|syn, tags: SNI :3130362d3134...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:05:878  32900; [remote:202.181.136.231:8130] path MTU to remote increased: 1280 --> 1365
+INFO    22:26:05:878  32900; [remote:202.181.136.231:8130] on max stream frame length changed from 1204 to 1339
+INFO    22:26:06:047  32900; destroy dangling client connection 000002030770BB00
+INFO    22:26:06:196  32900; [remote:106.14.12.130:8443] start 3th connect, send client hello 8002765|syn, tags: SNI :3130362d3134...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:07:621  32900; [remote:106.14.12.130:8443] start 4th connect, send client hello 8002765|syn, tags: SNI :3130362d3134...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:07:754  32900; [remote:106.14.12.130:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    22:26:07:754  32900; [remote:106.14.12.130:8443] receive server hello piece id: 4, 2/10, not complete
+INFO    22:26:07:754  32900; [remote:106.14.12.130:8443] receive server hello piece id: 1, 3/10, not complete
+INFO    22:26:07:754  32900; [remote:106.14.12.130:8443] receive server hello piece id: 2, 4/10, not complete
+INFO    22:26:07:754  32900; [remote:106.14.12.130:8443] receive server hello piece id: 3, 5/10, complete
+INFO    22:26:07:757  32900; [remote:106.14.12.130:8443] create connection 00000205221DBD20, self initial seq: 8002766, initial rtt: 2663ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    22:26:07:757  32900; [remote:106.14.12.130:8443] create session 00000203076E8CB0
+INFO    22:26:07:757  32900; [vocs/aut] connected with 106.14.12.130:8443
+INFO    22:26:07:757  32900; destroy dangling client connection 000002030770AC80
+INFO    22:26:09:090  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:09:209  32900; [remote:202.181.136.231:8130] path MTU to remote increased: 1365 --> 1415
+INFO    22:26:09:209  32900; [remote:202.181.136.231:8130] on max stream frame length changed from 1339 to 1389
+INFO    22:26:11:091  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:13:091  32900; gatewayRtt 2(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:15:091  32900; [nt/dt] queryDns is www.google.com
+INFO    22:26:15:091  32900; [NetworkTester] domain is www.google.com
+INFO    22:26:15:092  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:15:092  32900; create session builder 00000204C7C7E9F0
+INFO    22:26:15:092  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:15:092  32900; create dangling client connection 000002030770AC80
+INFO    22:26:15:095  32900; [remote:164.52.43.58:8443] start 0th connect, send client hello 5156157|syn, tags: SNI :3136342d3532...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    22:26:15:105  32900; [dns] parsed ip 172.217.174.196
+INFO    22:26:15:105  32900; [nt/dt] domain is www.google.com, ip is 172.217.174.196
+INFO    22:26:15:109  32900; [remote:164.52.43.58:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    22:26:15:110  32900; [remote:164.52.43.58:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    22:26:15:110  32900; [remote:164.52.43.58:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    22:26:15:110  32900; [remote:164.52.43.58:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    22:26:15:110  32900; [remote:164.52.43.58:8443] receive server hello piece id: 4, 5/10, complete
+INFO    22:26:15:113  32900; [remote:164.52.43.58:8443] create connection 00000205221E92B0, self initial seq: 5156158, initial rtt: 17ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    22:26:15:113  32900; [remote:164.52.43.58:8443] create session 00000203076E85B0
+INFO    22:26:15:113  32900; [nt/et] aut - connected with 164.52.43.58:8443
+INFO    22:26:15:113  32900; [nt/et] request voet list......
+INFO    22:26:15:113  32900; destroy dangling client connection 000002030770AC80
+INFO    22:26:15:321  32900; [nt/et] add voet ip: 202.226.25.195
+INFO    22:26:15:321  32900; [nt/et] add voet ip: 45.255.124.100
+INFO    22:26:15:321  32900; [nt/et] add voet ip: 129.227.234.112
+INFO    22:26:15:321  32900; [nt/et] test with tcp:202.226.25.195:5888
+INFO    22:26:15:321  32900; tcp_client connecting 202.226.25.195:5888
+INFO    22:26:15:321  32900; [nt/et] test with udp:202.226.25.195:5888
+INFO    22:26:15:321  32900; [remote:164.52.43.58:8443] destroy session 00000203076E85B0
+INFO    22:26:15:321  32900; [remote:164.52.43.58:8443] destroy connection 00000205221E92B0
+INFO    22:26:17:093  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:17:093  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:17:093  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:17:765  32900; [remote:106.14.12.130:8443] OnRemoteTimeout
+ERROR   22:26:17:765  32900; [vocs] aut - socket error to 106.14.12.130:8443
+INFO    22:26:17:765  32900; [remote:106.14.12.130:8443] destroy session 00000203076E8CB0
+INFO    22:26:17:765  32900; [remote:106.14.12.130:8443] destroy connection 00000205221DBD20
+INFO    22:26:19:094  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:19:094  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:19:094  32900; gatewayRtt 2(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:21:094  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:21:094  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:21:094  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:23:095  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:23:095  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:23:095  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:25:044  32900; [rs] **report stats: seq: 72, report list size 0,       tx/rx: 13147/3456
+INFO    22:26:25:044  32900; [rs] report server: 202.181.136.231:8130
+INFO    22:26:25:095  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:25:095  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:25:095  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:27:095  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:27:095  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:27:095  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:28:446  32900; [remote:202.181.136.231:8130] path MTU to remote increased: 1415 --> 1450
+INFO    22:26:28:446  32900; [remote:202.181.136.231:8130] on max stream frame length changed from 1389 to 1424
+INFO    22:26:29:096  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:29:096  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:29:096  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:31:096  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:31:096  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:31:096  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:33:097  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:33:097  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:33:097  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:35:098  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:35:098  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:35:098  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:37:098  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:37:098  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:37:098  32900; **CALL STATS: duration 30s cpu app/total 17.18/27.99 memory size app/ratio app/total 4289160KB/17.08/74.08 battery 255 tx/rx: 8/8 kbps 62.966K/119.414K bytes
+INFO    22:26:37:098  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:39:098  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:39:098  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:39:098  32900; gatewayRtt 2(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:41:099  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:41:099  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:41:099  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:43:099  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:43:099  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:43:099  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:45:044  32900; [rs] **report stats: seq: 92, report list size 0,       tx/rx: 17673/4416
+INFO    22:26:45:044  32900; [rs] report server: 202.181.136.231:8130
+INFO    22:26:45:100  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:45:100  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:45:100  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:47:100  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:47:100  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:47:100  32900; gatewayRtt 2(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:49:101  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:49:101  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:49:101  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:51:102  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:51:102  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:51:102  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:53:103  32900; tcp_client connecting 172.217.174.196:80
+INFO    22:26:53:103  32900; tcp_client connecting 119.63.197.139:80
+INFO    22:26:53:103  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:55:094  32900; [nt] TestReport: elapsed: 40002, success domains: www.baidu.com, www.google.com, fail domains: null, success udp ports: 5888, fail udp ports: null, mtu: 1400, tcp: available
+INFO    22:26:55:104  32900; gatewayRtt 1(650), linkspeed 0(20), rssi 0(0), rxlossrate 0(30), localRxJitter95 0(500), reason 0x4
+INFO    22:26:55:543   6752; [API][rtc_engine_impl.cpp:790][agora::rtc::RtcEngine::leaveChannel]
+INFO    22:26:55:543   6752; API call to leave channel linker_test
+INFO    22:26:55:543   6752; [API][rtc_engine_impl.cpp:3185][agora::rtc::RtcEngine::clearVideoWatermarks]
+INFO    22:26:55:543   6752; [API][media_engine_impl.cpp:61][agora::media::MediaEngineImpl::registerVideoFrameObserver]
+INFO    22:26:55:543  32900; [API][rtc_engine_impl.cpp:1203][agora::rtc::RtcEngine::setParameters]
+WARN    22:26:55:543  32900; leaving channel that was not joined yet
+INFO    22:26:55:543  32900; [cm] emit leave channel signal
+INFO    22:26:55:544   6752; [API][media_engine_impl.cpp:61][agora::media::MediaEngineImpl::registerVideoFrameObserver]
+INFO    22:26:55:544   6752; [API][media_engine_impl.cpp:38][agora::media::MediaEngineImpl::registerAudioFrameObserver]
+INFO    22:26:55:544   6752; [API][rtc_engine_impl.cpp:3316][agora::rtc::RtcEngine::registerPacketObserver]
+INFO    22:26:55:544   6752; [API][rtc_engine_impl.cpp:5481][agora::rtc::RtcEngine::registerMediaMetadataObserver]
+INFO    22:26:55:544   6752; [API][rtc_engine_impl.cpp:3948][agora::rtc::IRtcEngine::release]
+INFO    22:26:55:604  32900; [rs] **report stats: seq: 107, report list size 2,       tx/rx: 20723/5040
+INFO    22:26:55:604  32900; [rs] report server: 202.181.136.231:8130
+INFO    22:26:55:604  32900; agora::media::VideoEngine::stopLocalRender
+INFO    22:26:55:604  32900; agora::media::VideoEngine::stopLocalRender success
+INFO    22:26:55:604  32900; agora::media::VideoEngine::stopRemoteRender
+INFO    22:26:55:604  32900; [che] stopCall begins
+INFO    22:26:55:604  32900; [che] stop call returns -1, elapsed 0
+INFO    22:26:55:604  32900; [time] process EngineStopCall takes 0
+INFO    22:26:55:604  32900; [cm] connection state changed from 5 to 1
+INFO    22:26:55:604  32900; **CALL STATS: duration 50s, tx 85.887K bytes, rx 127.235K bytes, total 213.98K bytes
+INFO    22:26:55:604  32900; ~ping_server_win32 elapsed: 0, thread quit:0
+INFO    22:26:55:605  32900; CacheManager: save cache to storage elapsed 0
+INFO    22:26:55:605  32900; delRef of media engine, ref=0
+INFO    22:26:55:605  32900; [che] chat engine destroying
+INFO    22:26:55:605  32900; agora::media::VideoEngine::stopLocalRender
+INFO    22:26:55:605  32900; agora::media::VideoEngine::stopLocalRender success
+INFO    22:26:55:605  32900; agora::media::VideoEngine::stopRemoteRender
+INFO    22:26:55:605  32900; [che] stopCall begins
+INFO    22:26:55:605  32900; [che] stop call returns -1, elapsed 1
+INFO    22:26:55:605  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateCapturer capturer=0000000000000000
+INFO    22:26:55:605  32900; agora::media::VideoEngine::CreateVideoCapturer: interface=0000000000000000
+INFO    22:26:55:605  32900; VideoSendTrackImpl::agora::VideoSendTrackImpl::UpdateRenderer, renderer=0000000000000000
+INFO    22:26:55:605  32900; agora::media::VideoEngine::CreateVideoRenderer: interface=0000000000000000
+INFO    22:26:55:605  32900; agora::media::VideoEngine::stopLocalRender: Cannot stop (not exist)
+INFO    22:26:55:605  32900; agora::media::VideoEngine::stopRemoteRender
+INFO    22:26:55:605  32900; agora::media::VideoEngine::stopCapture: startCapture Error: No capturer for video send track
+INFO    22:26:55:605  32900; agora::media::PipelineManager::SetVideoEngineRef: VideoEngineRef = 0xffffffff
+WARN    22:26:55:605  32900; agora::media::VideoEngine::terminate: VideoEngine haven't init
+INFO    22:26:55:607  32900; [DEBUGG] ViERenderManager Destructor, engine_id: 0
+INFO    22:26:55:607  32900; AgoraCameraCapture::agora::AgoraCameraCapture::Dispose
+INFO    22:26:55:608  32900; AgoraRTC::AudioDeviceNotificationWindows::~AudioDeviceNotificationWindows destroyed
+INFO    22:26:55:608  32900; [che] chat engine destroyed
+INFO    22:26:55:608  32900; ***CALL END
+INFO    22:26:55:608  32900; onAudioStatusChanged enable audio
