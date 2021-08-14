@@ -10,24 +10,30 @@ using Photon.Pun;
 /// Player manager.
 /// Handles fire Input and Beams.
 /// </summary>
-public class PlayerManager : MonoBehaviourPunCallbacks
+public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     #region IPunObservable implementation
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        //if (stream.IsWriting)
-        //{
-        //    // We own this player: send the others our data
-        //    stream.SendNext(IsFiring);
-        //    stream.SendNext(Health);
-        //}
-        //else
-        //{
-        //    // Network player, receive data
-        //    this.IsFiring = (bool)stream.ReceiveNext();
-        //    this.Health = (float)stream.ReceiveNext();
-        //}
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            for (int i = 0; i < Emotions.Length; i++)
+            {
+                stream.SendNext(IsEmotionsActive[i]);
+                Debug.LogFormat("{0} send", IsEmotionsActive[i]);
+            }
+        }
+        else
+        {
+            Debug.Log("!!!receive!!!");
+            // Network player, receive data
+            for (int i = 0; i < Emotions.Length; i++)
+            {
+                this.IsEmotionsActive[i] = ((bool[])stream.ReceiveNext())[i];
+                Debug.LogFormat("{0} receive", IsEmotionsActive[i]);
+            }
+        }
     }
 
     #endregion
@@ -54,13 +60,24 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     //private GameObject beams;
 
     ////True, when the user is firing
-    //bool IsFiring;
+    bool[] IsEmotionsActive;
 
+    [SerializeField]
+    const int MaximumEmotionCount = 5;
+
+    [SerializeField]
+    private GameObject[] Emotions;
 
     [SerializeField]
     private KeyCode jumpKeyCode = KeyCode.Space;
     [SerializeField]
-    private KeyCode cameraKeyCode = KeyCode.Tab;
+    private KeyCode CAMERA_KEY_CODE = KeyCode.Tab;
+    [SerializeField]
+    private KeyCode EMOTION1_KEYCODE = KeyCode.Alpha1;
+    [SerializeField]
+    private KeyCode EMOTION2_KEYCODE = KeyCode.Alpha2;
+    [SerializeField]
+    private KeyCode EMOTION3_KEYCODE = KeyCode.Alpha3;
 
     [SerializeField]
     private GameObject fpCamera;
@@ -113,6 +130,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             fpCamera.SetActive(true);
             MainCamera = fpCamera.GetComponent<Camera>();
             tpCamera.SetActive(false);
+
+            // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
+            IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false};
         }
         // #Critical
         // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -171,11 +191,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         //{
         //    GameManager.Instance.LeaveRoom();
         //}
-        // trigger Beams active state
-        //if (beams != null && IsFiring != beams.activeInHierarchy)
-        //{
-        //    beams.SetActive(IsFiring);
-        //}
+        for (int i = 0; i < Emotions.Length; i++)
+        {
+            if (IsEmotionsActive != null && IsEmotionsActive[i] != Emotions[i].activeInHierarchy)
+            {
+                Emotions[i].SetActive(IsEmotionsActive[i]);
+            }
+        }
     }
 
     /// <summary>
@@ -214,31 +236,41 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         //    return;
         //}
     }
-    IEnumerator ExampleCoroutineColor()
+    IEnumerator CoroutineEmotion(int i)
     {
-        var originColor = hit.transform.GetComponent<MeshRenderer>().material.color;
-        hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
+        IsEmotionsActive[i] = true;
 
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
-        hit.transform.GetComponent<MeshRenderer>().material.color = originColor;
+        IsEmotionsActive[i] = false;
     }
 
     void SetName()
     {
         nameText.text = photonView.Owner.NickName;
     }
+
+    bool IsAllEmotionInactive()
+    {
+        foreach(var EmotionActive in IsEmotionsActive)
+        {
+            Debug.Log(EmotionActive);
+            if (EmotionActive) return false;
+        }
+        return true;
+    }
+
     void ProcessInputs()
     {
-        if(Input.GetKeyDown(cameraKeyCode))
+        if(Input.GetKeyDown(CAMERA_KEY_CODE))
         {
-          if(CamMode == 1){
+            StartCoroutine(CamChange());
+            if (CamMode == 1){
             CamMode = 0;
           }else{
             CamMode += 1;
           }
-          StartCoroutine(CamChange());
         }
         //x, z 방향이동
         float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
@@ -256,6 +288,29 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         this.fpCameraController.RotateTo(CamMode, mouseX, mouseY);
         this.tpCameraController.RotateTo(CamMode, mouseX, mouseY);
         
+        // 감정표현 부분입니다.
+        if (Input.GetKeyDown(EMOTION1_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(0));
+            }
+        }
+        if (Input.GetKeyDown(EMOTION2_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(1));
+            }
+        }
+        if (Input.GetKeyDown(EMOTION3_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(2));
+            }
+        }
+
         // 상호작용 부분입니다
         if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시
         {
@@ -277,10 +332,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
                     Debug.Log("책");
                     GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
                 }
-                //if (hit.transform.GetComponent<MeshRenderer>().material.color != Color.red)
-                //{
-                //    StartCoroutine(ExampleCoroutineColor());
-                //}
             }
         }
     }
