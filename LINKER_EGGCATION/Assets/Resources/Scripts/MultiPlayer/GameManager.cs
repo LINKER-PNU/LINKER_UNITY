@@ -41,8 +41,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject playerPrefab;
 
 
-    public AudioClip sound;
-
     #endregion
 
     #region MonoBehaviour CallBacks
