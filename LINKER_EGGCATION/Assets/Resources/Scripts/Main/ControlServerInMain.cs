@@ -298,7 +298,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         {
                 Debug.Log("We load the 'ClassScene' ");
 
-                PhotonNetwork.LoadLevel("MoClassScene");
+                PhotonNetwork.LoadLevel("WonClassScene");
         }
     }
 
