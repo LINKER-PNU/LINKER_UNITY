@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject JoinCodeTextObject;
 
-    private static AudioSource audioSource;
+    
 
     #endregion
 
@@ -41,16 +41,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject playerPrefab;
 
 
-    public AudioClip sound;
-
     #endregion
 
     #region MonoBehaviour CallBacks
 
     void Start()
     {
-        
-        StartCoroutine(CountTime()); 
         
         Instance = this;
         if (playerPrefab == null)
@@ -83,25 +79,25 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     #endregion
 
-    #region BellAlarm
+    // #region BellAlarm
 
-    IEnumerator CountTime() {
+    // IEnumerator CountTime() {
     
-        while (true)
-        {
-            audioSource = Instantiate(playerPrefab.AddComponent<AudioSource>());
-            audioSource.clip = sound;
-            audioSource.playOnAwake = false;
-            audioSource.mute = false;
-            audioSource.loop = false;
-            audioSource.PlayOneShot(sound);
-            DestroyObject(audioSource, 1f);
-            Debug.Log("1분 주기 : 벨 알람");
-            yield return new WaitForSeconds(30.0f);
-        }
-    }  
+    //     while (true)
+    //     {
+    //         audioSource = Instantiate(playerPrefab.AddComponent<AudioSource>());
+    //         audioSource.clip = sound;
+    //         audioSource.playOnAwake = false;
+    //         audioSource.mute = false;
+    //         audioSource.loop = false;
+    //         audioSource.PlayOneShot(sound);
+    //         DestroyObject(audioSource, 1f);
+    //         Debug.Log("1분 주기 : 벨 알람");
+    //         yield return new WaitForSeconds(30.0f);
+    //     }
+    // }  
 
-    #endregion
+    // #endregion
 
     #region Photon Callbacks
 
@@ -120,7 +116,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
-
+    
     #endregion
 
 
@@ -171,6 +167,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             PrintCurrentPlayerCount();
         }
     }
-
+    
     #endregion
 }
