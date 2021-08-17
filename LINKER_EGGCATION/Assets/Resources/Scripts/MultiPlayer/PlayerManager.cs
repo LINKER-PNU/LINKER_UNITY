@@ -17,22 +17,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
+            stream.SendNext(IsEmotionsActive);
             // We own this player: send the others our data
-            for (int i = 0; i < Emotions.Length; i++)
-            {
-                stream.SendNext(IsEmotionsActive[i]);
-                Debug.LogFormat("{0} send", IsEmotionsActive[i]);
-            }
+            //for (int i = 0; i < Emotions.Length; i++)
+            //{
+            //    Debug.LogFormat("{0} send", IsEmotionsActive[i]);
+            //}
         }
         else
         {
             Debug.Log("!!!receive!!!");
+            IsEmotionsActive = (bool[])stream.ReceiveNext();
             // Network player, receive data
-            for (int i = 0; i < Emotions.Length; i++)
-            {
-                this.IsEmotionsActive[i] = ((bool[])stream.ReceiveNext())[i];
-                Debug.LogFormat("{0} receive", IsEmotionsActive[i]);
-            }
+            //for (int i = 0; i < Emotions.Length; i++)
+            //{
+            //    Debug.LogFormat("{0} receive", IsEmotionsActive[i]);
+            //}
         }
     }
 
