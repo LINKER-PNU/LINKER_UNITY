@@ -133,6 +133,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
             // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
             IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false};
+
         }
         // #Critical
         // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -324,17 +325,58 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 Debug.Log(hit.transform?.name);
                 if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
                 {
-                    Debug.Log("교");
-                    GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
+                    if (!GameManager.createClassPanel.activeInHierarchy)
+                    {
+                        GameManager.createClassPanel.SetActive(true);
+                    }
                 }
                 if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
                 {
                     Debug.Log("책");
-                    GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
+                    if (GameManager.checkClassExist())
+                    {
+                        GameManager.ClientCanvasObject.SetActive(true);
+                        GameManager.leaveRoomBtn.SetActive(false);
+                        GameManager.leaveClassBtn.SetActive(true);
+                    }
+                    else
+                    {
+                        GameManager.Instance.StartCoroutineIsNotExist();
+                    }
                 }
             }
         }
     }
+
+    public void OnCreateClassConfirm()
+    {
+        Debug.Log("교");
+        if (GameManager.checkClassExist())
+        {
+            GameManager.Instance.StartCoroutineAlreadyExist();
+            GameManager.createClassPanel.SetActive(false);
+        }
+        else
+        {
+            GameManager.ServerCanvasObject.SetActive(true);
+            GameManager.createClassPanel.SetActive(false);
+            GameManager.leaveRoomBtn.SetActive(false);
+            GameManager.leaveClassBtn.SetActive(true);
+        }
+    }
+    public void OnCreateClassCancle()
+    {
+        GameManager.createClassPanel.SetActive(false);
+    }
+
+    static public void OnLeaveClass()
+    {
+        GameManager.ServerCanvasObject.SetActive(false);
+        GameManager.ClientCanvasObject.SetActive(false);
+        GameManager.leaveRoomBtn.SetActive(true);
+        GameManager.leaveClassBtn.SetActive(false);
+    }
+
     bool isTeacherDesk()
     {
         return hit.transform.name == "pCube4";

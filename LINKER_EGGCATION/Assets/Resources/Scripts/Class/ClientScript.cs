@@ -16,10 +16,15 @@ using Random = UnityEngine.Random;
 public class ClientScript : MonoBehaviour
 {
     [SerializeField] private string APP_ID = "";
+    [SerializeField] private GameObject ClientObject;
 
     private string TOKEN = "";
 
     private string CHANNEL_NAME = "YOUR_CHANNEL_NAME";
+
+    private uint master_uid;
+
+    private GameObject go;
 
     private IRtcEngine mRtcEngine;
     private uint remoteUid = 0;
@@ -35,7 +40,7 @@ public class ClientScript : MonoBehaviour
 #endif
 
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
         CHANNEL_NAME = "linker_test";
         TOKEN = get_token();
@@ -45,11 +50,6 @@ public class ClientScript : MonoBehaviour
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
         _dispRect = new Dictionary<uint, AgoraNativeBridge.RECT>();
 #endif
-        if (mRtcEngine != null)
-        {
-            Debug.Log("Agora engine exists already!!");
-            return;
-        }
         CheckAppId();
         InitEngine();
         JoinChannel();
@@ -80,7 +80,10 @@ public class ClientScript : MonoBehaviour
 
     private void InitEngine()
     {
-        mRtcEngine = IRtcEngine.GetEngine(APP_ID);
+        if (mRtcEngine == null)
+        {
+            mRtcEngine = IRtcEngine.GetEngine(APP_ID);
+        }
         mRtcEngine.SetLogFile("log.txt");
         //mRtcEngine.EnableAudio();
         mRtcEngine.EnableVideo();
@@ -112,6 +115,7 @@ public class ClientScript : MonoBehaviour
     {
         if (remoteUid == 0) remoteUid = uid;
         _logger.UpdateLog(string.Format("OnUserJoined uid: ${0} elapsed: ${1}", uid, elapsed));
+        ;
         var json = new JObject();
         string method = "is_class_master";
 
@@ -119,6 +123,7 @@ public class ClientScript : MonoBehaviour
         json.Add("roomName", CHANNEL_NAME);
         if (Convert.ToBoolean(request_server(json, method)))
         {
+            master_uid = uid;
             makeVideoView(uid);
         }
     }
@@ -127,13 +132,11 @@ public class ClientScript : MonoBehaviour
     {
         remoteUid = 0;
         _logger.UpdateLog(string.Format("OnUserOffLine uid: ${0}, reason: ${1}", uid, (int)reason));
-        var json = new JObject();
-        string method = "is_class_master";
 
-        json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (!GameManager.checkClassExist())
         {
             DestroyVideoView(uid);
+            PlayerManager.OnLeaveClass();
         }
     }
 
@@ -160,6 +163,8 @@ public class ClientScript : MonoBehaviour
             mRtcEngine.LeaveChannel();
             mRtcEngine.DisableVideoObserver();
             IRtcEngine.Destroy();
+            mRtcEngine = null;
+            DestroyVideoView(master_uid);
         }
     }
     void OnDisable()
@@ -170,34 +175,37 @@ public class ClientScript : MonoBehaviour
             mRtcEngine.LeaveChannel();
             mRtcEngine.DisableVideoObserver();
             IRtcEngine.Destroy();
+            mRtcEngine = null;
+            DestroyVideoView(master_uid);
         }
     }
 
     private void DestroyVideoView(uint uid)
     {
-        var go = GameObject.Find(uid.ToString());
+        go = ClientObject.transform.Find(uid.ToString()).gameObject;
         if (!ReferenceEquals(go, null))
         {
-            Destroy(go);
+            Debug.Log(go);
+            DestroyImmediate(go);
         }
     }
 
     private void makeVideoView(uint uid)
     {
-        var go = GameObject.Find(uid.ToString());
+        go = GameObject.Find(uid.ToString());
         if (!ReferenceEquals(go, null))
         {
             return; // reuse
         }
 
         // create a GameObject and assign to this new user
-        var videoSurface = makePlaneSurface(uid.ToString());
+        var videoSurface = makeImageSurface(uid.ToString());
         if (!ReferenceEquals(videoSurface, null))
         {
             // configure videoSurface
             videoSurface.SetForUser(uid);
             videoSurface.SetEnable(true);
-            videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.Renderer);
+            videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
             videoSurface.SetGameFps(30);
             videoSurface.EnableFilpTextureApply(true, false);
         }
@@ -222,7 +230,6 @@ public class ClientScript : MonoBehaviour
 
         // configure videoSurface
         var videoSurface = go.AddComponent<VideoSurface>();
-        Debug.Log("CREATE");
         return videoSurface;
     }
 
@@ -241,7 +248,7 @@ public class ClientScript : MonoBehaviour
         go.AddComponent<RawImage>();
         // make the object draggable
         go.AddComponent<UIElementDrag>();
-        var canvas = GameObject.Find("VideoCanvas");
+        var canvas = GameObject.Find("ClientVideoCanvas");
         if (canvas != null)
         {
             go.transform.parent = canvas.transform;
@@ -270,11 +277,13 @@ public class ClientScript : MonoBehaviour
             mRtcEngine.LeaveChannel();
             mRtcEngine.DisableVideoObserver();
             IRtcEngine.Destroy();
+            mRtcEngine = null;
+            DestroyVideoView(master_uid);
         }
         // Scene 이동
         Debug.Log("EXIT");
-
     }
+
     private string request_server(JObject req, string method)
     {
         string url = "http://34.64.85.29:8080/";
