@@ -108,6 +108,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     RaycastHit hit;
     Ray ray;
     float MaxDistance = 15f;
+    Vector3 vel = Vector3.zero;
+    
 
     #endregion
 
@@ -261,6 +263,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         return true;
     }
 
+  
+
     void ProcessInputs()
     {
         if(Input.GetKeyDown(CAMERA_KEY_CODE))
@@ -273,20 +277,24 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
           }
         }
         //x, z 방향이동
-        float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
-        float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
+        
+        if(!GameManager.isDeskMode){
+          float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
+          float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
 
-        this.movement3D.MoveTo(CamMode,new Vector3(x, 0, z));
+          this.movement3D.MoveTo(CamMode,new Vector3(x, 0, z));
 
-        if (Input.GetKeyDown(jumpKeyCode))
-        {
-            this.movement3D.JumpTo();
-        }
+          if (Input.GetKeyDown(jumpKeyCode))
+          {
+              this.movement3D.JumpTo();
+          }
+        
 
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         this.fpCameraController.RotateTo(CamMode, mouseX, mouseY);
         this.tpCameraController.RotateTo(CamMode, mouseX, mouseY);
+        }
         
         // 감정표현 부분입니다.
         if (Input.GetKeyDown(EMOTION1_KEYCODE))
@@ -322,29 +330,47 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             if (Physics.Raycast(ray, out hit, MaxDistance))
             {
                 Debug.Log(hit.transform?.name);
-                if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
-                {
-                    Debug.Log("교");
-                    GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
+                GameObject tempChair = null;
+                
+                tempChair = GameObject.Find("chair"+hit.transform.name.Substring(4));
+                // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
+
+                if(isDesk()){
+                  GameManager.isDeskMode = true;
+                  this.fpCameraController.RotateDeskMode();
+                  this.tpCameraController.RotateDeskMode();
+                  Vector3 newPos = new Vector3(tempChair.transform.position.x,tempChair.transform.position.y + 10f,tempChair.transform.position.z);
+                  this.transform.position = newPos;
+                  
+                  GameManager.DeskModeObject.SetActive(true);
+                  Debug.Log(tempChair.transform.position);
                 }
-                if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
-                {
-                    Debug.Log("책");
-                    GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
-                }
+
+                // if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
+                // {
+                //     Debug.Log("교");
+                //     GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
+                // }
+                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
+                // {
+                //     Debug.Log("책");
+                    
+                //     // GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
+                // }
             }
         }
     }
     bool isTeacherDesk()
     {
-        return hit.transform.name == "pCube4";
+        return hit.transform.name == "pCube4" || hit.transform.name =="TeacherDesk";
     }
 
     bool isDesk()
     {
-        return hit.transform.name.Length == 7 && hit.transform.name.Substring(0, 5) == "pCube"
-            && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
-            && int.Parse(hit.transform.name.Substring(5, 2)) <= 56;
+        return hit.transform.name.Substring(0, 4) == "desk" ;
+        // return (hit.transform.name.Length == 7 && hit.transform.name.Substring(0, 5) == "pCube"
+        //     && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
+        //     && int.Parse(hit.transform.name.Substring(5, 2)) <= 56)|| hit.transform.name.Substring(0, 4) == "desk" ;
     }
     IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);

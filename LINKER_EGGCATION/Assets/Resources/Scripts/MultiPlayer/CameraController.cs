@@ -10,21 +10,23 @@ public class CameraController : MonoBehaviour
 
     private float   rotateSpeedX  = 3;
     private float   rotateSpeedY  = 5;
-    private float   limitMinX = -80;
-    private float   limitMaxX = 50;
+    private float   limitMinY = -30;
+    private float   limitMaxY= 30;
     private float   eulerAngleX = 3;
     private float   eulerAngleY = 3;
     
     
-
-
+    public void RotateDeskMode(){
+        // float rotHorizontal = -1 * rotateSpeedX * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(transform.rotation.x, 90, 0);
+    }
 
     public void RotateTo(int CamMode, float mouseX, float mouseY)
     {
         eulerAngleY += mouseX  * rotateSpeedX;
         eulerAngleX -= mouseY  * rotateSpeedY;
 
-        eulerAngleX = ClampAngle(eulerAngleX, limitMinX, limitMaxX);
+        eulerAngleX = ClampAngle(eulerAngleX, limitMinY, limitMaxY);
 
         transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
     }

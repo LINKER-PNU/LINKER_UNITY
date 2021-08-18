@@ -51,6 +51,22 @@ public class Movement3D : MonoBehaviour
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
     }
 
+    // public void sitChair(int CamMode,Vector3 direction)
+    // {
+    //     Vector3 movedis;
+    //     if(CamMode == 1){
+    //       movedis = fpCameraTransform.rotation * direction;
+    //       // lookForward = new Vector3(fpCameraTransform.forward.x, 0f, fpCameraTransform.forward.z).normalized;
+    //       // lookRight = new Vector3(fpCameraTransform.right.x, 0f, fpCameraTransform.right.z).normalized;
+    //       // movedis = lookForward*direction.y + lookRight*direction.x;
+          
+    //     }
+    //     else{
+    //       movedis =  tpCameraTransform.rotation * direction;
+    //     }
+    //     moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
+    // }
+
     public void JumpTo()
     {
         if (characterController.isGrounded == true) {
