@@ -20,9 +20,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private GameObject emptyObject;
+  
 
     [SerializeField]
     private GameObject JoinCodeTextObject;
+
+    static public GameObject DeskModeObject;
 
     
 
@@ -34,6 +37,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     static public GameObject ServerCanvasObject;
     
     static public GameObject ClientCanvasObject;
+    
+    
+
 
     public static GameManager Instance;
 
@@ -72,8 +78,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         Text JoinCodeText = JoinCodeTextObject.GetComponent<Text>();
         JoinCodeText.text = joinCode;
 
+        
+
         ServerCanvasObject = emptyObject.transform.Find("ServerVideoCanvas").gameObject;
         ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
+        DeskModeObject = GameObject.Find("DeskMode").gameObject;
+        // timerObject = deskModeObject.transform.Find("Timer").gameObject;
+        // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
         Debug.Log(ServerCanvasObject.name);
     }
 

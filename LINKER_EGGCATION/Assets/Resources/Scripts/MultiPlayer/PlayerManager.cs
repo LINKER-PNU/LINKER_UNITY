@@ -108,6 +108,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     RaycastHit hit;
     Ray ray;
     float MaxDistance = 15f;
+    private bool deskMode = false;
 
     #endregion
 
@@ -121,7 +122,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         // #Important
         // used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
-        if (photonView.IsMine)
+        if (photonView.IsMine &&!deskMode)
         {
             PlayerManager.LocalPlayerInstance = this.gameObject;
             Debug.Log("Control My Camera");
@@ -322,29 +323,45 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             if (Physics.Raycast(ray, out hit, MaxDistance))
             {
                 Debug.Log(hit.transform?.name);
-                if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
-                {
-                    Debug.Log("교");
-                    GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
+                GameObject tempChair = null;
+                
+                tempChair = GameObject.Find("chair1");
+                Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
+
+                if(isDesk()){
+                  deskMode = true;
+                  GameManager.DeskModeObject.SetActive(true);
+                  this.movement3D.MoveTo(CamMode,new Vector3(tempChair.transform.position.x, tempChair.transform.position.y+0.5f, tempChair.transform.position.z));
+                  Debug.Log(tempChair.transform.position);
+                  // this.fpCameraController.RotateTo(CamMode, mouseX, mouseY);
+                  // this.tpCameraController.RotateTo(CamMode, mouseX, mouseY);
                 }
-                if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
-                {
-                    Debug.Log("책");
-                    GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
-                }
+
+                // if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
+                // {
+                //     Debug.Log("교");
+                //     GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
+                // }
+                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
+                // {
+                //     Debug.Log("책");
+                    
+                //     // GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
+                // }
             }
         }
     }
     bool isTeacherDesk()
     {
-        return hit.transform.name == "pCube4";
+        return hit.transform.name == "pCube4" || hit.transform.name =="TeacherDesk";
     }
 
     bool isDesk()
     {
-        return hit.transform.name.Length == 7 && hit.transform.name.Substring(0, 5) == "pCube"
-            && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
-            && int.Parse(hit.transform.name.Substring(5, 2)) <= 56;
+        return hit.transform.name.Substring(0, 4) == "desk" ;
+        // return (hit.transform.name.Length == 7 && hit.transform.name.Substring(0, 5) == "pCube"
+        //     && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
+        //     && int.Parse(hit.transform.name.Substring(5, 2)) <= 56)|| hit.transform.name.Substring(0, 4) == "desk" ;
     }
     IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);
