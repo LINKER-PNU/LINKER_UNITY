@@ -311,6 +311,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 StartCoroutine(CoroutineEmotion(2));
             }
         }
+        // 공지기능 부분입니다.
+        if (Input.GetKeyDown(EMOTION1_KEYCODE))
+        {
+        }
 
         // 상호작용 부분입니다
         if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시

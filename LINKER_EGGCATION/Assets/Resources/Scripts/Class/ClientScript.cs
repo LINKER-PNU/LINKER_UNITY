@@ -13,6 +13,8 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Random = UnityEngine.Random;
 
+using eggcation;
+
 public class ClientScript : MonoBehaviour
 {
     [SerializeField] private string APP_ID = "";
@@ -42,7 +44,7 @@ public class ClientScript : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        CHANNEL_NAME = "linker_test";
+        CHANNEL_NAME = Utility.roomName;
         TOKEN = get_token();
         //CHANNEL_NAME = ControlServerInMain.roomName;
 
@@ -66,7 +68,7 @@ public class ClientScript : MonoBehaviour
         string method = "get_token";
 
         json.Add("roomName", CHANNEL_NAME);
-        return request_server(json, method);
+        return Utility.request_server(json, method);
     }
     private void CheckAppId()
     {
@@ -121,7 +123,7 @@ public class ClientScript : MonoBehaviour
 
         json.Add("classMaster", Convert.ToString(uid));
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             master_uid = uid;
             makeVideoView(uid);
@@ -283,31 +285,4 @@ public class ClientScript : MonoBehaviour
         // Scene 이동
         Debug.Log("EXIT");
     }
-
-    private string request_server(JObject req, string method)
-    {
-        string url = "http://34.64.85.29:8080/";
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + method);
-        httpWebRequest.ContentType = "application/json";
-        httpWebRequest.Method = "POST";
-
-        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-        {
-            streamWriter.Write(req.ToString());
-        }
-
-        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-        string characterSet = httpResponse.CharacterSet;
-        Debug.Log(characterSet);
-        using (var streamReader = new StreamReader(httpResponse.GetResponseStream(), System.Text.Encoding.UTF8, true))
-        {
-            var result = streamReader.ReadToEnd();
-            Debug.Log(result);
-            return result;
-        }
-    }
-
-    //void myTest(GameObject go)
-    //{
-    //}
 }

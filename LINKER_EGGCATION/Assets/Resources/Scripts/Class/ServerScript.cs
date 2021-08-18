@@ -13,6 +13,8 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Random = UnityEngine.Random;
 
+using eggcation;
+
 public class ServerScript : MonoBehaviour
 {
     [SerializeField] private string APP_ID = "";
@@ -38,7 +40,7 @@ public class ServerScript : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        CHANNEL_NAME = "linker_test";
+        CHANNEL_NAME = Utility.roomName;
         TOKEN = get_token();
         //CHANNEL_NAME = ControlServerInMain.roomName;
 
@@ -62,7 +64,7 @@ public class ServerScript : MonoBehaviour
         string method = "get_token";
 
         json.Add("roomName", CHANNEL_NAME);
-        return request_server(json, method);
+        return Utility.request_server(json, method);
     }
     private void CheckAppId()
     {
@@ -194,7 +196,7 @@ public class ServerScript : MonoBehaviour
 
         json.Add("classMaster", Convert.ToString(uid));
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             makeVideoView(0);
         }
@@ -204,7 +206,7 @@ public class ServerScript : MonoBehaviour
             string delete_method = "delete_class_master";
 
             delete_json.Add("roomName", CHANNEL_NAME);
-            if (Convert.ToBoolean(request_server(delete_json, delete_method)))
+            if (Convert.ToBoolean(Utility.request_server(delete_json, delete_method)))
             {
                 if (mRtcEngine != null)
                 {
@@ -248,7 +250,7 @@ public class ServerScript : MonoBehaviour
         string method = "delete_class_master";
 
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
             {
@@ -274,7 +276,7 @@ public class ServerScript : MonoBehaviour
         string method = "delete_class_master";
 
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
             {
@@ -382,14 +384,6 @@ public class ServerScript : MonoBehaviour
         go.transform.localPosition = new Vector3(0, 0, 0f);
         go.transform.localScale = new Vector3(8f, 4.5f, 1f);
 
-
-        //var goTransform = go.GetComponent<RectTransform>();
-        //goTransform.localPosition = new Vector3(0, -100, 0);
-        //Debug.LogFormat("{0}, {1}", Screen.width, Screen.height);
-        //goTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
-        ////go.transform.localScale = new Vector3(Screen.width, Screen.height - 10f, 0);
-
-        // configure videoSurface
         var videoSurface = go.AddComponent<VideoSurface>();
         return videoSurface;
     }
@@ -400,7 +394,7 @@ public class ServerScript : MonoBehaviour
         string method = "delete_class_master";
 
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
             {
@@ -418,27 +412,5 @@ public class ServerScript : MonoBehaviour
             Debug.Log("class master 삭제 에러");
         }
 
-    }
-
-    private string request_server(JObject req, string method)
-    {
-        string url = "http://34.64.85.29:8080/";
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + method);
-        httpWebRequest.ContentType = "application/json";
-        httpWebRequest.Method = "POST";
-
-        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-        {
-            streamWriter.Write(req.ToString());
-        }
-
-        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-        string characterSet = httpResponse.CharacterSet;
-        using (var streamReader = new StreamReader(httpResponse.GetResponseStream(), System.Text.Encoding.UTF8, true))
-        {
-            var result = streamReader.ReadToEnd();
-            Debug.Log(result);
-            return result;
-        }
     }
 }
