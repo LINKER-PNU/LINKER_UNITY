@@ -20,12 +20,14 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private GameObject emptyObject;
+    [SerializeField]
+    private GameObject canvasObject;
   
 
     [SerializeField]
     private GameObject JoinCodeTextObject;
 
-    static public GameObject DeskModeObject;
+    
 
     
 
@@ -37,6 +39,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     static public GameObject ServerCanvasObject;
     
     static public GameObject ClientCanvasObject;
+
+    static public GameObject DeskModeObject;
+    
+    static public bool isDeskMode = false;
     
     
 
@@ -82,12 +88,13 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         ServerCanvasObject = emptyObject.transform.Find("ServerVideoCanvas").gameObject;
         ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
-        DeskModeObject = GameObject.Find("DeskMode").gameObject;
+        DeskModeObject = canvasObject.transform.Find("DeskMode").gameObject;
         // timerObject = deskModeObject.transform.Find("Timer").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
-        Debug.Log(ServerCanvasObject.name);
+        Debug.Log(this.name,DeskModeObject);
     }
 
+   
     #endregion
 
     // #region BellAlarm
@@ -127,7 +134,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
-    
+    public void onDeskMode(){
+      isDeskMode = false;
+      DeskModeObject.SetActive(false);
+    }
+
     #endregion
 
 
