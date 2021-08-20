@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     private GameObject topPanelObject;
 
     [SerializeField]
+    private GameObject escPanelObject;
+
+    [SerializeField]
     private GameObject JoinCodeTextObject;
 
     
@@ -96,7 +99,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         // Find 연산은 자원을 많이 먹으므로 Awake에서 한번 실행해줍니다.
         createClassPanel = canvasObject.transform.Find("createClass_panel").gameObject;
-        leaveRoomBtn = topPanelObject.transform.Find("leaveRoom_btn").gameObject;
+        leaveRoomBtn = escPanelObject.transform.Find("leaveRoom_btn").gameObject;
         leaveClassBtn = topPanelObject.transform.Find("leaveClass_btn").gameObject;
         ServerCanvasObject = emptyObject.transform.Find("ServerVideoCanvas").gameObject;
         ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
