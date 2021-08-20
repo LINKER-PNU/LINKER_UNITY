@@ -22,12 +22,15 @@ public class GameManager : MonoBehaviourPunCallbacks
     private GameObject emptyObject;
     [SerializeField]
     private GameObject canvasObject;
-  
+
+    [SerializeField]
+    private GameObject topPanelObject;
+
+    [SerializeField]
+    private GameObject escPanelObject;
 
     [SerializeField]
     private GameObject JoinCodeTextObject;
-
-    
 
     
 
@@ -36,10 +39,20 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     #region Public Fields
 
+    static public GameObject createClassPanel;
+
+    static public GameObject leaveRoomBtn;
+
+    static public GameObject leaveClassBtn;
+
     static public GameObject ServerCanvasObject;
     
     static public GameObject ClientCanvasObject;
 
+    static public GameObject isNotExistObject;
+
+    static public GameObject alreadyExistObject;
+    
     static public GameObject DeskModeObject;
     
     static public bool isDeskMode = false;
@@ -84,10 +97,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         Text JoinCodeText = JoinCodeTextObject.GetComponent<Text>();
         JoinCodeText.text = joinCode;
 
-        
-
+        // Find 연산은 자원을 많이 먹으므로 Awake에서 한번 실행해줍니다.
+        createClassPanel = canvasObject.transform.Find("createClass_panel").gameObject;
+        leaveRoomBtn = escPanelObject.transform.Find("leaveRoom_btn").gameObject;
+        leaveClassBtn = topPanelObject.transform.Find("leaveClass_btn").gameObject;
         ServerCanvasObject = emptyObject.transform.Find("ServerVideoCanvas").gameObject;
         ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
+        isNotExistObject = canvasObject.transform.Find("isNotExist_text").gameObject;
+        alreadyExistObject = canvasObject.transform.Find("alreadyExist_text").gameObject;
+        Debug.Log(ServerCanvasObject.name);
         DeskModeObject = canvasObject.transform.Find("DeskMode").gameObject;
         // timerObject = deskModeObject.transform.Find("Timer").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
@@ -158,6 +176,44 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         return Utility.request_server(json, method);
 
+    }
+
+    public static bool checkClassExist()
+    {
+        var json = new JObject();
+        string method = "check_class_exist";
+
+        json.Add("roomName", PhotonNetwork.CurrentRoom.Name);
+        return Convert.ToBoolean(Utility.request_server(json, method));
+    }
+
+    public void StartCoroutineAlreadyExist()
+    {
+        StartCoroutine(CoroutineAlreadyExist());
+    }
+    public void StartCoroutineIsNotExist()
+    {
+        StartCoroutine(CoroutineIsNotExist());
+    }
+
+    private IEnumerator CoroutineAlreadyExist()
+    {
+        alreadyExistObject.SetActive(true);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1f);
+
+        alreadyExistObject.SetActive(false);
+    }
+
+    private IEnumerator CoroutineIsNotExist()
+    {
+        isNotExistObject.SetActive(true);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1f);
+
+        isNotExistObject.SetActive(false);
     }
     #endregion
 

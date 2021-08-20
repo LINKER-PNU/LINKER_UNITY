@@ -13,13 +13,18 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Random = UnityEngine.Random;
 
+using eggcation;
+
 public class ServerScript : MonoBehaviour
 {
     [SerializeField] private string APP_ID = "";
+    [SerializeField] private GameObject ServerObject;
 
     private string TOKEN = "";
 
     private string CHANNEL_NAME = "YOUR_CHANNEL_NAME";
+
+    public static GameObject go;
 
     private IRtcEngine mRtcEngine;
     private uint remoteUid = 0;
@@ -33,22 +38,16 @@ public class ServerScript : MonoBehaviour
 #endif
 
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
-        CHANNEL_NAME = "linker_test";
+        CHANNEL_NAME = Utility.roomName;
         TOKEN = get_token();
         //CHANNEL_NAME = ControlServerInMain.roomName;
-        checkClassExist();
 
         _logger = new Logger(logText);
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
         _dispRect = new Dictionary<uint, AgoraNativeBridge.RECT>();
 #endif
-        if (mRtcEngine != null)
-        {
-            Debug.Log("Agora engine exists already!!");
-            return;
-        }
         CheckAppId();
         InitEngine();
         JoinChannel();
@@ -65,21 +64,7 @@ public class ServerScript : MonoBehaviour
         string method = "get_token";
 
         json.Add("roomName", CHANNEL_NAME);
-        return request_server(json, method);
-    }
-    void checkClassExist()
-    {
-        var json = new JObject();
-        string method = "check_class_exist";
-
-        json.Add("classType", "create");
-
-        json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
-        {
-            Debug.Log("이미 수업 중입니다!");
-            // Scene 로드
-        }
+        return Utility.request_server(json, method);
     }
     private void CheckAppId()
     {
@@ -93,7 +78,10 @@ public class ServerScript : MonoBehaviour
 
     private void InitEngine()
     {
-        mRtcEngine = IRtcEngine.GetEngine(APP_ID);
+        if (mRtcEngine == null)
+        {
+            mRtcEngine = IRtcEngine.GetEngine(APP_ID);
+        }
         mRtcEngine.SetLogFile("log.txt");
         //mRtcEngine.EnableAudio();
         mRtcEngine.EnableVideo();
@@ -155,41 +143,46 @@ public class ServerScript : MonoBehaviour
 #endif
         }
 
-        // 준비가 완료되면 바로 공유 시작
-        mRtcEngine.StopScreenCapture();
+        go = GameObject.Find("0");
+        if (ReferenceEquals(go, null))
+        {
+            // 준비가 완료되면 바로 공유 시작
+            mRtcEngine.StopScreenCapture();
 
-        if (_winIdSelect == null) return;
-        var option = _winIdSelect.options[_winIdSelect.value].text;
-        if (string.IsNullOrEmpty(option)) return;
-        if (option.Contains("|"))
-        {
-            var windowId = option.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1];
-            _logger.UpdateLog(string.Format(">>>>> Start sharing {0}", windowId));
-            mRtcEngine.StartScreenCaptureByWindowId(int.Parse(windowId), default(Rectangle),
-                default(ScreenCaptureParameters));
-        }
-        else
-        {
+            if (_winIdSelect == null) return;
+            var option = _winIdSelect.options[_winIdSelect.value].text;
+            if (string.IsNullOrEmpty(option)) return;
+            if (option.Contains("|"))
+            {
+                var windowId = option.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1];
+                _logger.UpdateLog(string.Format(">>>>> Start sharing {0}", windowId));
+                mRtcEngine.StartScreenCaptureByWindowId(int.Parse(windowId), default(Rectangle),
+                    default(ScreenCaptureParameters));
+            }
+            else
+            {
+                Debug.Log("hoho");
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
             var dispId = uint.Parse(option.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1]);
             _logger.UpdateLog(string.Format(">>>>> Start sharing display {0}", dispId));
             mRtcEngine.StartScreenCaptureByDisplayId(dispId, default(Rectangle),
                 new ScreenCaptureParameters {captureMouseCursor = true, frameRate = 30});
 #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-            var diapFlag = uint.Parse(option.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1]);
-            var screenRect = new Rectangle
-            {
-                x = _dispRect[diapFlag].left,
-                y = _dispRect[diapFlag].top,
-                width = _dispRect[diapFlag].right - _dispRect[diapFlag].left,
-                height = _dispRect[diapFlag].bottom - _dispRect[diapFlag].top
-            };
-            _logger.UpdateLog(string.Format(">>>>> Start sharing display {0}: {1} {2} {3} {4}", diapFlag, screenRect.x,
-                screenRect.y, screenRect.width, screenRect.height));
-            var ret = mRtcEngine.StartScreenCaptureByScreenRect(screenRect,
-                new Rectangle { x = 0, y = 0, width = 0, height = 0 }, default(ScreenCaptureParameters));
-#endif
+                var diapFlag = uint.Parse(option.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1]);
+                var screenRect = new Rectangle
+                {
+                    x = _dispRect[diapFlag].left,
+                    y = _dispRect[diapFlag].top,
+                    width = _dispRect[diapFlag].right - _dispRect[diapFlag].left,
+                    height = _dispRect[diapFlag].bottom - _dispRect[diapFlag].top
+                };
+                _logger.UpdateLog(string.Format(">>>>> Start sharing display {0}: {1} {2} {3} {4}", diapFlag, screenRect.x,
+                    screenRect.y, screenRect.width, screenRect.height));
+                var ret = mRtcEngine.StartScreenCaptureByScreenRect(screenRect,
+                    new Rectangle { x = 0, y = 0, width = 0, height = 0 }, default(ScreenCaptureParameters));
+            }
         }
+#endif
     }
 
     private void OnJoinChannelSuccessHandler(string channelName, uint uid, int elapsed)
@@ -203,19 +196,28 @@ public class ServerScript : MonoBehaviour
 
         json.Add("classMaster", Convert.ToString(uid));
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             makeVideoView(0);
         }
         else
         {
-            if (mRtcEngine != null)
+            var delete_json = new JObject();
+            string delete_method = "delete_class_master";
+
+            delete_json.Add("roomName", CHANNEL_NAME);
+            if (Convert.ToBoolean(Utility.request_server(delete_json, delete_method)))
             {
-                mRtcEngine.LeaveChannel();
-                mRtcEngine.DisableVideoObserver();
-                IRtcEngine.Destroy();
+                if (mRtcEngine != null)
+                {
+                    mRtcEngine.LeaveChannel();
+                    mRtcEngine.DisableVideoObserver();
+                    IRtcEngine.Destroy();
+                    mRtcEngine = null;
+                    DestroyVideoView();
+                }
+                Debug.Log("이미 수업 중입니다!");
             }
-            Debug.Log("이미 수업 중입니다!");
             // Scene 돌아가기
         }
     }
@@ -224,7 +226,6 @@ public class ServerScript : MonoBehaviour
     {
         Debug.Log("OnLeaveChannelSuccess");
         _logger.UpdateLog("OnLeaveChannelSuccess");
-        DestroyVideoView(0);
     }
 
     private void OnSDKWarningHandler(int warn, string msg)
@@ -249,13 +250,15 @@ public class ServerScript : MonoBehaviour
         string method = "delete_class_master";
 
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
             {
                 mRtcEngine.LeaveChannel();
                 mRtcEngine.DisableVideoObserver();
                 IRtcEngine.Destroy();
+                mRtcEngine = null;
+                DestroyVideoView();
             }
             // Scene 이동
             Debug.Log("EXIT");
@@ -273,13 +276,15 @@ public class ServerScript : MonoBehaviour
         string method = "delete_class_master";
 
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
             {
                 mRtcEngine.LeaveChannel();
                 mRtcEngine.DisableVideoObserver();
                 IRtcEngine.Destroy();
+                mRtcEngine = null;
+                DestroyVideoView();
             }
             // Scene 이동
             Debug.Log("EXIT");
@@ -290,35 +295,35 @@ public class ServerScript : MonoBehaviour
         }
     }
 
-    private void DestroyVideoView(uint uid)
+    private void DestroyVideoView()
     {
-        var go = GameObject.Find(uid.ToString());
+        go = ServerObject.transform.Find("0").gameObject;
         if (!ReferenceEquals(go, null))
         {
+            Debug.Log(go);
             Destroy(go);
         }
     }
 
     private void makeVideoView(uint uid)
     {
-        var go = GameObject.Find(uid.ToString());
+        go = GameObject.Find(uid.ToString());
         if (!ReferenceEquals(go, null))
         {
             return; // reuse
         }
 
         // create a GameObject and assign to this new user
-        var videoSurface = makePlaneSurface(uid.ToString());
+        var videoSurface = makeImageSurface(uid.ToString());
         if (!ReferenceEquals(videoSurface, null))
         {
             // configure videoSurface
             videoSurface.SetForUser(uid);
             videoSurface.SetEnable(true);
-            videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.Renderer);
+            videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
             videoSurface.SetGameFps(30);
             videoSurface.EnableFilpTextureApply(true, false);
         }
-        Debug.Log("HERE?");
     }
 
     // VIDEO TYPE 1: 3D Object
@@ -343,7 +348,6 @@ public class ServerScript : MonoBehaviour
 
         // configure videoSurface
         var videoSurface = go.AddComponent<VideoSurface>();
-        Debug.Log("CREATE");
         return videoSurface;
     }
 
@@ -362,7 +366,7 @@ public class ServerScript : MonoBehaviour
         go.AddComponent<RawImage>();
         // make the object draggable
         go.AddComponent<UIElementDrag>();
-        var canvas = GameObject.Find("VideoCanvas");
+        var canvas = GameObject.Find("ServerVideoCanvas");
         if (canvas != null)
         {
             go.transform.parent = canvas.transform;
@@ -380,14 +384,6 @@ public class ServerScript : MonoBehaviour
         go.transform.localPosition = new Vector3(0, 0, 0f);
         go.transform.localScale = new Vector3(8f, 4.5f, 1f);
 
-
-        //var goTransform = go.GetComponent<RectTransform>();
-        //goTransform.localPosition = new Vector3(0, -100, 0);
-        //Debug.LogFormat("{0}, {1}", Screen.width, Screen.height);
-        //goTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
-        ////go.transform.localScale = new Vector3(Screen.width, Screen.height - 10f, 0);
-
-        // configure videoSurface
         var videoSurface = go.AddComponent<VideoSurface>();
         return videoSurface;
     }
@@ -398,13 +394,15 @@ public class ServerScript : MonoBehaviour
         string method = "delete_class_master";
 
         json.Add("roomName", CHANNEL_NAME);
-        if (Convert.ToBoolean(request_server(json, method)))
+        if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
             {
                 mRtcEngine.LeaveChannel();
                 mRtcEngine.DisableVideoObserver();
                 IRtcEngine.Destroy();
+                mRtcEngine = null;
+                DestroyVideoView();
             }
             // Scene 이동
             Debug.Log("EXIT");
@@ -414,27 +412,5 @@ public class ServerScript : MonoBehaviour
             Debug.Log("class master 삭제 에러");
         }
 
-    }
-
-    private string request_server(JObject req, string method)
-    {
-        string url = "http://34.64.85.29:8080/";
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create(url + method);
-        httpWebRequest.ContentType = "application/json";
-        httpWebRequest.Method = "POST";
-
-        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-        {
-            streamWriter.Write(req.ToString());
-        }
-
-        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-        string characterSet = httpResponse.CharacterSet;
-        using (var streamReader = new StreamReader(httpResponse.GetResponseStream(), System.Text.Encoding.UTF8, true))
-        {
-            var result = streamReader.ReadToEnd();
-            Debug.Log(result);
-            return result;
-        }
     }
 }

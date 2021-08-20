@@ -238,6 +238,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
     private void JoinRoomByRoomName(string roomName)
     {
+        Utility.roomName = roomName;
         PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }, TypedLobby.Default);
     }
 

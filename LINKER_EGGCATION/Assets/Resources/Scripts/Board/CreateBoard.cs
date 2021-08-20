@@ -69,13 +69,6 @@ public class CreateBoard : MonoBehaviour
         ContentInput = ContentObject.GetComponent<TMP_InputField>();
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void NoticeToggleClicked()
     {
         if (HomeworkToggle.isOn)
@@ -115,9 +108,16 @@ public class CreateBoard : MonoBehaviour
                             Day.GetComponent<TMP_InputField>().text + " " +
                             Hour.GetComponent<TMP_InputField>().text + ":" +
                             Minutes.GetComponent<TMP_InputField>().text + ":00"
-                            : string.Empty;
+                            : "2001-01-01 00:00:00";
         bool boardNotice = NoticeToggle.isOn;
         bool boardAssignment = HomeworkToggle.isOn;
+        Debug.LogFormat("boardRoom {0}", Utility.roomName);
+        Debug.LogFormat("boardWriterId {0}", Utility.userId);
+        Debug.LogFormat("boardTitle {0}", boardTitle);
+        Debug.LogFormat("boardContent {0}", boardContent);
+        Debug.LogFormat("boardDeadline {0}", boardDeadline);
+        Debug.LogFormat("boardNotice {0}", boardNotice);
+        Debug.LogFormat("boardAssignment {0}", boardAssignment);
 
         json.Add("boardRoom", Utility.roomName);
         json.Add("boardWriterId", Utility.userId);

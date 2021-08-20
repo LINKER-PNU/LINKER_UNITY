@@ -17,22 +17,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
+            stream.SendNext(IsEmotionsActive);
             // We own this player: send the others our data
-            for (int i = 0; i < Emotions.Length; i++)
-            {
-                stream.SendNext(IsEmotionsActive[i]);
-                Debug.LogFormat("{0} send", IsEmotionsActive[i]);
-            }
+            //for (int i = 0; i < Emotions.Length; i++)
+            //{
+            //    Debug.LogFormat("{0} send", IsEmotionsActive[i]);
+            //}
         }
         else
         {
             Debug.Log("!!!receive!!!");
+            IsEmotionsActive = (bool[])stream.ReceiveNext();
             // Network player, receive data
-            for (int i = 0; i < Emotions.Length; i++)
-            {
-                this.IsEmotionsActive[i] = ((bool[])stream.ReceiveNext())[i];
-                Debug.LogFormat("{0} receive", IsEmotionsActive[i]);
-            }
+            //for (int i = 0; i < Emotions.Length; i++)
+            //{
+            //    Debug.LogFormat("{0} receive", IsEmotionsActive[i]);
+            //}
         }
     }
 
@@ -78,6 +78,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private KeyCode EMOTION2_KEYCODE = KeyCode.Alpha2;
     [SerializeField]
     private KeyCode EMOTION3_KEYCODE = KeyCode.Alpha3;
+    [SerializeField]
+    private KeyCode NOTICE_KEYCODE = KeyCode.I;
+    [SerializeField]
+    private KeyCode ESC_KEYCODE = KeyCode.Escape;
 
     [SerializeField]
     private GameObject fpCamera;
@@ -135,6 +139,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
             // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
             IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false};
+
         }
         // #Critical
         // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -319,6 +324,16 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
 
+        // 공지기능 부분입니다.
+        if (Input.GetKeyDown(NOTICE_KEYCODE))
+        {
+        }
+
+        // ESC기능 부분입니다.
+        if (Input.GetKeyDown(ESC_KEYCODE))
+        {
+        }
+
         // 상호작용 부분입니다
         if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시
         {
@@ -330,6 +345,25 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             if (Physics.Raycast(ray, out hit, MaxDistance))
             {
                 Debug.Log(hit.transform?.name);
+                if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
+                {
+                    if (!GameManager.createClassPanel.activeInHierarchy)
+                    {
+                        GameManager.createClassPanel.SetActive(true);
+                    }
+                }
+                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
+                // {
+                //     Debug.Log("책");
+                //     if (GameManager.checkClassExist())
+                //     {
+                //         GameManager.ClientCanvasObject.SetActive(true);
+                //         GameManager.leaveClassBtn.SetActive(true);
+                //     }
+                //     else
+                //     {
+                //         GameManager.Instance.StartCoroutineIsNotExist();
+                //     }
                 GameObject tempChair = null;
                 
                 tempChair = GameObject.Find("chair"+hit.transform.name.Substring(4));
@@ -360,6 +394,34 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
     }
+
+    public void OnCreateClassConfirm()
+    {
+        Debug.Log("교");
+        if (GameManager.checkClassExist())
+        {
+            GameManager.Instance.StartCoroutineAlreadyExist();
+            GameManager.createClassPanel.SetActive(false);
+        }
+        else
+        {
+            GameManager.ServerCanvasObject.SetActive(true);
+            GameManager.createClassPanel.SetActive(false);
+            GameManager.leaveClassBtn.SetActive(true);
+        }
+    }
+    public void OnCreateClassCancle()
+    {
+        GameManager.createClassPanel.SetActive(false);
+    }
+
+    static public void OnLeaveClass()
+    {
+        GameManager.ServerCanvasObject.SetActive(false);
+        GameManager.ClientCanvasObject.SetActive(false);
+        GameManager.leaveClassBtn.SetActive(false);
+    }
+
     bool isTeacherDesk()
     {
         return hit.transform.name == "pCube4" || hit.transform.name =="TeacherDesk";
