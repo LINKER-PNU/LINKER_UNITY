@@ -78,6 +78,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private KeyCode EMOTION2_KEYCODE = KeyCode.Alpha2;
     [SerializeField]
     private KeyCode EMOTION3_KEYCODE = KeyCode.Alpha3;
+    [SerializeField]
+    private KeyCode NOTICE_KEYCODE = KeyCode.I;
+    [SerializeField]
+    private KeyCode ESC_KEYCODE = KeyCode.Escape;
 
     [SerializeField]
     private GameObject fpCamera;
@@ -311,8 +315,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 StartCoroutine(CoroutineEmotion(2));
             }
         }
+
         // 공지기능 부분입니다.
-        if (Input.GetKeyDown(EMOTION1_KEYCODE))
+        if (Input.GetKeyDown(NOTICE_KEYCODE))
+        {
+        }
+
+        // ESC기능 부분입니다.
+        if (Input.GetKeyDown(ESC_KEYCODE))
         {
         }
 
@@ -340,7 +350,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                     if (GameManager.checkClassExist())
                     {
                         GameManager.ClientCanvasObject.SetActive(true);
-                        GameManager.leaveRoomBtn.SetActive(false);
                         GameManager.leaveClassBtn.SetActive(true);
                     }
                     else
@@ -364,7 +373,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             GameManager.ServerCanvasObject.SetActive(true);
             GameManager.createClassPanel.SetActive(false);
-            GameManager.leaveRoomBtn.SetActive(false);
             GameManager.leaveClassBtn.SetActive(true);
         }
     }
@@ -377,7 +385,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         GameManager.ServerCanvasObject.SetActive(false);
         GameManager.ClientCanvasObject.SetActive(false);
-        GameManager.leaveRoomBtn.SetActive(true);
         GameManager.leaveClassBtn.SetActive(false);
     }
 
