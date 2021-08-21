@@ -23,27 +23,22 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject canvasObject;
 
-    [SerializeField]
-    private GameObject topPanelObject;
-
-    [SerializeField]
-    private GameObject escPanelObject;
 
     [SerializeField]
     private GameObject JoinCodeTextObject;
 
-    
+
 
     #endregion
 
 
     #region Public Fields
 
+    static public GameObject topPanelObject;
+
+    static public GameObject escPanelObject;
+
     static public GameObject createClassPanel;
-
-    static public GameObject leaveRoomBtn;
-
-    static public GameObject leaveClassBtn;
 
     static public GameObject ServerCanvasObject;
     
@@ -54,8 +49,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     static public GameObject alreadyExistObject;
     
     static public GameObject DeskModeObject;
-    
-    static public bool isDeskMode = false;
+
+    static public GameObject AimObject;
+
+    static public GameObject TeacherChairObject;
+
+    static public bool isMouseMode = false;
     
     
 
@@ -99,14 +98,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         // Find 연산은 자원을 많이 먹으므로 Awake에서 한번 실행해줍니다.
         createClassPanel = canvasObject.transform.Find("createClass_panel").gameObject;
-        leaveRoomBtn = escPanelObject.transform.Find("leaveRoom_btn").gameObject;
-        leaveClassBtn = topPanelObject.transform.Find("leaveClass_btn").gameObject;
+        topPanelObject = canvasObject.transform.Find("Top_panel").gameObject;
+        escPanelObject = canvasObject.transform.Find("ESC_panel").gameObject;
         ServerCanvasObject = emptyObject.transform.Find("ServerVideoCanvas").gameObject;
         ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
         isNotExistObject = canvasObject.transform.Find("isNotExist_text").gameObject;
         alreadyExistObject = canvasObject.transform.Find("alreadyExist_text").gameObject;
-        Debug.Log(ServerCanvasObject.name);
         DeskModeObject = canvasObject.transform.Find("DeskMode").gameObject;
+        AimObject = canvasObject.transform.Find("Aim").gameObject;
+        TeacherChairObject = GameObject.Find("teacher_chair").gameObject;
         // timerObject = deskModeObject.transform.Find("Timer").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
         Debug.Log(this.name,DeskModeObject);
@@ -156,13 +156,105 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
-    public void onDeskMode(){
-      isDeskMode = false; 
-      DeskModeObject.SetActive(false);
-      Cursor.visible = false;
-      Cursor.lockState = CursorLockMode.Locked;
+    public void LeaveDeskMode(){
+        isMouseMode = false; 
+        DeskModeObject.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        AimObject.SetActive(true);
     }
 
+    public void OnTakeClass()
+    {
+        if (!ServerCanvasObject.activeInHierarchy) // 책상이면
+        {
+            Debug.Log("책");
+            if (checkClassExist())
+            {
+                DeskModeObject.SetActive(false);
+                ClientCanvasObject.SetActive(true);
+                topPanelObject.SetActive(true);
+            }
+            else
+            {
+                StartCoroutineIsNotExist();
+            }
+        }
+    }
+    public void OnCreateClassConfirm()
+    {
+        Debug.Log("교");
+        if (checkClassExist())
+        {
+            Instance.StartCoroutineAlreadyExist();
+            createClassPanel.SetActive(false);
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            isMouseMode = true;
+            AimObject.SetActive(false);
+            if (PlayerManager.LocalPlayerInstance != null)
+            {
+                Vector3 newPos = new Vector3(TeacherChairObject.transform.position.x,
+                                                TeacherChairObject.transform.position.y + 5f,
+                                                TeacherChairObject.transform.position.z);
+                PlayerManager.LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
+                PlayerManager.LocalPlayerInstance.transform.position = newPos;
+                PlayerManager.LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
+                if (PlayerManager.LocalPlayerInstance.GetComponent< PlayerManager>().CamMode == 1)
+                {
+                    PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().CamMode = 0;
+                }
+                PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().fpCameraController.PositionTeacherDeskMode();
+            }
+
+            ServerCanvasObject.SetActive(true);
+            createClassPanel.SetActive(false);
+            topPanelObject.SetActive(true);
+        }
+    }
+    public void OnCreateClassCancle()
+    {
+        isMouseMode = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        AimObject.SetActive(true);
+
+        createClassPanel.SetActive(false);
+    }
+
+    static public void OnLeaveClass()
+    {
+        isMouseMode = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        AimObject.SetActive(true);
+
+        PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().fpCameraController.PositionNormalMode();
+        ServerCanvasObject.SetActive(false);
+        ClientCanvasObject.SetActive(false);
+        topPanelObject.SetActive(false);
+    }
+
+    public static bool checkClassExist()
+    {
+        var json = new JObject();
+        string method = "check_class_exist";
+
+        json.Add("roomName", PhotonNetwork.CurrentRoom.Name);
+        return Convert.ToBoolean(Utility.request_server(json, method));
+    }
+
+    public void StartCoroutineAlreadyExist()
+    {
+        StartCoroutine(CoroutineAlreadyExist());
+    }
+    public void StartCoroutineIsNotExist()
+    {
+        StartCoroutine(CoroutineIsNotExist());
+    }
     #endregion
 
 
@@ -182,24 +274,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         return Utility.request_server(json, method);
 
-    }
-
-    public static bool checkClassExist()
-    {
-        var json = new JObject();
-        string method = "check_class_exist";
-
-        json.Add("roomName", PhotonNetwork.CurrentRoom.Name);
-        return Convert.ToBoolean(Utility.request_server(json, method));
-    }
-
-    public void StartCoroutineAlreadyExist()
-    {
-        StartCoroutine(CoroutineAlreadyExist());
-    }
-    public void StartCoroutineIsNotExist()
-    {
-        StartCoroutine(CoroutineIsNotExist());
     }
 
     private IEnumerator CoroutineAlreadyExist()
