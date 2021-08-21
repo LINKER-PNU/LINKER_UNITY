@@ -274,7 +274,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void ProcessInputs()
     {
-        if(!GameManager.isDeskMode){
+        if(!GameManager.isMouseMode){
             if(Input.GetKeyDown(CAMERA_KEY_CODE))
             {
                 StartCoroutine(CamChange());
@@ -318,7 +318,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                             GameManager.AimObject.SetActive(false);
                             Cursor.visible = true;
                             Cursor.lockState = CursorLockMode.None;
-                            GameManager.isDeskMode = true;
+                            GameManager.isMouseMode = true;
 
                             GameManager.createClassPanel.SetActive(true);
                         }
@@ -344,7 +344,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
                         GameManager.DeskModeObject.SetActive(true);
-                        GameManager.isDeskMode = true;
+                        GameManager.isMouseMode = true;
                         fpCameraController.RotateDeskMode();
                     }
                 }
@@ -383,6 +383,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         // ESC기능 부분입니다.
         if (Input.GetKeyDown(ESC_KEYCODE))
         {
+            bool isEscActive = GameManager.escPanelObject.activeInHierarchy;
+
+            GameManager.AimObject.SetActive(isEscActive);
+            Cursor.visible = !isEscActive;
+            Cursor.lockState = isEscActive ? CursorLockMode.Locked : CursorLockMode.None;
+            GameManager.isMouseMode = !isEscActive;
+
+            GameManager.escPanelObject.SetActive(!isEscActive);
         }
     }
 

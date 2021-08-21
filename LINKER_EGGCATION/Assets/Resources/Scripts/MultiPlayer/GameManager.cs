@@ -23,27 +23,22 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject canvasObject;
 
-    [SerializeField]
-    private GameObject topPanelObject;
-
-    [SerializeField]
-    private GameObject escPanelObject;
 
     [SerializeField]
     private GameObject JoinCodeTextObject;
 
-    
+
 
     #endregion
 
 
     #region Public Fields
 
+    static public GameObject topPanelObject;
+
+    static public GameObject escPanelObject;
+
     static public GameObject createClassPanel;
-
-    static public GameObject leaveRoomBtn;
-
-    static public GameObject leaveClassBtn;
 
     static public GameObject ServerCanvasObject;
     
@@ -59,7 +54,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     static public GameObject TeacherChairObject;
 
-    static public bool isDeskMode = false;
+    static public bool isMouseMode = false;
     
     
 
@@ -103,8 +98,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         // Find 연산은 자원을 많이 먹으므로 Awake에서 한번 실행해줍니다.
         createClassPanel = canvasObject.transform.Find("createClass_panel").gameObject;
-        leaveRoomBtn = escPanelObject.transform.Find("leaveRoom_btn").gameObject;
-        leaveClassBtn = topPanelObject.transform.Find("leaveClass_btn").gameObject;
+        topPanelObject = canvasObject.transform.Find("Top_panel").gameObject;
+        escPanelObject = canvasObject.transform.Find("ESC_panel").gameObject;
         ServerCanvasObject = emptyObject.transform.Find("ServerVideoCanvas").gameObject;
         ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
         isNotExistObject = canvasObject.transform.Find("isNotExist_text").gameObject;
@@ -162,7 +157,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
     public void LeaveDeskMode(){
-        isDeskMode = false; 
+        isMouseMode = false; 
         DeskModeObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -178,7 +173,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 DeskModeObject.SetActive(false);
                 ClientCanvasObject.SetActive(true);
-                leaveClassBtn.SetActive(true);
+                topPanelObject.SetActive(true);
             }
             else
             {
@@ -198,7 +193,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            isDeskMode = true;
+            isMouseMode = true;
             AimObject.SetActive(false);
             if (PlayerManager.LocalPlayerInstance != null)
             {
@@ -217,12 +212,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
             ServerCanvasObject.SetActive(true);
             createClassPanel.SetActive(false);
-            leaveClassBtn.SetActive(true);
+            topPanelObject.SetActive(true);
         }
     }
     public void OnCreateClassCancle()
     {
-        isDeskMode = false;
+        isMouseMode = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         AimObject.SetActive(true);
@@ -232,7 +227,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     static public void OnLeaveClass()
     {
-        isDeskMode = false;
+        isMouseMode = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         AimObject.SetActive(true);
@@ -240,7 +235,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().fpCameraController.PositionNormalMode();
         ServerCanvasObject.SetActive(false);
         ClientCanvasObject.SetActive(false);
-        leaveClassBtn.SetActive(false);
+        topPanelObject.SetActive(false);
     }
 
     public static bool checkClassExist()

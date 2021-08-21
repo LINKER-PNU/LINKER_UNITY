@@ -8121,8 +8121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emptyObject: {fileID: 2129637297}
   canvasObject: {fileID: 1863160585}
-  topPanelObject: {fileID: 841325608}
-  escPanelObject: {fileID: 1361877092}
   JoinCodeTextObject: {fileID: 1084877467}
   playerPrefab: {fileID: 6855681941121920339, guid: 5af24ff922f6de8439dfd839b7ac45d5, type: 3}
 --- !u!4 &728199613
@@ -9031,7 +9029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &841325609
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9302,10 +9300,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "V : \uBCF4\uC774\uC2A4 \uB4E3\uAE30 (ON / OFF)\nM: \uB9C8\uC774\uD06C
+    (ON / OFF)\n1 ~ 5: \uAC10\uC815 \uD45C\uD604\nI : \uACF5\uC9C0 \uD3BC\uCE58\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cb2237fa017b87e4099239c730962322, type: 2}
+  m_sharedMaterial: {fileID: 4182700983111267921, guid: cb2237fa017b87e4099239c730962322, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9335,8 +9334,8 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -11553,7 +11552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1061334591
 RectTransform:
   m_ObjectHideFlags: 0
