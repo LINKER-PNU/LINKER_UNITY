@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     static public GameObject escPanelObject;
 
+    static public GameObject boardPanelObject;
+
     static public GameObject createClassPanel;
 
     static public GameObject ServerCanvasObject;
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         createClassPanel = canvasObject.transform.Find("createClass_panel").gameObject;
         topPanelObject = canvasObject.transform.Find("Top_panel").gameObject;
         escPanelObject = canvasObject.transform.Find("ESC_panel").gameObject;
+        boardPanelObject = canvasObject.transform.Find("Board_panel").gameObject;
         ServerCanvasObject = emptyObject.transform.Find("ServerVideoCanvas").gameObject;
         ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
         isNotExistObject = canvasObject.transform.Find("isNotExist_text").gameObject;

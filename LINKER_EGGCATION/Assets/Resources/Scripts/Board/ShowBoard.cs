@@ -84,7 +84,7 @@ public class ShowBoard : MonoBehaviour
         ContentInput = ContentObject.GetComponent<TMP_InputField>();
 
     }
-    void Start()
+    void OnEnable()
     {
         getBoardList();
     }

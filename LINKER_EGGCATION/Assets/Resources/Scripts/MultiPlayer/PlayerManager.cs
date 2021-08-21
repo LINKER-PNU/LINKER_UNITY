@@ -378,11 +378,29 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         // 공지기능 부분입니다.
         if (Input.GetKeyDown(NOTICE_KEYCODE))
         {
+            bool isBoardActive = GameManager.boardPanelObject.activeInHierarchy;
+
+            if (GameManager.escPanelObject.activeInHierarchy)
+            {
+                return;
+            }
+
+            GameManager.AimObject.SetActive(isBoardActive);
+            Cursor.visible = !isBoardActive;
+            Cursor.lockState = isBoardActive ? CursorLockMode.Locked : CursorLockMode.None;
+            GameManager.isMouseMode = !isBoardActive;
+
+            GameManager.boardPanelObject.SetActive(!isBoardActive);
         }
 
         // ESC기능 부분입니다.
         if (Input.GetKeyDown(ESC_KEYCODE))
         {
+            if (GameManager.boardPanelObject.activeInHierarchy)
+            {
+                return;
+            }
+
             bool isEscActive = GameManager.escPanelObject.activeInHierarchy;
 
             GameManager.AimObject.SetActive(isEscActive);
