@@ -138,7 +138,7 @@ public class ClientScript : MonoBehaviour
         if (!GameManager.checkClassExist())
         {
             DestroyVideoView(uid);
-            PlayerManager.OnLeaveClass();
+            GameManager.OnLeaveClass();
         }
     }
 
@@ -263,8 +263,6 @@ public class ClientScript : MonoBehaviour
 
         // set up transform
         go.transform.Rotate(0.0f, 0.0f, 180.0f);
-        var xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
-        var yPos = Random.Range(Offset, Screen.height / 2f - Offset);
         go.transform.localPosition = new Vector3(0, 0, 0f);
         go.transform.localScale = new Vector3(16f, 9f, 1f);
 

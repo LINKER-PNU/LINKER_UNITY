@@ -161,7 +161,6 @@ public class ServerScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("hoho");
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
             var dispId = uint.Parse(option.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1]);
             _logger.UpdateLog(string.Format(">>>>> Start sharing display {0}", dispId));
@@ -381,8 +380,8 @@ public class ServerScript : MonoBehaviour
         go.transform.Rotate(0.0f, 0.0f, 180.0f);
         var xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
         var yPos = Random.Range(Offset, Screen.height / 2f - Offset);
-        go.transform.localPosition = new Vector3(0, 0, 0f);
-        go.transform.localScale = new Vector3(8f, 4.5f, 1f);
+        go.transform.localPosition = new Vector3(-750, 400, 0f);
+        go.transform.localScale = new Vector3(4f, 2.25f, 1f);
 
         var videoSurface = go.AddComponent<VideoSurface>();
         return videoSurface;

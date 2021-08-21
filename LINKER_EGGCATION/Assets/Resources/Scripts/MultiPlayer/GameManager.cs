@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     static public GameObject AimObject;
 
+    static public GameObject TeacherChairObject;
+
     static public bool isDeskMode = false;
     
     
@@ -107,9 +109,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         ClientCanvasObject = emptyObject.transform.Find("ClientVideoCanvas").gameObject;
         isNotExistObject = canvasObject.transform.Find("isNotExist_text").gameObject;
         alreadyExistObject = canvasObject.transform.Find("alreadyExist_text").gameObject;
-        Debug.Log(ServerCanvasObject.name);
         DeskModeObject = canvasObject.transform.Find("DeskMode").gameObject;
         AimObject = canvasObject.transform.Find("Aim").gameObject;
+        TeacherChairObject = GameObject.Find("teacher_chair").gameObject;
         // timerObject = deskModeObject.transform.Find("Timer").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
         Debug.Log(this.name,DeskModeObject);
@@ -159,7 +161,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
-    public void onDeskMode(){
+    public void LeaveDeskMode(){
         isDeskMode = false; 
         DeskModeObject.SetActive(false);
         Cursor.visible = false;
@@ -167,6 +169,97 @@ public class GameManager : MonoBehaviourPunCallbacks
         AimObject.SetActive(true);
     }
 
+    public void OnTakeClass()
+    {
+        if (!ServerCanvasObject.activeInHierarchy) // 책상이면
+        {
+            Debug.Log("책");
+            if (checkClassExist())
+            {
+                DeskModeObject.SetActive(false);
+                ClientCanvasObject.SetActive(true);
+                leaveClassBtn.SetActive(true);
+            }
+            else
+            {
+                StartCoroutineIsNotExist();
+            }
+        }
+    }
+    public void OnCreateClassConfirm()
+    {
+        Debug.Log("교");
+        if (checkClassExist())
+        {
+            Instance.StartCoroutineAlreadyExist();
+            createClassPanel.SetActive(false);
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            isDeskMode = true;
+            AimObject.SetActive(false);
+            if (PlayerManager.LocalPlayerInstance != null)
+            {
+                Vector3 newPos = new Vector3(TeacherChairObject.transform.position.x,
+                                                TeacherChairObject.transform.position.y + 5f,
+                                                TeacherChairObject.transform.position.z);
+                PlayerManager.LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
+                PlayerManager.LocalPlayerInstance.transform.position = newPos;
+                PlayerManager.LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
+                if (PlayerManager.LocalPlayerInstance.GetComponent< PlayerManager>().CamMode == 1)
+                {
+                    PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().CamMode = 0;
+                }
+                PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().fpCameraController.PositionTeacherDeskMode();
+            }
+
+            ServerCanvasObject.SetActive(true);
+            createClassPanel.SetActive(false);
+            leaveClassBtn.SetActive(true);
+        }
+    }
+    public void OnCreateClassCancle()
+    {
+        isDeskMode = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        AimObject.SetActive(true);
+
+        createClassPanel.SetActive(false);
+    }
+
+    static public void OnLeaveClass()
+    {
+        isDeskMode = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        AimObject.SetActive(true);
+
+        PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().fpCameraController.PositionNormalMode();
+        ServerCanvasObject.SetActive(false);
+        ClientCanvasObject.SetActive(false);
+        leaveClassBtn.SetActive(false);
+    }
+
+    public static bool checkClassExist()
+    {
+        var json = new JObject();
+        string method = "check_class_exist";
+
+        json.Add("roomName", PhotonNetwork.CurrentRoom.Name);
+        return Convert.ToBoolean(Utility.request_server(json, method));
+    }
+
+    public void StartCoroutineAlreadyExist()
+    {
+        StartCoroutine(CoroutineAlreadyExist());
+    }
+    public void StartCoroutineIsNotExist()
+    {
+        StartCoroutine(CoroutineIsNotExist());
+    }
     #endregion
 
 
@@ -186,24 +279,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         return Utility.request_server(json, method);
 
-    }
-
-    public static bool checkClassExist()
-    {
-        var json = new JObject();
-        string method = "check_class_exist";
-
-        json.Add("roomName", PhotonNetwork.CurrentRoom.Name);
-        return Convert.ToBoolean(Utility.request_server(json, method));
-    }
-
-    public void StartCoroutineAlreadyExist()
-    {
-        StartCoroutine(CoroutineAlreadyExist());
-    }
-    public void StartCoroutineIsNotExist()
-    {
-        StartCoroutine(CoroutineIsNotExist());
     }
 
     private IEnumerator CoroutineAlreadyExist()

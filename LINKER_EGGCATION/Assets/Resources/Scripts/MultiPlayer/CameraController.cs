@@ -23,6 +23,18 @@ public class CameraController : MonoBehaviour
       transform.rotation = Quaternion.Euler(20, 90, 0);
     }
 
+    public void PositionTeacherDeskMode()
+    {
+        transform.localPosition = new Vector3(0f, 2.5f, 0f);
+        Debug.Log(transform.localPosition);
+        transform.localRotation = Quaternion.Euler(30, 270, 0);
+        Debug.Log(transform.rotation.eulerAngles);
+    }
+    public void PositionNormalMode()
+    {
+        transform.localPosition = new Vector3(0, 0.2f, 0);
+    }
+
     public void RotateTo(int CamMode, float mouseX, float mouseY)
     {
         eulerAngleY += mouseX  * rotateSpeedX;
