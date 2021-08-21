@@ -373,7 +373,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
 
                 if(isDesk()){
-                  GameManager.AimObject.SetActive(false);
                   Vector3 newPos = new Vector3(tempChair.transform.position.x,tempChair.transform.position.y + 5f,tempChair.transform.position.z);
                   this.transform.position = newPos;
                   StartCoroutine(CamChange());
