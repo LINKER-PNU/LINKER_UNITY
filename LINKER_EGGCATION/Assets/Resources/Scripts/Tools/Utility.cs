@@ -29,7 +29,6 @@ namespace eggcation
 
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             string characterSet = httpResponse.CharacterSet;
-            Debug.Log(characterSet);
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream(), System.Text.Encoding.UTF8, true))
             {
                 var result = streamReader.ReadToEnd();

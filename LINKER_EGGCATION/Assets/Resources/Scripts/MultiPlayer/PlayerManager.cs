@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
@@ -7,30 +10,36 @@ using Photon.Pun;
 /// Player manager.
 /// Handles fire Input and Beams.
 /// </summary>
-public class PlayerManager : MonoBehaviourPunCallbacks
+public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     #region IPunObservable implementation
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        //if (stream.IsWriting)
-        //{
-        //    // We own this player: send the others our data
-        //    stream.SendNext(IsFiring);
-        //    stream.SendNext(Health);
-        //}
-        //else
-        //{
-        //    // Network player, receive data
-        //    this.IsFiring = (bool)stream.ReceiveNext();
-        //    this.Health = (float)stream.ReceiveNext();
-        //}
+        if (stream.IsWriting)
+        {
+            stream.SendNext(IsEmotionsActive);
+            // We own this player: send the others our data
+            //for (int i = 0; i < Emotions.Length; i++)
+            //{
+            //    Debug.LogFormat("{0} send", IsEmotionsActive[i]);
+            //}
+        }
+        else
+        {
+            Debug.Log("!!!receive!!!");
+            IsEmotionsActive = (bool[])stream.ReceiveNext();
+            // Network player, receive data
+            //for (int i = 0; i < Emotions.Length; i++)
+            //{
+            //    Debug.LogFormat("{0} receive", IsEmotionsActive[i]);
+            //}
+        }
     }
 
     #endregion
 
 
-    #region Punlic Fields
+    #region Public Fields
 
     //[Tooltip("The current Health of our player")]
     //public float Health = 1f;
@@ -38,6 +47,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public static GameObject LocalPlayerInstance;
 
     public int CamMode;
+
+    static public Camera MainCamera;
 
     #endregion
 
@@ -49,12 +60,28 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     //private GameObject beams;
 
     ////True, when the user is firing
-    //bool IsFiring;
+    bool[] IsEmotionsActive;
+
+    [SerializeField]
+    const int MaximumEmotionCount = 5;
+
+    [SerializeField]
+    private GameObject[] Emotions;
 
     [SerializeField]
     private KeyCode jumpKeyCode = KeyCode.Space;
     [SerializeField]
-    private KeyCode cameraKeyCode = KeyCode.Tab;
+    private KeyCode CAMERA_KEY_CODE = KeyCode.Tab;
+    [SerializeField]
+    private KeyCode EMOTION1_KEYCODE = KeyCode.Alpha1;
+    [SerializeField]
+    private KeyCode EMOTION2_KEYCODE = KeyCode.Alpha2;
+    [SerializeField]
+    private KeyCode EMOTION3_KEYCODE = KeyCode.Alpha3;
+    [SerializeField]
+    private KeyCode NOTICE_KEYCODE = KeyCode.I;
+    [SerializeField]
+    private KeyCode ESC_KEYCODE = KeyCode.Escape;
 
     [SerializeField]
     private GameObject fpCamera;
@@ -68,8 +95,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private CameraController tpCameraController;
 
+    [SerializeField]
+    private TextMeshProUGUI nameText;
 
     private Movement3D movement3D;
+
 
     //[Tooltip("The Player's UI GameObject Prefab")]
     //[SerializeField]
@@ -82,6 +112,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     RaycastHit hit;
     Ray ray;
     float MaxDistance = 15f;
+    Vector3 vel = Vector3.zero;
+    
 
     #endregion
 
@@ -102,8 +134,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             LocalPlayerInstance.GetComponent<Movement3D>().enabled = true;
             CamMode = 1;
             fpCamera.SetActive(true);
+            MainCamera = fpCamera.GetComponent<Camera>();
             tpCamera.SetActive(false);
-            //PlayerCamera.SetActive(true);
+
+            // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
+            IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false};
+
         }
         // #Critical
         // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -125,6 +161,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     /// </summary>
     void Start()
     {
+        SetName();
         //if (playerUiPrefab != null)
         //{
         //    GameObject _uiGo = Instantiate(playerUiPrefab);
@@ -161,11 +198,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         //{
         //    GameManager.Instance.LeaveRoom();
         //}
-        // trigger Beams active state
-        //if (beams != null && IsFiring != beams.activeInHierarchy)
-        //{
-        //    beams.SetActive(IsFiring);
-        //}
+        for (int i = 0; i < Emotions.Length; i++)
+        {
+            if (IsEmotionsActive != null && IsEmotionsActive[i] != Emotions[i].activeInHierarchy)
+            {
+                Emotions[i].SetActive(IsEmotionsActive[i]);
+            }
+        }
     }
 
     /// <summary>
@@ -204,68 +243,208 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         //    return;
         //}
     }
-    IEnumerator ExampleCoroutineColor()
+    IEnumerator CoroutineEmotion(int i)
     {
-        var originColor = hit.transform.GetComponent<MeshRenderer>().material.color;
-        hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
+        IsEmotionsActive[i] = true;
 
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
-        hit.transform.GetComponent<MeshRenderer>().material.color = originColor;
+        IsEmotionsActive[i] = false;
     }
+
+    void SetName()
+    {
+        nameText.text = photonView.Owner.NickName;
+    }
+
+    bool IsAllEmotionInactive()
+    {
+        foreach(var EmotionActive in IsEmotionsActive)
+        {
+            Debug.Log(EmotionActive);
+            if (EmotionActive) return false;
+        }
+        return true;
+    }
+
+  
 
     void ProcessInputs()
     {
-        if(Input.GetKeyDown(cameraKeyCode))
+        if(Input.GetKeyDown(CAMERA_KEY_CODE))
         {
-          if(CamMode == 1){
+            StartCoroutine(CamChange());
+            if (CamMode == 1){
             CamMode = 0;
           }else{
             CamMode += 1;
           }
-          StartCoroutine(CamChange());
         }
         //x, z 방향이동
-        float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
-        float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
+        
+        if(!GameManager.isDeskMode){
+          float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
+          float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
 
-        this.movement3D.MoveTo(CamMode,new Vector3(x, 0, z));
+          this.movement3D.MoveTo(CamMode,new Vector3(x, 0, z));
 
-        if (Input.GetKeyDown(jumpKeyCode))
-        {
-            this.movement3D.JumpTo();
-        }
+          if (Input.GetKeyDown(jumpKeyCode))
+          {
+              this.movement3D.JumpTo();
+          }
+        
 
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         this.fpCameraController.RotateTo(CamMode, mouseX, mouseY);
         this.tpCameraController.RotateTo(CamMode, mouseX, mouseY);
+        }
         
-        if (Input.GetMouseButtonDown(0))
+        // 감정표현 부분입니다.
+        if (Input.GetKeyDown(EMOTION1_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(0));
+            }
+        }
+        if (Input.GetKeyDown(EMOTION2_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(1));
+            }
+        }
+        if (Input.GetKeyDown(EMOTION3_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(2));
+            }
+        }
+
+        // 공지기능 부분입니다.
+        if (Input.GetKeyDown(NOTICE_KEYCODE))
+        {
+        }
+
+        // ESC기능 부분입니다.
+        if (Input.GetKeyDown(ESC_KEYCODE))
+        {
+        }
+
+        // 상호작용 부분입니다
+        if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시
         {
             ray = fpCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
             //var cameraController = CamMode == 1 ? tpCamera : fpCamera;
             Debug.DrawRay(ray.origin, ray.direction, Color.blue, 0.3f);
-            // 클릭 시 부딪혔을 때
+            // 클릭 시 앞에 물건이 있을 때
             if (Physics.Raycast(ray, out hit, MaxDistance))
             {
-                if (hit.transform.GetComponent<MeshRenderer>().material.color != Color.red)
+                Debug.Log(hit.transform?.name);
+                if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
                 {
-                    StartCoroutine(ExampleCoroutineColor());
+                    if (!GameManager.createClassPanel.activeInHierarchy)
+                    {
+                        GameManager.createClassPanel.SetActive(true);
+                    }
                 }
+                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
+                // {
+                //     Debug.Log("책");
+                //     if (GameManager.checkClassExist())
+                //     {
+                //         GameManager.ClientCanvasObject.SetActive(true);
+                //         GameManager.leaveClassBtn.SetActive(true);
+                //     }
+                //     else
+                //     {
+                //         GameManager.Instance.StartCoroutineIsNotExist();
+                //     }
+                GameObject tempChair = null;
+                
+                tempChair = GameObject.Find("chair"+hit.transform.name.Substring(4));
+                // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
+
+                if(isDesk()){
+                  GameManager.isDeskMode = true;
+                  this.fpCameraController.RotateDeskMode();
+                  this.tpCameraController.RotateDeskMode();
+                  Vector3 newPos = new Vector3(tempChair.transform.position.x,tempChair.transform.position.y + 10f,tempChair.transform.position.z);
+                  this.transform.position = newPos;
+                  
+                  GameManager.DeskModeObject.SetActive(true);
+                  Debug.Log(tempChair.transform.position);
+                }
+
+                // if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
+                // {
+                //     Debug.Log("교");
+                //     GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
+                // }
+                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
+                // {
+                //     Debug.Log("책");
+                    
+                //     // GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
+                // }
             }
         }
+    }
+
+    public void OnCreateClassConfirm()
+    {
+        Debug.Log("교");
+        if (GameManager.checkClassExist())
+        {
+            GameManager.Instance.StartCoroutineAlreadyExist();
+            GameManager.createClassPanel.SetActive(false);
+        }
+        else
+        {
+            GameManager.ServerCanvasObject.SetActive(true);
+            GameManager.createClassPanel.SetActive(false);
+            GameManager.leaveClassBtn.SetActive(true);
+        }
+    }
+    public void OnCreateClassCancle()
+    {
+        GameManager.createClassPanel.SetActive(false);
+    }
+
+    static public void OnLeaveClass()
+    {
+        GameManager.ServerCanvasObject.SetActive(false);
+        GameManager.ClientCanvasObject.SetActive(false);
+        GameManager.leaveClassBtn.SetActive(false);
+    }
+
+    bool isTeacherDesk()
+    {
+        return hit.transform.name == "pCube4" || hit.transform.name =="TeacherDesk";
+    }
+
+    bool isDesk()
+    {
+        return hit.transform.name.Substring(0, 4) == "desk" ;
+        // return (hit.transform.name.Length == 7 && hit.transform.name.Substring(0, 5) == "pCube"
+        //     && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
+        //     && int.Parse(hit.transform.name.Substring(5, 2)) <= 56)|| hit.transform.name.Substring(0, 4) == "desk" ;
     }
     IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);
         if(CamMode == 1){
-          fpCamera.SetActive(false);
-          tpCamera.SetActive(true);
-        }else{
-          fpCamera.SetActive(true);
-          tpCamera.SetActive(false);
+            fpCamera.SetActive(false);
+            tpCamera.SetActive(true);
+            MainCamera = tpCamera.GetComponent<Camera>();
+        }
+        else{
+            fpCamera.SetActive(true);
+            tpCamera.SetActive(false);
+            MainCamera = fpCamera.GetComponent<Camera>();
         }
     }
     #endregion

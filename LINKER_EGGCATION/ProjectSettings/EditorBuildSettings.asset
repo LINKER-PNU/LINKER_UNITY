@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MoMainScene.unity
     guid: beb950b6de486dc4babefbfdb7096a19
+  - enabled: 0
+    path: Assets/Scenes/WonClassScene.unity
+    guid: 6df1f9aa0ac524aa4bc9e32af76a95ed
   - enabled: 1
     path: Assets/Scenes/MoClassScene.unity
     guid: 0be31fcd058bc86449727c05bfd594a2
@@ -55,15 +58,15 @@ EditorBuildSettings:
     path: Assets/Photon/PhotonUnityNetworking/Demos/PunCockpit/PunCockpit-Scene.unity
     guid: 9d6d60c803e244e51ba945a84b88757d
   - enabled: 0
-    path: Assets/Photon/PhotonVoice/Demos/DemoProximityVoiceChat/Scenes/ProximityVoiceChat.unity
-    guid: 9f1cd40f49900e341843571f937a9c61
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Photon/PhotonVoice/Demos/DemoVoiceMinimal/DemoVoiceMinimal-Scene.unity
-    guid: 2da9606550d4940d6b7d040e3913bdd8
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Photon/PhotonVoice/Demos/DemoVoicePun/DemoVoicePun-Scene.unity
-    guid: a3f3c3b3816924199acba595045624d2
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Photon/PhotonVoice/Demos/DemoVoiceUI/DemoVoice.unity
-    guid: 0ab5c0cab248b1c449cb35dd2672ffdb
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

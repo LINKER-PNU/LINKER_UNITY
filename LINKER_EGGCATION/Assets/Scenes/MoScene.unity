@@ -4315,6 +4315,9 @@ MonoBehaviour:
   RoomNamePanelObject: {fileID: 979347043}
   RoomNameInputObject: {fileID: 982288527}
   CreateRoomFailObject: {fileID: 1059062811}
+  NameObject: {fileID: 0}
+  RoleObject: {fileID: 0}
+  EggObject: {fileID: 0}
   ClassBttnContentObject: {fileID: 0}
   ClassBttnObject: {fileID: 0}
   y_offset: 220
