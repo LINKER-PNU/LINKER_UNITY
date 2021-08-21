@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
 
+    private Quaternion Right = Quaternion.identity;
+
     private float   rotateSpeedX  = 3;
     private float   rotateSpeedY  = 5;
     private float   limitMinY = -30;
@@ -17,8 +19,8 @@ public class CameraController : MonoBehaviour
     
     
     public void RotateDeskMode(){
-        // float rotHorizontal = -1 * rotateSpeedX * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(transform.rotation.x, 90, 0);
+      
+      transform.rotation = Quaternion.Euler(20, 90, 0);
     }
 
     public void RotateTo(int CamMode, float mouseX, float mouseY)

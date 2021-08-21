@@ -137,6 +137,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             MainCamera = fpCamera.GetComponent<Camera>();
             tpCamera.SetActive(false);
 
+
             // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
             IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false};
 
@@ -193,6 +194,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             ProcessInputs();
+            if(GameManager.isDeskMode){
+              GameManager.DeskModeObject.SetActive(true);
+            }
+            
         }
         //if (Health <= 0f)
         //{
@@ -272,18 +277,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void ProcessInputs()
     {
-        if(Input.GetKeyDown(CAMERA_KEY_CODE))
-        {
-            StartCoroutine(CamChange());
-            if (CamMode == 1){
-            CamMode = 0;
-          }else{
-            CamMode += 1;
-          }
-        }
-        //x, z 방향이동
-        
         if(!GameManager.isDeskMode){
+          if(Input.GetKeyDown(CAMERA_KEY_CODE))
+          {
+              StartCoroutine(CamChange());
+              if (CamMode == 1){
+              CamMode = 0;
+              }else{
+                CamMode += 1;
+              }
+          }          
+          //x, z 방향이동
           float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
           float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
 
@@ -293,13 +297,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
           {
               this.movement3D.JumpTo();
           }
-        
-
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-        this.fpCameraController.RotateTo(CamMode, mouseX, mouseY);
-        this.tpCameraController.RotateTo(CamMode, mouseX, mouseY);
-        }
+          float mouseX = Input.GetAxis("Mouse X");
+          float mouseY = Input.GetAxis("Mouse Y");
+          fpCameraController.RotateTo(CamMode, mouseX, mouseY);
+          tpCameraController.RotateTo(CamMode, mouseX, mouseY);
+        } 
+       
         
         // 감정표현 부분입니다.
         if (Input.GetKeyDown(EMOTION1_KEYCODE))
@@ -370,14 +373,16 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
 
                 if(isDesk()){
-                  GameManager.isDeskMode = true;
-                  this.fpCameraController.RotateDeskMode();
-                  this.tpCameraController.RotateDeskMode();
-                  Vector3 newPos = new Vector3(tempChair.transform.position.x,tempChair.transform.position.y + 10f,tempChair.transform.position.z);
+                  Vector3 newPos = new Vector3(tempChair.transform.position.x,tempChair.transform.position.y + 5f,tempChair.transform.position.z);
                   this.transform.position = newPos;
-                  
-                  GameManager.DeskModeObject.SetActive(true);
-                  Debug.Log(tempChair.transform.position);
+                  StartCoroutine(CamChange());
+                  if (CamMode == 1){
+                    CamMode = 0;
+                  }
+                  fpCameraController.RotateDeskMode();
+                  Cursor.visible = true;
+                  Cursor.lockState = CursorLockMode.None;
+                  GameManager.isDeskMode = true;
                 }
 
                 // if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
