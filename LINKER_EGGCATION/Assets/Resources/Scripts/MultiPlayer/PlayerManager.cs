@@ -373,16 +373,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
 
                 if(isDesk()){
-                  Vector3 newPos = new Vector3(tempChair.transform.position.x,tempChair.transform.position.y + 5f,tempChair.transform.position.z);
-                  this.transform.position = newPos;
-                  StartCoroutine(CamChange());
-                  if (CamMode == 1){
+                    GameManager.AimObject.SetActive(false);
+                    Vector3 newPos = new Vector3(tempChair.transform.position.x,tempChair.transform.position.y + 5f,tempChair.transform.position.z);
+                    this.transform.position = newPos;
+                    StartCoroutine(CamChange());
+                    if (CamMode == 1){
                     CamMode = 0;
-                  }
-                  fpCameraController.RotateDeskMode();
-                  Cursor.visible = true;
-                  Cursor.lockState = CursorLockMode.None;
-                  GameManager.isDeskMode = true;
+                    }
+                    fpCameraController.RotateDeskMode();
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    GameManager.isDeskMode = true;
                 }
 
                 // if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
