@@ -2179,8 +2179,8 @@ MonoBehaviour:
   displayNameInput: {fileID: 1764410995}
   userNameInput: {fileID: 228742545}
   passwordInput: {fileID: 296366380}
-  teacherToggle: {fileID: 0}
-  studentToggle: {fileID: 0}
+  teacherToggle: {fileID: 9217926}
+  studentToggle: {fileID: 2097016221}
 --- !u!114 &357614982
 MonoBehaviour:
   m_ObjectHideFlags: 0

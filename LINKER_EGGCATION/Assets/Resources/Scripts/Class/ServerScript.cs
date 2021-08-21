@@ -180,9 +180,9 @@ public class ServerScript : MonoBehaviour
                     screenRect.y, screenRect.width, screenRect.height));
                 var ret = mRtcEngine.StartScreenCaptureByScreenRect(screenRect,
                     new Rectangle { x = 0, y = 0, width = 0, height = 0 }, default(ScreenCaptureParameters));
+#endif
             }
         }
-#endif
     }
 
     private void OnJoinChannelSuccessHandler(string channelName, uint uid, int elapsed)
