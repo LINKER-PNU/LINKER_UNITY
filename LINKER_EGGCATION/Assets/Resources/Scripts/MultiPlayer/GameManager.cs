@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     static public GameObject alreadyExistObject;
     
     static public GameObject DeskModeObject;
+
+    static public GameObject AimObject;
     
     static public bool isDeskMode = false;
     
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         alreadyExistObject = canvasObject.transform.Find("alreadyExist_text").gameObject;
         Debug.Log(ServerCanvasObject.name);
         DeskModeObject = canvasObject.transform.Find("DeskMode").gameObject;
+        AimObject = canvasObject.transform.Find("Aim").gameObject;
         // timerObject = deskModeObject.transform.Find("Timer").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
         Debug.Log(this.name,DeskModeObject);
@@ -161,6 +164,7 @@ public class GameManager : MonoBehaviourPunCallbacks
       DeskModeObject.SetActive(false);
       Cursor.visible = false;
       Cursor.lockState = CursorLockMode.Locked;
+      AimObject.SetActive(true);
     }
 
     #endregion
