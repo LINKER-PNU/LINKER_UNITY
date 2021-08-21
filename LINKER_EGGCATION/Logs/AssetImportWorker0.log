@@ -12,112 +12,112 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51273
+53728
 Successfully changed project path to: /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION
 /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 240.95 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 204.71 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.14f1 (d0d1bb862f9d)
 [Subsystems] Discovering subsystems at path /Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION/Assets
 GfxDevice: creating device client; threaded=0
-2021-08-19 16:17:52.959 Unity[12231:622698] Color LCD preferred device: Intel(R) UHD Graphics 630 (low power)
-2021-08-19 16:17:52.959 Unity[12231:622698] Metal devices available: 2
-2021-08-19 16:17:52.959 Unity[12231:622698] 0: AMD Radeon Pro 560X (high power)
-2021-08-19 16:17:52.959 Unity[12231:622698] 1: Intel(R) UHD Graphics 630 (low power)
-2021-08-19 16:17:52.960 Unity[12231:622698] Using device AMD Radeon Pro 560X (high power)
+2021-08-21 14:08:34.738 Unity[5023:155652] Color LCD preferred device: AMD Radeon Pro 560X (high power)
+2021-08-21 14:08:34.738 Unity[5023:155652] Metal devices available: 2
+2021-08-21 14:08:34.739 Unity[5023:155652] 0: AMD Radeon Pro 560X (high power)
+2021-08-21 14:08:34.739 Unity[5023:155652] 1: Intel(R) UHD Graphics 630 (low power)
+2021-08-21 14:08:34.739 Unity[5023:155652] Using device AMD Radeon Pro 560X (high power)
 Initializing Metal device caps: AMD Radeon Pro 560X
 Initialize mono
 Mono path[0] = '/Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56231
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56023
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000581 seconds.
+Registered in 0.002836 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 210.32 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 191.70 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.691 seconds
+- Completed reload, in  3.187 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3691ms)
-		BeginReloadAssembly (63ms)
+	ReloadAssembly (3187ms)
+		BeginReloadAssembly (60ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (766ms)
-			LoadAssemblies (62ms)
+		EndReloadAssembly (676ms)
+			LoadAssemblies (60ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (243ms)
+			SetupTypeCache (209ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (52ms)
-			SetupLoadedEditorAssemblies (401ms)
+			RebuildScriptCaches (51ms)
+			SetupLoadedEditorAssemblies (347ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (210ms)
-				BeforeProcessingInitializeOnLoad (9ms)
-				ProcessInitializeOnLoadAttributes (136ms)
-				ProcessInitializeOnLoadMethodAttributes (41ms)
+				RefreshPlugins (192ms)
+				BeforeProcessingInitializeOnLoad (7ms)
+				ProcessInitializeOnLoadAttributes (107ms)
+				ProcessInitializeOnLoadMethodAttributes (35ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010477 seconds.
+Registered in 0.029543 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image /Users/kimyumin/Downloads/Linker/Linker_unity_git/LINKER_UNITY/LINKER_EGGCATION/Library/PackageCache/com.unity.visualscripting@1.6.1/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 2.57 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 1.90 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.928 seconds
+- Completed reload, in  1.683 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1929ms)
-		BeginReloadAssembly (210ms)
+	ReloadAssembly (1684ms)
+		BeginReloadAssembly (169ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (42ms)
-		EndReloadAssembly (1629ms)
-			LoadAssemblies (132ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (1443ms)
+			LoadAssemblies (158ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (665ms)
+			SetupTypeCache (505ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (107ms)
-			SetupLoadedEditorAssemblies (571ms)
+			RebuildScriptCaches (96ms)
+			SetupLoadedEditorAssemblies (526ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (3ms)
-				BeforeProcessingInitializeOnLoad (126ms)
-				ProcessInitializeOnLoadAttributes (370ms)
-				ProcessInitializeOnLoadMethodAttributes (62ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (113ms)
+				ProcessInitializeOnLoadAttributes (344ms)
+				ProcessInitializeOnLoadMethodAttributes (59ms)
 				AfterProcessingInitializeOnLoad (2ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (10ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launching external process: /Users/kimyumin/Downloads/Unity2021/2020.3.14f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
-Refreshing native plugins compatible for Editor in 2.00 ms, found 7 plugins.
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Refreshing native plugins compatible for Editor in 1.75 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4105 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 254.1 MB.
-System memory in use after: 254.3 MB.
+System memory in use before: 254.0 MB.
+System memory in use after: 254.2 MB.
 
 Unloading 155 unused Assets to reduce memory usage. Loaded Objects now: 4418.
-Total: 7.346597 ms (FindLiveObjects: 0.525751 ms CreateObjectMapping: 0.338281 ms MarkObjects: 6.335876 ms  DeleteObjects: 0.145579 ms)
+Total: 6.970750 ms (FindLiveObjects: 0.414430 ms CreateObjectMapping: 0.241482 ms MarkObjects: 6.162938 ms  DeleteObjects: 0.150397 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -131,8 +131,16 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/mainPlayer.prefab
-  artifactKey: Guid(5af24ff922f6de8439dfd839b7ac45d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/mainPlayer.prefab using Guid(5af24ff922f6de8439dfd839b7ac45d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c8f54d4f10b393973059b7ccedfba20') in 1.568172 seconds 
-  Import took 1.576496 seconds .
+  path: Assets/Resources/Images/Login/KakaoTalk_20210717_182127073 1.png
+  artifactKey: Guid(56c3ce83422054cadabd03d19c9e5dfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/Login/KakaoTalk_20210717_182127073 1.png using Guid(56c3ce83422054cadabd03d19c9e5dfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '759fc20251f3b840905c93f158f142c6') in 1.423376 seconds 
+  Import took 1.431749 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003883 seconds.
+  path: Assets/Resources/Images/Login/KakaoTalk_20210717_182127073 1.png
+  artifactKey: Guid(56c3ce83422054cadabd03d19c9e5dfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Images/Login/KakaoTalk_20210717_182127073 1.png using Guid(56c3ce83422054cadabd03d19c9e5dfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d26a310ccea7d49667da272343e8922') in 0.137860 seconds 
+  Import took 0.145928 seconds .
 
