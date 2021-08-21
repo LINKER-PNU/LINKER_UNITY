@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net;
 using System.IO;
 
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     
 
+
+    
+
     #endregion
 
 
@@ -54,8 +58,35 @@ public class GameManager : MonoBehaviourPunCallbacks
     static public GameObject alreadyExistObject;
     
     static public GameObject DeskModeObject;
+
+    static public GameObject AimObject;
+
+    static public GameObject timerObject;
+
+
+
+    public GameObject TimerBtnContentObject, TimerBtnObject, newTimerPanelObject, SubjectTimerObject, SubjectObject, TotalTimeObject, SubjectTimeObject,CreateBtnObject;
     
     static public bool isDeskMode = false;
+
+
+    [SerializeField]
+    public int y_offset = 320;
+
+    [SerializeField]
+    public int offset = 150;
+
+    static public string roomCode;
+
+    public List<string> timerlist;
+    public float totalTime = 0.0f;
+    public string currentTimerId;
+    public float currentTime;
+    
+    public bool isTimerOn = false;
+    
+
+    
     
     
 
@@ -93,9 +124,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         JoinCodeTextObject.SetActive(true);
-        string joinCode = RoomName_To_JoinCode(PhotonNetwork.CurrentRoom.Name);
+        roomCode = RoomName_To_JoinCode(PhotonNetwork.CurrentRoom.Name);
         Text JoinCodeText = JoinCodeTextObject.GetComponent<Text>();
-        JoinCodeText.text = joinCode;
+        JoinCodeText.text = roomCode;
 
         // Find 연산은 자원을 많이 먹으므로 Awake에서 한번 실행해줍니다.
         createClassPanel = canvasObject.transform.Find("createClass_panel").gameObject;
@@ -107,15 +138,31 @@ public class GameManager : MonoBehaviourPunCallbacks
         alreadyExistObject = canvasObject.transform.Find("alreadyExist_text").gameObject;
         Debug.Log(ServerCanvasObject.name);
         DeskModeObject = canvasObject.transform.Find("DeskMode").gameObject;
-        // timerObject = deskModeObject.transform.Find("Timer").gameObject;
+        AimObject= canvasObject.transform.Find("Aim").gameObject;
+        timerObject = canvasObject.transform.Find("Timer").gameObject;
+        newTimerPanelObject = canvasObject.transform.Find("NewTimerPanel").gameObject;
+        SubjectTimerObject = canvasObject.transform.Find("SubjectTimer").gameObject;
+        SubjectObject = canvasObject.transform.Find("Subject").gameObject;
+        TotalTimeObject = canvasObject.transform.Find("TotalTimeObject").gameObject;
+        SubjectTimeObject = canvasObject.transform.Find("SubjectTimeObject").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
         Debug.Log(this.name,DeskModeObject);
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        timerlist = new List<string>();
 
     }
-
+    void Update(){
+      if(isTimerOn){
+        currentTime += Time.deltaTime;
+        totalTime += Time.deltaTime;
+        TotalTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(totalTime));
+        SubjectTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(currentTime));
+        Debug.Log(currentTime);
+      }
+    }
+ 
    
     #endregion
 
@@ -156,12 +203,123 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
-    public void onDeskMode(){
+
+    public void LeaveDeskMode(){
+      AimObject.SetActive(true);
       isDeskMode = false; 
       DeskModeObject.SetActive(false);
       Cursor.visible = false;
       Cursor.lockState = CursorLockMode.Locked;
+      
     }
+
+    public string FormatTime(int time){
+        int hour = time/3600;
+        int min = (time/60)%60;
+        int sec = time%60;
+      
+        return string.Format("{0:00}:{1:00}:{2:00}",hour, min, sec);
+    }
+
+    public void fetchTimerList(){
+      
+      var json = new JObject();
+      string method = "timer/list";
+      
+      json.Add("timerUser", Utility.userId);
+      json.Add("timerRoom", PhotonNetwork.CurrentRoom.Name);
+
+      var result = JArray.Parse(Utility.request_server(json, method));
+      Debug.Log(Utility.request_server(json, method));
+
+      foreach (Transform child in TimerBtnContentObject.transform) {
+        if(child.gameObject != CreateBtnObject){
+          GameObject.Destroy(child.gameObject);
+        }
+      }
+      totalTime = 0.0f;
+      foreach(JObject timer in result){
+        string timerId = timer["timerId"].ToString();
+        int time = int.Parse(timer["timerStudyTime"].ToString());
+        string subject =  timer["timerSubject"].ToString();
+        totalTime += time;
+        GameObject timerBtn = Instantiate(TimerBtnObject);
+        timerBtn.transform.SetParent(TimerBtnContentObject.transform);
+        Text timerBtnText = timerBtn.GetComponentInChildren<Text>();
+        
+        timerBtnText.text =subject+"\n"+FormatTime(time);
+        RectTransform timerBtnTransform = timerBtn.GetComponent<RectTransform>();
+        Button timerBtnComp = timerBtn.GetComponent<Button>();
+        timerBtnComp.onClick.AddListener(() => {currentTime = time; currentTimerId = timerId; OnShowTimer(subject,time);});
+        Debug.LogFormat("타이머 목록", subject);
+      
+      }
+
+    }
+
+
+    public void OnTimerMode(){
+      DeskModeObject.SetActive(false);
+      timerObject.SetActive(true);
+      fetchTimerList();
+    }
+
+    public void OnTimerExit(){
+      timerObject.SetActive(false);
+      DeskModeObject.SetActive(true);
+    }
+
+    public void OnShowNewTimerPanel(){
+      newTimerPanelObject.SetActive(true);
+    }
+
+    public void OnCreateTimer(){
+      string newTimerTitle = newTimerPanelObject.GetComponentInChildren<InputField>().text;
+      var json = new JObject();
+      string method = "timer/add";
+      
+      json.Add("timerUser", Utility.userId);
+      json.Add("timerRoom", PhotonNetwork.CurrentRoom.Name);
+      json.Add("timerSubject", newTimerTitle);
+
+      var result = JObject.Parse(Utility.request_server(json, method));
+      fetchTimerList();
+      newTimerPanelObject.SetActive(false);
+
+    }
+
+    public void OnCancelCreateTimer(){
+      newTimerPanelObject.SetActive(false);
+    }
+
+    // 과목 타이머 보여줌
+    public void OnShowTimer(string timerTitle,int time){
+      Debug.Log("show timer"+timerTitle);
+      SubjectTimerObject.SetActive(true);
+      SubjectObject.GetComponent<Text>().text = timerTitle;
+      TotalTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(totalTime));
+      SubjectTimeObject.GetComponent<Text>().text = FormatTime(time);
+    }
+    // 과목 타이머에서 나옴
+    public void LeaveTimer(){
+      SubjectTimerObject.SetActive(false);
+      fetchTimerList();
+    }
+
+    public void resumeTimer(){
+      isTimerOn = true;
+    }
+
+    public void stopTimer(){
+      isTimerOn = false;
+      var json = new JObject();
+      string method = "timer/stop";
+      json.Add("timerId", currentTimerId);
+      json.Add("timerStudyTime",(Mathf.FloorToInt(currentTime)).ToString());
+      var result = JObject.Parse(Utility.request_server(json, method));
+      Debug.Log("timer 저장"+currentTimerId+": " +(Mathf.FloorToInt(currentTime)).ToString());
+    }
+
 
     #endregion
 

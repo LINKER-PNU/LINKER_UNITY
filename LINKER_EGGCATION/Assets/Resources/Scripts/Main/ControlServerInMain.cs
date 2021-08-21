@@ -97,7 +97,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
       json.Add("skinRole", "S");
 
       var result = JObject.Parse(Utility.request_server(json, method));
-      // Debug.Log(result);
+      
     }
 
     public void CreateNewRoomBttn()
