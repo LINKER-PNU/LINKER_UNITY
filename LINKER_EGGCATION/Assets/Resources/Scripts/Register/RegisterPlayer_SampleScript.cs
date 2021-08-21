@@ -61,6 +61,7 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
                     }else{
                       userRole ="T";
                     }
+                    
                 
 
                     Debug.Log("authToken " + authToken);

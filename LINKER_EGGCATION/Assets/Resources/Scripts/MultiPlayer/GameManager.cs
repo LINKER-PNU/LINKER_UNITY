@@ -110,6 +110,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         // timerObject = deskModeObject.transform.Find("Timer").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
         Debug.Log(this.name,DeskModeObject);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
    
@@ -153,8 +157,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
     public void onDeskMode(){
-      isDeskMode = false;
+      isDeskMode = false; 
       DeskModeObject.SetActive(false);
+      Cursor.visible = false;
+      Cursor.lockState = CursorLockMode.Locked;
     }
 
     #endregion
