@@ -299,10 +299,16 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         {
                 Debug.Log("We load the 'ClassScene' ");
 
-                PhotonNetwork.LoadLevel("MoClassScene");
+#if UNITY_ANDROID
+            PhotonNetwork.LoadLevel("MoAppClassScene");
+#elif UNITY_IOS
+            PhotonNetwork.LoadLevel("MoAppClassScene");
+#else
+            PhotonNetwork.LoadLevel("MoClassScene");
                 // PhotonNetwork.LoadLevel("MoClassScene");
+#endif
         }
     }
 
-    #endregion
+#endregion
 }
