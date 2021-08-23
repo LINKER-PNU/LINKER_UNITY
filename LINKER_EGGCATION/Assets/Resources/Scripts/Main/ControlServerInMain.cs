@@ -24,9 +24,9 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     private byte maxPlayersPerRoom = 20;
 
     [SerializeField]
-    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject, RoleObject,EggObject;
+    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject, RoleObject ,EggObject, EggClothesObject, ClothesBttnsObject;
 
-    private GameObject ColorObject;
+    private GameObject ColorObject,ClothesObject;
     
     private Text userNameText;
     private Text userRoleText;
@@ -48,6 +48,8 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
     public GameObject ClassBttnContentObject, ClassBttnObject;
 
+    public Material[] Materials;
+
     [SerializeField]
     public int y_offset = 220;
 
@@ -67,6 +69,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
         
         get_user_info();
+        
     }
 
     // Update is called once per frame
@@ -97,7 +100,23 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
       json.Add("skinRole", "S");
 
       var result = JObject.Parse(Utility.request_server(json, method));
-      // Debug.Log(result);
+      
+    }
+    public void OnClickClothesBttn()
+    {
+      ClothesObject = EventSystem.current.currentSelectedGameObject;
+      Material newMat;
+      newMat = Resources.Load(ClothesObject.name, typeof(Material)) as Material;
+      EggClothesObject.GetComponent<Renderer>().material = newMat;
+
+      var json = new JObject();
+      string method = "cloth";
+
+      json.Add("userId", Utility.userId);
+      json.Add("skinCloth", ClothesObject.name);
+      Debug.Log(ClothesObject.name);
+      var result = JObject.Parse(Utility.request_server(json, method));
+
     }
 
     public void CreateNewRoomBttn()
@@ -191,19 +210,28 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         userRoleText = RoleObject.GetComponent<Text>(); 
         
         userNameText.text = Utility.displayName; 
+        Material newMat;
+        string cloth = user_info["user_skin_cloth"].ToString();
         if(user_info["user_skin_role"].ToString() == "S"){
           userRoleText.text = "학생";
+          if(cloth != ""){
+            newMat = Resources.Load(cloth, typeof(Material)) as Material;
+          }else{
+            newMat = Resources.Load("Uniform_blue", typeof(Material)) as Material;
+          }
         }else{
           userRoleText.text = "선생";
+          newMat = Resources.Load("Uniform_teacher", typeof(Material)) as Material;
+          ClothesBttnsObject.SetActive(false);
         }
         Color myColor;
         ColorUtility.TryParseHtmlString("#"+user_info["user_skin_color"].ToString(), out myColor);
         Debug.Log("userskin" + user_info["user_skin_color"].ToString());
         Debug.Log(myColor);
         EggObject.GetComponent<Renderer>().material.color = myColor;
-        
-        
-      
+        //복장
+        EggClothesObject.GetComponent<Renderer>().material = newMat;
+
         createClassBttn(user_info["user_room"]);
     }
 
@@ -299,7 +327,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         {
                 Debug.Log("We load the 'ClassScene' ");
 
-                PhotonNetwork.LoadLevel("MoClassScene");
+                PhotonNetwork.LoadLevel("WonClassScene");
                 // PhotonNetwork.LoadLevel("MoClassScene");
         }
     }

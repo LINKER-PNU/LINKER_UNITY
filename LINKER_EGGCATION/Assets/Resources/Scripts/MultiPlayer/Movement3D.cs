@@ -51,6 +51,8 @@ public class Movement3D : MonoBehaviour
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
     }
 
+    
+
     // public void sitChair(int CamMode,Vector3 direction)
     // {
     //     Vector3 movedis;
