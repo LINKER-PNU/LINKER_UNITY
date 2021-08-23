@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     //[Tooltip("The current Health of our player")]
     //public float Health = 1f;
     [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
-    public static GameObject LocalPlayerInstance;
+    public static GameObject LocalPlayerInstance = null;
 
     public int CamMode;
 
@@ -90,7 +90,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private GameObject tpCamera;
 
     [SerializeField]
-    private CameraController fpCameraController;
+    public CameraController fpCameraController;
     
     [SerializeField]
     private CameraController tpCameraController;
@@ -194,9 +194,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             ProcessInputs();
-      
-              
-            
             
         }
         //if (Health <= 0f)
@@ -277,30 +274,81 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void ProcessInputs()
     {
-        if(!GameManager.isDeskMode){
-          if(Input.GetKeyDown(CAMERA_KEY_CODE))
-          {
-              StartCoroutine(CamChange());
-              if (CamMode == 1){
-              CamMode = 0;
-              }else{
+        if(!GameManager.isMouseMode){
+            if(Input.GetKeyDown(CAMERA_KEY_CODE))
+            {
+                StartCoroutine(CamChange());
+                if (CamMode == 1){
+                CamMode = 0;
+                }else{
                 CamMode += 1;
-              }
-          }          
-          //x, z 방향이동
-          float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
-          float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
+                }
+            }          
+            //x, z 방향이동
+            float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
+            float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
 
-          this.movement3D.MoveTo(CamMode,new Vector3(x, 0, z));
+            this.movement3D.MoveTo(CamMode,new Vector3(x, 0, z));
 
-          if (Input.GetKeyDown(jumpKeyCode))
-          {
-              this.movement3D.JumpTo();
-          }
-          float mouseX = Input.GetAxis("Mouse X");
-          float mouseY = Input.GetAxis("Mouse Y");
-          fpCameraController.RotateTo(CamMode, mouseX, mouseY);
-          tpCameraController.RotateTo(CamMode, mouseX, mouseY);
+            if (Input.GetKeyDown(jumpKeyCode))
+            {
+                this.movement3D.JumpTo();
+            }
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
+            fpCameraController.RotateTo(CamMode, mouseX, mouseY);
+            tpCameraController.RotateTo(CamMode, mouseX, mouseY);
+
+
+            // 상호작용 부분입니다
+            if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시
+            {
+                ray = fpCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+                //var cameraController = CamMode == 1 ? tpCamera : fpCamera;
+                Debug.DrawRay(ray.origin, ray.direction, Color.blue, 0.3f);
+                // 클릭 시 앞에 물건이 있을 때
+                if (Physics.Raycast(ray, out hit, MaxDistance))
+                {
+                    Debug.Log(hit.transform?.name);
+                    if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
+                    {
+                        if (!GameManager.createClassPanel.activeInHierarchy)
+                        {
+                            GameManager.AimObject.SetActive(false);
+                            Cursor.visible = true;
+                            Cursor.lockState = CursorLockMode.None;
+                            GameManager.isMouseMode = true;
+
+                            GameManager.createClassPanel.SetActive(true);
+                        }
+                    }
+                    GameObject tempChair = null;
+
+                    tempChair = GameObject.Find("chair" + hit.transform.name.Substring(4));
+                    // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
+
+                    if (isDesk())
+                    {
+                        GameManager.AimObject.SetActive(false);
+                        Vector3 newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
+
+                        LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
+                        LocalPlayerInstance.transform.position = newPos;
+                        LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
+                        StartCoroutine(CamChange());
+                        if (CamMode == 1)
+                        {
+                            CamMode = 0;
+                        }
+                        Cursor.visible = true;
+                        Cursor.lockState = CursorLockMode.None;
+                        GameManager.DeskModeObject.SetActive(true);
+                        GameManager.isMouseMode = true;
+                        fpCameraController.RotateDeskMode();
+                    }
+                }
+            }
         } 
        
         
@@ -330,22 +378,25 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         // 공지기능 부분입니다.
         if (Input.GetKeyDown(NOTICE_KEYCODE))
         {
+            bool isBoardActive = GameManager.boardPanelObject.activeInHierarchy;
+
+            if (GameManager.escPanelObject.activeInHierarchy)
+            {
+                return;
+            }
+
+            GameManager.AimObject.SetActive(isBoardActive);
+            Cursor.visible = !isBoardActive;
+            Cursor.lockState = isBoardActive ? CursorLockMode.Locked : CursorLockMode.None;
+            GameManager.isMouseMode = !isBoardActive;
+
+            GameManager.boardPanelObject.SetActive(!isBoardActive);
         }
 
         // ESC기능 부분입니다.
         if (Input.GetKeyDown(ESC_KEYCODE))
         {
-        }
-
-        // 상호작용 부분입니다
-        if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시
-        {
-            ray = fpCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
-            //var cameraController = CamMode == 1 ? tpCamera : fpCamera;
-            Debug.DrawRay(ray.origin, ray.direction, Color.blue, 0.3f);
-            // 클릭 시 앞에 물건이 있을 때
-            if (Physics.Raycast(ray, out hit, MaxDistance))
+            if (GameManager.boardPanelObject.activeInHierarchy)
             {
                 Debug.Log(hit.transform?.name);
                 if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
@@ -398,35 +449,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                     
                 //     // GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
                 // }
+                return;
             }
-        }
-    }
 
-    public void OnCreateClassConfirm()
-    {
-        Debug.Log("교");
-        if (GameManager.checkClassExist())
-        {
-            GameManager.Instance.StartCoroutineAlreadyExist();
-            GameManager.createClassPanel.SetActive(false);
-        }
-        else
-        {
-            GameManager.ServerCanvasObject.SetActive(true);
-            GameManager.createClassPanel.SetActive(false);
-            GameManager.leaveClassBtn.SetActive(true);
-        }
-    }
-    public void OnCreateClassCancle()
-    {
-        GameManager.createClassPanel.SetActive(false);
-    }
+            bool isEscActive = GameManager.escPanelObject.activeInHierarchy;
 
-    static public void OnLeaveClass()
-    {
-        GameManager.ServerCanvasObject.SetActive(false);
-        GameManager.ClientCanvasObject.SetActive(false);
-        GameManager.leaveClassBtn.SetActive(false);
+            GameManager.AimObject.SetActive(isEscActive);
+            Cursor.visible = !isEscActive;
+            Cursor.lockState = isEscActive ? CursorLockMode.Locked : CursorLockMode.None;
+            GameManager.isMouseMode = !isEscActive;
+
+            GameManager.escPanelObject.SetActive(!isEscActive);
+        }
     }
 
     bool isTeacherDesk()
