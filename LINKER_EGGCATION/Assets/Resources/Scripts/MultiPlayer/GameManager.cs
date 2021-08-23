@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
-    public GameObject TimerBtnContentObject, TimerBtnObject, newTimerPanelObject, SubjectTimerObject, SubjectObject, TotalTimeObject, SubjectTimeObject,CreateBtnObject;
+    public GameObject TimerBtnContentObject, TimerBtnObject, newTimerPanelObject, SubjectTimerObject, SubjectObject, TotalTimeObject, SubjectTimeObject,CreateBtnObject,DeleteBtnObject,EditBtnObject,SubjectInputObject;
     
     static public bool isDeskMode = false;
 
@@ -78,14 +78,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     static public string roomCode;
 
-    public List<string> timerlist;
+    public List<string> deleteTimerlist;
     public float totalTime = 0.0f;
     public string currentTimerId;
     public float currentTime;
     
     public bool isTimerOn = false;
+    public bool isDeleteMode = false;
+    public bool isEditMode = false;
+    string newSubjectName = ""; 
     
-
+    
     
     
     
@@ -141,16 +144,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         AimObject= canvasObject.transform.Find("Aim").gameObject;
         timerObject = canvasObject.transform.Find("Timer").gameObject;
         newTimerPanelObject = canvasObject.transform.Find("NewTimerPanel").gameObject;
-        SubjectTimerObject = canvasObject.transform.Find("SubjectTimer").gameObject;
-        SubjectObject = canvasObject.transform.Find("Subject").gameObject;
-        TotalTimeObject = canvasObject.transform.Find("TotalTimeObject").gameObject;
-        SubjectTimeObject = canvasObject.transform.Find("SubjectTimeObject").gameObject;
+        // SubjectTimerObject = canvasObject.transform.Find("SubjectTimer").gameObject;
+        // TotalTimeObject = canvasObject.transform.Find("TotalTimeObject").gameObject;
+        // SubjectTimeObject = canvasObject.transform.Find("SubjectTimeObject").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
         Debug.Log(this.name,DeskModeObject);
-
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        timerlist = new List<string>();
+        deleteTimerlist = new List<string>();
+
 
     }
     void Update(){
@@ -246,13 +248,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameObject timerBtn = Instantiate(TimerBtnObject);
         timerBtn.transform.SetParent(TimerBtnContentObject.transform);
         Text timerBtnText = timerBtn.GetComponentInChildren<Text>();
-        
         timerBtnText.text =subject+"\n"+FormatTime(time);
-        RectTransform timerBtnTransform = timerBtn.GetComponent<RectTransform>();
-        Button timerBtnComp = timerBtn.GetComponent<Button>();
+        Button timerBtnComp = timerBtn.GetComponentInChildren<Button>();
         timerBtnComp.onClick.AddListener(() => {currentTime = time; currentTimerId = timerId; OnShowTimer(subject,time);});
+        Toggle toggle = timerBtn.transform.Find("Toggle").GetComponent<Toggle>();
+        toggle.onValueChanged.AddListener(delegate{
+          if(toggle.isOn && !deleteTimerlist.Contains(timerId)){
+            deleteTimerlist.Add(timerId);
+          }else if(!toggle.isOn){
+            deleteTimerlist.Remove(timerId);
+          }   
+        });
         Debug.LogFormat("타이머 목록", subject);
-      
       }
 
     }
@@ -292,6 +299,77 @@ public class GameManager : MonoBehaviourPunCallbacks
       newTimerPanelObject.SetActive(false);
     }
 
+    public void OnDeleteTimer(){
+      if(!isDeleteMode){
+        DeleteBtnObject.GetComponentInChildren<Text>().text = "완료";
+        isDeleteMode = true;
+        foreach (Transform child in TimerBtnContentObject.transform) {
+          if(child.gameObject != CreateBtnObject){
+            child.gameObject.GetComponentInChildren<Button>().interactable = false;
+            child.gameObject.transform.Find("Toggle").gameObject.SetActive(true);
+            
+          }
+        } 
+      }else{
+        string method = "timer/remove";
+        deleteTimerlist.ForEach(delegate(string id)
+        {
+            var json = new JObject();
+            json.Add("timerId",id);
+            var result = JObject.Parse(Utility.request_server(json, method));
+            Debug.Log(id);
+            Debug.Log(result);
+        });
+        foreach (Transform child in TimerBtnContentObject.transform) {
+          if(child.gameObject != CreateBtnObject){
+            child.gameObject.GetComponentInChildren<Button>().interactable = true;
+            child.gameObject.transform.Find("Toggle").gameObject.SetActive(false);
+            child.gameObject.transform.Find("Toggle").GetComponent<Toggle>().isOn = false;
+          }
+        } 
+        fetchTimerList();
+        DeleteBtnObject.GetComponentInChildren<Text>().text = "삭제";
+        isDeleteMode = false;
+        deleteTimerlist.Clear();
+        
+      }
+    }
+    public void OnEditTimer(){
+      if(!isEditMode){
+        EditBtnObject.GetComponentInChildren<Text>().text = "완료";
+        isEditMode = true;
+        SubjectInputObject.SetActive(true);
+        SubjectInputObject.GetComponent<InputField>().text = SubjectObject.GetComponent<Text>().text;
+      }else{
+        newSubjectName = SubjectInputObject.GetComponent<InputField>().text;
+        string method = "timer/edit";
+        var json = new JObject();
+        json.Add("timerId",currentTimerId);
+        json.Add("timerSubject",newSubjectName);
+        var result = JObject.Parse(Utility.request_server(json, method));
+        Debug.Log(currentTimerId);
+        Debug.Log(newSubjectName);
+        
+        SubjectObject.GetComponent<Text>().text = newSubjectName;
+        
+        SubjectInputObject.SetActive(false);
+        EditBtnObject.GetComponentInChildren<Text>().text = "수정";
+        isEditMode = false;
+        newSubjectName = "";
+        SubjectInputObject.GetComponent<InputField>().text="";
+      }
+    }
+
+    // public void OnDeleteTimer(){
+    //   foreach( Toggle toggle in toggleGroup.ActiveToggles())
+    //   {
+    //       Debug.Log( toggle, toggle ) ;
+    //   }
+    // }
+
+
+
+
     // 과목 타이머 보여줌
     public void OnShowTimer(string timerTitle,int time){
       Debug.Log("show timer"+timerTitle);
@@ -319,6 +397,8 @@ public class GameManager : MonoBehaviourPunCallbacks
       var result = JObject.Parse(Utility.request_server(json, method));
       Debug.Log("timer 저장"+currentTimerId+": " +(Mathf.FloorToInt(currentTime)).ToString());
     }
+
+    
 
 
     #endregion
