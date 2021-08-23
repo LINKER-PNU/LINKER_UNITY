@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Newtonsoft.Json.Linq;
+using eggcation;
 
 /// <summary>
 /// Player manager.
@@ -163,6 +164,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         SetName();
+        SetColorAndCloth();
         //if (playerUiPrefab != null)
         //{
         //    GameObject _uiGo = Instantiate(playerUiPrefab);
@@ -209,6 +211,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    private void SetColorAndCloth()
+    {
+        var json = new JObject();
+        string method = "user";
+        json.Add("userId", Utility.userId);
+        var user_info = JObject.Parse(Utility.request_server(json, method));
+        Color myColor;
+        ColorUtility.TryParseHtmlString("#"+user_info["user_skin_color"].ToString(), out myColor);
+        LocalPlayerInstance.transform.Find("Sphere").gameObject.GetComponent<Renderer>().material.color = myColor;
+        Material myMat;
+        string cloth = user_info["user_skin_cloth"].ToString();
+        myMat = Resources.Load(cloth, typeof(Material)) as Material;
+        LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material = myMat;
+        Debug.Log(LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material);
+        Debug.Log(myMat);
+    }
     /// <summary>
     /// MonoBehaviour method called when the Collider 'other' enters the trigger.
     /// Affect Health of the Player if the collider is a beam

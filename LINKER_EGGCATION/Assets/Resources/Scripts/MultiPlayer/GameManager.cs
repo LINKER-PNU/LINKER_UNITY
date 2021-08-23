@@ -204,14 +204,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
 
-    public void LeaveDeskMode(){
-      AimObject.SetActive(true);
-      isDeskMode = false; 
-      DeskModeObject.SetActive(false);
-      Cursor.visible = false;
-      Cursor.lockState = CursorLockMode.Locked;
-      
-    }
 
     public string FormatTime(int time){
         int hour = time/3600;
@@ -390,7 +382,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     #region Private Methods
 
-    void PrintCurrentPlayerCount()
+    // void PrintCurrentPlayerCount()
     public void LeaveDeskMode(){
         isMouseMode = false; 
         DeskModeObject.SetActive(false);
@@ -398,6 +390,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Cursor.lockState = CursorLockMode.Locked;
         AimObject.SetActive(true);
     }
+
 
     public void OnTakeClass()
     {
