@@ -16,7 +16,7 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
     // static public string gameSparkUserId = "N";
 
     public InputField userNameInput, passwordInput;
-    public GameObject LoginObject, RegisterObject;
+    public GameObject LoginObject, RegisterObject, ErrorTextObject;
 
     public void Update()
     {
@@ -63,6 +63,7 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
                 }
                 else
                 {
+                    ErrorTextObject.SetActive(true);
                     Debug.Log("로그인 실패..." + response.Errors.JSON.ToString());
                 }
             });
