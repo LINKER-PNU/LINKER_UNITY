@@ -18,17 +18,14 @@ public class JoyStick : MonoBehaviourPun
     private bool MoveFlag;          // 플레이어 움직임 스위치.
 
     [SerializeField]
-    private float moveSpeed = 2.0f;
+    private float moveSpeed = 5.0f;
     [SerializeField]
     private float jumpForce = 3.0f;
     private float gravity = -9.81f;
     private Vector3 moveDirection;
 
-    [SerializeField]
-    private Transform fpCameraTransform;
-
-    [SerializeField]
-    private Transform tpCameraTransform;
+    public static Transform fpCameraTransform;
+    public static Transform tpCameraTransform;
     // private NavMeshAgent    navMeshAgent;
 
     private void Awake()
@@ -37,11 +34,11 @@ public class JoyStick : MonoBehaviourPun
     }
     void Start()
     {
-        Radius = GetComponent<RectTransform>().sizeDelta.y * 0.5f;
+        Radius = Stick.GetComponent<RectTransform>().sizeDelta.y * 0.5f;
         StickFirstPos = Stick.transform.position;
 
         // 캔버스 크기에대한 반지름 조절.
-        float Can = transform.parent.GetComponent<RectTransform>().localScale.x;
+        float Can = Stick.transform.parent.GetComponent<RectTransform>().localScale.x;
         Radius *= Can;
 
         MoveFlag = false;
@@ -85,8 +82,12 @@ public class JoyStick : MonoBehaviourPun
             Stick.position = StickFirstPos + JoyVec * Radius;
 
         Vector3 movedis;
+        Debug.Log(fpCameraTransform.rotation);
+        Debug.Log(new Vector3(JoyVec.x, 0, JoyVec.y));
+
         movedis = fpCameraTransform.rotation * (new Vector3(JoyVec.x, 0, JoyVec.y));
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
+        Debug.Log(moveDirection);
     }
 
     // 드래그 끝.
@@ -95,6 +96,7 @@ public class JoyStick : MonoBehaviourPun
         Stick.position = StickFirstPos; // 스틱을 원래의 위치로.
         JoyVec = Vector3.zero;          // 방향을 0으로.
         MoveFlag = false;
+        moveDirection = new Vector3(0, moveDirection.y, 0);
     }
 }
 

@@ -130,8 +130,9 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         {
             PlayerManagerApp.LocalPlayerInstance = this.gameObject;
             JoyStick.characterController = LocalPlayerInstance.GetComponent<CharacterController>();
+            JoyStick.fpCameraTransform = fpCamera.transform;
+            JoyStick.tpCameraTransform = tpCamera.transform;
             JoyStickCamera.Player = LocalPlayerInstance;
-            LocalPlayerInstance.GetComponent<JoyStick>().enabled = true;
             Debug.Log("Control My Camera");
             CamMode = 1;
             fpCamera.SetActive(true);
@@ -146,8 +147,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         // #Critical
         // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
         DontDestroyOnLoad(this.gameObject);
-
-        joyStick = GetComponent<JoyStick>();
 
         //if (beams == null)
         //{
@@ -195,7 +194,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             ProcessInputs();
-            
         }
         //if (Health <= 0f)
         //{

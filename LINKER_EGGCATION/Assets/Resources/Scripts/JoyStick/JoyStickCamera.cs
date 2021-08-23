@@ -13,11 +13,12 @@ public class JoyStickCamera : MonoBehaviour
     // 비공개
     private Vector3 StickFirstPos;  // 조이스틱의 처음 위치.
     private Vector3 JoyVec;         // 조이스틱의 벡터(방향)
+    private Vector3 PlayerEulerAngle;
     private float Radius;           // 조이스틱 배경의 반 지름.
     private bool MoveFlag;          // 플레이어 움직임 스위치.
 
-    private float rotateSpeedX = 3;
-    private float rotateSpeedY = 5;
+    private float rotateSpeedX = 0.5f;
+    private float rotateSpeedY = 50f;
     private float limitMinY = -30;
     private float limitMaxY = 30;
     private float eulerAngleX = 3;
@@ -37,6 +38,8 @@ public class JoyStickCamera : MonoBehaviour
 
     void Update()
     {
+        Player.transform.localEulerAngles += PlayerEulerAngle;
+        //Debug.Log(Player.transform.localEulerAngles);
     }
 
     // 드래그
@@ -59,11 +62,12 @@ public class JoyStickCamera : MonoBehaviour
         else
             Stick.position = StickFirstPos + JoyVec * Radius;
 
-        JoyVec.x = ClampAngle(JoyVec.x, limitMinY, limitMaxY);
+        float X = ClampAngle(JoyVec.y, limitMinY, limitMaxY);
 
-        //Player.rotation = Quaternion.Euler(JoyVec.x, JoyVec.y, 0);
-
-        //Player.eulerAngles = new Vector3(0, Mathf.Atan2(JoyVec.x, JoyVec.y) * Mathf.Rad2Deg, 0);
+        //PlayerEulerAngle = new Vector3(JoyVec.x, Mathf.Atan2(JoyVec.x, JoyVec.y) * Mathf.Rad2Deg, 0);
+        PlayerEulerAngle = new Vector3(-(X * Mathf.Rad2Deg * rotateSpeedX * Time.deltaTime),
+                                       JoyVec.x * rotateSpeedY * Time.deltaTime,
+                                       0);
     }
 
     // 드래그 끝.
@@ -72,6 +76,7 @@ public class JoyStickCamera : MonoBehaviour
         Stick.position = StickFirstPos; // 스틱을 원래의 위치로.
         JoyVec = Vector3.zero;          // 방향을 0으로.
         MoveFlag = false;
+        PlayerEulerAngle = new Vector3(0, 0, 0);
     }
 
     private float ClampAngle(float angle, float min, float max)

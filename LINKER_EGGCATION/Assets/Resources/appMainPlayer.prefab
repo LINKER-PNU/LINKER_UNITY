@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 4974439418964197945}
   - component: {fileID: 1720351603574744648}
   - component: {fileID: 2900639090361574105}
-  - component: {fileID: 7306693419176724485}
-  - component: {fileID: 8730945799181647719}
   - component: {fileID: 5334030082249110896}
   - component: {fileID: 3798036839665859341}
   - component: {fileID: 7967621107084511784}
@@ -108,39 +106,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7306693419176724485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011869440616943285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c86445235615e794ea73ddbd2e9dff89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Stick: {fileID: 0}
-  moveSpeed: 2
-  jumpForce: 3
-  fpCameraTransform: {fileID: 5500293553812566035}
-  tpCameraTransform: {fileID: 5868764574947615518}
---- !u!114 &8730945799181647719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011869440616943285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e170cfa70bf49241a286d28faef116f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 3
-  fpCameraTransform: {fileID: 5500293553812566035}
-  tpCameraTransform: {fileID: 5868764574947615518}
 --- !u!114 &5334030082249110896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +342,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: -1
+  photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0

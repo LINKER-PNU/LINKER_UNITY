@@ -5034,7 +5034,7 @@ RectTransform:
   m_GameObject: {fileID: 480589908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728028942}
   m_RootOrder: 0
@@ -5042,7 +5042,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &480589910
 MonoBehaviour:
@@ -5057,14 +5057,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 13
+  - eventID: 14
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 728028943}
-          m_TargetAssemblyTypeName: JoyStick, Assembly-CSharp
-          m_MethodName: Drag
-          m_Mode: 0
+          m_TargetAssemblyTypeName: JoyStickCamera, Assembly-CSharp
+          m_MethodName: DragEnd
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5073,14 +5073,14 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 14
+  - eventID: 5
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 728028943}
-          m_TargetAssemblyTypeName: JoyStick, Assembly-CSharp
-          m_MethodName: DragEnd
-          m_Mode: 1
+          m_TargetAssemblyTypeName: JoyStickCamera, Assembly-CSharp
+          m_MethodName: Drag
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9520,7 +9520,7 @@ RectTransform:
   m_GameObject: {fileID: 728028941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 241}
-  m_LocalScale: {x: 2.9472, y: 2.9472, z: 2.9472}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 480589909}
   m_Father: {fileID: 1680184631}
@@ -9529,7 +9529,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 761, y: -321}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &728028943
 MonoBehaviour:
@@ -9540,14 +9540,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 728028941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c86445235615e794ea73ddbd2e9dff89, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e7427fc207879d4cbdc776feff94b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Stick: {fileID: 480589909}
-  moveSpeed: 2
-  jumpForce: 3
-  fpCameraTransform: {fileID: 0}
-  tpCameraTransform: {fileID: 0}
 --- !u!114 &728028944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10904,8 +10900,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 749237466}
+        m_TargetAssemblyTypeName: GameManagerApp, Assembly-CSharp
         m_MethodName: LeaveDeskMode
         m_Mode: 1
         m_Arguments:
@@ -11195,7 +11191,7 @@ RectTransform:
   m_GameObject: {fileID: 876762003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 969363468}
   m_RootOrder: 0
@@ -11203,7 +11199,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &876762005
 MonoBehaviour:
@@ -11218,22 +11214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 13
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 969363469}
-          m_TargetAssemblyTypeName: JoyStick, Assembly-CSharp
-          m_MethodName: Drag
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 14
     callback:
       m_PersistentCalls:
@@ -11242,6 +11222,22 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: JoyStick, Assembly-CSharp
           m_MethodName: DragEnd
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 969363469}
+          m_TargetAssemblyTypeName: JoyStick, Assembly-CSharp
+          m_MethodName: Drag
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12059,7 +12055,7 @@ RectTransform:
   m_GameObject: {fileID: 969363467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 241}
-  m_LocalScale: {x: 2.9472, y: 2.9472, z: 2.9472}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 876762004}
   m_Father: {fileID: 1680184631}
@@ -12068,7 +12064,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -768, y: -321}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969363469
 MonoBehaviour:
@@ -12085,8 +12081,6 @@ MonoBehaviour:
   Stick: {fileID: 876762004}
   moveSpeed: 2
   jumpForce: 3
-  fpCameraTransform: {fileID: 0}
-  tpCameraTransform: {fileID: 0}
 --- !u!114 &969363470
 MonoBehaviour:
   m_ObjectHideFlags: 0
