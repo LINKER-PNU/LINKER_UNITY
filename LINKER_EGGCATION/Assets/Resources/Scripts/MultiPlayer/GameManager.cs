@@ -259,7 +259,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             deleteTimerlist.Remove(timerId);
           }   
         });
-        Debug.LogFormat("타이머 목록", subject);
       }
 
     }
@@ -317,8 +316,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             var json = new JObject();
             json.Add("timerId",id);
             var result = JObject.Parse(Utility.request_server(json, method));
-            Debug.Log(id);
-            Debug.Log(result);
+
         });
         foreach (Transform child in TimerBtnContentObject.transform) {
           if(child.gameObject != CreateBtnObject){
@@ -347,8 +345,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         json.Add("timerId",currentTimerId);
         json.Add("timerSubject",newSubjectName);
         var result = JObject.Parse(Utility.request_server(json, method));
-        Debug.Log(currentTimerId);
-        Debug.Log(newSubjectName);
         
         SubjectObject.GetComponent<Text>().text = newSubjectName;
         
@@ -359,16 +355,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         SubjectInputObject.GetComponent<InputField>().text="";
       }
     }
-
-    // public void OnDeleteTimer(){
-    //   foreach( Toggle toggle in toggleGroup.ActiveToggles())
-    //   {
-    //       Debug.Log( toggle, toggle ) ;
-    //   }
-    // }
-
-
-
 
     // 과목 타이머 보여줌
     public void OnShowTimer(string timerTitle,int time){
