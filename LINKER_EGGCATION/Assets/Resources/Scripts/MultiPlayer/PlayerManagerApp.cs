@@ -90,7 +90,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     private GameObject tpCamera;
 
     [SerializeField]
-    public CameraController fpCameraController;
+    private CameraController fpCameraController;
     
     [SerializeField]
     private CameraController tpCameraController;
@@ -98,7 +98,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField]
     private TextMeshProUGUI nameText;
 
-    private JoyStick joyStick;
 
     //[Tooltip("The Player's UI GameObject Prefab")]
     //[SerializeField]
@@ -108,10 +107,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
     #region Private Field
 
-    RaycastHit hit;
-    Ray ray;
-    float MaxDistance = 15f;
-    Vector3 vel = Vector3.zero;
     
 
     #endregion
@@ -133,6 +128,8 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             JoyStick.fpCameraTransform = fpCamera.transform;
             JoyStick.tpCameraTransform = tpCamera.transform;
             JoyStickCamera.Player = LocalPlayerInstance;
+            GameManagerApp.fpCamera = fpCamera;
+            GameManagerApp.fpCameraController = fpCamera.GetComponent<CameraController>();
             Debug.Log("Control My Camera");
             CamMode = 1;
             fpCamera.SetActive(true);
@@ -288,50 +285,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
                 }
             }
 
-            if (Input.GetKeyDown(jumpKeyCode))
-            {
-                this.joyStick.JumpTo();
-            }
 
-            // 상호작용 부분입니다
-            if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시
-            {
-                ray = fpCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
-                //var cameraController = CamMode == 1 ? tpCamera : fpCamera;
-                Debug.DrawRay(ray.origin, ray.direction, Color.blue, 0.3f);
-                // 클릭 시 앞에 물건이 있을 때
-                if (Physics.Raycast(ray, out hit, MaxDistance))
-                {
-                    Debug.Log(hit.transform?.name);
-                    if (!GameManagerApp.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
-                    {
-                        GameManagerApp.OnCreateClassCreateFaildInMobile();
-                    } 
-                    GameObject tempChair = null;
-
-                    tempChair = GameObject.Find("chair" + hit.transform.name.Substring(4));
-                    // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
-
-                    if (isDesk())
-                    {
-                        GameManagerApp.AimObject.SetActive(false);
-                        Vector3 newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
-
-                        LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
-                        LocalPlayerInstance.transform.position = newPos;
-                        LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
-                        StartCoroutine(CamChange());
-                        if (CamMode == 1)
-                        {
-                            CamMode = 0;
-                        }
-                        GameManagerApp.DeskModeObject.SetActive(true);
-                        GameManagerApp.isMouseMode = true;
-                        fpCameraController.RotateDeskMode();
-                    }
-                }
-            }
         } 
        
         
@@ -358,21 +312,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
 
-        // 공지기능 부분입니다.
-        if (Input.GetKeyDown(NOTICE_KEYCODE))
-        {
-            bool isBoardActive = GameManagerApp.boardPanelObject.activeInHierarchy;
-
-            if (GameManagerApp.escPanelObject.activeInHierarchy)
-            {
-                return;
-            }
-
-            GameManagerApp.AimObject.SetActive(isBoardActive);
-            GameManagerApp.isMouseMode = !isBoardActive;
-
-            GameManagerApp.boardPanelObject.SetActive(!isBoardActive);
-        }
 
         // ESC기능 부분입니다.
         if (Input.GetKeyDown(ESC_KEYCODE))
@@ -391,18 +330,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    bool isTeacherDesk()
-    {
-        return hit.transform.name == "pCube4" || hit.transform.name =="TeacherDesk";
-    }
-
-    bool isDesk()
-    {
-        return hit.transform.name.Substring(0, 4) == "desk" ;
-        // return (hit.transform.name.Length == 7 && hit.transform.name.Substring(0, 5) == "pCube"
-        //     && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
-        //     && int.Parse(hit.transform.name.Substring(5, 2)) <= 56)|| hit.transform.name.Substring(0, 4) == "desk" ;
-    }
     IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);
         if(CamMode == 1){

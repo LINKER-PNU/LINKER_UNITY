@@ -27,6 +27,10 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject JoinCodeTextObject;
 
+    RaycastHit hit;
+    Ray ray;
+    float MaxDistance = 15f;
+    Vector3 vel = Vector3.zero;
 
 
     #endregion
@@ -57,8 +61,12 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
     static public GameObject TeacherChairObject;
 
     static public bool isMouseMode = false;
-    
-    
+
+    public JoyStick joyStick;
+
+    public static GameObject fpCamera;
+
+    public static CameraController fpCameraController;
 
 
     public static GameManagerApp Instance;
@@ -152,6 +160,56 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     #region Public Methods
 
+    // 상호작용 부분입니다
+    public void OnClickBtn() // 마우스 좌클릭시
+    {
+        ray = fpCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        //var cameraController = CamMode == 1 ? tpCamera : fpCamera;
+        Debug.DrawRay(ray.origin, ray.direction, Color.blue, 0.3f);
+        // 클릭 시 앞에 물건이 있을 때
+        if (Physics.Raycast(ray, out hit, MaxDistance))
+        {
+            Debug.Log(hit.transform?.name);
+            if (!ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
+            {
+                OnCreateClassCreateFaildInMobile();
+            }
+            GameObject tempChair = null;
+
+            tempChair = GameObject.Find("chair" + hit.transform.name.Substring(4));
+            // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
+
+            if (isDesk())
+            {
+                AimObject.SetActive(false);
+                Vector3 newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
+
+                PlayerManagerApp.LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
+                PlayerManagerApp.LocalPlayerInstance.transform.position = newPos;
+                PlayerManagerApp.LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
+                DeskModeObject.SetActive(true);
+                isMouseMode = true;
+                fpCameraController.RotateDeskMode();
+            }
+        }
+    }
+    // 공지기능 부분입니다.
+    public void OnClickNotice()
+    {
+        bool isBoardActive = boardPanelObject.activeInHierarchy;
+
+        if (escPanelObject.activeInHierarchy)
+        {
+            return;
+        }
+
+        AimObject.SetActive(isBoardActive);
+        isMouseMode = !isBoardActive;
+
+        boardPanelObject.SetActive(!isBoardActive);
+    }
+
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
@@ -196,7 +254,7 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         isMouseMode = false;
         AimObject.SetActive(true);
 
-        PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().fpCameraController.PositionNormalMode();
+        fpCameraController.PositionNormalMode();
         ServerCanvasObject.SetActive(false);
         ClientCanvasObject.SetActive(false);
         topPanelObject.SetActive(false);
@@ -224,6 +282,18 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     #region Private Methods
 
+    bool isTeacherDesk()
+    {
+        return hit.transform.name == "pCube4" || hit.transform.name == "TeacherDesk";
+    }
+
+    bool isDesk()
+    {
+        return hit.transform.name.Substring(0, 4) == "desk";
+        // return (hit.transform.name.Length == 7 && hit.transform.name.Substring(0, 5) == "pCube"
+        //     && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
+        //     && int.Parse(hit.transform.name.Substring(5, 2)) <= 56)|| hit.transform.name.Substring(0, 4) == "desk" ;
+    }
     void PrintCurrentPlayerCount()
     {
         Debug.LogFormat("PhotonNetwork : Current Room Player Count : {0}", PhotonNetwork.CurrentRoom.PlayerCount);

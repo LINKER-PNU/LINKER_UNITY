@@ -38,8 +38,14 @@ public class JoyStickCamera : MonoBehaviour
 
     void Update()
     {
-        Player.transform.localEulerAngles += PlayerEulerAngle;
-        //Debug.Log(Player.transform.localEulerAngles);
+        if (PlayerEulerAngle.x != 0 ||
+            PlayerEulerAngle.y != 0 ||
+            PlayerEulerAngle.z != 0)
+        {
+            Vector3 rotDelta = Player.transform.localEulerAngles + PlayerEulerAngle;
+            Player.transform.rotation = Quaternion.Euler(rotDelta);
+            //Debug.Log(Player.transform.localEulerAngles);
+        }
     }
 
     // 드래그
