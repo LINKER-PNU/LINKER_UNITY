@@ -6,6 +6,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 using Photon.Pun;
 using Photon.Realtime;
@@ -20,9 +21,12 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private GameObject emptyObject;
+
     [SerializeField]
     private GameObject canvasObject;
 
+    [SerializeField]
+    private GameObject RoomNameObject;
 
     [SerializeField]
     private GameObject JoinCodeTextObject;
@@ -60,9 +64,8 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     static public GameObject TeacherChairObject;
 
-    static public bool isMouseMode = false;
 
-    public JoyStick joyStick;
+    static public bool isMouseMode = false;
 
     public static GameObject fpCamera;
 
@@ -100,6 +103,8 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
                 Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
             }
         }
+
+        RoomNameObject.GetComponent<TextMeshProUGUI>().text = PhotonNetwork.CurrentRoom.Name;
 
         JoinCodeTextObject.SetActive(true);
         string joinCode = RoomName_To_JoinCode(PhotonNetwork.CurrentRoom.Name);
