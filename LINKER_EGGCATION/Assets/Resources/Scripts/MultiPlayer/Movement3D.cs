@@ -24,7 +24,6 @@ public class Movement3D : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        // navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -38,12 +37,8 @@ public class Movement3D : MonoBehaviour
     public void MoveTo(int CamMode,Vector3 direction)
     {
         Vector3 movedis;
-        if(CamMode == 1){
+        if(CamMode == 0){
           movedis = fpCameraTransform.rotation * direction;
-          // lookForward = new Vector3(fpCameraTransform.forward.x, 0f, fpCameraTransform.forward.z).normalized;
-          // lookRight = new Vector3(fpCameraTransform.right.x, 0f, fpCameraTransform.right.z).normalized;
-          // movedis = lookForward*direction.y + lookRight*direction.x;
-          
         }
         else{
           movedis =  tpCameraTransform.rotation * direction;
@@ -51,28 +46,15 @@ public class Movement3D : MonoBehaviour
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
     }
 
-    
-
-    // public void sitChair(int CamMode,Vector3 direction)
-    // {
-    //     Vector3 movedis;
-    //     if(CamMode == 1){
-    //       movedis = fpCameraTransform.rotation * direction;
-    //       // lookForward = new Vector3(fpCameraTransform.forward.x, 0f, fpCameraTransform.forward.z).normalized;
-    //       // lookRight = new Vector3(fpCameraTransform.right.x, 0f, fpCameraTransform.right.z).normalized;
-    //       // movedis = lookForward*direction.y + lookRight*direction.x;
-          
-    //     }
-    //     else{
-    //       movedis =  tpCameraTransform.rotation * direction;
-    //     }
-    //     moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
-    // }
-
     public void JumpTo()
     {
         if (characterController.isGrounded == true) {
             moveDirection.y = jumpForce;
         }
+    }
+    public void RotatePlayer(Vector3 newPosition)
+    {
+        Quaternion newRotation = Quaternion.LookRotation(newPosition - characterController.transform.position, Vector3.up);
+        characterController.transform.rotation = Quaternion.Slerp(characterController.transform.rotation, newRotation, 0.2F);
     }
 }
