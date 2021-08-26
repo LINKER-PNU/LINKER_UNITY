@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     private GameObject emptyObject;
     [SerializeField]
     private GameObject canvasObject;
+    [SerializeField]
+    private GameObject soundObject;
 
 
     [SerializeField]
@@ -62,8 +64,16 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
+
     public GameObject TimerBtnContentObject, TimerBtnObject, newTimerPanelObject, SubjectTimerObject, SubjectObject, TotalTimeObject, SubjectTimeObject,CreateBtnObject,DeleteBtnObject,EditBtnObject,SubjectInputObject;
     
+    
+    static public GameObject voiceObject;
+    static public GameObject noVoiceObject;
+    static public GameObject noMuteObject;
+    static public GameObject muteObject;
+
+
     static public bool isDeskMode = false;
 
 
@@ -90,7 +100,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     static public GameObject TeacherChairObject;
 
     static public bool isMouseMode = false;
-    
+    static public bool isCheckMouseMode = false;
     
 
 
@@ -145,11 +155,19 @@ public class GameManager : MonoBehaviourPunCallbacks
         timerObject = canvasObject.transform.Find("Timer").gameObject;
         newTimerPanelObject = canvasObject.transform.Find("NewTimerPanel").gameObject;
         AimObject = canvasObject.transform.Find("Aim").gameObject;
-        TeacherChairObject = GameObject.Find("teacher_chair").gameObject;
         Debug.Log(this.name,DeskModeObject);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         deleteTimerlist = new List<string>();
+        voiceObject = soundObject.transform.Find("Voice").gameObject;
+        noVoiceObject = soundObject.transform.Find("NoVoice").gameObject;
+        noMuteObject = soundObject.transform.Find("NoMute").gameObject;
+        muteObject = soundObject.transform.Find("Mute").gameObject;
+        Debug.Log("??");
+        Debug.Log(voiceObject);
+
+        TeacherChairObject = GameObject.Find("teacher_chair").gameObject;
+    
 
 
     }
@@ -166,25 +184,6 @@ public class GameManager : MonoBehaviourPunCallbacks
    
     #endregion
 
-    // #region BellAlarm
-
-    // IEnumerator CountTime() {
-    
-    //     while (true)
-    //     {
-    //         audioSource = Instantiate(playerPrefab.AddComponent<AudioSource>());
-    //         audioSource.clip = sound;
-    //         audioSource.playOnAwake = false;
-    //         audioSource.mute = false;
-    //         audioSource.loop = false;
-    //         audioSource.PlayOneShot(sound);
-    //         DestroyObject(audioSource, 1f);
-    //         Debug.Log("1분 주기 : 벨 알람");
-    //         yield return new WaitForSeconds(30.0f);
-    //     }
-    // }  
-
-    // #endregion
 
     #region Photon Callbacks
 
@@ -252,7 +251,6 @@ public class GameManager : MonoBehaviourPunCallbacks
       }
 
     }
-
 
     public void OnTimerMode(){
       DeskModeObject.SetActive(false);
@@ -385,11 +383,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     // void PrintCurrentPlayerCount()
     public void LeaveDeskMode(){
         isMouseMode = false; 
+        isCheckMouseMode = false;
         DeskModeObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         AimObject.SetActive(true);
     }
+
 
 
     public void OnTakeClass()
@@ -431,7 +431,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 PlayerManager.LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
                 PlayerManager.LocalPlayerInstance.transform.position = newPos;
                 PlayerManager.LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
-                if (PlayerManager.LocalPlayerInstance.GetComponent< PlayerManager>().CamMode == 1)
+                if (PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().CamMode == 1)
                 {
                     PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().CamMode = 0;
                 }

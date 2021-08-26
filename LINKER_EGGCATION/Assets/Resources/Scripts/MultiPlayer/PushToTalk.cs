@@ -9,31 +9,50 @@ using Photon.Voice.PUN;
 
 public class PushToTalk : MonoBehaviourPun
 {
-    public KeyCode PushButton = KeyCode.P;
+    public KeyCode SpeakBtn = KeyCode.M;
+    public KeyCode ListenBtn = KeyCode.V;
     public Recorder VoiceRecorder;
+    public AudioSource VoiceAudioSource;
+
 
     // Start is called before the first frame update
     void Start()
     {
         VoiceRecorder.TransmitEnabled = false;
+        VoiceAudioSource.mute = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-      if(Input.GetKeyDown(PushButton))
+      if(Input.GetKeyDown(SpeakBtn))
       {
         if(photonView.IsMine)
         {
-          VoiceRecorder.TransmitEnabled = true;
+          VoiceRecorder.TransmitEnabled = !VoiceRecorder.TransmitEnabled;
+          if(VoiceRecorder.TransmitEnabled == true){
+            Debug.Log(GameManager.voiceObject);
+            GameManager.voiceObject.SetActive(true);
+            GameManager.noVoiceObject.SetActive(false);
+          }else{
+            GameManager.voiceObject.SetActive(false);
+            GameManager.noVoiceObject.SetActive(true);
+          }
         }
       }
-      else if(Input.GetKeyUp(PushButton)){
+      if(Input.GetKeyDown(ListenBtn))
+      {
         if(photonView.IsMine)
         {
-          VoiceRecorder.TransmitEnabled = false;
+          VoiceAudioSource.mute = !VoiceAudioSource.mute;
+          if(VoiceAudioSource.mute == true){
+            GameManager.muteObject.SetActive(true);
+            GameManager.noMuteObject.SetActive(false);
+          }else{
+            GameManager.muteObject.SetActive(false);
+            GameManager.noMuteObject.SetActive(true);
+          }
         }
-      }
-        
+      }    
     }
 }
