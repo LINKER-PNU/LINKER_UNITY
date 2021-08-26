@@ -18,6 +18,11 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
     public InputField userNameInput, passwordInput;
     public GameObject LoginObject, RegisterObject, ErrorTextObject;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 40;
+    }
+
     public void Update()
     {
       if(userNameInput.isFocused == true) {

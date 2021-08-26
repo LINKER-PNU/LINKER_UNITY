@@ -332,8 +332,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 #elif UNITY_IOS
             PhotonNetwork.LoadLevel("MoAppClassScene");
 #else
-            PhotonNetwork.LoadLevel("MoClassScene");
-                // PhotonNetwork.LoadLevel("MoClassScene");
+            PhotonNetwork.LoadLevel("ClassScene");
 #endif
         }
     }

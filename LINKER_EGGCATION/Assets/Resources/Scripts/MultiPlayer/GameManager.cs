@@ -416,6 +416,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Instance.StartCoroutineAlreadyExist();
             createClassPanel.SetActive(false);
+            isMouseMode = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            AimObject.SetActive(true);
         }
         else
         {
