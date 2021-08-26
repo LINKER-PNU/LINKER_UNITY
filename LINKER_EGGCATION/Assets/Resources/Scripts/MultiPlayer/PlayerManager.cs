@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Newtonsoft.Json.Linq;
+using eggcation;
 
 /// <summary>
 /// Player manager.
@@ -113,6 +114,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     Ray ray;
     float MaxDistance = 15f;
     Vector3 vel = Vector3.zero;
+
+    float rotationSpeed = 45;
+    Vector3 currentEulerAngles;
+    Vector3 newPos;
     
 
     #endregion
@@ -132,7 +137,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             PlayerManager.LocalPlayerInstance = this.gameObject;
             Debug.Log("Control My Camera");
             LocalPlayerInstance.GetComponent<Movement3D>().enabled = true;
-            CamMode = 1;
+            CamMode = 0;
             fpCamera.SetActive(true);
             MainCamera = fpCamera.GetComponent<Camera>();
             tpCamera.SetActive(false);
@@ -163,6 +168,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         SetName();
+        SetColorAndCloth();
         //if (playerUiPrefab != null)
         //{
         //    GameObject _uiGo = Instantiate(playerUiPrefab);
@@ -209,6 +215,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    private void SetColorAndCloth()
+    {
+        var json = new JObject();
+        string method = "user";
+        json.Add("userId", Utility.userId);
+        var user_info = JObject.Parse(Utility.request_server(json, method));
+        Color myColor;
+        ColorUtility.TryParseHtmlString("#"+user_info["user_skin_color"].ToString(), out myColor);
+        LocalPlayerInstance.transform.Find("Sphere").gameObject.GetComponent<Renderer>().material.color = myColor;
+        Material myMat;
+        string cloth = user_info["user_skin_cloth"].ToString();
+        myMat = Resources.Load(cloth, typeof(Material)) as Material;
+        LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material = myMat;
+        Debug.Log(LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material);
+        Debug.Log(myMat);
+    }
     /// <summary>
     /// MonoBehaviour method called when the Collider 'other' enters the trigger.
     /// Affect Health of the Player if the collider is a beam
@@ -217,16 +239,16 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     /// </summary>
     void OnTriggerEnter(Collider other)
     {
-        //if (!photonView.IsMine)
-        //{
+        // if (!photonView.IsMine)
+        // {
         //    return;
-        //}
-        //// We are only interested in Beamers
-        //// we should be using tags but for the sake of distribution, let's simply check by name.
-        //if (!other.name.Contains("Beam"))
-        //{
+        // }
+        // We are only interested in Beamers
+        // we should be using tags but for the sake of distribution, let's simply check by name.
+        // if (!other.name.Contains("Beam"))
+        // {
         //    return;
-        //}
+        // }
     }
     /// <summary>
     /// MonoBehaviour method called once per frame for every Collider 'other' that is touching the trigger.
@@ -270,7 +292,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         return true;
     }
 
-  
+
 
     void ProcessInputs()
     {
@@ -283,7 +305,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 }else{
                 CamMode += 1;
                 }
-            }          
+            } 
             //x, z 방향이동
             float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
             float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
@@ -298,8 +320,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             float mouseY = Input.GetAxis("Mouse Y");
             fpCameraController.RotateTo(CamMode, mouseX, mouseY);
             tpCameraController.RotateTo(CamMode, mouseX, mouseY);
-
-
             // 상호작용 부분입니다
             if (Input.GetMouseButtonDown(0)) // 마우스 좌클릭시
             {
@@ -319,7 +339,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                             Cursor.visible = true;
                             Cursor.lockState = CursorLockMode.None;
                             GameManager.isMouseMode = true;
-
                             GameManager.createClassPanel.SetActive(true);
                         }
                     }
@@ -330,27 +349,41 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
                     if (isDesk())
                     {
+                        
                         GameManager.AimObject.SetActive(false);
-                        Vector3 newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
-
+                        newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
+                        
                         LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
+                        
+                        Debug.Log(LocalPlayerInstance.transform.rotation);
                         LocalPlayerInstance.transform.position = newPos;
+                        // var relativePos = tempChair.transform.position - LocalPlayerInstance.transform.position; 
+                        // var rotation = Quaternion.LookRotation(relativePos);
+                        // LocalPlayerInstance.transform.LookAt(Vector3.zero);
                         LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
-                        StartCoroutine(CamChange());
-                        if (CamMode == 1)
-                        {
-                            CamMode = 0;
-                        }
+                        Debug.Log(LocalPlayerInstance.transform.rotation);
+                      
+                        
+                        
+                        // StartCoroutine(CamChange());
+                        // if (CamMode == 1)
+                        // {
+                        //     CamMode = 0;
+                        // }
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
                         GameManager.DeskModeObject.SetActive(true);
-                        GameManager.isMouseMode = true;
                         fpCameraController.RotateDeskMode();
+                        GameManager.isMouseMode = true;
+                        
                     }
                 }
             }
         } 
-       
+
+
+  
+              
         
         // 감정표현 부분입니다.
         if (Input.GetKeyDown(EMOTION1_KEYCODE))
@@ -398,6 +431,63 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (GameManager.boardPanelObject.activeInHierarchy)
             {
+                Debug.Log(hit.transform?.name);
+                if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
+                {
+                    if (!GameManager.createClassPanel.activeInHierarchy)
+                    {
+                        GameManager.createClassPanel.SetActive(true);
+                    }
+                }
+                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
+                // {
+                //     Debug.Log("책");
+                //     if (GameManager.checkClassExist())
+                //     {
+                //         GameManager.ClientCanvasObject.SetActive(true);
+                //         GameManager.leaveClassBtn.SetActive(true);
+                //     }
+                //     else
+                //     {
+                //         GameManager.Instance.StartCoroutineIsNotExist();
+                //     }
+                GameObject tempChair = null;
+                
+                tempChair = GameObject.Find("chair"+hit.transform.name.Substring(4));
+                // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
+
+                if(isDesk()){
+                  GameManager.AimObject.SetActive(false);
+                  Vector3 newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
+
+                  LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
+                  LocalPlayerInstance.transform.position = newPos;
+                  // LocalPlayerInstance.transform.rotation = Quaternion.Euler(20, 90, 0);
+
+                  LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
+                  StartCoroutine(CamChange());
+                  if (CamMode == 1){
+                    CamMode = 0;
+                  }
+                  Cursor.visible = true;
+                  Cursor.lockState = CursorLockMode.None;
+                  GameManager.isDeskMode = true;
+                  GameManager.DeskModeObject.SetActive(true);
+                  fpCameraController.RotateDeskMode();
+                  
+                }
+
+                // if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
+                // {
+                //     Debug.Log("교");
+                //     GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
+                // }
+                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
+                // {
+                //     Debug.Log("책");
+                    
+                //     // GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
+                // }
                 return;
             }
 
@@ -424,6 +514,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         //     && 37 <= int.Parse(hit.transform.name.Substring(5, 2))
         //     && int.Parse(hit.transform.name.Substring(5, 2)) <= 56)|| hit.transform.name.Substring(0, 4) == "desk" ;
     }
+    
     IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);
         if(CamMode == 1){
