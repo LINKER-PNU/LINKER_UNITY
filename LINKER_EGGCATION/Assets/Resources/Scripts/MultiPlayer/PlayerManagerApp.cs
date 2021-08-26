@@ -60,7 +60,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     //private GameObject beams;
 
     ////True, when the user is firing
-    bool[] IsEmotionsActive;
+    static public bool[] IsEmotionsActive;
 
     [SerializeField]
     const int MaximumEmotionCount = 5;
@@ -200,6 +200,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (IsEmotionsActive != null && IsEmotionsActive[i] != Emotions[i].activeInHierarchy)
             {
+                Debug.Log(IsEmotionsActive[i]);
                 Emotions[i].SetActive(IsEmotionsActive[i]);
             }
         }
@@ -241,30 +242,12 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         //    return;
         //}
     }
-    IEnumerator CoroutineEmotion(int i)
-    {
-        IsEmotionsActive[i] = true;
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(1f);
-
-        IsEmotionsActive[i] = false;
-    }
 
     void SetName()
     {
         nameText.text = photonView.Owner.NickName;
     }
 
-    bool IsAllEmotionInactive()
-    {
-        foreach(var EmotionActive in IsEmotionsActive)
-        {
-            Debug.Log(EmotionActive);
-            if (EmotionActive) return false;
-        }
-        return true;
-    }
 
   
 
@@ -288,31 +271,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
         } 
        
-        
-        // 감정표현 부분입니다.
-        if (Input.GetKeyDown(EMOTION1_KEYCODE))
-        {
-            if (IsAllEmotionInactive())
-            {
-                StartCoroutine(CoroutineEmotion(0));
-            }
-        }
-        if (Input.GetKeyDown(EMOTION2_KEYCODE))
-        {
-            if (IsAllEmotionInactive())
-            {
-                StartCoroutine(CoroutineEmotion(1));
-            }
-        }
-        if (Input.GetKeyDown(EMOTION3_KEYCODE))
-        {
-            if (IsAllEmotionInactive())
-            {
-                StartCoroutine(CoroutineEmotion(2));
-            }
-        }
-
-
         // ESC기능 부분입니다.
         if (Input.GetKeyDown(ESC_KEYCODE))
         {
@@ -322,15 +280,13 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             }
 
             bool isEscActive = GameManagerApp.escPanelObject.activeInHierarchy;
-
-            GameManagerApp.AimObject.SetActive(isEscActive);
+            GameManagerApp.DisplayCanvas(isEscActive, "esc");
             GameManagerApp.isMouseMode = !isEscActive;
 
             GameManagerApp.escPanelObject.SetActive(!isEscActive);
         }
     }
-
-    IEnumerator CamChange(){
+IEnumerator CamChange(){
         yield return new WaitForSeconds(0.01f);
         if(CamMode == 1){
             fpCamera.SetActive(false);

@@ -82,12 +82,9 @@ public class JoyStick : MonoBehaviourPun
             Stick.position = StickFirstPos + JoyVec * Radius;
 
         Vector3 movedis;
-        Debug.Log(fpCameraTransform.rotation);
-        Debug.Log(new Vector3(JoyVec.x, 0, JoyVec.y));
 
         movedis = fpCameraTransform.rotation * (new Vector3(JoyVec.x, 0, JoyVec.y));
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
-        Debug.Log(moveDirection);
     }
 
     // 드래그 끝.

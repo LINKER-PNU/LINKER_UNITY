@@ -62,6 +62,25 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     static public GameObject AimObject;
 
+    static public GameObject JoyStickObject;
+
+    static public GameObject JoyStickCameraObject;
+
+    static public GameObject MicBtnObject;
+
+    static public GameObject VoiceBtnObject;
+
+    static public GameObject BoardTextObject;
+
+    static public GameObject BoardBtnObject;
+
+    static public GameObject ClickBtnObject;
+
+    static public GameObject JumpBtnObject;
+
+    static public GameObject EmotionPanelObject;
+
+
     static public GameObject TeacherChairObject;
 
 
@@ -122,6 +141,16 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         classCreateFaildInMobileObject = canvasObject.transform.Find("classCreateFaildInMobile_text").gameObject;
         DeskModeObject = canvasObject.transform.Find("DeskMode").gameObject;
         AimObject = canvasObject.transform.Find("Aim").gameObject;
+
+        JoyStickObject = canvasObject.transform.Find("JoyStickBackground(Move)").gameObject;
+        JoyStickCameraObject = canvasObject.transform.Find("JoyStickBackground(Camera)").gameObject;
+        MicBtnObject = canvasObject.transform.Find("mic_btn").gameObject;
+        VoiceBtnObject = canvasObject.transform.Find("voice_btn").gameObject;
+        BoardTextObject = canvasObject.transform.Find("board_text").gameObject;
+        BoardBtnObject = canvasObject.transform.Find("board_btn").gameObject;
+        ClickBtnObject = canvasObject.transform.Find("click_btn").gameObject;
+        JumpBtnObject = canvasObject.transform.Find("jump_btn").gameObject;
+        EmotionPanelObject = canvasObject.transform.Find("Emotion_panel").gameObject;
         TeacherChairObject = GameObject.Find("teacher_chair").gameObject;
         // timerObject = deskModeObject.transform.Find("Timer").gameObject;
         // lessonObject = deskModeObject.transform.Find("Lesson").gameObject;
@@ -187,7 +216,7 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
             if (isDesk())
             {
-                AimObject.SetActive(false);
+                DisplayCanvas(false, "desk");
                 Vector3 newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
 
                 PlayerManagerApp.LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
@@ -208,8 +237,7 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         {
             return;
         }
-
-        AimObject.SetActive(isBoardActive);
+        DisplayCanvas(isBoardActive, "board");
         isMouseMode = !isBoardActive;
 
         boardPanelObject.SetActive(!isBoardActive);
@@ -222,7 +250,7 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
     public void LeaveDeskMode(){
         isMouseMode = false; 
         DeskModeObject.SetActive(false);
-        AimObject.SetActive(true);
+        DisplayCanvas(true, "desk");
     }
 
     public void OnTakeClass()
@@ -242,22 +270,56 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
             }
         }
     }
+    IEnumerator CoroutineEmotion(int i)
+    {
+        PlayerManagerApp.IsEmotionsActive[i] = true;
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1f);
+
+        PlayerManagerApp.IsEmotionsActive[i] = false;
+    }
+
+    bool IsAllEmotionInactive()
+    {
+        foreach (var EmotionActive in PlayerManagerApp.IsEmotionsActive)
+        {
+            if (EmotionActive) return false;
+        }
+        return true;
+    }
+
+    // 감정표현 부분입니다.
+    public void OnClickEmotion1()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(0));
+        }
+    }
+    public void OnClickEmotion2()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(1));
+        }
+    }
+    public void OnClickEmotion3()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(2));
+        }
+    }
     static public void OnCreateClassCreateFaildInMobile()
     {
         Instance.StartCoroutineClassCreateFaildInMobile();
-    }
-    public void OnCreateClassCancle()
-    {
-        isMouseMode = false;
-        AimObject.SetActive(true);
-
-        createClassPanel.SetActive(false);
     }
 
     static public void OnLeaveClass()
     {
         isMouseMode = false;
-        AimObject.SetActive(true);
+        DisplayCanvas(true, "desk");
 
         fpCameraController.PositionNormalMode();
         ServerCanvasObject.SetActive(false);
@@ -281,6 +343,49 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
     public void StartCoroutineIsNotExist()
     {
         StartCoroutine(CoroutineIsNotExist());
+    }
+
+    static public void DisplayCanvas(bool active, string type)
+    {
+        if (type == "desk")
+        {
+            JoyStickObject.SetActive(active);
+            JoyStickCameraObject.SetActive(active);
+            MicBtnObject.SetActive(active);
+            VoiceBtnObject.SetActive(active);
+            BoardTextObject.SetActive(active);
+            BoardBtnObject.SetActive(active);
+            ClickBtnObject.SetActive(active);
+            JumpBtnObject.SetActive(active);
+            //EmotionPanelObject.SetActive(active);
+            AimObject.SetActive(active);
+        }
+        if (type == "esc")
+        {
+            JoyStickObject.SetActive(active);
+            JoyStickCameraObject.SetActive(active);
+            MicBtnObject.SetActive(active);
+            VoiceBtnObject.SetActive(active);
+            BoardTextObject.SetActive(active);
+            BoardBtnObject.SetActive(active);
+            ClickBtnObject.SetActive(active);
+            JumpBtnObject.SetActive(active);
+            EmotionPanelObject.SetActive(active);
+            AimObject.SetActive(active);
+        }
+        if (type == "board")
+        {
+            JoyStickObject.SetActive(active);
+            JoyStickCameraObject.SetActive(active);
+            MicBtnObject.SetActive(active);
+            VoiceBtnObject.SetActive(active);
+            //BoardTextObject.SetActive(active);
+            //BoardBtnObject.SetActive(active);
+            ClickBtnObject.SetActive(active);
+            JumpBtnObject.SetActive(active);
+            EmotionPanelObject.SetActive(active);
+            AimObject.SetActive(active);
+        }
     }
     #endregion
 
