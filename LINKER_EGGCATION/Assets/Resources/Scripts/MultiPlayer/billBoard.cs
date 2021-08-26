@@ -9,7 +9,13 @@ public class billBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_ANDROID
+        mainCameraTransform = PlayerManagerApp.MainCamera.transform;
+#elif UNITY_IOS
+        mainCameraTransform = PlayerManagerApp.MainCamera.transform;
+#else
         mainCameraTransform = PlayerManager.MainCamera.transform;
+#endif
     }
 
     // Update is called once per frame

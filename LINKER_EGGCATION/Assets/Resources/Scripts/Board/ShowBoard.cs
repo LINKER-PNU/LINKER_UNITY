@@ -53,6 +53,9 @@ public class ShowBoard : MonoBehaviour
     [SerializeField]
     GameObject EditBttnObject;
 
+    [SerializeField]
+    GameObject boardTextObject;
+
     Toggle NoticeToggle;
     Toggle HomeworkToggle;
 
@@ -82,7 +85,6 @@ public class ShowBoard : MonoBehaviour
 
         TitleInput = TitleObject.GetComponent<TMP_InputField>();
         ContentInput = ContentObject.GetComponent<TMP_InputField>();
-
     }
     void OnEnable()
     {
@@ -164,6 +166,7 @@ public class ShowBoard : MonoBehaviour
 
         var boardList = JObject.Parse(Utility.request_server(json, method));
         createBoardButton(boardList["result"]);
+        boardTextObject.GetComponent<TextMeshProUGUI>().text = boardList["result"].HasValues ? (string)boardList["result"][0]["boardTitle"] : string.Empty;
     }
     public void createBoardButton(JToken boardList)
     {

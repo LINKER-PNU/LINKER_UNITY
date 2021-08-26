@@ -64,7 +64,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     bool[] IsEmotionsActive;
 
     [SerializeField]
-    const int MaximumEmotionCount = 5;
+    const int MaximumEmotionCount = 10;
 
     [SerializeField]
     private GameObject[] Emotions;
@@ -79,6 +79,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private KeyCode EMOTION2_KEYCODE = KeyCode.Alpha2;
     [SerializeField]
     private KeyCode EMOTION3_KEYCODE = KeyCode.Alpha3;
+    [SerializeField]
+    private KeyCode EMOTION4_KEYCODE = KeyCode.Alpha4;
+    [SerializeField]
+    private KeyCode EMOTION5_KEYCODE = KeyCode.Alpha5;
+    [SerializeField]
+    private KeyCode EMOTION6_KEYCODE = KeyCode.Alpha6;
+    [SerializeField]
+    private KeyCode EMOTION7_KEYCODE = KeyCode.Alpha7;
     [SerializeField]
     private KeyCode NOTICE_KEYCODE = KeyCode.I;
     [SerializeField]
@@ -144,7 +152,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
 
             // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
-            IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false};
+            IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false, false, false, false, false, false };
 
         }
         // #Critical
@@ -405,6 +413,34 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             if (IsAllEmotionInactive())
             {
                 StartCoroutine(CoroutineEmotion(2));
+            }
+        }
+        if (Input.GetKeyDown(EMOTION4_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(3));
+            }
+        }
+        if (Input.GetKeyDown(EMOTION5_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(4));
+            }
+        }
+        if (Input.GetKeyDown(EMOTION6_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(5));
+            }
+        }
+        if (Input.GetKeyDown(EMOTION7_KEYCODE))
+        {
+            if (IsAllEmotionInactive())
+            {
+                StartCoroutine(CoroutineEmotion(6));
             }
         }
 

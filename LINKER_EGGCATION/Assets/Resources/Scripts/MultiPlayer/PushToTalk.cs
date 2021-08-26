@@ -18,7 +18,7 @@ public class PushToTalk : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        VoiceRecorder.TransmitEnabled = false;
+        VoiceRecorder.TransmitEnabled = true;
         VoiceAudioSource.mute = false;
     }
 
