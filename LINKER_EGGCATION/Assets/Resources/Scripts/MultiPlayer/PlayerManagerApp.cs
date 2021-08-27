@@ -105,6 +105,9 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField]
     private TextMeshProUGUI nameText;
 
+    private float gravity = -9.81f;
+    [SerializeField]
+    private float moveSpeed = 5.0f;
 
     //[Tooltip("The Player's UI GameObject Prefab")]
     //[SerializeField]
@@ -114,7 +117,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
     #region Private Field
 
-    
+
 
     #endregion
 
@@ -205,6 +208,11 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             ProcessInputs();
+            if (JoyStick.characterController.isGrounded == false)
+            {
+                JoyStick.moveDirection.y += gravity * Time.deltaTime;
+            }
+            JoyStick.characterController.Move(JoyStick.moveDirection * moveSpeed * Time.deltaTime);
         }
         //if (Health <= 0f)
         //{
@@ -315,14 +323,17 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             GameManagerApp.escPanelObject.SetActive(!isEscActive);
         }
     }
-IEnumerator CamChange(){
+    IEnumerator CamChange()
+    {
         yield return new WaitForSeconds(0.01f);
-        if(CamMode == 1){
+        if (CamMode == 1)
+        {
             fpCamera.SetActive(false);
             tpCamera.SetActive(true);
             MainCamera = tpCamera.GetComponent<Camera>();
         }
-        else{
+        else
+        {
             fpCamera.SetActive(true);
             tpCamera.SetActive(false);
             MainCamera = fpCamera.GetComponent<Camera>();
