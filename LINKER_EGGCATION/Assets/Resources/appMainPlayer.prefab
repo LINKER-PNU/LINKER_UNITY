@@ -178,6 +178,7 @@ MonoBehaviour:
   fpCameraController: {fileID: 3196030218884361775}
   tpCameraController: {fileID: 3006304307793250384}
   nameText: {fileID: 7874392135800814861}
+  moveSpeed: 5
 --- !u!143 &3798036839665859341
 CharacterController:
   m_ObjectHideFlags: 0
