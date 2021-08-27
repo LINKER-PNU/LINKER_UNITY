@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Voice.Unity;
+using Photon.Voice.PUN;
+using Newtonsoft.Json.Linq;
+using eggcation;
 
 /// <summary>
 /// Player manager.
@@ -49,6 +52,10 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     public int CamMode;
 
     static public Camera MainCamera;
+
+    static public Recorder VoiceRecorder;
+
+    static public AudioSource VoiceAudioSource;
 
     #endregion
 
@@ -136,6 +143,11 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             MainCamera = fpCamera.GetComponent<Camera>();
             tpCamera.SetActive(false);
 
+            VoiceRecorder = LocalPlayerInstance.GetComponent<Recorder>();
+            VoiceAudioSource = LocalPlayerInstance.GetComponent<AudioSource>();
+            VoiceRecorder.TransmitEnabled = true;
+            VoiceAudioSource.mute = false;
+
 
             // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
             IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false, false, false, false, false, false };
@@ -161,6 +173,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     {
         SetName();
         SetColorAndCloth();
+
         //if (playerUiPrefab != null)
         //{
         //    GameObject _uiGo = Instantiate(playerUiPrefab);

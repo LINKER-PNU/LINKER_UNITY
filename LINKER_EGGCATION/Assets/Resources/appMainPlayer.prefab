@@ -250,8 +250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logLevel: 3
   ignoreGlobalLogLevel: 0
-  recorderInUse: {fileID: -7449625433277309849, guid: 5af24ff922f6de8439dfd839b7ac45d5, type: 3}
-  speakerInUse: {fileID: -2214344583822863310, guid: 5af24ff922f6de8439dfd839b7ac45d5, type: 3}
+  recorderInUse: {fileID: 7322315614012503894}
+  speakerInUse: {fileID: 601890637429970847}
   AutoCreateRecorderIfNotFound: 0
   UsePrimaryRecorder: 0
   SetupDebugSpeaker: 1
@@ -389,7 +389,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: -1
+  photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -1161,6 +1161,14 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9daac61537a0a4f52a67c616bffd6b5d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9daac61537a0a4f52a67c616bffd6b5d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ff4417086bfc46dc98540eff3bd33eb, type: 2}
+    - target: {fileID: 919132149155446097, guid: 9daac61537a0a4f52a67c616bffd6b5d, type: 3}
+      propertyPath: m_Name
+      value: Cloth
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daac61537a0a4f52a67c616bffd6b5d, type: 3}
