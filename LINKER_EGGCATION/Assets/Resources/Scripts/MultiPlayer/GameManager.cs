@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log("??");
         Debug.Log(voiceObject);
 
-        TeacherChairObject = GameObject.Find("teacher_chair").gameObject;
+        TeacherChairObject = GameObject.Find("TeacherChair").gameObject;
     
 
 

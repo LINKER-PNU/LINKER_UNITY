@@ -353,7 +353,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                     GameObject tempChair = null;
 
                     tempChair = GameObject.Find("chair" + hit.transform.name.Substring(4));
-                    // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
+                     Debug.Log("chair" + hit.transform.name.Substring(4));
 
                     if (isDesk())
                     {
