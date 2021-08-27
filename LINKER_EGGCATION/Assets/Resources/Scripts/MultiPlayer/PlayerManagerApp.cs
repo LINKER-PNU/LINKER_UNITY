@@ -160,6 +160,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         SetName();
+        SetColorAndCloth();
         //if (playerUiPrefab != null)
         //{
         //    GameObject _uiGo = Instantiate(playerUiPrefab);
@@ -248,8 +249,23 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         nameText.text = photonView.Owner.NickName;
     }
 
+    private void SetColorAndCloth()
+    {
+        var json = new JObject();
+        string method = "user";
+        json.Add("userId", Utility.userId);
+        var user_info = JObject.Parse(Utility.request_server(json, method));
+        Color myColor;
+        ColorUtility.TryParseHtmlString("#" + user_info["user_skin_color"].ToString(), out myColor);
+        LocalPlayerInstance.transform.Find("Sphere").gameObject.GetComponent<Renderer>().material.color = myColor;
+        Material myMat;
+        string cloth = user_info["user_skin_cloth"].ToString();
+        myMat = Resources.Load(cloth, typeof(Material)) as Material;
+        LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material = myMat;
+        Debug.Log(LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material);
+        Debug.Log(myMat);
+    }
 
-  
 
     void ProcessInputs()
     {
