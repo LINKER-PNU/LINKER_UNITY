@@ -311,6 +311,34 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
             StartCoroutine(CoroutineEmotion(2));
         }
     }
+    public void OnClickEmotion4()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(3));
+        }
+    }
+    public void OnClickEmotion5()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(4));
+        }
+    }
+    public void OnClickEmotion6()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(5));
+        }
+    }
+    public void OnClickEmotion7()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(6));
+        }
+    }
     static public void OnCreateClassCreateFaildInMobile()
     {
         Instance.StartCoroutineClassCreateFaildInMobile();

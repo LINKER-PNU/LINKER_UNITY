@@ -63,7 +63,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     static public bool[] IsEmotionsActive;
 
     [SerializeField]
-    const int MaximumEmotionCount = 5;
+    const int MaximumEmotionCount = 10;
 
     [SerializeField]
     private GameObject[] Emotions;
@@ -138,7 +138,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
 
             // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
-            IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false};
+            IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false, false, false, false, false, false };
 
         }
         // #Critical
