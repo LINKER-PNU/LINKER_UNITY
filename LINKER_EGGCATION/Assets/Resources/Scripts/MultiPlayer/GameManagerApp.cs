@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net;
 using System.IO;
 
@@ -24,6 +25,9 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private GameObject canvasObject;
+
+    [SerializeField]
+    private GameObject soundObject;
 
     [SerializeField]
     private GameObject RoomNameObject;
@@ -80,6 +84,37 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     static public GameObject EmotionPanelObject;
 
+    static public GameObject timerObject;
+
+    public GameObject TimerBtnContentObject, TimerBtnObject, newTimerPanelObject, SubjectTimerObject, SubjectObject, TotalTimeObject, SubjectTimeObject, CreateBtnObject, DeleteBtnObject, EditBtnObject, SubjectInputObject;
+
+    static public GameObject voiceObject;
+    static public GameObject noVoiceObject;
+    static public GameObject noMuteObject;
+    static public GameObject muteObject;
+
+
+    static public bool isDeskMode = false;
+
+
+    [SerializeField]
+    public int y_offset = 320;
+
+    [SerializeField]
+    public int offset = 150;
+
+    static public string roomCode;
+
+    public List<string> deleteTimerlist;
+    public float totalTime = 0.0f;
+    public string currentTimerId;
+    public float currentTime;
+
+    public bool isTimerOn = false;
+    public bool isDeleteMode = false;
+    public bool isEditMode = false;
+    string newSubjectName = "";
+
 
     static public GameObject TeacherChairObject;
 
@@ -131,7 +166,6 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         JoinCodeText.text = joinCode;
 
         // Find 연산은 자원을 많이 먹으므로 Awake에서 한번 실행해줍니다.
-        createClassPanel = canvasObject.transform.Find("createClass_panel").gameObject;
         topPanelObject = canvasObject.transform.Find("Top_panel").gameObject;
         escPanelObject = canvasObject.transform.Find("ESC_panel").gameObject;
         boardPanelObject = canvasObject.transform.Find("Board_panel").gameObject;
@@ -141,6 +175,15 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         classCreateFaildInMobileObject = canvasObject.transform.Find("classCreateFaildInMobile_text").gameObject;
         DeskModeObject = canvasObject.transform.Find("DeskMode").gameObject;
         AimObject = canvasObject.transform.Find("Aim").gameObject;
+
+        timerObject = canvasObject.transform.Find("Timer").gameObject;
+        newTimerPanelObject = canvasObject.transform.Find("NewTimerPanel").gameObject;
+        Debug.Log(this.name, DeskModeObject);
+        deleteTimerlist = new List<string>();
+        voiceObject = soundObject.transform.Find("Voice").gameObject;
+        noVoiceObject = soundObject.transform.Find("NoVoice").gameObject;
+        noMuteObject = soundObject.transform.Find("NoMute").gameObject;
+        muteObject = soundObject.transform.Find("Mute").gameObject;
 
         JoyStickObject = canvasObject.transform.Find("JoyStickBackground(Move)").gameObject;
         JoyStickCameraObject = canvasObject.transform.Find("JoyStickBackground(Camera)").gameObject;
@@ -158,7 +201,17 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     }
 
-   
+    void Update()
+    {
+        if (isTimerOn)
+        {
+            currentTime += Time.deltaTime;
+            totalTime += Time.deltaTime;
+            TotalTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(totalTime));
+            SubjectTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(currentTime));
+            Debug.Log(currentTime);
+        }
+    }
     #endregion
 
     // #region BellAlarm
@@ -194,6 +247,203 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     #region Public Methods
 
+    public string FormatTime(int time)
+    {
+        int hour = time / 3600;
+        int min = (time / 60) % 60;
+        int sec = time % 60;
+
+        return string.Format("{0:00}:{1:00}:{2:00}", hour, min, sec);
+    }
+
+    public void fetchTimerList()
+    {
+
+        var json = new JObject();
+        string method = "timer/list";
+
+        json.Add("timerUser", Utility.userId);
+        json.Add("timerRoom", PhotonNetwork.CurrentRoom.Name);
+
+        var result = JArray.Parse(Utility.request_server(json, method));
+        Debug.Log(Utility.request_server(json, method));
+
+        foreach (Transform child in TimerBtnContentObject.transform)
+        {
+            if (child.gameObject != CreateBtnObject)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+        totalTime = 0.0f;
+        foreach (JObject timer in result)
+        {
+            string timerId = timer["timerId"].ToString();
+            int time = int.Parse(timer["timerStudyTime"].ToString());
+            string subject = timer["timerSubject"].ToString();
+            totalTime += time;
+            GameObject timerBtn = Instantiate(TimerBtnObject);
+            timerBtn.transform.SetParent(TimerBtnContentObject.transform);
+            Text timerBtnText = timerBtn.GetComponentInChildren<Text>();
+            timerBtnText.text = subject + "\n" + FormatTime(time);
+            Button timerBtnComp = timerBtn.GetComponentInChildren<Button>();
+            timerBtnComp.onClick.AddListener(() => { currentTime = time; currentTimerId = timerId; OnShowTimer(subject, time); });
+            Toggle toggle = timerBtn.transform.Find("Toggle").GetComponent<Toggle>();
+            toggle.onValueChanged.AddListener(delegate {
+                if (toggle.isOn && !deleteTimerlist.Contains(timerId))
+                {
+                    deleteTimerlist.Add(timerId);
+                }
+                else if (!toggle.isOn)
+                {
+                    deleteTimerlist.Remove(timerId);
+                }
+            });
+        }
+
+    }
+
+    public void OnTimerMode()
+    {
+        DeskModeObject.SetActive(false);
+        timerObject.SetActive(true);
+        fetchTimerList();
+    }
+
+    public void OnTimerExit()
+    {
+        timerObject.SetActive(false);
+        DeskModeObject.SetActive(true);
+    }
+
+    public void OnShowNewTimerPanel()
+    {
+        newTimerPanelObject.SetActive(true);
+    }
+
+    public void OnCreateTimer()
+    {
+        string newTimerTitle = newTimerPanelObject.GetComponentInChildren<InputField>().text;
+        var json = new JObject();
+        string method = "timer/add";
+
+        json.Add("timerUser", Utility.userId);
+        json.Add("timerRoom", PhotonNetwork.CurrentRoom.Name);
+        json.Add("timerSubject", newTimerTitle);
+
+        var result = JObject.Parse(Utility.request_server(json, method));
+        fetchTimerList();
+        newTimerPanelObject.SetActive(false);
+
+    }
+
+    public void OnCancelCreateTimer()
+    {
+        newTimerPanelObject.SetActive(false);
+    }
+
+    public void OnDeleteTimer()
+    {
+        if (!isDeleteMode)
+        {
+            DeleteBtnObject.GetComponentInChildren<Text>().text = "완료";
+            isDeleteMode = true;
+            foreach (Transform child in TimerBtnContentObject.transform)
+            {
+                if (child.gameObject != CreateBtnObject)
+                {
+                    child.gameObject.GetComponentInChildren<Button>().interactable = false;
+                    child.gameObject.transform.Find("Toggle").gameObject.SetActive(true);
+
+                }
+            }
+        }
+        else
+        {
+            string method = "timer/remove";
+            deleteTimerlist.ForEach(delegate (string id)
+            {
+                var json = new JObject();
+                json.Add("timerId", id);
+                var result = JObject.Parse(Utility.request_server(json, method));
+
+            });
+            foreach (Transform child in TimerBtnContentObject.transform)
+            {
+                if (child.gameObject != CreateBtnObject)
+                {
+                    child.gameObject.GetComponentInChildren<Button>().interactable = true;
+                    child.gameObject.transform.Find("Toggle").gameObject.SetActive(false);
+                    child.gameObject.transform.Find("Toggle").GetComponent<Toggle>().isOn = false;
+                }
+            }
+            fetchTimerList();
+            DeleteBtnObject.GetComponentInChildren<Text>().text = "삭제";
+            isDeleteMode = false;
+            deleteTimerlist.Clear();
+
+        }
+    }
+    public void OnEditTimer()
+    {
+        if (!isEditMode)
+        {
+            EditBtnObject.GetComponentInChildren<Text>().text = "완료";
+            isEditMode = true;
+            SubjectInputObject.SetActive(true);
+            SubjectInputObject.GetComponent<InputField>().text = SubjectObject.GetComponent<Text>().text;
+        }
+        else
+        {
+            newSubjectName = SubjectInputObject.GetComponent<InputField>().text;
+            string method = "timer/edit";
+            var json = new JObject();
+            json.Add("timerId", currentTimerId);
+            json.Add("timerSubject", newSubjectName);
+            var result = JObject.Parse(Utility.request_server(json, method));
+
+            SubjectObject.GetComponent<Text>().text = newSubjectName;
+
+            SubjectInputObject.SetActive(false);
+            EditBtnObject.GetComponentInChildren<Text>().text = "수정";
+            isEditMode = false;
+            newSubjectName = "";
+            SubjectInputObject.GetComponent<InputField>().text = "";
+        }
+    }
+
+    // 과목 타이머 보여줌
+    public void OnShowTimer(string timerTitle, int time)
+    {
+        Debug.Log("show timer" + timerTitle);
+        SubjectTimerObject.SetActive(true);
+        SubjectObject.GetComponent<Text>().text = timerTitle;
+        TotalTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(totalTime));
+        SubjectTimeObject.GetComponent<Text>().text = FormatTime(time);
+    }
+    // 과목 타이머에서 나옴
+    public void LeaveTimer()
+    {
+        SubjectTimerObject.SetActive(false);
+        fetchTimerList();
+    }
+
+    public void resumeTimer()
+    {
+        isTimerOn = true;
+    }
+
+    public void stopTimer()
+    {
+        isTimerOn = false;
+        var json = new JObject();
+        string method = "timer/stop";
+        json.Add("timerId", currentTimerId);
+        json.Add("timerStudyTime", (Mathf.FloorToInt(currentTime)).ToString());
+        var result = JObject.Parse(Utility.request_server(json, method));
+        Debug.Log("timer 저장" + currentTimerId + ": " + (Mathf.FloorToInt(currentTime)).ToString());
+    }
+
     // 상호작용 부분입니다
     public void OnClickBtn() // 마우스 좌클릭시
     {
@@ -226,6 +476,36 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
                 isMouseMode = true;
                 fpCameraController.RotateDeskMode();
             }
+        }
+    }
+    // 마이크, 보이스 부분입니다.
+
+    public void OnClickListen()
+    {
+        PlayerManagerApp.VoiceRecorder.TransmitEnabled = !PlayerManagerApp.VoiceRecorder.TransmitEnabled;
+        if (PlayerManagerApp.VoiceRecorder.TransmitEnabled == true)
+        {
+            voiceObject.SetActive(true);
+            noVoiceObject.SetActive(false);
+        }
+        else
+        {
+            voiceObject.SetActive(false);
+            noVoiceObject.SetActive(true);
+        }
+    }
+    public void OnClickSpeak()
+    {
+        PlayerManagerApp.VoiceAudioSource.mute = !PlayerManagerApp.VoiceAudioSource.mute;
+        if (PlayerManagerApp.VoiceAudioSource.mute == true)
+        {
+            muteObject.SetActive(true);
+            noMuteObject.SetActive(false);
+        }
+        else
+        {
+            muteObject.SetActive(false);
+            noMuteObject.SetActive(true);
         }
     }
     // 공지기능 부분입니다.
@@ -309,6 +589,34 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         if (IsAllEmotionInactive())
         {
             StartCoroutine(CoroutineEmotion(2));
+        }
+    }
+    public void OnClickEmotion4()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(3));
+        }
+    }
+    public void OnClickEmotion5()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(4));
+        }
+    }
+    public void OnClickEmotion6()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(5));
+        }
+    }
+    public void OnClickEmotion7()
+    {
+        if (IsAllEmotionInactive())
+        {
+            StartCoroutine(CoroutineEmotion(6));
         }
     }
     static public void OnCreateClassCreateFaildInMobile()

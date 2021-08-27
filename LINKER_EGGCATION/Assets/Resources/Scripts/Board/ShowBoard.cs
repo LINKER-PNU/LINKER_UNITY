@@ -176,9 +176,14 @@ public class ShowBoard : MonoBehaviour
             // 버튼 추가
             GameObject BoardBttn = Instantiate(BoardBttnObject);
             BoardBttn.transform.SetParent(BoardBttnContentObject.transform);
-            TMP_Text BoardBttnText = BoardBttn.GetComponentInChildren<TMP_Text>();
+            TMP_Text[] BoardBttnText = BoardBttn.GetComponentsInChildren<TMP_Text>();
             Debug.Log(board["boardTitle"]);
-            BoardBttnText.text = (string)board["boardTitle"];
+            BoardBttnText[0].text = (string)board["boardTitle"];
+            string[] boardDeadline = ((string)board["boardEditDt"]).Split(' ');
+            string[] boardDate = boardDeadline[0].Split('-');
+            string[] boardTime = boardDeadline[1].Split(':');
+            BoardBttnText[1].text = boardDate[1] + '-' + boardDate[2] + '\n' + boardTime[0] + ':' + boardTime[1];
+            BoardBttnText[2].text = (string)board["boardWriter"];
             RectTransform BoardBttnTranform = BoardBttn.GetComponent<RectTransform>();
             Vector3 BoardBttnNewPosition = new Vector3(BoardBttnTranform.position.x, BoardBttnTranform.position.y - count * y_offset, BoardBttnTranform.position.z);
             Debug.Log(y_offset);

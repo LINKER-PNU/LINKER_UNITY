@@ -18,11 +18,8 @@ public class JoyStick : MonoBehaviourPun
     private bool MoveFlag;          // 플레이어 움직임 스위치.
 
     [SerializeField]
-    private float moveSpeed = 5.0f;
-    [SerializeField]
     private float jumpForce = 3.0f;
-    private float gravity = -9.81f;
-    private Vector3 moveDirection;
+    static public Vector3 moveDirection;
 
     public static Transform fpCameraTransform;
     public static Transform tpCameraTransform;
@@ -46,11 +43,6 @@ public class JoyStick : MonoBehaviourPun
 
     private void Update()
     {
-        if (characterController.isGrounded == false)
-        {
-            moveDirection.y += gravity * Time.deltaTime;
-        }
-        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
 
     public void JumpTo()
