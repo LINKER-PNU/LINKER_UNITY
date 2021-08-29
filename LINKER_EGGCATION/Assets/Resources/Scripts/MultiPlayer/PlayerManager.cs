@@ -467,63 +467,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (GameManager.boardPanelObject.activeInHierarchy)
             {
-                Debug.Log(hit.transform?.name);
-                if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
-                {
-                    if (!GameManager.createClassPanel.activeInHierarchy)
-                    {
-                        GameManager.createClassPanel.SetActive(true);
-                    }
-                }
-                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
-                // {
-                //     Debug.Log("책");
-                //     if (GameManager.checkClassExist())
-                //     {
-                //         GameManager.ClientCanvasObject.SetActive(true);
-                //         GameManager.leaveClassBtn.SetActive(true);
-                //     }
-                //     else
-                //     {
-                //         GameManager.Instance.StartCoroutineIsNotExist();
-                //     }
-                GameObject tempChair = null;
-                
-                tempChair = GameObject.Find("chair"+hit.transform.name.Substring(4));
-                // Debug.Log(int.Parse(hit.transform.name.Substring(4)), tempChair);
-
-                if(isDesk()){
-                  GameManager.AimObject.SetActive(false);
-                  Vector3 newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
-
-                  LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
-                  LocalPlayerInstance.transform.position = newPos;
-                  // LocalPlayerInstance.transform.rotation = Quaternion.Euler(20, 90, 0);
-
-                  LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
-                  StartCoroutine(CamChange());
-                  if (CamMode == 1){
-                    CamMode = 0;
-                  }
-                  Cursor.visible = true;
-                  Cursor.lockState = CursorLockMode.None;
-                  GameManager.isDeskMode = true;
-                  GameManager.DeskModeObject.SetActive(true);
-                  fpCameraController.RotateDeskMode();
-                  
-                }
-
-                // if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
-                // {
-                //     Debug.Log("교");
-                //     GameManager.ServerCanvasObject.SetActive(!GameManager.ServerCanvasObject.activeInHierarchy);
-                // }
-                // if (!GameManager.ServerCanvasObject.activeInHierarchy && isDesk()) // 책상이면
-                // {
-                //     Debug.Log("책");
-                    
-                //     // GameManager.ClientCanvasObject.SetActive(!GameManager.ClientCanvasObject.activeInHierarchy);
-                // }
                 return;
             }
 
