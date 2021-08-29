@@ -308,12 +308,14 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         DeskModeObject.SetActive(false);
         timerObject.SetActive(true);
         fetchTimerList();
+        DisplayCanvas(false, "timer");
     }
 
     public void OnTimerExit()
     {
         timerObject.SetActive(false);
         DeskModeObject.SetActive(true);
+        DisplayCanvas(true, "timer");
     }
 
     public void OnShowNewTimerPanel()
@@ -668,7 +670,7 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
             //EmotionPanelObject.SetActive(active);
             AimObject.SetActive(active);
         }
-        if (type == "esc")
+        else if (type == "esc")
         {
             JoyStickObject.SetActive(active);
             JoyStickCameraObject.SetActive(active);
@@ -681,7 +683,7 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
             EmotionPanelObject.SetActive(active);
             AimObject.SetActive(active);
         }
-        if (type == "board")
+        else if (type == "board")
         {
             JoyStickObject.SetActive(active);
             JoyStickCameraObject.SetActive(active);
@@ -693,6 +695,10 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
             JumpBtnObject.SetActive(active);
             EmotionPanelObject.SetActive(active);
             AimObject.SetActive(active);
+        }
+        else if (type == "timer")
+        {
+            EmotionPanelObject.SetActive(active);
         }
     }
     #endregion
