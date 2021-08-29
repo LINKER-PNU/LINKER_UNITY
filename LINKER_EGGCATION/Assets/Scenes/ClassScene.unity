@@ -388,6 +388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair13
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &6161058 stripped
@@ -411,7 +415,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &20349799
@@ -788,6 +792,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair9
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &38990745 stripped
@@ -811,7 +819,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &41052488
@@ -1520,6 +1528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair2
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &59559445 stripped
@@ -1543,7 +1555,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1001 &71801567
@@ -3316,6 +3328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair14
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &146540236 stripped
@@ -3339,7 +3355,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &152568517
@@ -10092,6 +10108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair17
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &575790912 stripped
@@ -10115,7 +10135,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &578389205
@@ -10635,6 +10655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair1
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &591458557 stripped
@@ -10658,7 +10682,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &592214932
@@ -12250,6 +12274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair6
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &672419666 stripped
@@ -12273,7 +12301,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &672576707
@@ -12606,6 +12634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair10
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &686348884 stripped
@@ -12629,7 +12661,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &690057607
@@ -13143,6 +13175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair19
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &722454888 stripped
@@ -13166,7 +13202,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &723752667
@@ -13922,6 +13958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair3
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &754888166 stripped
@@ -13945,7 +13985,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &759610210
@@ -15229,6 +15269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair12
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &870133375 stripped
@@ -15252,7 +15296,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &886331112
@@ -16465,6 +16509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair15
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &976589228 stripped
@@ -16488,7 +16536,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &978650713
@@ -17128,6 +17176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair20
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1007204553 stripped
@@ -17151,7 +17203,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1010586062
@@ -20354,6 +20406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair22
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1203442035 stripped
@@ -20377,7 +20433,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1216303537
@@ -20762,6 +20818,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair18
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1231995912 stripped
@@ -20785,7 +20845,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1241207260
@@ -24144,6 +24204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair11
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1443568893 stripped
@@ -24167,7 +24231,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1449987328
@@ -27564,6 +27628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair5
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1645752166 stripped
@@ -27587,7 +27655,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1647216656
@@ -27967,6 +28035,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair16
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1655152269 stripped
@@ -27990,7 +28062,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1667543740
@@ -28839,6 +28911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair7
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1708677691 stripped
@@ -28862,7 +28938,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1716473239
@@ -29393,6 +29469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair0
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1754875118 stripped
@@ -29416,7 +29496,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1001 &1757224837
@@ -29990,6 +30070,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair21
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1792138371 stripped
@@ -30013,7 +30097,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1793547100
@@ -31650,6 +31734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair23
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &1854277172 stripped
@@ -31673,7 +31761,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &1855517661
@@ -34929,6 +35017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair8
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &2074641513 stripped
@@ -34952,7 +35044,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &2080974451
@@ -36535,6 +36627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair4
       objectReference: {fileID: 0}
+    - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!4 &2136702533 stripped
@@ -36558,7 +36654,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7292735152454676809, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
 --- !u!1 &2137140133
