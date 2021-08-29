@@ -305,15 +305,15 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     void ProcessInputs()
     {
         if(!GameManager.isMouseMode){
-            if(Input.GetKeyDown(CAMERA_KEY_CODE))
-            {
-                StartCoroutine(CamChange());
-                if (CamMode == 1){
-                CamMode = 0;
-                }else{
-                CamMode += 1;
-                }
-            } 
+            // if(Input.GetKeyDown(CAMERA_KEY_CODE))
+            // {
+            //     StartCoroutine(CamChange());
+            //     if (CamMode == 1){
+            //     CamMode = 0;
+            //     }else{
+            //     CamMode += 1;
+            //     }
+            // } 
             //x, z 방향이동
             float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
             float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
