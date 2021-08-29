@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Voice.Unity;
+using Photon.Voice.PUN;
+using Newtonsoft.Json.Linq;
+using eggcation;
 
 /// <summary>
 /// Player manager.
@@ -50,6 +53,10 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
     static public Camera MainCamera;
 
+    static public Recorder VoiceRecorder;
+
+    static public AudioSource VoiceAudioSource;
+
     #endregion
 
 
@@ -63,7 +70,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     static public bool[] IsEmotionsActive;
 
     [SerializeField]
-    const int MaximumEmotionCount = 5;
+    const int MaximumEmotionCount = 10;
 
     [SerializeField]
     private GameObject[] Emotions;
@@ -98,6 +105,9 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField]
     private TextMeshProUGUI nameText;
 
+    private float gravity = -9.81f;
+    [SerializeField]
+    private float moveSpeed = 5.0f;
 
     //[Tooltip("The Player's UI GameObject Prefab")]
     //[SerializeField]
@@ -107,7 +117,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
     #region Private Field
 
-    
+
 
     #endregion
 
@@ -136,9 +146,14 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             MainCamera = fpCamera.GetComponent<Camera>();
             tpCamera.SetActive(false);
 
+            VoiceRecorder = LocalPlayerInstance.GetComponent<Recorder>();
+            VoiceAudioSource = LocalPlayerInstance.GetComponent<AudioSource>();
+            VoiceRecorder.TransmitEnabled = true;
+            VoiceAudioSource.mute = false;
+
 
             // 감정표현 개수가 MaximumEmotionCount 이상이면 MaximumEmotionCount를 수정해줘야합니다.
-            IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false};
+            IsEmotionsActive = new bool[MaximumEmotionCount] {false, false, false, false, false, false, false, false, false, false };
 
         }
         // #Critical
@@ -160,6 +175,8 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         SetName();
+        SetColorAndCloth();
+
         //if (playerUiPrefab != null)
         //{
         //    GameObject _uiGo = Instantiate(playerUiPrefab);
@@ -191,6 +208,11 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             ProcessInputs();
+            if (JoyStick.characterController.isGrounded == false)
+            {
+                JoyStick.moveDirection.y += gravity * Time.deltaTime;
+            }
+            JoyStick.characterController.Move(JoyStick.moveDirection * moveSpeed * Time.deltaTime);
         }
         //if (Health <= 0f)
         //{
@@ -248,8 +270,23 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         nameText.text = photonView.Owner.NickName;
     }
 
+    private void SetColorAndCloth()
+    {
+        var json = new JObject();
+        string method = "user";
+        json.Add("userId", Utility.userId);
+        var user_info = JObject.Parse(Utility.request_server(json, method));
+        Color myColor;
+        ColorUtility.TryParseHtmlString("#" + user_info["user_skin_color"].ToString(), out myColor);
+        LocalPlayerInstance.transform.Find("Sphere").gameObject.GetComponent<Renderer>().material.color = myColor;
+        Material myMat;
+        string cloth = user_info["user_skin_cloth"].ToString();
+        myMat = Resources.Load(cloth, typeof(Material)) as Material;
+        LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material = myMat;
+        Debug.Log(LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material);
+        Debug.Log(myMat);
+    }
 
-  
 
     void ProcessInputs()
     {
@@ -286,14 +323,17 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             GameManagerApp.escPanelObject.SetActive(!isEscActive);
         }
     }
-IEnumerator CamChange(){
+    IEnumerator CamChange()
+    {
         yield return new WaitForSeconds(0.01f);
-        if(CamMode == 1){
+        if (CamMode == 1)
+        {
             fpCamera.SetActive(false);
             tpCamera.SetActive(true);
             MainCamera = tpCamera.GetComponent<Camera>();
         }
-        else{
+        else
+        {
             fpCamera.SetActive(true);
             tpCamera.SetActive(false);
             MainCamera = fpCamera.GetComponent<Camera>();

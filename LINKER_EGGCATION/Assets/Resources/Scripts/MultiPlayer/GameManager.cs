@@ -154,7 +154,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         AimObject= canvasObject.transform.Find("Aim").gameObject;
         timerObject = canvasObject.transform.Find("Timer").gameObject;
         newTimerPanelObject = canvasObject.transform.Find("NewTimerPanel").gameObject;
-        AimObject = canvasObject.transform.Find("Aim").gameObject;
         Debug.Log(this.name,DeskModeObject);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

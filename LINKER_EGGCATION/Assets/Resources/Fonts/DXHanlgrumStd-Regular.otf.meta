@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7acbab2ddc97d9e4aa6d136c4f522e01
+guid: 5122e93a6e94645e4929917e6c4484ea
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Elice DigitalBaeum OTF
+  - DXHanlgrumStd
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
