@@ -387,6 +387,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         AimObject.SetActive(true);
+        PlayerManager.LocalPlayerInstance.GetComponent<PlayerManager>().fpCameraController.PositionNormalMode();
     }
 
 

@@ -750,7 +750,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 161573033}
   m_HandleRect: {fileID: 161573032}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 1
   m_Size: 0.11
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -20267,7 +20267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
       propertyPath: m_Name
-      value: teacher_chair
+      value: TeacherChair
       objectReference: {fileID: 0}
     - target: {fileID: 8567426179591295073, guid: b52e7238ee9bb4e58b44bcd79d0f14f9, type: 3}
       propertyPath: m_StaticEditorFlags

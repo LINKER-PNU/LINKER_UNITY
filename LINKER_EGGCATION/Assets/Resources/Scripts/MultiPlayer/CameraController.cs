@@ -21,18 +21,21 @@ public class CameraController : MonoBehaviour
     public void RotateDeskMode()
     {
         player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void PositionTeacherDeskMode()
     {
-        transform.localPosition = new Vector3(0f, 2.5f, 0f);
+        player.transform.rotation = Quaternion.Euler(0, 180, 0);
+        transform.localPosition = new Vector3(0f, 6f, 0f);
         Debug.Log(transform.localPosition);
-        transform.localRotation = Quaternion.Euler(30, 270, 0);
+        transform.localRotation = Quaternion.Euler(30, 0, 0);
         Debug.Log(transform.rotation.eulerAngles);
     }
     public void PositionNormalMode()
     {
         transform.localPosition = new Vector3(0, 0.2f, 0);
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void RotateTo(int CamMode, float mouseX, float mouseY)
@@ -42,7 +45,7 @@ public class CameraController : MonoBehaviour
 
         eulerAngleX = ClampAngle(eulerAngleX, limitMinY, limitMaxY);
 
-        transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
+        player.transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
     }
 
     private float ClampAngle(float angle, float min, float max)
