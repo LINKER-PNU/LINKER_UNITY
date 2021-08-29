@@ -18,9 +18,9 @@ public class CameraController : MonoBehaviour
     private float   eulerAngleY = 3;
     
     
-    public void RotateDeskMode(){
-      
-      transform.rotation = Quaternion.Euler(0, 0, 0);
+    public void RotateDeskMode()
+    {
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void PositionTeacherDeskMode()
