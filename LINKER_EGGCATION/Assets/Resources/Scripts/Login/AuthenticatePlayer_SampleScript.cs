@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 using System.Net;
 using System.IO;
 using System;
@@ -16,7 +18,7 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
     // static public string gameSparkUserId = "N";
 
     public InputField userNameInput, passwordInput;
-    public GameObject LoginObject, RegisterObject, ErrorTextObject;
+    public GameObject LoginObject, RegisterObject, ErrorObject;
 
     private void Awake()
     {
@@ -68,26 +70,15 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
                 }
                 else
                 {
-                    ErrorTextObject.SetActive(true);
+                    StartCoroutine(Error());
                     Debug.Log("로그인 실패..." + response.Errors.JSON.ToString());
                 }
             });
     }
+    IEnumerator Error(){
+      ErrorObject.SetActive(true);
+      yield return new WaitForSeconds(2f);
+      ErrorObject.SetActive(false);
+    }
+}    
  
-    // DisplayName 으로 로그인
-    //public void AuthenticateDeviceBttn()
-    //{
-    //    new GameSparks.Api.Requests.DeviceAuthenticationRequest()
-    //        .SetDisplayName(displayNameInput.text)
-    //        .Send((response) => {
-    //            if (!response.HasErrors)
-    //            {
-    //                Debug.Log("Device 로그인 성공...");
-    //            }
-    //            else
-    //            {
-    //                Debug.Log("Device 로그인 실패..." + response.Errors.JSON.ToString());
-    //            }
-    //        });
-    //}
-}

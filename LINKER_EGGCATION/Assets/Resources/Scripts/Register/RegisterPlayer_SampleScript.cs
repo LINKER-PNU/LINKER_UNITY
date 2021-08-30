@@ -15,9 +15,10 @@ using eggcation;
 
 public class RegisterPlayer_SampleScript : MonoBehaviour
 {
-    public GameObject LoginObject, RegisterObject;
+    public GameObject LoginObject, RegisterObject, ErrorObject;
     public InputField displayNameInput, userNameInput, passwordInput;
     public Toggle teacherToggle, studentToggle;
+    
 
     
 
@@ -79,13 +80,20 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
                     Utility.request_server(json, "login");
                     LoginObject.SetActive(true);
                     RegisterObject.SetActive(false);
+                    
                 }
                 else
                 {
-
+                    StartCoroutine(Error());
                     Debug.Log("회원가입 실패" + response.Errors.JSON.ToString());
                 }
             }
         );
+    }
+
+    IEnumerator Error(){
+      ErrorObject.SetActive(true);
+      yield return new WaitForSeconds(2f);
+      ErrorObject.SetActive(false);
     }
 }

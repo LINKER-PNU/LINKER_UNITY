@@ -305,15 +305,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     void ProcessInputs()
     {
         if(!GameManager.isMouseMode){
-            // if(Input.GetKeyDown(CAMERA_KEY_CODE))
-            // {
-            //     StartCoroutine(CamChange());
-            //     if (CamMode == 1){
-            //     CamMode = 0;
-            //     }else{
-            //     CamMode += 1;
-            //     }
-            // } 
             //x, z 방향이동
             float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
             float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
@@ -357,9 +348,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
                     if (isDesk())
                     {
-                        
+                        Cursor.visible = true;
+                        Cursor.lockState = CursorLockMode.None;
                         GameManager.AimObject.SetActive(false);
-                        newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 5f, tempChair.transform.position.z);
+                        newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 15f, tempChair.transform.position.z);
                         
                         LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
                         
@@ -378,8 +370,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                         // {
                         //     CamMode = 0;
                         // }
-                        Cursor.visible = true;
-                        Cursor.lockState = CursorLockMode.None;
+                        
                         GameManager.DeskModeObject.SetActive(true);
                         fpCameraController.RotateDeskMode();
                         GameManager.isMouseMode = true;
