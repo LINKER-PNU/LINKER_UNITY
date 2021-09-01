@@ -13,6 +13,7 @@ public class PushToTalk : MonoBehaviourPun
     public KeyCode ListenBtn = KeyCode.V;
     public Recorder VoiceRecorder;
     public AudioSource VoiceAudioSource;
+    public AudioListener AudioListener;
 
 
     // Start is called before the first frame update
@@ -29,14 +30,17 @@ public class PushToTalk : MonoBehaviourPun
       {
         if(photonView.IsMine)
         {
-          VoiceRecorder.TransmitEnabled = !VoiceRecorder.TransmitEnabled;
           if(VoiceRecorder.TransmitEnabled == true){
             Debug.Log(GameManager.voiceObject);
-            GameManager.voiceObject.SetActive(true);
-            GameManager.noVoiceObject.SetActive(false);
+            VoiceRecorder.TransmitEnabled = false;
+            VoiceAudioSource.volume = 0;
+            GameManager.muteObject.SetActive(true);
+            GameManager.noMuteObject.SetActive(false);
           }else{
-            GameManager.voiceObject.SetActive(false);
-            GameManager.noVoiceObject.SetActive(true);
+            VoiceAudioSource.volume = 0;
+            VoiceRecorder.TransmitEnabled = true;
+            GameManager.muteObject.SetActive(false);
+            GameManager.noMuteObject.SetActive(true);
           }
         }
       }
@@ -44,13 +48,14 @@ public class PushToTalk : MonoBehaviourPun
       {
         if(photonView.IsMine)
         {
-          VoiceAudioSource.mute = !VoiceAudioSource.mute;
-          if(VoiceAudioSource.mute == true){
-            GameManager.muteObject.SetActive(true);
-            GameManager.noMuteObject.SetActive(false);
+          if(AudioListener.volume == 0){
+            GameManager.voiceObject.SetActive(true);
+            GameManager.noVoiceObject.SetActive(false);
+            AudioListener.volume = 1;
           }else{
-            GameManager.muteObject.SetActive(false);
-            GameManager.noMuteObject.SetActive(true);
+            GameManager.voiceObject.SetActive(false);
+            GameManager.noVoiceObject.SetActive(true);
+            AudioListener.volume = 0;
           }
         }
       }    
