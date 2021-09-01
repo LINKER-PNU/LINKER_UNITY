@@ -31,16 +31,15 @@ public class PushToTalk : MonoBehaviourPun
         if(photonView.IsMine)
         {
           if(VoiceRecorder.TransmitEnabled == true){
-            Debug.Log(GameManager.voiceObject);
             VoiceRecorder.TransmitEnabled = false;
             VoiceAudioSource.volume = 0;
-            GameManager.muteObject.SetActive(true);
-            GameManager.noMuteObject.SetActive(false);
+            GameManager.micOnObject.SetActive(false);
+            GameManager.micOffObject.SetActive(true);
           }else{
-            VoiceAudioSource.volume = 0;
+            VoiceAudioSource.volume = 1;
             VoiceRecorder.TransmitEnabled = true;
-            GameManager.muteObject.SetActive(false);
-            GameManager.noMuteObject.SetActive(true);
+            GameManager.micOnObject.SetActive(true);
+            GameManager.micOffObject.SetActive(false);
           }
         }
       }
@@ -49,12 +48,12 @@ public class PushToTalk : MonoBehaviourPun
         if(photonView.IsMine)
         {
           if(AudioListener.volume == 0){
-            GameManager.voiceObject.SetActive(true);
-            GameManager.noVoiceObject.SetActive(false);
+            GameManager.headsetOnObject.SetActive(true);
+            GameManager.headsetOffObject.SetActive(false);
             AudioListener.volume = 1;
           }else{
-            GameManager.voiceObject.SetActive(false);
-            GameManager.noVoiceObject.SetActive(true);
+            GameManager.headsetOnObject.SetActive(false);
+            GameManager.headsetOffObject.SetActive(true);
             AudioListener.volume = 0;
           }
         }

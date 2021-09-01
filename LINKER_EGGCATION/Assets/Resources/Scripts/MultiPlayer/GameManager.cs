@@ -68,10 +68,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject TimerBtnContentObject, TimerBtnObject, newTimerPanelObject, SubjectTimerObject, SubjectObject, TotalTimeObject, SubjectTimeObject,CreateBtnObject,DeleteBtnObject,EditBtnObject,SubjectInputObject;
     
     
-    static public GameObject voiceObject;
-    static public GameObject noVoiceObject;
-    static public GameObject noMuteObject;
-    static public GameObject muteObject;
+    static public GameObject micOnObject;
+    static public GameObject micOffObject;
+    static public GameObject headsetOnObject;
+    static public GameObject headsetOffObject;
 
 
     static public bool isDeskMode = false;
@@ -158,12 +158,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         deleteTimerlist = new List<string>();
-        voiceObject = soundObject.transform.Find("Voice").gameObject;
-        noVoiceObject = soundObject.transform.Find("NoVoice").gameObject;
-        noMuteObject = soundObject.transform.Find("NoMute").gameObject;
-        muteObject = soundObject.transform.Find("Mute").gameObject;
+        micOnObject = soundObject.transform.Find("MicOn").gameObject;
+        micOffObject = soundObject.transform.Find("MicOff").gameObject;
+        headsetOnObject = soundObject.transform.Find("HeadsetOn").gameObject;
+        headsetOffObject = soundObject.transform.Find("HeadsetOff").gameObject;
         Debug.Log("??");
-        Debug.Log(voiceObject);
+
 
         TeacherChairObject = GameObject.Find("TeacherChair").gameObject;
     
