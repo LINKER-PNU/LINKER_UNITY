@@ -209,27 +209,24 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         userNameText = NameObject.GetComponent<Text>(); 
         userRoleText = RoleObject.GetComponent<Text>(); 
         
+        //이름
         userNameText.text = Utility.displayName; 
-        Material newMat;
-        string cloth = user_info["user_skin_cloth"].ToString();
+
+        //역할
         if(user_info["user_skin_role"].ToString() == "S"){
           userRoleText.text = "학생";
-          if(cloth != ""){
-            newMat = Resources.Load(cloth, typeof(Material)) as Material;
-          }else{
-            newMat = Resources.Load("Uniform_blue", typeof(Material)) as Material;
-          }
         }else{
           userRoleText.text = "선생";
-          newMat = Resources.Load("Uniform_teacher", typeof(Material)) as Material;
-          ClothesBttnsObject.SetActive(false);
         }
+
+        //컬러
         Color myColor;
         ColorUtility.TryParseHtmlString("#"+user_info["user_skin_color"].ToString(), out myColor);
-        Debug.Log("userskin" + user_info["user_skin_color"].ToString());
-        Debug.Log(myColor);
         EggObject.GetComponent<Renderer>().material.color = myColor;
         //복장
+        Material newMat;
+        string cloth = user_info["user_skin_cloth"].ToString();
+        newMat = Resources.Load(cloth, typeof(Material)) as Material;
         EggClothesObject.GetComponent<Renderer>().material = newMat;
 
         createClassBttn(user_info["user_room"]);
