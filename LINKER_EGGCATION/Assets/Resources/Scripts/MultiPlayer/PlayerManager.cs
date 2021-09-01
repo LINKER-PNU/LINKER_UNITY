@@ -107,6 +107,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField]
     private TextMeshProUGUI nameText;
 
+    [SerializeField]
+    private GameObject Sphere;
+
+    [SerializeField]
+    private GameObject Cloth;
+
     private Movement3D movement3D;
 
 
@@ -226,17 +232,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private void SetColorAndCloth()
     {
         var json = new JObject();
-        string method = "user";
-        json.Add("userId", Utility.userId);
+        string method = "member";
+        json.Add("displayName", photonView.Owner.NickName);
         var user_info = JObject.Parse(Utility.request_server(json, method));
         Color myColor;
         ColorUtility.TryParseHtmlString("#"+user_info["user_skin_color"].ToString(), out myColor);
-        LocalPlayerInstance.transform.Find("Sphere").gameObject.GetComponent<Renderer>().material.color = myColor;
+        Sphere.GetComponent<Renderer>().material.color = myColor;
         Material myMat;
         string cloth = user_info["user_skin_cloth"].ToString();
         myMat = Resources.Load(cloth, typeof(Material)) as Material;
-        LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material = myMat;
-        Debug.Log(LocalPlayerInstance.transform.Find("Cloth").gameObject.GetComponent<Renderer>().material);
+        Cloth.GetComponent<Renderer>().material = myMat;
+        Debug.Log(Cloth.GetComponent<Renderer>().material);
         Debug.Log(myMat);
     }
     /// <summary>
