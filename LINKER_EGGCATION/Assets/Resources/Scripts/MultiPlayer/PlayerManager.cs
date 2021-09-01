@@ -304,12 +304,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void ProcessInputs()
     {
-        if(!GameManager.isMouseMode){
+        if (!GameManager.isMouseMode)
+        {
             //x, z 방향이동
             float x = Input.GetAxisRaw("Horizontal");   // 방향키 좌/우 움직임
             float z = Input.GetAxisRaw("Vertical");     // 방향키 위/아래 움직임
 
-            this.movement3D.MoveTo(CamMode,new Vector3(x, 0, z));
+            this.movement3D.MoveTo(CamMode, new Vector3(x, 0, z));
 
             if (Input.GetKeyDown(jumpKeyCode))
             {
@@ -344,7 +345,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                     GameObject tempChair = null;
 
                     tempChair = GameObject.Find("chair" + hit.transform.name.Substring(4));
-                     Debug.Log("chair" + hit.transform.name.Substring(4));
+                    Debug.Log("chair" + hit.transform.name.Substring(4));
 
                     if (isDesk())
                     {
@@ -352,9 +353,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                         Cursor.lockState = CursorLockMode.None;
                         GameManager.AimObject.SetActive(false);
                         newPos = new Vector3(tempChair.transform.position.x, tempChair.transform.position.y + 15f, tempChair.transform.position.z);
-                        
+
                         LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
-                        
+
                         Debug.Log(LocalPlayerInstance.transform.rotation);
                         LocalPlayerInstance.transform.position = newPos;
                         // var relativePos = tempChair.transform.position - LocalPlayerInstance.transform.position; 
@@ -362,28 +363,68 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                         // LocalPlayerInstance.transform.LookAt(Vector3.zero);
                         LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
                         Debug.Log(LocalPlayerInstance.transform.rotation);
-                      
-                        
-                        
+
+
+
                         // StartCoroutine(CamChange());
                         // if (CamMode == 1)
                         // {
                         //     CamMode = 0;
                         // }
-                        
+
                         GameManager.DeskModeObject.SetActive(true);
                         fpCameraController.RotateDeskMode();
                         GameManager.isMouseMode = true;
-                        
+
                     }
                 }
             }
         } 
 
+        // 공지기능 부분입니다.
+        if (Input.GetKeyDown(NOTICE_KEYCODE))
+        {
+            bool isBoardActive = GameManager.boardPanelObject.activeInHierarchy;
 
-  
-              
-        
+            if (GameManager.escPanelObject.activeInHierarchy)
+            {
+                return;
+            }
+            if (GameManager.DeskModeObject.activeInHierarchy)
+            {
+                return;
+            }
+
+            GameManager.AimObject.SetActive(isBoardActive);
+            Cursor.visible = !isBoardActive;
+            Cursor.lockState = isBoardActive ? CursorLockMode.Locked : CursorLockMode.None;
+            GameManager.isMouseMode = !isBoardActive;
+
+            GameManager.boardPanelObject.SetActive(!isBoardActive);
+        }
+
+        // ESC기능 부분입니다.
+        if (Input.GetKeyDown(ESC_KEYCODE))
+        {
+            if (GameManager.boardPanelObject.activeInHierarchy)
+            {
+                return;
+            }
+
+            if (GameManager.DeskModeObject.activeInHierarchy)
+            {
+                return;
+            }
+            bool isEscActive = GameManager.escPanelObject.activeInHierarchy;
+
+            GameManager.AimObject.SetActive(isEscActive);
+            Cursor.visible = !isEscActive;
+            Cursor.lockState = isEscActive ? CursorLockMode.Locked : CursorLockMode.None;
+            GameManager.isMouseMode = !isEscActive;
+
+            GameManager.escPanelObject.SetActive(!isEscActive);
+        }
+
         // 감정표현 부분입니다.
         if (Input.GetKeyDown(EMOTION1_KEYCODE))
         {
@@ -435,41 +476,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
 
-        // 공지기능 부분입니다.
-        if (Input.GetKeyDown(NOTICE_KEYCODE))
-        {
-            bool isBoardActive = GameManager.boardPanelObject.activeInHierarchy;
-
-            if (GameManager.escPanelObject.activeInHierarchy)
-            {
-                return;
-            }
-
-            GameManager.AimObject.SetActive(isBoardActive);
-            Cursor.visible = !isBoardActive;
-            Cursor.lockState = isBoardActive ? CursorLockMode.Locked : CursorLockMode.None;
-            GameManager.isMouseMode = !isBoardActive;
-
-            GameManager.boardPanelObject.SetActive(!isBoardActive);
-        }
-
-        // ESC기능 부분입니다.
-        if (Input.GetKeyDown(ESC_KEYCODE))
-        {
-            if (GameManager.boardPanelObject.activeInHierarchy)
-            {
-                return;
-            }
-
-            bool isEscActive = GameManager.escPanelObject.activeInHierarchy;
-
-            GameManager.AimObject.SetActive(isEscActive);
-            Cursor.visible = !isEscActive;
-            Cursor.lockState = isEscActive ? CursorLockMode.Locked : CursorLockMode.None;
-            GameManager.isMouseMode = !isEscActive;
-
-            GameManager.escPanelObject.SetActive(!isEscActive);
-        }
     }
 
     bool isTeacherDesk()
