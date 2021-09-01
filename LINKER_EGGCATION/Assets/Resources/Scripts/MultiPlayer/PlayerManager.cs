@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            Debug.Log("!!!receive!!!");
+            // Debug.Log("!!!receive!!!");
             IsEmotionsActive = (bool[])stream.ReceiveNext();
             // Network player, receive data
             //for (int i = 0; i < Emotions.Length; i++)
