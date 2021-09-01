@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2393,7 +2393,7 @@ GameObject:
   - component: {fileID: 104580943}
   - component: {fileID: 104580942}
   m_Layer: 5
-  m_Name: NoVoice
+  m_Name: HeadsetOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32284,12 +32284,12 @@ GameObject:
   - component: {fileID: 1891417003}
   - component: {fileID: 1891417002}
   m_Layer: 5
-  m_Name: NoMute
+  m_Name: MicOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1891417001
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32329,7 +32329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 850dd7ca07d454c1d9902248738bf993, type: 3}
+  m_Texture: {fileID: 2800000, guid: 3c15bc66a40cc48bf97117c6fc0cd4b7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -32356,7 +32356,7 @@ GameObject:
   - component: {fileID: 1900676782}
   - component: {fileID: 1900676781}
   m_Layer: 5
-  m_Name: Voice
+  m_Name: HeadsetOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33277,12 +33277,12 @@ GameObject:
   - component: {fileID: 1969977776}
   - component: {fileID: 1969977775}
   m_Layer: 5
-  m_Name: Mute
+  m_Name: MicOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1969977774
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33322,7 +33322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 3c15bc66a40cc48bf97117c6fc0cd4b7, type: 3}
+  m_Texture: {fileID: 2800000, guid: 850dd7ca07d454c1d9902248738bf993, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
