@@ -13,6 +13,7 @@ public class PushToTalk : MonoBehaviourPun
     public KeyCode ListenBtn = KeyCode.V;
     public Recorder VoiceRecorder;
     public AudioSource VoiceAudioSource;
+    public AudioListener AudioListener;
 
 
     // Start is called before the first frame update
@@ -32,12 +33,14 @@ public class PushToTalk : MonoBehaviourPun
           if(VoiceRecorder.TransmitEnabled == true){
             Debug.Log(GameManager.voiceObject);
             VoiceRecorder.TransmitEnabled = false;
-            GameManager.voiceObject.SetActive(true);
-            GameManager.noVoiceObject.SetActive(false);
+            VoiceAudioSource.volume = 0;
+            GameManager.muteObject.SetActive(true);
+            GameManager.noMuteObject.SetActive(false);
           }else{
+            VoiceAudioSource.volume = 0;
             VoiceRecorder.TransmitEnabled = true;
-            GameManager.voiceObject.SetActive(false);
-            GameManager.noVoiceObject.SetActive(true);
+            GameManager.muteObject.SetActive(false);
+            GameManager.noMuteObject.SetActive(true);
           }
         }
       }
@@ -45,14 +48,14 @@ public class PushToTalk : MonoBehaviourPun
       {
         if(photonView.IsMine)
         {
-          if(VoiceAudioSource.mute == true){
-            GameManager.muteObject.SetActive(true);
-            GameManager.noMuteObject.SetActive(false);
-            VoiceAudioSource.mute = false;
+          if(AudioListener.volume == 0){
+            GameManager.voiceObject.SetActive(true);
+            GameManager.noVoiceObject.SetActive(false);
+            AudioListener.volume = 1;
           }else{
-            GameManager.muteObject.SetActive(false);
-            GameManager.noMuteObject.SetActive(true);
-            VoiceAudioSource.mute = true;
+            GameManager.voiceObject.SetActive(false);
+            GameManager.noVoiceObject.SetActive(true);
+            AudioListener.volume = 0;
           }
         }
       }    

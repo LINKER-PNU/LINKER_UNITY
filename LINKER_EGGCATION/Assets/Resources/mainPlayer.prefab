@@ -799,10 +799,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b2a71ee604444329c5badd2fc820f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeakBtn: 118
-  ListenBtn: 109
+  SpeakBtn: 109
+  ListenBtn: 118
   VoiceRecorder: {fileID: -7449625433277309849}
   VoiceAudioSource: {fileID: -4174609415248181071}
+  AudioListener: {fileID: 0}
 --- !u!1 &8289955315780285074
 GameObject:
   m_ObjectHideFlags: 0
