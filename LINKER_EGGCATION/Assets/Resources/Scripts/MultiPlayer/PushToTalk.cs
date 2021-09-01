@@ -29,12 +29,13 @@ public class PushToTalk : MonoBehaviourPun
       {
         if(photonView.IsMine)
         {
-          VoiceRecorder.TransmitEnabled = !VoiceRecorder.TransmitEnabled;
           if(VoiceRecorder.TransmitEnabled == true){
             Debug.Log(GameManager.voiceObject);
+            VoiceRecorder.TransmitEnabled = false;
             GameManager.voiceObject.SetActive(true);
             GameManager.noVoiceObject.SetActive(false);
           }else{
+            VoiceRecorder.TransmitEnabled = true;
             GameManager.voiceObject.SetActive(false);
             GameManager.noVoiceObject.SetActive(true);
           }
@@ -44,13 +45,14 @@ public class PushToTalk : MonoBehaviourPun
       {
         if(photonView.IsMine)
         {
-          VoiceAudioSource.mute = !VoiceAudioSource.mute;
           if(VoiceAudioSource.mute == true){
             GameManager.muteObject.SetActive(true);
             GameManager.noMuteObject.SetActive(false);
+            VoiceAudioSource.mute = false;
           }else{
             GameManager.muteObject.SetActive(false);
             GameManager.noMuteObject.SetActive(true);
+            VoiceAudioSource.mute = true;
           }
         }
       }    
