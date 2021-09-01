@@ -24,7 +24,7 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
     private byte maxPlayersPerRoom = 20;
 
     [SerializeField]
-    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject, RoleObject ,EggObject, EggClothesObject, ClothesBttnsObject;
+    private GameObject JoinCodeInputObject, MainObject, RoomNamePanelObject, RoomNameInputObject, CreateRoomFailObject,NameObject, RoleObject ,EggObject, EggClothesObject, ClothesBttnsObject, TeacherClothesBttnsObject;
 
     private GameObject ColorObject,ClothesObject;
     
@@ -215,8 +215,12 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
         //역할
         if(user_info["user_skin_role"].ToString() == "S"){
           userRoleText.text = "학생";
+          ClothesBttnsObject.SetActive(true);
+          TeacherClothesBttnsObject.SetActive(false);
         }else{
-          userRoleText.text = "선생";
+          userRoleText.text = "선생님";
+          ClothesBttnsObject.SetActive(false);
+          TeacherClothesBttnsObject.SetActive(true);
         }
 
         //컬러
