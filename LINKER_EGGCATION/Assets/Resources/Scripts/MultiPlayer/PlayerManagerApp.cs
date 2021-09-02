@@ -322,6 +322,19 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             {
                 return;
             }
+            else if (GameManagerApp.DeskModeObject.activeInHierarchy)
+            {
+                return;
+            }
+            else if (GameManagerApp.timerObject.activeInHierarchy)
+            {
+                return;
+            }
+            else if (GameManagerApp.ServerCanvasObject.activeInHierarchy ||
+                    GameManagerApp.ClientCanvasObject.activeInHierarchy)
+            {
+                return;
+            }
 
             bool isEscActive = GameManagerApp.escPanelObject.activeInHierarchy;
             GameManagerApp.DisplayCanvas(isEscActive, "esc");

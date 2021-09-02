@@ -396,7 +396,16 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 return;
             }
-            if (GameManager.DeskModeObject.activeInHierarchy)
+            else if (GameManager.DeskModeObject.activeInHierarchy)
+            {
+                return;
+            }
+            else if (GameManager.timerObject.activeInHierarchy)
+            {
+                return;
+            }
+            else if (GameManager.ServerCanvasObject.activeInHierarchy ||
+                    GameManager.ClientCanvasObject.activeInHierarchy)
             {
                 return;
             }
@@ -416,11 +425,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 return;
             }
-
-            if (GameManager.DeskModeObject.activeInHierarchy)
+            else if (GameManager.DeskModeObject.activeInHierarchy)
             {
                 return;
             }
+            else if (GameManager.timerObject.activeInHierarchy)
+            {
+                return;
+            }
+            else if (GameManager.ServerCanvasObject.activeInHierarchy ||
+                    GameManager.ClientCanvasObject.activeInHierarchy)
+            {
+                return;
+            }
+
             bool isEscActive = GameManager.escPanelObject.activeInHierarchy;
 
             GameManager.AimObject.SetActive(isEscActive);
