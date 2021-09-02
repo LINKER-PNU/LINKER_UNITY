@@ -195,7 +195,7 @@ public class ServerScript : MonoBehaviour
         string method = "insert_class_master";
 
         json.Add("classMaster", Convert.ToString(uid));
-        json.Add("roomName", CHANNEL_NAME);
+        json.Add("roomName", Utility.roomName);
         if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             makeVideoView(0);
@@ -205,7 +205,7 @@ public class ServerScript : MonoBehaviour
             var delete_json = new JObject();
             string delete_method = "delete_class_master";
 
-            delete_json.Add("roomName", CHANNEL_NAME);
+            delete_json.Add("roomName", Utility.roomName);
             if (Convert.ToBoolean(Utility.request_server(delete_json, delete_method)))
             {
                 if (mRtcEngine != null)
@@ -249,7 +249,7 @@ public class ServerScript : MonoBehaviour
         var json = new JObject();
         string method = "delete_class_master";
 
-        json.Add("roomName", CHANNEL_NAME);
+        json.Add("roomName", Utility.roomName);
         if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
@@ -275,7 +275,7 @@ public class ServerScript : MonoBehaviour
         var json = new JObject();
         string method = "delete_class_master";
 
-        json.Add("roomName", CHANNEL_NAME);
+        json.Add("roomName", Utility.roomName);
         if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
@@ -393,7 +393,7 @@ public class ServerScript : MonoBehaviour
         var json = new JObject();
         string method = "delete_class_master";
 
-        json.Add("roomName", CHANNEL_NAME);
+        json.Add("roomName", Utility.roomName);
         if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             if (mRtcEngine != null)
