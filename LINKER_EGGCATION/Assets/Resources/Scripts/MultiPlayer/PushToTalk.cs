@@ -26,6 +26,8 @@ public class PushToTalk : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+#if UNITY_ANDROID
+#else
         if (GameManager.boardPanelObject.activeInHierarchy)
         {
             return;
@@ -68,5 +70,6 @@ public class PushToTalk : MonoBehaviourPun
                 }
             }
         }
+#endif
     }
 }
