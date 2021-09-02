@@ -19,24 +19,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(IsEmotionsActive);
-            // We own this player: send the others our data
-            //for (int i = 0; i < Emotions.Length; i++)
-            //{
-            //    Debug.LogFormat("{0} send", IsEmotionsActive[i]);
-            //}
+            stream.SendNext(emotionIsChange);
         }
         else
         {
-            // Debug.Log("!!!receive!!!");
             IsEmotionsActive = (bool[])stream.ReceiveNext();
-            // Network player, receive data
-            //for (int i = 0; i < Emotions.Length; i++)
-            //{
-            //    Debug.LogFormat("{0} receive", IsEmotionsActive[i]);
-            //}
+            emotionIsChange = (bool)stream.ReceiveNext();
         }
     }
-
     #endregion
 
 
@@ -115,6 +105,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private Movement3D movement3D;
 
+    private bool emotionIsChange = false;
 
     //[Tooltip("The Player's UI GameObject Prefab")]
     //[SerializeField]
@@ -283,11 +274,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     }
     IEnumerator CoroutineEmotion(int i)
     {
-        IsEmotionsActive[i] = true;
+        emotionIsChange = true;
+           IsEmotionsActive[i] = true;
 
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(1f);
 
+        emotionIsChange = false;
         IsEmotionsActive[i] = false;
     }
 

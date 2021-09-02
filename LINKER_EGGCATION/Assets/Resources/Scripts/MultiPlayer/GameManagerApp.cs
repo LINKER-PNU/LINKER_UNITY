@@ -552,73 +552,55 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
             }
         }
     }
-    IEnumerator CoroutineEmotion(int i)
-    {
-        PlayerManagerApp.IsEmotionsActive[i] = true;
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(1f);
-
-        PlayerManagerApp.IsEmotionsActive[i] = false;
-    }
-
-    bool IsAllEmotionInactive()
-    {
-        foreach (var EmotionActive in PlayerManagerApp.IsEmotionsActive)
-        {
-            if (EmotionActive) return false;
-        }
-        return true;
-    }
 
     // 감정표현 부분입니다.
     public void OnClickEmotion1()
     {
-        if (IsAllEmotionInactive())
+        if (PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().IsAllEmotionInactive())
         {
-            StartCoroutine(CoroutineEmotion(0));
+            StartCoroutine(PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().CoroutineEmotion(0));
         }
     }
     public void OnClickEmotion2()
     {
-        if (IsAllEmotionInactive())
+        if (PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().IsAllEmotionInactive())
         {
-            StartCoroutine(CoroutineEmotion(1));
+            StartCoroutine(PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().CoroutineEmotion(1));
         }
     }
     public void OnClickEmotion3()
     {
-        if (IsAllEmotionInactive())
+        if (PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().IsAllEmotionInactive())
         {
-            StartCoroutine(CoroutineEmotion(2));
+            StartCoroutine(PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().CoroutineEmotion(2));
         }
     }
     public void OnClickEmotion4()
     {
-        if (IsAllEmotionInactive())
+        if (PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().IsAllEmotionInactive())
         {
-            StartCoroutine(CoroutineEmotion(3));
+            StartCoroutine(PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().CoroutineEmotion(3));
         }
     }
     public void OnClickEmotion5()
     {
-        if (IsAllEmotionInactive())
+        if (PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().IsAllEmotionInactive())
         {
-            StartCoroutine(CoroutineEmotion(4));
+            StartCoroutine(PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().CoroutineEmotion(4));
         }
     }
     public void OnClickEmotion6()
     {
-        if (IsAllEmotionInactive())
+        if (PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().IsAllEmotionInactive())
         {
-            StartCoroutine(CoroutineEmotion(5));
+            StartCoroutine(PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().CoroutineEmotion(5));
         }
     }
     public void OnClickEmotion7()
     {
-        if (IsAllEmotionInactive())
+        if (PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().IsAllEmotionInactive())
         {
-            StartCoroutine(CoroutineEmotion(6));
+            StartCoroutine(PlayerManagerApp.LocalPlayerInstance.GetComponent<PlayerManagerApp>().CoroutineEmotion(6));
         }
     }
     static public void OnCreateClassCreateFaildInMobile()
