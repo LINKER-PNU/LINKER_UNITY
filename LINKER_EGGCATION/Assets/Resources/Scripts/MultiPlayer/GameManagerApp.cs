@@ -181,10 +181,12 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         newTimerPanelObject = canvasObject.transform.Find("NewTimerPanel").gameObject;
         Debug.Log(this.name, DeskModeObject);
         deleteTimerlist = new List<string>();
-        micOnObject = canvasObject.transform.Find("MicOn").gameObject;
-        micOffObject = canvasObject.transform.Find("MicOff").gameObject;
-        headsetOnObject = canvasObject.transform.Find("HeadsetOn").gameObject;
-        headsetOffObject = canvasObject.transform.Find("HeadsetOff").gameObject;
+        micOnObject = soundObject.transform.Find("MicOn").gameObject;
+        micOffObject = soundObject.transform.Find("MicOff").gameObject;
+        headsetOnObject = soundObject.transform.Find("HeadsetOn").gameObject;
+        headsetOffObject = soundObject.transform.Find("HeadsetOff").gameObject;
+
+      
 
         JoyStickObject = canvasObject.transform.Find("JoyStickBackground(Move)").gameObject;
         JoyStickCameraObject = canvasObject.transform.Find("JoyStickBackground(Camera)").gameObject;
@@ -485,17 +487,17 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     public void OnClickListen()
     {
-        if (AudioListener.volume == 0)
+        if (PlayerManagerApp.AudioListener.enabled == false)
         {
             headsetOnObject.SetActive(true);
             headsetOffObject.SetActive(false);
-            AudioListener.volume = 1;
+            PlayerManagerApp.AudioListener.enabled = true;
         }
         else
         {
             headsetOnObject.SetActive(false);
             headsetOffObject.SetActive(true);
-            AudioListener.volume = 0;
+            PlayerManagerApp.AudioListener.enabled = false;
         }
     }
     public void OnClickSpeak()
