@@ -123,7 +123,7 @@ public class ClientScript : MonoBehaviour
         string method = "is_class_master";
 
         json.Add("classMaster", Convert.ToString(uid));
-        json.Add("roomName", CHANNEL_NAME);
+        json.Add("roomName", Utility.roomName);
         if (Convert.ToBoolean(Utility.request_server(json, method)))
         {
             master_uid = uid;
