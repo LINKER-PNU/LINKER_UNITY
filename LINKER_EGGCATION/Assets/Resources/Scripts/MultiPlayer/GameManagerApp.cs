@@ -88,10 +88,11 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     public GameObject TimerBtnContentObject, TimerBtnObject, newTimerPanelObject, SubjectTimerObject, SubjectObject, TotalTimeObject, SubjectTimeObject, CreateBtnObject, DeleteBtnObject, EditBtnObject, SubjectInputObject;
 
-    static public GameObject voiceObject;
-    static public GameObject noVoiceObject;
-    static public GameObject noMuteObject;
-    static public GameObject muteObject;
+       
+    static public GameObject micOnObject;
+    static public GameObject micOffObject;
+    static public GameObject headsetOnObject;
+    static public GameObject headsetOffObject;
 
 
     static public bool isDeskMode = false;
@@ -180,10 +181,10 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
         newTimerPanelObject = canvasObject.transform.Find("NewTimerPanel").gameObject;
         Debug.Log(this.name, DeskModeObject);
         deleteTimerlist = new List<string>();
-        voiceObject = soundObject.transform.Find("Voice").gameObject;
-        noVoiceObject = soundObject.transform.Find("NoVoice").gameObject;
-        noMuteObject = soundObject.transform.Find("NoMute").gameObject;
-        muteObject = soundObject.transform.Find("Mute").gameObject;
+        micOnObject = canvasObject.transform.Find("MicOn").gameObject;
+        micOffObject = canvasObject.transform.Find("MicOff").gameObject;
+        headsetOnObject = canvasObject.transform.Find("HeadsetOn").gameObject;
+        headsetOffObject = canvasObject.transform.Find("HeadsetOff").gameObject;
 
         JoyStickObject = canvasObject.transform.Find("JoyStickBackground(Move)").gameObject;
         JoyStickCameraObject = canvasObject.transform.Find("JoyStickBackground(Camera)").gameObject;
@@ -484,30 +485,34 @@ public class GameManagerApp : MonoBehaviourPunCallbacks
 
     public void OnClickListen()
     {
-        PlayerManagerApp.VoiceRecorder.TransmitEnabled = !PlayerManagerApp.VoiceRecorder.TransmitEnabled;
-        if (PlayerManagerApp.VoiceRecorder.TransmitEnabled == true)
+        if (AudioListener.volume == 0)
         {
-            voiceObject.SetActive(true);
-            noVoiceObject.SetActive(false);
+            headsetOnObject.SetActive(true);
+            headsetOffObject.SetActive(false);
+            AudioListener.volume = 1;
         }
         else
         {
-            voiceObject.SetActive(false);
-            noVoiceObject.SetActive(true);
+            headsetOnObject.SetActive(false);
+            headsetOffObject.SetActive(true);
+            AudioListener.volume = 0;
         }
     }
     public void OnClickSpeak()
     {
-        PlayerManagerApp.VoiceAudioSource.mute = !PlayerManagerApp.VoiceAudioSource.mute;
-        if (PlayerManagerApp.VoiceAudioSource.mute == true)
+        if (PlayerManagerApp.VoiceRecorder.TransmitEnabled == true)
         {
-            muteObject.SetActive(true);
-            noMuteObject.SetActive(false);
+            PlayerManagerApp.VoiceRecorder.TransmitEnabled = false;
+            PlayerManagerApp.VoiceAudioSource.volume = 0;
+            micOnObject.SetActive(false);
+            micOffObject.SetActive(true);
         }
         else
         {
-            muteObject.SetActive(false);
-            noMuteObject.SetActive(true);
+            PlayerManagerApp.VoiceRecorder.TransmitEnabled = true;
+            PlayerManagerApp.VoiceAudioSource.volume = 1;
+            micOnObject.SetActive(true);
+            micOffObject.SetActive(false);
         }
     }
     // 공지기능 부분입니다.

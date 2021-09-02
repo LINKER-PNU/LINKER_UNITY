@@ -757,7 +757,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: 0
+  photonMicrophoneDeviceId: -1
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -805,7 +805,7 @@ MonoBehaviour:
   ListenBtn: 118
   VoiceRecorder: {fileID: -7449625433277309849}
   VoiceAudioSource: {fileID: -4174609415248181071}
-  AudioListener: {fileID: 0}
+  AudioListener: {fileID: 6648567833707991366}
 --- !u!1 &8289955315780285074
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,14 +956,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2586d6c409450641ae9569915418088, type: 3}
---- !u!1 &38491126971815112 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 551824518197607713, guid: f2586d6c409450641ae9569915418088, type: 3}
-  m_PrefabInstance: {fileID: 513628061353912809}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &847644116645351026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 928772681991759771, guid: f2586d6c409450641ae9569915418088, type: 3}
+  m_PrefabInstance: {fileID: 513628061353912809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &38491126971815112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 551824518197607713, guid: f2586d6c409450641ae9569915418088, type: 3}
   m_PrefabInstance: {fileID: 513628061353912809}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1173919731935871575
@@ -1378,14 +1378,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6fd7957e97c46b459ddb98a243c5564, type: 3}
---- !u!1 &2109363416930149677 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7950431572260647452, guid: d6fd7957e97c46b459ddb98a243c5564, type: 3}
-  m_PrefabInstance: {fileID: 8291247578343151409}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1589250009086508951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7286344573005408422, guid: d6fd7957e97c46b459ddb98a243c5564, type: 3}
+  m_PrefabInstance: {fileID: 8291247578343151409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2109363416930149677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7950431572260647452, guid: d6fd7957e97c46b459ddb98a243c5564, type: 3}
   m_PrefabInstance: {fileID: 8291247578343151409}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9002731220817432691
