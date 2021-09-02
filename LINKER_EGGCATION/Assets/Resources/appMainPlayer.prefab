@@ -215,7 +215,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 0
   ObservedComponents:
@@ -393,7 +393,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: -1
+  photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -1130,14 +1130,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2663812a1221724d981358593ddd3ad, type: 3}
---- !u!1 &2323160253611230425 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8225081755879596689, guid: b2663812a1221724d981358593ddd3ad, type: 3}
-  m_PrefabInstance: {fileID: 5915717488329500232}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3131784451797655139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8750086070345906219, guid: b2663812a1221724d981358593ddd3ad, type: 3}
+  m_PrefabInstance: {fileID: 5915717488329500232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2323160253611230425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8225081755879596689, guid: b2663812a1221724d981358593ddd3ad, type: 3}
   m_PrefabInstance: {fileID: 5915717488329500232}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5923288627440951549
@@ -1462,14 +1462,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa22342e3701af4e9df8bb57c836e21, type: 3}
---- !u!4 &4241055655251951364 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5314320801884891111, guid: 2fa22342e3701af4e9df8bb57c836e21, type: 3}
-  m_PrefabInstance: {fileID: 8294226682502797539}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3571513973977408958 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4795086965141749085, guid: 2fa22342e3701af4e9df8bb57c836e21, type: 3}
+  m_PrefabInstance: {fileID: 8294226682502797539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4241055655251951364 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5314320801884891111, guid: 2fa22342e3701af4e9df8bb57c836e21, type: 3}
   m_PrefabInstance: {fileID: 8294226682502797539}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9042325707957726731

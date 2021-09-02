@@ -8365,3 +8365,1036 @@ ERROR   (21:12: 9:163 |    1) 230667; AsyncAudioDevice destructed, counter: 0
 INFO    (21:12: 9:163 |    0) 230667; [che] chat engine destroyed
 INFO    (21:12: 9:163 |    0) 230667; ***CALL END
 INFO    (21:12: 9:163 |    0) 230667; onAudioStatusChanged enable audio
+Local Date: Wed Sep  1 22:51:44 2021
+Build info: Mar 26 2021 19:47:22 r
+
+INFO    (22:51:44:139 |    3)    259; [API][rtc_engine_impl.cpp:1639][enableVideo]
+INFO    (22:51:44:139 |    0)    259; API call to enable video
+INFO    (22:51:44:139 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:139 |    0) 157499; [rp] {"rtc.video.enabled":true}
+INFO    (22:51:44:139 |    0) 157499; API call to enable video
+INFO    (22:51:44:142 |    3)    259; [API][media_engine_impl.cpp:61][registerVideoFrameObserver]
+INFO    (22:51:44:144 |    2)    259; [API][rtc_engine_impl.cpp:535][joinChannel]
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:3732][setChannelProfile]
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1214][getParameters]
+INFO    (22:51:44:144 |    0) 157499; [rp] ["rtc.force_old_channel_profile"]
+INFO    (22:51:44:144 |    0) 157499; [rp] res: {"rtc.force_old_channel_profile":false} 
+INFO    (22:51:44:144 |    0)    259; setChannelProfile type 2
+INFO    (22:51:44:144 |    0)    259; API call to setChannelProfile 0
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0)    259; doSetClientRole 1 level 2
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0) 157499; [rp] {"che.video.h264.hwenc":0}
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:3630][setAudioProfile]
+INFO    (22:51:44:144 |    0) 157499; [rp] {"rtc.client_role":1}
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0)    259; doSetClientRole 1 level 2
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0) 157499; [rp] {"rtc.allow_communication_fallback":true}
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:915][updateMediaOptions]
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1709][muteAllRemoteAudioStreams]
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1725][muteAllRemoteVideoStreams]
+INFO    (22:51:44:144 |    0) 157499; [rp] {"rtc.user_set_channel_profile":0}
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:44:144 |    0)    259; API call to join channel 'linker_test' uid 0, SDK ver 3.3.1.71 build 63786, device info 'MacBookPro15,1/x86_64/OS X/11.5.2'
+INFO    (22:51:44:144 |    0) 157499; [rtls] set playout delay:0 ms
+INFO    (22:51:44:144 |    0)    259; [API][rtc_engine_impl.cpp:5751][initialize]
+INFO    (22:51:44:144 |    0)    259; API call to initialize rtc channel linker_test
+INFO    (22:51:44:144 |    0) 157499; [rp] {"rtc.suspend_callback_client_role_changed":false}
+INFO    (22:51:44:144 |    0) 157499; [rp] {"che.audio.profile":{"config":100,"scenario":100}}
+INFO    (22:51:44:144 |    0) 157499; audioProfile lambda: Audio Profile is set to: (config = 100, scenario = 100)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(0):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(1):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(1)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(2):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(0) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(1) is_bluetooth(0) audience_need_record(0)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(3):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(0) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(4):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(5):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(1)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(6):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(7):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(1) is_bluetooth(1) audience_need_record(1)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(8):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: scenario(9):
+INFO    (22:51:44:144 |    0) 157499; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(0) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (22:51:44:144 |    0) 157499; [rp] {"rtc.client_role":1}
+INFO    (22:51:44:144 |    0) 157499; [rp] {"rtc.audio.mute_peers":false}
+INFO    (22:51:44:145 |    1) 157499; [rp] {"rtc.video.mute_peers":false}
+INFO    (22:51:44:145 |    0) 157499; doStopLastmileProbeTest
+INFO    (22:51:44:145 |    0) 157499; ***CALL BEGIN: appid:'c6****************************d7' cname:'linker_test' info:'' sid:'C3E51DE877E747EC82B7767CF087CDC6'
+INFO    (22:51:44:145 |    0) 157499; addRef of media engine, ref=1
+INFO    (22:51:44:145 |    0) 157499; [che] create chat engine, ctx:0x0
+INFO    (22:51:44:145 |    0) 157499; [MYDEBUG] large group call false
+INFO    (22:51:44:145 |    0) 157499; applyMediaEngineMode(): 264_Hardware decoding false,265_Hardware decoding true
+INFO    (22:51:44:145 |    0) 157499; setupMediaEngineMode: mode 2
+WARN    (22:51:44:145 |    0) 157499; setupMediaEngineMode: skip updateClientRole as audio engine not created, mode 2
+INFO    (22:51:44:145 |    0) 157499; engine git commit version:8f8b16f643 and branch:release/3.3.1.71
+WARN    (22:51:44:145 |    0) 157499; AINS: Will not open AINS when apm init, listen other command
+INFO    (22:51:44:146 |    1) 157499; output: kPlatformDefaultAudio
+ERROR   (22:51:44:146 |    0) 157499; AsyncAudioDevice constructed, counter: 1
+
+INFO    (22:51:44:146 |    0) 157499; audio jitterbuffer new smooth
+WARN    (22:51:44:146 |    0) 157499; AINS: Will not open AINS when apm init, listen other command
+INFO    (22:51:44:147 |    1) 157499; OutputMixer: start audio file decoder thread successfully
+INFO    (22:51:44:147 |    0) 157499;   OS info: OS X
+INFO    (22:51:44:147 |    0) 192003; Hardware model: MacBookPro15,1
+INFO    (22:51:44:148 |    1) 192003; Set playout device on Mac: index = 0, name = default (ì™¸ìž¥ í—¤ë“œí°), id = 102
+INFO    (22:51:44:148 |    0) 157499;  Output device: Apple Inc. ì™¸ìž¥ í—¤ë“œí°
+INFO    (22:51:44:149 |    1) 157499;  Input device: Apple Inc. ì™¸ìž¥ ë§ˆì´í¬
+INFO    (22:51:44:150 |    1) 157499; StereoPlayoutIsAvailable(), output: available=1
+INFO    (22:51:44:150 |    0) 157499; StereoRecordingIsAvailable(), output: available=0
+WARN    (22:51:44:150 |    0) 157499; enableLocalRecordingDevice: enable 1 already set
+INFO    (22:51:44:150 |    0) 157499; setMuteStatus, muted: Off
+INFO    (22:51:44:150 |    0) 157499; setMuteOutput, muted: false
+INFO    (22:51:44:150 |    0) 157499; Audio Engine Init success, mSpecMode 2
+INFO    (22:51:44:150 |    0) 157499; Available number of cores:12
+INFO    (22:51:44:150 |    0) 157499; SetVideoEngineRef: VideoEngineRef = 0x1e0016
+INFO    (22:51:44:150 |    0) 157499; CreateVideoSendTrack
+WARN    (22:51:44:150 |    0) 157499; AutoAdjust: "AutoAdjustController Instance Created"
+INFO    (22:51:44:150 |    0) 157499; AutoAdjust: "Setting video fec method 2, real using 2"
+INFO    (22:51:44:150 |    0) 157499; AutoAdjust: "dynamic paced sending rate control set to 2."
+INFO    (22:51:44:150 |    0) 157499; AutoAdjust: "static paced sending rate multiplier set to 1.600000."
+INFO    (22:51:44:150 |    0) 157499; AutoAdjust: "all paced sending interval set to 5."
+INFO    (22:51:44:150 |    0) 157499; init: feature prerotation enabled
+INFO    (22:51:44:150 |    0) 192003;  Output device: Apple Inc. ì™¸ìž¥ í—¤ë“œí°
+INFO    (22:51:44:151 |    1) 192003; Set recording device on Mac: index = 0, name = default (ì™¸ìž¥ ë§ˆì´í¬), id = 108
+INFO    (22:51:44:151 |    0) 192003;  Input device: Apple Inc. ì™¸ìž¥ ë§ˆì´í¬
+INFO    (22:51:44:185 |   34) 157499; RefreshCameraList: found 2 cameras
+INFO    (22:51:44:185 |    0) 157499; Camera 0: name EpocCam id EpocCamDevice:0
+INFO    (22:51:44:185 |    0) 157499; Camera 1: name FaceTime HD ì¹´ë©”ë¼(ë‚´ìž¥í˜•) id 0x8020000005ac8514
+INFO    (22:51:44:185 |    0) 157499; setCaptureDevice: deviceId=EpocCamDevice:0
+INFO    (22:51:44:185 |    0) 157499; Agora Engine video codec set to standard mode role mode 2
+INFO    (22:51:44:185 |    0) 157499; Agora Engine video codec index 1
+INFO    (22:51:44:185 |    0) 157499; Agora Engine video stream type = 0
+INFO    (22:51:44:185 |    0) 157499; Device type: 4069
+INFO    (22:51:44:185 |    0) 157499; Hardware encoding false
+INFO    (22:51:44:185 |    0) 157499; last unique frame idx: -1 - -1
+INFO    (22:51:44:185 |    0) 157499; AVEncoder init is x264
+INFO    (22:51:44:185 |    0) 157499; AVEncoder init is x264
+INFO    (22:51:44:185 |    0) 157499; Device type: 4069
+INFO    (22:51:44:185 |    0) 157499; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    (22:51:44:185 |    0) 157499; low stream codec type = 1
+INFO    (22:51:44:185 |    0) 157499; low bit rate limit 1
+INFO    (22:51:44:185 |    0) 157499; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    (22:51:44:185 |    0) 157499; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    (22:51:44:185 |    0) 157499; dont need to increase unique frame idx
+INFO    (22:51:44:185 |    0) 157499; the init unique frame idx: -1 - -1
+INFO    (22:51:44:185 |    0) 157499; setCodec: index=1 width=640 height=360 framerate=15
+INFO    (22:51:44:185 |    0) 157499; setCodec: Intra Request = 0
+INFO    (22:51:44:185 |    0) 157499; Device type: 4069
+INFO    (22:51:44:185 |    0) 157499; Hardware encoding false
+INFO    (22:51:44:185 |    0) 157499; last unique frame idx: -1 - -1
+INFO    (22:51:44:185 |    0) 157499; AVEncoder init is x264
+INFO    (22:51:44:185 |    0) 157499; AVEncoder init is x264
+INFO    (22:51:44:185 |    0) 157499; Device type: 4069
+INFO    (22:51:44:185 |    0) 157499; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    (22:51:44:185 |    0) 157499; low stream codec type = 1
+INFO    (22:51:44:185 |    0) 157499; low bit rate limit 1
+INFO    (22:51:44:185 |    0) 157499; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    (22:51:44:185 |    0) 157499; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    (22:51:44:185 |    0) 157499; set last big unique frame idx: -1
+INFO    (22:51:44:185 |    0) 157499; set last small unique frame idx: -1
+INFO    (22:51:44:185 |    0) 157499; the init unique frame idx: -1 - -1
+ERROR   (22:51:44:185 |    0) 157499; set video che.hardware_encoding, abandon param , old value 0,  value: -1
+ERROR   (22:51:44:185 |    0) 157499; set video che.hardware_decoding, abandon param , old value -1,  value: -1
+INFO    (22:51:44:185 |    0) 157499; h264WebInteropEnable: enable 0
+INFO    (22:51:44:185 |    0) 157499; setCaptureDevice: index=0
+INFO    (22:51:44:186 |    1) 157499; setMaxVideoBitrate: max bitrate=0
+INFO    (22:51:44:186 |    0) 157499; [setupParameterObservers:1699] setting of localViewMirrorSetting[] is invalid!
+INFO    (22:51:44:186 |    0) 157499; [operator():1714] m_context.parameters.video.renderMode: json is invalid! value:0x0
+INFO    (22:51:44:186 |    0) 157499; [operator():1768] m_context.parameters.video.mirrorMode: json is invalid! value:0x0
+INFO    (22:51:44:186 |    0) 157499; SetBandwidthAgressiveLevel to 3.
+INFO    (22:51:44:186 |    0) 157499; videoEngine created and initialize here
+INFO    (22:51:44:186 |    0) 157499; CreateVideoSendTrack
+INFO    (22:51:44:186 |    0) 157499; [MIO] updateCapturer: (0x0), type:(1)
+INFO    (22:51:44:186 |    0) 157499; CreateAgoraDefaultCapture: type=0
+INFO    (22:51:44:186 |    0) 157499; VideoSendTrackImpl::UpdateCapturer capturer=0x7fde65c6d8c0
+INFO    (22:51:44:186 |    0) 157499; CreateVideoCapturer: interface=0x7fde65c6d8c0
+INFO    (22:51:44:186 |    0) 157499; [MIO] updateLocalRender: (0x0), type:(1)
+INFO    (22:51:44:186 |    0) 157499; CreateAgoraDefaultRender
+INFO    (22:51:44:186 |    0) 157499; VideoSendTrackImpl::UpdateRenderer, renderer=0x7fde4d85bb50
+INFO    (22:51:44:186 |    0) 157499; CreateVideoRenderer: interface=0x7fde4d85bb50
+INFO    (22:51:44:186 |    0) 157499; [MIO] video send track prepared !!
+INFO    (22:51:44:186 |    0) 157499; [che] applyVideoProfile: 640x360 15 fps  -1 minFps 400 kbps, min -1 kbps orientationMode 0 degradationPrefer 0 mirrorMode 0
+INFO    (22:51:44:186 |    0) 157499; validateVideoParameters: validate video parameters resolution 640x360, fps 15, rate 400000
+INFO    (22:51:44:186 |    0) 157499; enableMirrorMode: enable=0
+INFO    (22:51:44:186 |    0) 157499; setMaxVideoBitrate: max bitrate=400000
+INFO    (22:51:44:186 |    0) 157499; setCodecRates: set frame rate to 15
+INFO    (22:51:44:186 |    0) 157499; setCodec: index=1 width=640 height=360 framerate=15
+INFO    (22:51:44:186 |    0) 157499; setCodec: Intra Request = 0
+INFO    (22:51:44:186 |    0) 157499; Device type: 4069
+INFO    (22:51:44:186 |    0) 157499; Hardware encoding false
+INFO    (22:51:44:186 |    0) 157499; last unique frame idx: -1 - -1
+INFO    (22:51:44:186 |    0) 157499; AVEncoder init is x264
+INFO    (22:51:44:186 |    0) 157499; AVEncoder init is x264
+INFO    (22:51:44:186 |    0) 157499; Device type: 4069
+INFO    (22:51:44:186 |    0) 157499; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    (22:51:44:186 |    0) 157499; low stream codec type = 1
+INFO    (22:51:44:186 |    0) 157499; low bit rate limit 1
+INFO    (22:51:44:186 |    0) 157499; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    (22:51:44:186 |    0) 157499; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    (22:51:44:186 |    0) 157499; set last big unique frame idx: -1
+INFO    (22:51:44:186 |    0) 157499; set last small unique frame idx: -1
+INFO    (22:51:44:186 |    0) 157499; the init unique frame idx: -1 - -1
+INFO    (22:51:44:186 |    0) 157499; SetTargetWidthHeight width:640, height:360
+INFO    (22:51:44:186 |    0) 157499; setCodecResolution: set to 640 x 360
+INFO    (22:51:44:186 |    0) 157499; Set broadcast min br to -1.
+INFO    (22:51:44:186 |    0) 157499; [che] chat engine initialized
+INFO    (22:51:44:186 |    0) 157499; [time] process EngineInitialize takes 41
+INFO    (22:51:44:186 |    0) 157499; adjustCodecFrameRates: Cannot adjust frame rate when VQC is on
+INFO    (22:51:44:186 |    0) 157499; [tactics] version:3.3.1.71 maxBitrate:400 640X360 15 fps needHandle:1
+INFO    (22:51:44:186 |    0) 157499; [tactics] config json version:20150101-0000 duallinkd:true poor:0
+INFO    (22:51:44:186 |    0) 157499; [tactics] parse config for beckon error for tactics size:15
+INFO    (22:51:44:186 |    0) 157499; [vocs] queryDns ap5-tls.agora.io
+INFO    (22:51:44:186 |    0) 157499; [base_context]queryDns domain is ap5-tls.agora.io
+INFO    (22:51:44:186 |    0) 157499; [cm] queryDns domain is ap5-tls.agora.io
+INFO    (22:51:44:186 |    0) 157499; [base_context]queryDns domain is ap5-tls.agora.io
+INFO    (22:51:44:186 |    0) 157499; [vocs] queryDns ap4.agora.io
+INFO    (22:51:44:186 |    0) 157499; [base_context]queryDns domain is ap4.agora.io
+INFO    (22:51:44:186 |    0) 157499; [cm] queryDns domain is ap4.agora.io
+INFO    (22:51:44:186 |    0) 157499; [base_context]queryDns domain is ap4.agora.io
+INFO    (22:51:44:186 |    0) 157499; [vocs] vocs initialized
+INFO    (22:51:44:186 |    0) 157499; [cc] fecRexferEnabled:0
+INFO    (22:51:44:186 |    0) 157499; [cc] sni type:0
+INFO    (22:51:44:186 |    0) 157499; reInit: reset mSpecMode to -1
+INFO    (22:51:44:186 |    0) 157499; [cm] reset channelProfile to NASA(CHANNEL_PROFILE_LIVE_BROADCASTING)
+INFO    (22:51:44:186 |    0) 157499; add ping address 192.168.35.1
+INFO    (22:51:44:187 |    1) 157499; PING 192.168.35.1:0 16(44) bytes of data
+INFO    (22:51:44:187 |    0) 157499; CacheManager: save cache to storage elapsed 0
+INFO    (22:51:44:187 |    0) 157499; [cm] emit join channel signal, size=4
+INFO    (22:51:44:187 |    0) 157499; [cm] connection state changed from 1 to 2
+INFO    (22:51:44:187 |    0) 157499; adjustCodecFrameRates: Cannot adjust frame rate when VQC is on
+INFO    (22:51:44:187 |    0) 157499; [tactics] version:3.3.1.71 maxBitrate:400 640X360 15 fps needHandle:1
+INFO    (22:51:44:187 |    0) 157499; [vocs] lookup channel...
+INFO    (22:51:44:187 |    0) 157499; [vocs] selected: 112.126.96.46:8443
+INFO    (22:51:44:187 |    0) 157499; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    (22:51:44:187 |    0) 157499; [vocs] aut - creating channel with 112.126.96.46:8443, ts 1630504304187.......
+INFO    (22:51:44:187 |    0) 157499; create session builder 0x7fde4abeaed0
+INFO    (22:51:44:187 |    0) 157499; [vocs] selected: 50.17.126.121:8443
+INFO    (22:51:44:187 |    0) 157499; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    (22:51:44:187 |    0) 157499; [vocs] aut - creating channel with 50.17.126.121:8443, ts 1630504304187.......
+INFO    (22:51:44:187 |    0) 157499; create session builder 0x7fde4abed8a0
+INFO    (22:51:44:187 |    0) 157499; [vocs] selected: 52.58.56.244:8443
+INFO    (22:51:44:187 |    0) 157499; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    (22:51:44:187 |    0) 157499; [vocs] aut - creating channel with 52.58.56.244:8443, ts 1630504304187.......
+INFO    (22:51:44:187 |    0) 157499; create session builder 0x7fde4abeff20
+INFO    (22:51:44:187 |    0) 157499; [vocs] selected: 101.132.108.165:8443
+INFO    (22:51:44:187 |    0) 157499; tcp_client connecting 101.132.108.165:8443
+INFO    (22:51:44:187 |    0) 157499; create dangling client connection 0x7fde4abf0740
+INFO    (22:51:44:189 |    2) 157499; [remote:112.126.96.46:8443] start 0th connect, send client hello 15245612|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:189 |    0) 157499; create dangling client connection 0x7fde4abf1710
+INFO    (22:51:44:191 |    2) 157499; [remote:50.17.126.121:8443] start 0th connect, send client hello 15762105|syn, tags: SNI :35302d31372d...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:191 |    0) 157499; create dangling client connection 0x7fde4abf2720
+INFO    (22:51:44:193 |    2) 157499; [remote:52.58.56.244:8443] start 0th connect, send client hello 15724989|syn, tags: SNI :35322d35382d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:203 |   10) 157499; [dns] parsed ip 54.150.29.65
+INFO    (22:51:44:203 |    0) 157499; [dns] parsed ip 52.231.182.176
+INFO    (22:51:44:203 |    0) 157499; [vocs] onParsedDns ap5-tls.agora.io with err 0, 54.150.29.65, 52.231.182.176, 
+INFO    (22:51:44:207 |    4) 157499; [dns] parsed ip 164.52.43.58
+INFO    (22:51:44:207 |    0) 157499; [dns] parsed ip 164.52.43.59
+INFO    (22:51:44:207 |    0) 157499; [vocs] onParsedDns ap4.agora.io with err 0, 164.52.43.58, 164.52.43.59, 
+INFO    (22:51:44:277 |   70) 157499; [remote:112.126.96.46:8443] start 1th connect, send client hello 6747116|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:294 |   17) 157499; [remote:52.58.56.244:8443] start 1th connect, send client hello 14226429|syn, tags: SNI :35322d35382d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:341 |   47) 157499; [remote:112.126.96.46:8443] start 1th connect, send client hello 2398480|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:343 |    2) 157499; [remote:52.58.56.244:8443] start 1th connect, send client hello 15724989|syn, tags: SNI :35322d35382d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:354 |   11) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:44:354 |    0) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:44:354 |    0) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:44:354 |    0) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:44:354 |    0) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:44:358 |    4) 157499; [remote:50.17.126.121:8443] create connection 0x7fde66a10800, self initial seq: 6377758, initial rtt: 228ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:44:358 |    0) 157499; [remote:50.17.126.121:8443] create session 0x7fde4d867420
+INFO    (22:51:44:358 |    0) 157499; [ap/aut] connected with 50.17.126.121:8443
+INFO    (22:51:44:358 |    0) 157499; destroy dangling client connection 0x7fde4d836a90
+INFO    (22:51:44:360 |    2) 157499; [vocs/tcp] connected with 101.132.108.165:8443
+INFO    (22:51:44:360 |    0) 157499; [vocs] report bitrate: a/v/t: 50/400/450
+INFO    (22:51:44:360 |    0) 157499; [vocs] tcp - creating channel with 101.132.108.165:8443, ts 1630504304360.......
+INFO    (22:51:44:382 |   22) 157499; [remote:50.17.126.121:8443] start 1th connect, send client hello 15762105|syn, tags: SNI :35302d31372d...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:382 |    0) 157499; [remote:103.98.18.186:8130] start 1th connect, send client hello 14108357|syn, tags: SNI :3130332d3938...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:395 |   13) 157499; [remote:112.126.96.46:8443] start 1th connect, send client hello 15245612|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:396 |    1) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:44:396 |    0) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:44:398 |    2) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:44:398 |    0) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:44:398 |    0) 157499; [remote:50.17.126.121:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:44:401 |    3) 157499; [remote:50.17.126.121:8443] create connection 0x7fde59d78c00, self initial seq: 15762106, initial rtt: 210ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:44:401 |    0) 157499; [remote:50.17.126.121:8443] create session 0x7fde65c77fe0
+INFO    (22:51:44:401 |    0) 157499; [vocs/aut] connected with 50.17.126.121:8443
+INFO    (22:51:44:401 |    0) 157499; destroy dangling client connection 0x7fde4abf1710
+INFO    (22:51:44:402 |    1) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:44:402 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:44:402 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:44:402 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:44:402 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:44:404 |    2) 157499; [remote:112.126.96.46:8443] create connection 0x7fde59d79a00, self initial seq: 2398481, initial rtt: 276ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:44:404 |    0) 157499; [remote:112.126.96.46:8443] create session 0x7fde65c7a6a0
+INFO    (22:51:44:404 |    0) 157499; [ap/aut] connected with 112.126.96.46:8443
+INFO    (22:51:44:404 |    0) 157499; destroy dangling client connection 0x7fde4d8357c0
+INFO    (22:51:44:421 |   17) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:44:422 |    1) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:44:422 |    0) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:44:422 |    0) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:44:422 |    0) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:44:425 |    3) 157499; [remote:52.58.56.244:8443] create connection 0x7fde66a17000, self initial seq: 14226430, initial rtt: 292ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:44:425 |    0) 157499; [remote:52.58.56.244:8443] create session 0x7fde4d86faa0
+INFO    (22:51:44:425 |    0) 157499; [ap/aut] connected with 52.58.56.244:8443
+INFO    (22:51:44:425 |    0) 157499; destroy dangling client connection 0x7fde4d838180
+INFO    (22:51:44:479 |   54) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:44:479 |    0) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:44:480 |    1) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:44:480 |    0) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:44:480 |    0) 157499; [remote:52.58.56.244:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:44:484 |    4) 157499; [remote:52.58.56.244:8443] create connection 0x7fde66a1a600, self initial seq: 15724990, initial rtt: 290ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:44:484 |    0) 157499; [remote:52.58.56.244:8443] create session 0x7fde4d836290
+INFO    (22:51:44:484 |    0) 157499; [vocs/aut] connected with 52.58.56.244:8443
+INFO    (22:51:44:484 |    0) 157499; destroy dangling client connection 0x7fde4abf2720
+INFO    (22:51:44:581 |   97) 157499; [vocs/t] **responsed from 101.132.108.165:8443, 3 vos, elapsed 437, server ts 1630504304488, wan ip 58.******.97
+INFO    (22:51:44:581 |    0) 157499; [vos] vos list: 192.169.103.232:4007
+INFO    (22:51:44:581 |    0) 157499; [vos] added server: 192.169.103.232:4007
+INFO    (22:51:44:581 |    0) 157499; [vos] vos list: 129.227.234.67:4005
+INFO    (22:51:44:581 |    0) 157499; [vos] added server: 129.227.234.67:4005
+INFO    (22:51:44:581 |    0) 157499; [vos] vos list: 45.255.124.100:4005
+INFO    (22:51:44:581 |    0) 157499; [vos] added server: 45.255.124.100:4005
+INFO    (22:51:44:582 |    1) 157499; [ch0] vos initialized
+INFO    (22:51:44:582 |    0) 157499; [vos] selected: 45.255.124.100:4005
+INFO    (22:51:44:582 |    0) 157499; add ping address 58.226.8.97
+INFO    (22:51:44:582 |    0) 157499; PING 58.226.8.97:0 16(44) bytes of data
+ERROR   (22:51:44:582 |    0) 157499; [ch0] login strategy=2
+INFO    (22:51:44:582 |    0) 157499; [ds]: ver 1 ds '{"streamType":5}'
+INFO    (22:51:44:582 |    0) 157499; av1Enable=0, isDav1dLoaded=1, isSupportDav1d=1
+INFO    (22:51:44:582 |    0) 157499; Engine Capability: Intra Request=1
+INFO    (22:51:44:582 |    0) 157499; [che] getEngineCapabilities: 0:{0:COMMUNICATION,1:BROADCASTING,2:UNIFIED_COMMUNICATION}
+INFO    (22:51:44:582 |    0) 157499; [che] getEngineCapabilities: 1:{0:L16,1:G722,2:OPUS,3:OPUS2ch,4:SILK,5:NOVA,6:AACLC,7:AACLC2ch,8:HEAAC,9:HEAAC2ch,11:kHEAAC2ch_2,12:kHEAAC_2}
+INFO    (22:51:44:582 |    0) 157499; [che] getEngineCapabilities: 2:{0:EVP,1:VP8,2:E264,3:H264,4:H265}
+INFO    (22:51:44:582 |    0) 157499; [che] getEngineCapabilities: 3:{0:INTRAREQUEST,1:PISE,2:HIGHPROFILE}
+INFO    (22:51:44:582 |    0) 157499; [che] getEngineCapabilities: 4:{0:NONE,1:ULP,2:RS}
+INFO    (22:51:44:582 |    0) 157499; [che] getEngineCapabilities: 5:{0:WEBINTEROP}
+INFO    (22:51:44:582 |    0) 157499; [che] getEngineCapabilities: 7:{0:AUDIORSFEC}
+INFO    (22:51:44:582 |    0) 157499; [ch0] Login VOS (proto:12, cid:3272063152, uid:3853906808, ts:1630504304582, ticket size:96, detail size:431 ds:1 stream:+A+VH encryption: 1) 1: 45.255.124.100:4005
+INFO    (22:51:44:619 |   37) 157499; [ap/u] **responsed from 50.17.126.121:8443, TDS(64).
+INFO    (22:51:44:619 |    0) 157499; [ap] onAPTdsRes success with config: {"_store Globe: Fix the Voice Delay Problem":["A",{"che.audio.neteq.target_level_set_improve":false},{"retention":"1d","store":true}]}, size: 1
+INFO    (22:51:44:619 |    0) 157499; CacheManager: save cache to storage elapsed 0
+INFO    (22:51:44:619 |    0) 157499; [rp-tds-_store Globe: Fix the Voice Delay Problem-A] {"che.audio.neteq.target_level_set_improve":false}
+INFO    (22:51:44:619 |    0) 157499; [rp] emit abtest event after joinChannel
+INFO    (22:51:44:619 |    0) 157499; [rp] abtest feature:_store Globe: Fix the Voice Delay Problem, tag:A, params:{"che.audio.neteq.target_level_set_improve":false}
+INFO    (22:51:44:620 |    1) 157499; [ap/u] **responsed from 50.17.126.121:8443, CDS(8).
+INFO    (22:51:44:620 |    0) 157499; [ap] onAPCdsRes success with config: ¸Æ¯ßÔÚ¤—ÑúÊÏŸá’–²ÂÛÜ­ÆÉâ“Ï
+INFO    (22:51:44:620 |    0) 157499; [cs] applied directly: {"configs":{},"version":""}, elapsed: 0
+INFO    (22:51:44:620 |    0) 157499; CacheManager: save cache to storage elapsed 0
+INFO    (22:51:44:626 |    6) 157499; [vocs/u] **responsed from 50.17.126.121:8443, 3 vos, elapsed 482, server ts 1630504304528, wan ip 58.******.97
+INFO    (22:51:44:627 |    1) 157499; [remote:50.17.126.121:8443] destroy session 0x7fde65c77fe0
+INFO    (22:51:44:627 |    0) 157499; [remote:50.17.126.121:8443] destroy connection 0x7fde59d78c00
+INFO    (22:51:44:630 |    3) 157499; [cap] synchronise capability set with seq: 1
+INFO    (22:51:44:630 |    0) 157499; updateActiveVosList: ["45.255.124.100:4005"]
+INFO    (22:51:44:630 |    0) 157499; [cm] connection state changed from 2 to 3
+INFO    (22:51:44:630 |    0) 157499; RequestEncodeKeyFrame
+INFO    (22:51:44:630 |    0) 157499; [che] start call begins
+INFO    (22:51:44:630 |    0) 157499; prepareCall in
+INFO    (22:51:44:630 |    0) 157499; Update settings: mode 3, rec_source -2, rec_fs 16000, builtin aec 0
+INFO    (22:51:44:630 |    0) 157499; Set Application Mode in RTC Engine to No. 0 UC 0
+ERROR   (22:51:44:630 |    0) 157499; GetCodec() invalid index (error=8004)
+INFO    (22:51:44:630 |    0) 157499; SetCodec by type : No. 85, Channel 1
+INFO    (22:51:44:630 |    0) 157499; SetCodec by type : No. 85, Channel 1
+INFO    (22:51:44:630 |    0) 157499; setLoopbackRecording, enabled: false, delay 0, aec 1 
+INFO    (22:51:44:630 |    0) 157499; getScenarioHwaecConfig: scenario 7 role 2 route 3 hwApm 1
+INFO    (22:51:44:630 |    0) 157499; useInteractiveAdmParameters in: interactive 1
+INFO    (22:51:44:630 |    0) 157499; _startCall: called for the first time, scenario 7, mSpecMode 2, route_ 3, useHwAec 1
+INFO    (22:51:44:631 |    1) 157499; StartPlayout complete
+INFO    (22:51:44:631 |    0) 157499; getScenarioRecordConfig: scenario 7 audienceNeedRecord 1
+INFO    (22:51:44:631 |    0) 157499; StartSend
+INFO    (22:51:44:631 |    0) 192003; InitPlayout
+INFO    (22:51:44:631 |    0) 157499; SetLocalState: state 1 error 0
+INFO    (22:51:44:631 |    0) 157499; StartRecording complete
+INFO    (22:51:44:631 |    0) 157499; _startCall: audienceRecord 1, mWillsend 1, enableBuildinAEC 1(call volume), enableLocalAudio 1
+INFO    (22:51:44:632 |    1) 192003;  Output device: Apple Inc. ì™¸ìž¥ í—¤ë“œí°
+INFO    (22:51:44:632 |    0) 157499; setAecType: aec is set to 3
+INFO    (22:51:44:632 |    0) 157499; _setAudioOutputRouting: Application Config module:  Route 3, NS on, AEC on, AGC on, MD off, HC off
+INFO    (22:51:44:632 |    0) 157499; _setAudioOutputRouting: Config para: gmode to 1, TLV to 6, CMG to 12
+INFO    (22:51:44:632 |    0) 157499; _setAudioOutputRouting: MID = 4069, Routing = 3
+INFO    (22:51:44:632 |    0) 157499; output: kPlatformDefaultAudio
+INFO    (22:51:44:632 |    0) 157499;   Output: audioLayer=0
+INFO    (22:51:44:632 |    0) 157499; [che] applyVideoProfile: 640x360 15 fps  -1 minFps 400 kbps, min -1 kbps orientationMode 0 degradationPrefer 0 mirrorMode 0
+INFO    (22:51:44:632 |    0) 157499; validateVideoParameters: validate video parameters resolution 640x360, fps 15, rate 400000
+INFO    (22:51:44:632 |    0) 157499; enableMirrorMode: enable=0
+INFO    (22:51:44:632 |    0) 157499; setMaxVideoBitrate: max bitrate=400000
+INFO    (22:51:44:632 |    0) 157499; setCodecRates: set frame rate to 15
+INFO    (22:51:44:632 |    0) 157499; setCodec: index=1 width=640 height=360 framerate=15
+INFO    (22:51:44:632 |    0) 157499; setCodec: Intra Request = 0
+INFO    (22:51:44:633 |    1) 157499; setCodecResolution: set to 640 x 360
+INFO    (22:51:44:633 |    0) 157499; Set broadcast min br to -1.
+INFO    (22:51:44:633 |    0) 157499; Create video user 0
+INFO    (22:51:44:633 |    0) 157499; startCapture: device? 0 init? 1 local enabled? 1 capturing? 0 rendering? 0
+INFO    (22:51:44:633 |    0) 157499; [rtpSender] set paced sender status 1.
+
+INFO    (22:51:44:633 |    0) 157499; [rtpSender] set paced sender mode 0.
+
+INFO    (22:51:44:633 |    0) 157499; AutoAdjust: "Initializing paced sender for broadcasting, strategy 2."
+INFO    (22:51:44:633 |    0) 157499; Set audio rs-fec 0
+INFO    (22:51:44:633 |    0) 157499; [che] start call returns 0, elapsed 3
+INFO    (22:51:44:633 |    0) 157499; [time] process EngineStartCall takes 3
+WARN    (22:51:44:633 |    0) 157499; cannot find parameter, key='che.video.zerocopy'
+INFO    (22:51:44:633 |    0) 192771; AgoraVideoInput::Init type=100, device=EpocCamDevice:0
+INFO    (22:51:44:633 |    0) 192771; AgoraCameraCapture::Initialize, device=EpocCamDevice:0
+INFO    (22:51:44:633 |    0) 157499; join channel success: cname 'linker_test' uid 3853906808 elapsed 489
+INFO    (22:51:44:633 |    0) 192771; RegisterCameraCallback called 140592961345912
+INFO    (22:51:44:633 |    0) 157499; CacheManager: save cache to storage elapsed 0
+INFO    (22:51:44:633 |    0) 157499; [ch0] **VOS encryption response to login request (res 0 elapsed 489, server ts 1630504304622, s-c:-11) from 45.255.124.100:4005, and current dest server 45.255.124.100:4005
+INFO    (22:51:44:633 |    0) 157499; updateActiveVosList: ["45.255.124.100:4005"]
+WARN    (22:51:44:633 |    0) 157499; cannot find parameter, key='che.video.zerocopy'
+INFO    (22:51:44:634 |    1) 157499; CacheManager: save cache to storage elapsed 0
+INFO    (22:51:44:634 |    0) 157499; [rp] publish audio old:0,new:2,elapsed:0
+INFO    (22:51:44:634 |    0) 157499; [API][rtc_engine_impl.cpp:5511][onMediaEngineEvent]
+INFO    (22:51:44:634 |    0) 157499; [API][rtc_engine_impl.cpp:5511][onMediaEngineEvent]
+INFO    (22:51:44:634 |    0) 157499; [rp] publish video old:0,new:2,elapsed:0
+INFO    (22:51:44:634 |    0) 157499; h264WebInteropEnable: enable 0
+INFO    (22:51:44:634 |    0) 157499; setCodec: index=1 width=640 height=360 framerate=15
+INFO    (22:51:44:634 |    0) 157499; setCodec: Intra Request = 1
+INFO    (22:51:44:634 |    0) 157499; Device type: 4069
+INFO    (22:51:44:634 |    0) 157499; Hardware encoding false
+INFO    (22:51:44:634 |    0) 157499; last unique frame idx: -1 - -1
+INFO    (22:51:44:634 |    0) 157499; AVEncoder init is x264
+INFO    (22:51:44:634 |    0) 157499; AVEncoder init is x264
+INFO    (22:51:44:634 |    0) 157499; Device type: 4069
+INFO    (22:51:44:634 |    0) 157499; EncoderWrapper::Create hardware_ = 0, hardware_low_ = 0
+INFO    (22:51:44:634 |    0) 157499; low stream codec type = 1
+INFO    (22:51:44:634 |    0) 157499; low bit rate limit 1
+INFO    (22:51:44:634 |    0) 157499; AutoAdjust: "AAEncComplex cpu score: 60"
+INFO    (22:51:44:634 |    0) 157499; AutoAdjust: "AutoAdjustEncComplex::onInitEncode: cur_encode_complex_level_ 3"
+INFO    (22:51:44:634 |    0) 157499; set last big unique frame idx: -1
+INFO    (22:51:44:634 |    0) 157499; set last small unique frame idx: -1
+INFO    (22:51:44:634 |    0) 157499; the init unique frame idx: -1 - -1
+INFO    (22:51:44:634 |    0) 157499; SetTargetWidthHeight width:640, height:360
+INFO    (22:51:44:634 |    0) 157499; setMaxVideoBitrate: max bitrate=400000
+INFO    (22:51:44:634 |    0) 157499; SetTargetWidthHeight width:640, height:360
+INFO    (22:51:44:634 |    0) 192771; AgoraVideoInput::Start width=640, height=360, fps=15
+INFO    (22:51:44:635 |    1) 192771; AgoraCameraCapture::Start width=640, height=480, fps=15, rotation=0, captureMode=1
+INFO    (22:51:44:635 |    0) 192003; initPlayout ouput stream format:
+INFO    (22:51:44:635 |    0) 192003; _outputDeviceID = 102
+INFO    (22:51:44:635 |    0) 192003; mSampleRate = 48000.000000, mChannelsPerFrame = 2
+INFO    (22:51:44:635 |    0) 192003; mBytesPerPacket = 8, mFramesPerPacket = 1
+INFO    (22:51:44:635 |    0) 192003; mBytesPerFrame = 8, mBitsPerChannel = 32
+INFO    (22:51:44:635 |    0) 192003; mFormatFlags = 9
+INFO    (22:51:44:635 |    0) 192003; mFormatID = 1819304813
+INFO    (22:51:44:636 |    1) 192003;   initial playout status: _renderDelayUs=0, _renderLatencyUs=1708
+INFO    (22:51:44:636 |    0) 192003; StartPlayout
+INFO    (22:51:44:636 |    0) 192003; InitRecording
+INFO    (22:51:44:637 |    1) 192003;  Input device: Apple Inc. ì™¸ìž¥ ë§ˆì´í¬
+INFO    (22:51:44:637 |    0) 192003; initRecording Input stream format:
+INFO    (22:51:44:637 |    0) 192003; _inputDeviceID = 108
+INFO    (22:51:44:637 |    0) 192003;  mSampleRate = 48000.000000, mChannelsPerFrame = 1
+INFO    (22:51:44:637 |    0) 192003;  mBytesPerPacket = 4, mFramesPerPacket = 1
+INFO    (22:51:44:637 |    0) 192003;  mBytesPerFrame = 4, mBitsPerChannel = 32
+INFO    (22:51:44:638 |    1) 192003;  mFormatFlags = 9
+INFO    (22:51:44:638 |    0) 192003;  mFormatID = 1819304813
+INFO    (22:51:44:638 |    0) 192003; Stereo recording unavailable on this device
+INFO    (22:51:44:638 |    0) 192003; StartRecording
+INFO    (22:51:44:643 |    5) 192771; operator(): startCapture success
+INFO    (22:51:44:643 |    0) 157499; SetBandwidthAgressiveLevel to 3.
+INFO    (22:51:44:643 |    0) 157499; RequestEncodeKeyFrame
+INFO    (22:51:44:643 |    0) 157499; doStartLocalRender: init? 1 device 0 capturing? 1 rendering? 0
+INFO    (22:51:44:643 |    0) 157499; doStartLocalRender: local render windows 0x0
+INFO    (22:51:44:643 |    0) 157499; AgoraVideoOutput::Init type=100, view=0x0
+ERROR   (22:51:44:643 |    0) 157499; AgoraVideoOutput::Init unable to initialize renderer
+ERROR   (22:51:44:643 |    0) 157499; doStartLocalRender: failed to initialize local render, view=0x0
+INFO    (22:51:44:655 |   12) 179187; Capturer: use capability 640 x 480 quality is AVCaptureSessionPreset640x480
+
+INFO    (22:51:44:655 |    0) 116235;  _renderCbNumFrames 2, renderCbNumFrames 3, mSampleRate 48000.000000, mBytesPerFrame 8, mDataByteSize 8192, residual 512
+INFO    (22:51:44:656 |    1) 116235;  _renderCbNumFrames 3, renderCbNumFrames 2, mSampleRate 48000.000000, mBytesPerFrame 8, mDataByteSize 7680, residual 0
+INFO    (22:51:44:656 |    0) 157499; [API][rtc_engine_impl.cpp:5511][onMediaEngineEvent]
+INFO    (22:51:44:661 |    5) 157499; [remote:112.126.96.46:8443] start 2th connect, send client hello 6747116|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:679 |   18) 157499; [ch0] **VOS encryption response to login request (res 0 elapsed 534, server ts 1630504304672, s-c:-7) from 45.255.124.100:4005, and current dest server 45.255.124.100:4005
+INFO    (22:51:44:679 |    0) 157499; updateActiveVosList: ["45.255.124.100:4005"]
+WARN    (22:51:44:679 |    0) 157499; cannot find parameter, key='che.video.zerocopy'
+INFO    (22:51:44:679 |    0) 157499; CacheManager: save cache to storage elapsed 0
+INFO    (22:51:44:683 |    4) 195347; SetLocalState: state 2 error 0
+INFO    (22:51:44:688 |    5) 157499; [ch0] rtt: 55
+INFO    (22:51:44:703 |   15) 157499; TRACER: onFirstLocalAudioFrame codec 85 elapsed 559
+INFO    (22:51:44:703 |    0) 157499; TRACER: onFirstLocalAudioFramePublished codec 85 elapsed 559
+INFO    (22:51:44:704 |    1) 157499; [rp] publish audio old:2,new:3,elapsed:73
+INFO    (22:51:44:709 |    5) 157499; [ap/u] **responsed from 52.58.56.244:8443, CDS(8).
+INFO    (22:51:44:709 |    0) 157499; [ap/u] **responsed from 52.58.56.244:8443, TDS(64).
+INFO    (22:51:44:734 |   25)  34567; printFrameLog:frame count 1,width 640,height 480,ystride:640,type:11
+INFO    (22:51:44:734 |    0) 157499; updateDeliveredResolution: width:640 height:480
+INFO    (22:51:44:736 |    2) 157499; SetStreamState: localVideoState 1, error 0
+INFO    (22:51:44:736 |    0) 157499; [che] onVideoSizeChanged: cid  uid 0 640x360 rotate 0
+INFO    (22:51:44:736 |    0) 157499; Quick Intra Request Received and to Enc Intra now
+
+INFO    (22:51:44:736 |    0) 157499; VQC1 module init done. stream no 0, mode 1, structure 257, scenario 512, preference 0, disableVQC 0,.
+INFO    (22:51:44:736 |    0) 192771; Encoder rc method 3,b_prime 0
+INFO    (22:51:44:745 |    9) 157499; TRACER: onFirstLocalVideoFrame codec 2 elapsed 601
+INFO    (22:51:44:745 |    0) 157499; [rp] publish video old:2,new:3,elapsed:115
+INFO    (22:51:44:753 |    8) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:44:753 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:44:753 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:44:753 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:44:753 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:44:756 |    3) 157499; [remote:112.126.96.46:8443] create connection 0x7fde5b889a00, self initial seq: 15245613, initial rtt: 567ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:44:756 |    0) 157499; [remote:112.126.96.46:8443] create session 0x7fde65c7ed30
+INFO    (22:51:44:756 |    0) 157499; [vocs/aut] connected with 112.126.96.46:8443
+INFO    (22:51:44:756 |    0) 157499; [vocs] close transport since working is finished.
+INFO    (22:51:44:756 |    0) 157499; [remote:112.126.96.46:8443] destroy session 0x7fde65c7ed30
+INFO    (22:51:44:756 |    0) 157499; destroy dangling client connection 0x7fde4abf0740
+INFO    (22:51:44:756 |    0) 157499; [remote:112.126.96.46:8443] destroy connection 0x7fde5b889a00
+INFO    (22:51:44:785 |   29) 157499; [vocs/u] **responsed from 52.58.56.244:8443, 3 vos, elapsed 641, server ts 1630504304651, wan ip 58.******.97
+INFO    (22:51:44:785 |    0) 157499; [remote:52.58.56.244:8443] destroy session 0x7fde4d836290
+INFO    (22:51:44:785 |    0) 157499; [remote:52.58.56.244:8443] destroy connection 0x7fde66a1a600
+INFO    (22:51:44:790 |    5) 157499; Create video user 3853906808
+INFO    (22:51:44:829 |   39) 157499; [cap] synchronise capability set with seq: 1
+INFO    (22:51:44:841 |   12) 157499; [remote:103.98.18.186:8130] start 2th connect, send client hello 14108357|syn, tags: SNI :3130332d3938...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:44:878 |   37) 157499; [cap] Received capability set ack seq: 1
+INFO    (22:51:44:907 |   29) 157499; [dns] parsed ip 54.150.29.65
+INFO    (22:51:44:907 |    0) 157499; [dns] parsed ip 52.231.182.176
+INFO    (22:51:44:907 |    0) 157499; [ap] onParsedDns succeed, ap2-tls.agora.io
+INFO    (22:51:44:950 |   43) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:44:950 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:44:950 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:44:950 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:44:950 |    0) 157499; [remote:112.126.96.46:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:44:953 |    3) 157499; [remote:112.126.96.46:8443] create connection 0x7fde6326d000, self initial seq: 6747117, initial rtt: 827ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:44:953 |    0) 157499; [remote:112.126.96.46:8443] create session 0x7fde4abeff00
+INFO    (22:51:44:953 |    0) 157499; [rlbs] request rs list from 112.126.96.46:8443 with fake ch report_lbs_1630504304953.......
+INFO    (22:51:44:953 |    0) 157499; destroy dangling client connection 0x7fde4d834d70
+INFO    (22:51:45: 28 |    0) 157499; [remote:50.17.126.121:8443] on connection close received, reason: 0, detail: 
+INFO    (22:51:45: 28 |    0) 157499; [remote:50.17.126.121:8443] start time wait, duration: 2000 ms
+ERROR   (22:51:45: 28 |    0) 157499; [ap] aut socket error with 50.17.126.121:8443
+INFO    (22:51:45: 28 |    0) 157499; [remote:50.17.126.121:8443] destroy session 0x7fde4d867420
+INFO    (22:51:45: 28 |    0) 157499; [remote:50.17.126.121:8443] destroy connection 0x7fde66a10800
+INFO    (22:51:45: 92 |   64) 157499; [remote:112.126.96.46:8443] destroy session 0x7fde65c7a6a0
+INFO    (22:51:45: 92 |    0) 157499; [remote:112.126.96.46:8443] destroy connection 0x7fde59d79a00
+INFO    (22:51:45: 93 |    1) 157499; [remote:52.58.56.244:8443] destroy session 0x7fde4d86faa0
+INFO    (22:51:45: 93 |    0) 157499; [remote:52.58.56.244:8443] destroy connection 0x7fde66a17000
+INFO    (22:51:45:147 |   54) 192515; => OnMacDataSourceChange()
+INFO    (22:51:45:147 |    0) 192515; setAecType: aec is set to 5
+INFO    (22:51:45:147 |    0) 192515; setAecType: aec is set to 3
+INFO    (22:51:45:148 |    1) 157499; [API][rtc_engine_impl.cpp:5511][onMediaEngineEvent]
+INFO    (22:51:45:148 |    0) 157499; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:51:45:148 |    0) 157499; [rp] {"che.audio.output.routing":0}
+INFO    (22:51:45:149 |    1) 157499; setAecType: aec is set to 3
+INFO    (22:51:45:149 |    0) 157499; _setAudioOutputRouting: Application Config module:  Route 0, NS on, AEC on, AGC on, MD off, HC off
+INFO    (22:51:45:149 |    0) 157499; _setAudioOutputRouting: Config para: gmode to 1, TLV to 6, CMG to 12
+INFO    (22:51:45:149 |    0) 157499; _setAudioOutputRouting: MID = 4069, Routing = 0
+INFO    (22:51:45:536 |  387) 157499; [remote:103.98.18.186:8130] start 3th connect, send client hello 14108357|syn, tags: SNI :3130332d3938...(27), PDMD:, CPTO:4e4f4e432000...(129)
+WARN    (22:51:45:740 |  204) 157499; actual input fps: 15 no diff from setted fps: 15, set setted fps
+INFO    (22:51:46:634 |    0) 157499; notifyPeerCount: cnt 0
+INFO    (22:51:46:634 |    0) 157499; audio cc ctrl br to be -1
+WARN    (22:51:46:799 |  165) 157499; actual input fps: 15 no diff from setted fps: 15, set setted fps
+INFO    (22:51:46:928 |  129) 157499; [remote:103.98.18.186:8130] start 4th connect, send client hello 14108357|syn, tags: SNI :3130332d3938...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:47:736 |    0)   5639; printFrameLog:frame count 91,width 640,height 480,ystride:640,type:11
+INFO    (22:51:48:189 |    0) 157499; gatewayRtt 3(650), linkspeed 58(20), rssi -67(-70), rxlossrate 0(30), localRxJitter95 0(500), reason 0x0
+INFO    (22:51:48:635 |  446) 157499; coefUniformity_=10,coefVariation=0,realCaptureFps=29,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:51:48:635 |    0) 157499; SetStreamState: localVideoState 2, error 0
+INFO    (22:51:48:635 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:51:48:802 |  167) 157499; before enc coefUniformity=6
+INFO    (22:51:49: 93 |    0) 157499; [rlbs] selected: 164.52.43.58:8443
+INFO    (22:51:49: 94 |    1) 157499; create session builder 0x7fde4dba5820
+INFO    (22:51:49: 94 |    0) 157499; [rlbs] selected: 54.150.29.65:8443
+INFO    (22:51:49: 94 |    0) 157499; tcp_client connecting 54.150.29.65:8443
+INFO    (22:51:49: 94 |    0) 157499; create dangling client connection 0x7fde4dba6a60
+INFO    (22:51:49: 98 |    4) 157499; [remote:164.52.43.58:8443] start 0th connect, send client hello 1944391|syn, tags: SNI :3136342d3532...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:49:109 |   11) 157499; [remote:164.52.43.58:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:49:109 |    0) 157499; [remote:164.52.43.58:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:49:109 |    0) 157499; [remote:164.52.43.58:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:49:109 |    0) 157499; [remote:164.52.43.58:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:49:109 |    0) 157499; [remote:164.52.43.58:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:49:112 |    3) 157499; [remote:164.52.43.58:8443] create connection 0x7fde6681e400, self initial seq: 1944392, initial rtt: 14ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:49:112 |    0) 157499; [remote:164.52.43.58:8443] create session 0x7fde4d833760
+INFO    (22:51:49:112 |    0) 157499; [rlbs] request rs list from 164.52.43.58:8443 with fake ch report_lbs_1630504309112.......
+INFO    (22:51:49:113 |    1) 157499; destroy dangling client connection 0x7fde4dba6a60
+INFO    (22:51:49:134 |   21) 157499; create session builder 0x7fde65c7d420
+INFO    (22:51:49:134 |    0) 157499; destroy dangling client connection 0x7fde4d8314a0
+INFO    (22:51:49:134 |    0) 157499; create dangling client connection 0x7fde65c7e660
+INFO    (22:51:49:138 |    4) 157499; [remote:103.98.18.189:8130] start 0th connect, send client hello 9352781|syn, tags: SNI :3130332d3938...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:49:188 |   50) 157499; [rlbs] request rs list from 54.150.29.65:8443 with fake ch report_lbs_1630504309188.......
+INFO    (22:51:49:356 |  168) 157499; [remote:103.98.18.189:8130] start 1th connect, send client hello 9352781|syn, tags: SNI :3130332d3938...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:49:455 |   99) 157499; [remote:103.98.18.189:8130] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:49:455 |    0) 157499; [remote:103.98.18.189:8130] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:49:455 |    0) 157499; [remote:103.98.18.189:8130] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:49:455 |    0) 157499; [remote:103.98.18.189:8130] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:49:455 |    0) 157499; [remote:103.98.18.189:8130] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:49:458 |    3) 157499; [remote:103.98.18.189:8130] create connection 0x7fde6681f200, self initial seq: 9352782, initial rtt: 321ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:49:458 |    0) 157499; [remote:103.98.18.189:8130] create session 0x7fde4d831780
+INFO    (22:51:49:458 |    0) 157499; [rs] link aut to 103.98.18.189:8130 connected
+INFO    (22:51:49:459 |    1) 157499; destroy dangling client connection 0x7fde65c7e660
+INFO    (22:51:49:466 |    7) 157499; [rlbs] [report servers]: 103.193.127.74
+INFO    (22:51:49:466 |    0) 157499; [rlbs] [report servers]: 45.40.48.11
+INFO    (22:51:49:466 |    0) 157499; [rlbs] [report servers]: 129.227.71.202
+INFO    (22:51:49:466 |    0) 157499; [rlbs/t] responsed from 54.150.29.65:8443 with servers 103.193.127.74:8130
+INFO    (22:51:49:466 |    0) 157499; [rs] updateServers 103.193.127.74:8130, priority 3
+INFO    (22:51:49:466 |    0) 157499; [rs] updateServers 45.40.48.11:8130, priority 3
+INFO    (22:51:49:466 |    0) 157499; [rs] updateServers 129.227.71.202:8130, priority 3
+INFO    (22:51:49:466 |    0) 157499; create session builder 0x7fde4abf7650
+INFO    (22:51:49:466 |    0) 157499; [remote:103.98.18.189:8130] destroy session 0x7fde4d831780
+INFO    (22:51:49:466 |    0) 157499; [remote:103.98.18.189:8130] destroy connection 0x7fde6681f200
+INFO    (22:51:49:466 |    0) 157499; [remote:112.126.96.46:8443] destroy session 0x7fde4abeff00
+INFO    (22:51:49:466 |    0) 157499; [remote:112.126.96.46:8443] destroy connection 0x7fde6326d000
+INFO    (22:51:49:466 |    0) 157499; [remote:164.52.43.58:8443] destroy session 0x7fde4d833760
+INFO    (22:51:49:466 |    0) 157499; [remote:164.52.43.58:8443] destroy connection 0x7fde6681e400
+INFO    (22:51:49:466 |    0) 157499; create dangling client connection 0x7fde65aa7830
+INFO    (22:51:49:469 |    3) 157499; [remote:103.193.127.74:8130] start 0th connect, send client hello 2806519|syn, tags: SNI :3130332d3139...(28), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (22:51:49:546 |   77) 157499; [remote:103.193.127.74:8130] receive server hello piece id: 0, 1/10, not complete
+INFO    (22:51:49:546 |    0) 157499; [remote:103.193.127.74:8130] receive server hello piece id: 1, 2/10, not complete
+INFO    (22:51:49:546 |    0) 157499; [remote:103.193.127.74:8130] receive server hello piece id: 2, 3/10, not complete
+INFO    (22:51:49:547 |    1) 157499; [remote:103.193.127.74:8130] receive server hello piece id: 3, 4/10, not complete
+INFO    (22:51:49:547 |    0) 157499; [remote:103.193.127.74:8130] receive server hello piece id: 4, 5/10, complete
+INFO    (22:51:49:550 |    3) 157499; [remote:103.193.127.74:8130] create connection 0x7fde663df000, self initial seq: 2806520, initial rtt: 81ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (22:51:49:550 |    0) 157499; [remote:103.193.127.74:8130] create session 0x7fde4db76cf0
+INFO    (22:51:49:550 |    0) 157499; [rs] link aut to 103.193.127.74:8130 connected
+INFO    (22:51:49:551 |    1) 157499; destroy dangling client connection 0x7fde65aa7830
+INFO    (22:51:49:650 |   99) 157499; [remote:103.193.127.74:8130] path MTU to remote increased: 1280 --> 1365
+INFO    (22:51:49:650 |    0) 157499; [remote:103.193.127.74:8130] on max stream frame length changed from 1204 to 1339
+INFO    (22:51:50:189 |    0) 157499; gatewayRtt 1(650), linkspeed 97(20), rssi -66(-70), rxlossrate 0(30), localRxJitter95 0(500), reason 0x0
+INFO    (22:51:50:636 |  447) 157499; coefUniformity_=9,coefVariation=0,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:51:50:636 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:51:50:638 |    2) 195843; Audio statistics - play count: playout count = 200  signal level: far_in = 0
+INFO    (22:51:50:644 |    6) 195347; Audio statistics - rec count: record count = 201 signal level: near_in = 91, near_out = 80 farin = 91
+INFO    (22:51:50:738 |   94) 188203; printFrameLog:frame count 181,width 640,height 480,ystride:640,type:11
+INFO    (22:51:52:190 |    0) 157499; gatewayRtt 1(650), linkspeed 97(20), rssi -64(-70), rxlossrate 0(30), localRxJitter95 4(500), reason 0x0
+INFO    (22:51:52:635 |  445) 157499; coefUniformity_=9,coefVariation=0,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:51:52:635 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:51:52:636 |    1) 157499; adjustCodecFrameRates: Cannot adjust frame rate when VQC is on
+INFO    (22:51:52:636 |    0) 157499; [tactics] handle videobwe:369 fps:11 now:8052207 8062207
+INFO    (22:51:52:875 |  239) 157499; before enc coefUniformity=6
+INFO    (22:51:53:742 |    0)   5639; printFrameLog:frame count 271,width 640,height 480,ystride:640,type:11
+INFO    (22:51:54:190 |    0) 157499; gatewayRtt 1(650), linkspeed 130(20), rssi -65(-70), rxlossrate 0(30), localRxJitter95 4(500), reason 0x0
+INFO    (22:51:54:635 |  445) 157499; coefUniformity_=9,coefVariation=0,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:51:54:635 |    0) 157499; audio cc ctrl br to be -1
+WARN    (22:51:54:744 |  109) 157499; [VPM:Brightness] normal (1).
+INFO    (22:51:54:746 |    2) 157499; VideoEncoderExec: UseSingleSliceParser = 1
+INFO    (22:51:56:636 |    0) 157499; coefUniformity_=8,coefVariation=0,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:51:56:636 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:51:56:749 |  113)  14083; printFrameLog:frame count 361,width 640,height 480,ystride:640,type:11
+INFO    (22:51:56:954 |  205) 157499; before enc coefUniformity=6
+INFO    (22:51:58:637 |    0) 157499; coefUniformity_=9,coefVariation=98,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:51:58:637 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:51:59:759 |  122) 154391; printFrameLog:frame count 451,width 640,height 480,ystride:640,type:11
+INFO    (22:52: 0:193 |    0) 157499; gatewayRtt 2(650), linkspeed 130(20), rssi -65(-70), rxlossrate 0(30), localRxJitter95 4(500), reason 0x0
+INFO    (22:52: 0:637 |  444) 157499; coefUniformity_=8,coefVariation=98,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52: 0:637 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52: 1: 26 |    0) 157499; before enc coefUniformity=6
+INFO    (22:52: 2: 35 |    9) 157499; [remote:103.193.127.74:8130] path MTU to remote increased: 1365 --> 1415
+INFO    (22:52: 2: 35 |    0) 157499; [remote:103.193.127.74:8130] on max stream frame length changed from 1339 to 1389
+INFO    (22:52: 2:638 |  603) 157499; coefUniformity_=9,coefVariation=98,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52: 2:638 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52: 2:787 |  149)   5639; printFrameLog:frame count 542,width 640,height 480,ystride:640,type:11
+INFO    (22:52: 4: 92 |    0) 157499; [rs] **report stats: seq: 96, report list size 0,       tx/rx: 36116/4608
+INFO    (22:52: 4: 92 |    0) 157499; [rs] report server: 103.193.127.74:8130
+INFO    (22:52: 4:639 |  547) 195843; Audio statistics - play count: playout count = 600  signal level: far_in = 0
+INFO    (22:52: 4:639 |    0) 157499; coefUniformity_=9,coefVariation=98,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52: 4:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52: 4:665 |   26) 195347; Audio statistics - rec count: record count = 600 signal level: near_in = 97, near_out = 94 farin = 97
+INFO    (22:52: 4:768 |  103) 157499; VideoEncoderExec: UseSingleSliceParser = 1
+WARN    (22:52: 4:831 |   63) 157499; [VPM:Brightness] normal (1).
+INFO    (22:52: 5:100 |    0) 157499; before enc coefUniformity=6
+INFO    (22:52: 5:799 |  699)   5639; printFrameLog:frame count 632,width 640,height 480,ystride:640,type:11
+INFO    (22:52: 6:196 |    0) 157499; gatewayRtt 1(650), linkspeed 130(20), rssi -65(-70), rxlossrate 0(30), localRxJitter95 5(500), reason 0x0
+INFO    (22:52: 6:639 |  443) 157499; coefUniformity_=8,coefVariation=98,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52: 6:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52: 8:639 |    0) 157499; coefUniformity_=8,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52: 8:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52: 8:804 |  165) 205931; printFrameLog:frame count 722,width 640,height 480,ystride:640,type:11
+INFO    (22:52: 9:172 |    0) 157499; before enc coefUniformity=5
+INFO    (22:52:10:638 |  466) 157499; coefUniformity_=8,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:10:639 |    1) 157499; audio cc ctrl br to be -1
+INFO    (22:52:11:843 |  204)   5639; printFrameLog:frame count 813,width 640,height 480,ystride:640,type:11
+INFO    (22:52:12:196 |    0) 157499; gatewayRtt 1(650), linkspeed 130(20), rssi -65(-70), rxlossrate 0(30), localRxJitter95 5(500), reason 0x0
+INFO    (22:52:12:638 |  442) 157499; coefUniformity_=9,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:12:638 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:13:243 |    0) 157499; before enc coefUniformity=6
+INFO    (22:52:13:527 |  284) 157499; [cap] Receive the capability with seq: 1
+INFO    (22:52:13:527 |    0) 157499; [che] setEngineCapabilities: 0:{0:COMMUNICATION,1:BROADCASTING,2:UNIFIED_COMMUNICATION}
+INFO    (22:52:13:527 |    0) 157499; [che] setEngineCapabilities: 1:{0:L16,1:G722,2:OPUS,3:OPUS2ch,4:SILK,5:NOVA,6:AACLC,7:AACLC2ch,8:HEAAC,9:HEAAC2ch,11:kHEAAC2ch_2,12:kHEAAC_2}
+INFO    (22:52:13:527 |    0) 157499; [che] setEngineCapabilities: 2:{0:EVP,1:VP8,2:E264,3:H264}
+INFO    (22:52:13:527 |    0) 157499; [che] setEngineCapabilities: 3:{0:INTRAREQUEST,1:PISE,2:HIGHPROFILE}
+INFO    (22:52:13:527 |    0) 157499; [che] setEngineCapabilities: 4:{0:NONE,1:ULP,2:RS}
+INFO    (22:52:13:527 |    0) 157499; [che] setEngineCapabilities: 5:{0:WEBINTEROP}
+INFO    (22:52:13:527 |    0) 157499; [che] setEngineCapabilities: 7:{0:AUDIORSFEC}
+INFO    (22:52:13:527 |    0) 157499; [cap] synchronise capability set with seq: 2
+INFO    (22:52:13:548 |   21) 157499; [cap] Receive the old capability set version: 1, while the latest is 1
+INFO    (22:52:13:559 |   11) 157499; audio setPeerAudioMuteStatus: cid linker_test uid 4023416663 muted 0
+ERROR   (22:52:13:559 |    0) 157499; onPeerAudioMuteStatus: uid -271550633 already unmuted
+INFO    (22:52:13:559 |    0) 157499; video setPeerVideoMuteStatus: cid linker_test uid 4023416663 muted 1
+INFO    (22:52:13:559 |    0) 157499; [pm] peer 4023416663 is online
+INFO    (22:52:13:559 |    0) 157499; applyMediaEngineMode(): 264_Hardware decoding false,265_Hardware decoding true
+INFO    (22:52:13:559 |    0) 157499; setupMediaEngineMode: mode 1
+INFO    (22:52:13:559 |    0) 157499; getScenarioHwaecConfig: scenario 7 role 2 route 0 hwApm 1
+INFO    (22:52:13:559 |    0) 157499; getScenarioHwaecConfig: scenario 7 role 1 route 0 hwApm 1
+INFO    (22:52:13:559 |    0) 157499; getScenarioRecordConfig: scenario 7 audienceNeedRecord 1
+INFO    (22:52:13:559 |    0) 157499; getScenarioSwaecConfig: scenario 7 role 2 swAec 1
+INFO    (22:52:13:559 |    0) 157499; getScenarioSwaecConfig: scenario 7 role 1 swAec 1
+INFO    (22:52:13:559 |    0) 157499; _updateClientRole: scenario 7 mRouting 0 mSpecMode 2 mode 1 audienceRecord 1 with mWillsend 1, previousUseHwAec 1, useHwAec 1, changeRecord 0, changeHwAec 0: NO need restart audio engine
+INFO    (22:52:13:559 |    0) 157499; VideoEngine: setClientRole from -1 to 1 videoEnabled=1
+INFO    (22:52:13:559 |    0) 157499; [rtpSender] set paced sender status 1.
+
+INFO    (22:52:13:559 |    0) 157499; [rtpSender] set paced sender process interval ms 0.000000.
+
+INFO    (22:52:13:559 |    0) 157499; [rtpSender] set paced sender mode 0.
+
+INFO    (22:52:13:559 |    0) 157499; AutoAdjust: "Initializing paced sender for broadcasting, strategy 2."
+INFO    (22:52:13:559 |    0) 157499; Call LiveModeSwitchToBroadcaster
+INFO    (22:52:13:559 |    0) 157499; Call CheckForResetDecoder
+INFO    (22:52:13:559 |    0) 157499; Call CheckForResetDecoder end
+INFO    (22:52:13:559 |    0) 157499; startCapture: device? 0 init? 1 local enabled? 1 capturing? 0 rendering? 0
+INFO    (22:52:13:559 |    0) 157499; [rtpSender] set paced sender status 1.
+
+INFO    (22:52:13:559 |    0) 157499; [rtpSender] set paced sender mode 0.
+
+INFO    (22:52:13:559 |    0) 157499; AutoAdjust: "Initializing paced sender for broadcasting, strategy 2."
+INFO    (22:52:13:559 |    0) 157499; notifyPeerCount: cnt 1
+INFO    (22:52:13:559 |    0) 157499; [che] onPeerJoined: inserted uid 4023416663 of cid linker_test m_validPeers[cid].size() 1
+INFO    (22:52:13:559 |    0) 157499; [pm] peer 4023416663 has enabled video
+INFO    (22:52:13:559 |    0) 157499; video setPeerVideoMuteStatus: cid linker_test uid 4023416663 muted 1
+INFO    (22:52:13:559 |    0) 157499; [pm] peer 4023416663 has enabled local video
+INFO    (22:52:13:559 |    0) 157499; video setPeerVideoMuteStatus: cid linker_test uid 4023416663 muted 0
+INFO    (22:52:13:559 |    0) 157499; [pm] peer 4023416663 has enabled audio
+INFO    (22:52:13:559 |    0) 157499; [pm] peer 4023416663 has enabled local audio
+INFO    (22:52:13:559 |    0) 157499; onFirstRemoteAudioFrame cid linker_test uid 4023416663 codec 85 elapsed 29414
+INFO    (22:52:13:559 |    0) 157499; onTracerFirstRemoteAudio cid linker_test uid 4023416663 codec 85 elapsed 29414
+INFO    (22:52:13:559 |    0) 157499; [che] onPeerFirstRemoteAudioFrame uid:4023416663, codec:85, codecDelay:20
+INFO    (22:52:13:559 |    0) 157499; audio jitterbuffer new smooth
+INFO    (22:52:13:559 |    0) 157499; invoked by unmute, ignore. uid = 4023416663
+INFO    (22:52:13:560 |    1) 157499; [rp] subscribe video cid:linker_test uid:4023416663,old:0,new:2,elapsed:0
+INFO    (22:52:13:560 |    0) 157499; [rp] subscribe audio cid:linker_test uid:4023416663,old:0,new:2,elapsed:0
+INFO    (22:52:13:560 |    0) 157499; [rp] subscribe audio cid:linker_test uid:4023416663,old:2,new:3,elapsed:0
+INFO    (22:52:13:560 |    0) 157499; h264WebInteropEnable: enable 0
+INFO    (22:52:13:560 |    0) 157499; setCodec: index=1 width=640 height=360 framerate=15
+INFO    (22:52:13:560 |    0) 157499; setCodec: Intra Request = 1
+INFO    (22:52:13:560 |    0) 157499; setMaxVideoBitrate: max bitrate=400000
+INFO    (22:52:13:560 |    0) 157499; SetTargetWidthHeight width:640, height:360
+INFO    (22:52:13:560 |    0) 192771; operator(): startCapture success
+INFO    (22:52:13:560 |    0) 157499; SetBandwidthAgressiveLevel to 3.
+INFO    (22:52:13:560 |    0) 157499; RequestEncodeKeyFrame
+INFO    (22:52:13:560 |    0) 157499; doStartLocalRender: init? 1 device 0 capturing? 1 rendering? 0
+INFO    (22:52:13:560 |    0) 157499; doStartLocalRender: local render windows 0x0
+INFO    (22:52:13:560 |    0) 157499; AgoraVideoOutput::Init type=100, view=0x0
+ERROR   (22:52:13:560 |    0) 157499; AgoraVideoOutput::Init unable to initialize renderer
+ERROR   (22:52:13:560 |    0) 157499; doStartLocalRender: failed to initialize local render, view=0x0
+INFO    (22:52:13:578 |   18) 157499; [cap] Received capability set ack seq: 2
+INFO    (22:52:13:579 |    1) 157499; SetStreamState: localVideoState 1, error 0
+INFO    (22:52:13:579 |    0) 157499; Quick Intra Request Received and to Enc Intra now
+
+WARN    (22:52:13:582 |    3) 157499; Idr miss, internal frn wrap around, reset. prevfrn (423), cfrn (0), maxfrn (65536)
+INFO    (22:52:13:599 |   17) 157499; Intra Request Received from 0, time = 8073169
+
+INFO    (22:52:14:639 |   40) 157499; coefUniformity_=11,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:14:639 |    0) 157499; SetStreamState: localVideoState 2, error 0
+INFO    (22:52:14:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:14:778 |  139) 157499; VideoEncoderExec: UseSingleSliceParser = 1
+INFO    (22:52:14:872 |   94) 179187; printFrameLog:frame count 904,width 640,height 480,ystride:640,type:11
+WARN    (22:52:14:905 |   33) 157499; [VPM:Brightness] dark (1).
+INFO    (22:52:16:196 |    0) 157499; **CALL STATS: duration 30s cpu app/total 6.79/10.44 memory size app/ratio app/total 1015244KB/6.33/99.61 battery 100 tx/rx: 126/33 kbps 448.824K/173.214K bytes
+INFO    (22:52:16:507 |  311) 157499; [xla] first remote audio frame uid:4023416663, first:1, valid:0, mute:0, stage:(43,486,29415,29434)
+INFO    (22:52:16:639 |  132) 157499; coefUniformity_=9,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:16:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:17:309 |    0) 157499; before enc coefUniformity=6
+INFO    (22:52:17:875 |  566) 179187; printFrameLog:frame count 994,width 640,height 480,ystride:640,type:11
+INFO    (22:52:18:197 |    0) 157499; gatewayRtt 2(650), linkspeed 130(20), rssi -65(-70), rxlossrate 0(30), localRxJitter95 5(500), reason 0x0
+INFO    (22:52:18:639 |  442) 157499; coefUniformity_=8,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:18:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:19:508 |    0) 157499; [rp] first remote video timeout uid:4023416663, valid:0, timeout:5000, pub:40, join:34878, firstdraw:1
+INFO    (22:52:19:805 |  297) 195347; AEC_Delay changes, current delay is 64 (ms)
+INFO    (22:52:20:639 |    0) 157499; coefUniformity_=10,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:20:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:20:889 |  250) 205931; printFrameLog:frame count 1084,width 640,height 480,ystride:640,type:11
+INFO    (22:52:21:385 |    0) 157499; before enc coefUniformity=6
+INFO    (22:52:22:639 |  254) 157499; coefUniformity_=9,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:22:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:22:639 |    0) 195843; Audio statistics - play count: playout count = 600  signal level: far_in = 87
+INFO    (22:52:22:665 |   26) 195347; Audio statistics - rec count: record count = 601 signal level: near_in = 98, near_out = 99 farin = 98
+INFO    (22:52:23:926 |  261) 179187; printFrameLog:frame count 1175,width 640,height 480,ystride:640,type:11
+INFO    (22:52:24: 92 |    0) 157499; [rs] **report stats: seq: 143, report list size 0,       tx/rx: 43232/6864
+INFO    (22:52:24: 92 |    0) 157499; [rs] report server: 103.193.127.74:8130
+INFO    (22:52:24:198 |  106) 157499; gatewayRtt 1(650), linkspeed 130(20), rssi -65(-70), rxlossrate 0(30), localRxJitter95 5(500), reason 0x0
+INFO    (22:52:24:639 |  441) 157499; coefUniformity_=9,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:24:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:24:788 |  149) 157499; VideoEncoderExec: UseSingleSliceParser = 1
+WARN    (22:52:24:990 |  202) 157499; [VPM:Brightness] dark (1).
+INFO    (22:52:25:462 |    0) 157499; before enc coefUniformity=6
+INFO    (22:52:26:639 |  177) 157499; coefUniformity_=9,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:26:639 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:26:957 |  318) 205931; printFrameLog:frame count 1266,width 640,height 480,ystride:640,type:11
+INFO    (22:52:28:640 |    0) 157499; coefUniformity_=8,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:28:640 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:29:532 |    0) 157499; before enc coefUniformity=6
+INFO    (22:52:29:961 |  429)  34567; printFrameLog:frame count 1356,width 640,height 480,ystride:640,type:11
+INFO    (22:52:30:197 |    0) 157499; gatewayRtt 1(650), linkspeed 130(20), rssi -65(-70), rxlossrate 0(30), localRxJitter95 5(500), reason 0x0
+INFO    (22:52:30:343 |  146) 157499; [remote:103.193.127.74:8130] path MTU to remote increased: 1415 --> 1450
+INFO    (22:52:30:343 |    0) 157499; [remote:103.193.127.74:8130] on max stream frame length changed from 1389 to 1424
+INFO    (22:52:30:640 |  297) 157499; coefUniformity_=9,coefVariation=100,realCaptureFps=30,targetCaptureFPS=15,captureSnr_=0 ,
+
+INFO    (22:52:30:640 |    0) 157499; audio cc ctrl br to be -1
+INFO    (22:52:30:733 |   93)    259; [API][rtc_engine_impl.cpp:790][leaveChannel]
+INFO    (22:52:30:733 |    0)    259; API call to leave channel linker_test
+INFO    (22:52:30:734 |    1)    259; [API][rtc_engine_impl.cpp:3185][clearVideoWatermarks]
+INFO    (22:52:30:734 |    0)    259; [API][rtc_engine_impl.cpp:3185][clearVideoWatermarks]
+INFO    (22:52:30:734 |    0)    259; [API][media_engine_impl.cpp:61][registerVideoFrameObserver]
+INFO    (22:52:30:734 |    0) 157499; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:52:30:734 |    0) 157499; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (22:52:30:734 |    0) 157499; [cm] emit leave channel signal
+INFO    (22:52:30:738 |    4)    259; [API][media_engine_impl.cpp:61][registerVideoFrameObserver]
+INFO    (22:52:30:738 |    0)    259; [API][media_engine_impl.cpp:38][registerAudioFrameObserver]
+INFO    (22:52:30:738 |    0)    259; [API][rtc_engine_impl.cpp:3316][registerPacketObserver]
+INFO    (22:52:30:738 |    0)    259; [API][rtc_engine_impl.cpp:5481][registerMediaMetadataObserver]
+INFO    (22:52:30:738 |    0)    259; [API][rtc_engine_impl.cpp:3948][release]
+INFO    (22:52:30:798 |   60) 157499; [rs] **report stats: seq: 163, report list size 3,       tx/rx: 46528/7680
+INFO    (22:52:30:798 |    0) 157499; [rs] report server: 103.193.127.74:8130
+INFO    (22:52:30:798 |    0) 157499; stopLocalRender
+INFO    (22:52:30:798 |    0) 157499; stopLocalRender success
+INFO    (22:52:30:798 |    0) 157499; AgoraVideoInput::Stop
+INFO    (22:52:30:798 |    0) 157499; AgoraCameraCapture::Stop
+INFO    (22:52:30:798 |    0) 157499; AgoraVideoInput::Destroy
+INFO    (22:52:30:798 |    0) 157499; AgoraCameraCapture::Dispose
+INFO    (22:52:30:798 |    0) 157499; stopCapture: stopCapture success, cost time 0
+INFO    (22:52:30:798 |    0) 157499; SetStreamState: localVideoState 0, error 0
+INFO    (22:52:30:798 |    0) 157499; [rtpSender] set paced sender status 0.
+
+INFO    (22:52:30:798 |    0) 157499; stopRemoteRender
+INFO    (22:52:30:798 |    0) 157499; stopRemoteVideo: uid=3853906808
+INFO    (22:52:30:798 |    0) 157499; [che] stopCall begins
+INFO    (22:52:30:798 |    0) 157499; stopCall in
+INFO    (22:52:30:798 |    0) 157499; StopRecording complete
+INFO    (22:52:30:798 |    0) 157499; SetLocalState: state 0 error 0
+INFO    (22:52:30:798 |    0) 157499; StopRecording complete
+INFO    (22:52:30:798 |    0) 157499; StopPlayout complete
+INFO    (22:52:30:798 |    0) 157499; setAecType: aec is set to 5
+INFO    (22:52:30:798 |    0) 192003; StopRecording
+INFO    (22:52:30:798 |    0) 157499; [che] stop call returns 0, elapsed 0
+INFO    (22:52:30:798 |    0) 157499; [time] process EngineStopCall takes 0
+INFO    (22:52:30:798 |    0) 157499; Delete video user 3853906808
+INFO    (22:52:30:798 |    0) 157499; [che] clearAllPeersMap: uid 4023416663 to be removed
+INFO    (22:52:30:804 |    6) 192003; StopPlayout
+INFO    (22:52:30:820 |   16) 157499; [cm] connection state changed from 3 to 1
+INFO    (22:52:30:820 |    0) 157499; **CALL STATS: duration 46s, tx 685.298K bytes, rx 295.889K bytes, total 981.163K bytes
+INFO    (22:52:30:821 |    1) 157499; CacheManager: save cache to storage elapsed 1
+INFO    (22:52:30:823 |    2) 157499; [ch0] vos destroyed
+INFO    (22:52:30:823 |    0) 157499; delRef of media engine, ref=0
+INFO    (22:52:30:823 |    0) 157499; [che] chat engine destroying
+INFO    (22:52:30:823 |    0) 157499; stopLocalRender
+INFO    (22:52:30:823 |    0) 157499; stopLocalRender success
+INFO    (22:52:30:823 |    0) 157499; stopRemoteRender
+INFO    (22:52:30:823 |    0) 157499; [che] stopCall begins
+INFO    (22:52:30:823 |    0) 157499; [che] stop call returns -1, elapsed 0
+INFO    (22:52:30:824 |    1) 157499; VideoSendTrackImpl::UpdateCapturer capturer=0x0
+INFO    (22:52:30:824 |    0) 157499; CreateVideoCapturer: interface=0x0
+INFO    (22:52:30:824 |    0) 157499; VideoSendTrackImpl::UpdateRenderer, renderer=0x0
+INFO    (22:52:30:824 |    0) 157499; CreateVideoRenderer: interface=0x0
+INFO    (22:52:30:824 |    0) 157499; stopLocalRender: Cannot stop (not exist)
+INFO    (22:52:30:824 |    0) 157499; stopRemoteRender
+INFO    (22:52:30:824 |    0) 157499; stopCapture: startCapture Error: No capturer for video send track
+INFO    (22:52:30:824 |    0) 157499; SetVideoEngineRef: VideoEngineRef = 0xffffffff
+WARN    (22:52:30:824 |    0) 157499; terminate: VideoEngine haven't init
+INFO    (22:52:30:824 |    0) 157499; [DEBUGG] ViERenderManager Destructor, engine_id: 0
+INFO    (22:52:30:825 |    1) 157499; AgoraCameraCapture::Dispose
+INFO    (22:52:30:825 |    0) 192003; StopPlayout
+INFO    (22:52:30:825 |    0) 192003; StopRecording
+INFO    (22:52:30:825 |    0) 192003; AudioDeviceMac::Terminate, _initialized: 1, _recording: 0, _playing: 0, _loopbackrecording: 0
+ERROR   (22:52:30:826 |    1) 157499; AsyncAudioDevice destructed, counter: 0
+
+INFO    (22:52:30:826 |    0) 157499; [che] chat engine destroyed
+INFO    (22:52:30:826 |    0) 157499; ***CALL END
+INFO    (22:52:30:826 |    0) 157499; onAudioStatusChanged enable audio
+Local Date: Wed Sep  1 23:55:25 2021
+Build info: Mar 26 2021 19:47:22 r
+
+INFO    (23:55:25: 70 |    2)    259; [API][rtc_engine_impl.cpp:1639][enableVideo]
+INFO    (23:55:25: 70 |    0)    259; API call to enable video
+INFO    (23:55:25: 70 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 70 |    0) 302551; [rp] {"rtc.video.enabled":true}
+INFO    (23:55:25: 70 |    0) 302551; API call to enable video
+INFO    (23:55:25: 73 |    3)    259; [API][media_engine_impl.cpp:61][registerVideoFrameObserver]
+INFO    (23:55:25: 75 |    2)    259; [API][rtc_engine_impl.cpp:535][joinChannel]
+INFO    (23:55:25: 75 |    0)    259; [API][rtc_engine_impl.cpp:3732][setChannelProfile]
+INFO    (23:55:25: 75 |    0)    259; [API][rtc_engine_impl.cpp:1214][getParameters]
+INFO    (23:55:25: 75 |    0) 302551; [rp] ["rtc.force_old_channel_profile"]
+INFO    (23:55:25: 75 |    0) 302551; [rp] res: {"rtc.force_old_channel_profile":false} 
+INFO    (23:55:25: 75 |    0)    259; setChannelProfile type 2
+INFO    (23:55:25: 75 |    0)    259; API call to setChannelProfile 0
+INFO    (23:55:25: 75 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 75 |    0)    259; doSetClientRole 1 level 2
+INFO    (23:55:25: 75 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 76 |    1)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"che.video.h264.hwenc":0}
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:3630][setAudioProfile]
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"rtc.client_role":1}
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"rtc.allow_communication_fallback":true}
+INFO    (23:55:25: 76 |    0)    259; doSetClientRole 1 level 2
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:915][updateMediaOptions]
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:1709][muteAllRemoteAudioStreams]
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"rtc.user_set_channel_profile":0}
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:1725][muteAllRemoteVideoStreams]
+INFO    (23:55:25: 76 |    0) 302551; [rtls] set playout delay:0 ms
+INFO    (23:55:25: 76 |    0)    259; [API][rtc_engine_impl.cpp:1203][setParameters]
+ERROR   (23:55:25: 76 |    0)    259; API call to join: Invalid channel name
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"rtc.suspend_callback_client_role_changed":false}
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"che.audio.profile":{"config":100,"scenario":100}}
+INFO    (23:55:25: 76 |    0) 302551; audioProfile lambda: Audio Profile is set to: (config = 100, scenario = 100)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(0):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(1):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(1)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(2):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(0) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(1) is_bluetooth(0) audience_need_record(0)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(3):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(0) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(4):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(5):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(1)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(6):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(7):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(1) is_solo_broadcaster(1) is_interactive_broadcaster(1) is_headset(1) is_bluetooth(1) audience_need_record(1)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(8):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(1) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: scenario(9):
+INFO    (23:55:25: 76 |    0) 302551; updateScenarioConfig: is_audience(0) is_solo_broadcaster(0) is_interactive_broadcaster(0) is_headset(0) is_bluetooth(0) audience_need_record(0)
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"rtc.client_role":1}
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"rtc.audio.mute_peers":false}
+INFO    (23:55:25: 76 |    0) 302551; [rp] {"rtc.video.mute_peers":false}
+INFO    (23:55:25:152 |   76) 302551; [dns] parsed ip 103.98.18.189
+INFO    (23:55:25:152 |    0) 302551; [dns] parsed ip 103.98.18.186
+INFO    (23:55:25:152 |    0) 302551; [dns] parsed ip 103.98.18.181
+INFO    (23:55:25:152 |    0) 302551; [dns] parsed ip 103.230.251.252
+INFO    (23:55:25:152 |    0) 302551; [dns] parsed ip 103.230.251.246
+INFO    (23:55:25:152 |    0) 302551; [rs] dns parse result code: 0, servers size: 5
+INFO    (23:55:25:152 |    0) 302551; [rs] onParsedDns 103.98.18.189
+INFO    (23:55:25:152 |    0) 302551; [rs] onParsedDns 103.98.18.186
+INFO    (23:55:25:152 |    0) 302551; [rs] onParsedDns 103.98.18.181
+INFO    (23:55:25:152 |    0) 302551; [rs] onParsedDns 103.230.251.252
+INFO    (23:55:25:152 |    0) 302551; [rs] onParsedDns 103.230.251.246
+INFO    (23:55:25:152 |    0) 302551; [rs] updateServers 103.98.18.189:8130, priority 2
+INFO    (23:55:25:152 |    0) 302551; [rs] updateServers 103.98.18.186:8130, priority 2
+INFO    (23:55:25:152 |    0) 302551; [rs] updateServers 103.98.18.181:8130, priority 2
+INFO    (23:55:25:152 |    0) 302551; [rs] updateServers 103.230.251.252:8130, priority 2
+INFO    (23:55:25:152 |    0) 302551; [rs] updateServers 103.230.251.246:8130, priority 2
+INFO    (23:55:25:153 |    1) 302551; create session builder 0x7fd6e4ec3780
+INFO    (23:55:25:153 |    0) 302551; create dangling client connection 0x7fd6e4ed9f90
+INFO    (23:55:25:156 |    3) 302551; [remote:103.98.18.189:8130] start 0th connect, send client hello 6413542|syn, tags: SNI :3130332d3938...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:187 |   31) 302551; [ap/tcp] connected with 101.132.108.165:8443
+INFO    (23:55:25:187 |    0) 302551; [ap] tcp - creating channel with 101.132.108.165:8443, ts 0, flag: 72
+INFO    (23:55:25:188 |    1) 302551; [rlbs] request rs list from 101.132.108.165:8443 with fake ch report_lbs_1630508125188.......
+INFO    (23:55:25:216 |   28) 302551; [remote:112.126.96.46:8443] start 1th connect, send client hello 1770498|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:216 |    0) 302551; [remote:112.126.96.46:8443] start 1th connect, send client hello 12212530|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:268 |   52) 302551; [ap/t] **responsed from 101.132.108.165:8443, CDS(8).
+INFO    (23:55:25:268 |    0) 302551; [ap] onAPCdsRes success with config: ¸Æ¯ßÔÚ¤—ÑúÊÏŸá’–²ÂÛÜ­ÆÉâ“Ï
+INFO    (23:55:25:268 |    0) 302551; [cs] applied directly: {"configs":{},"version":""}, elapsed: 0
+INFO    (23:55:25:268 |    0) 302551; CacheManager: save cache to storage elapsed 0
+INFO    (23:55:25:269 |    1) 302551; [ap/t] **responsed from 101.132.108.165:8443, TDS(64).
+INFO    (23:55:25:269 |    0) 302551; [ap] onAPTdsRes success with config: {"_store Globe: Fix the Voice Delay Problem":["A",{"che.audio.neteq.target_level_set_improve":false},{"retention":"1d","store":true}]}, size: 1
+INFO    (23:55:25:269 |    0) 302551; CacheManager: save cache to storage elapsed 0
+INFO    (23:55:25:269 |    0) 302551; [rp-tds-_store Globe: Fix the Voice Delay Problem-A] {"che.audio.neteq.target_level_set_improve":false}
+INFO    (23:55:25:294 |   25) 302551; [remote:50.17.126.121:8443] start 1th connect, send client hello 5375409|syn, tags: SNI :35302d31372d...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:304 |   10) 302551; [remote:52.58.56.244:8443] start 1th connect, send client hello 16079340|syn, tags: SNI :35322d35382d...(26), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:331 |   27) 302551; [remote:103.98.18.189:8130] start 1th connect, send client hello 6413542|syn, tags: SNI :3130332d3938...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:350 |   19) 302551; [remote:52.58.56.244:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (23:55:25:350 |    0) 302551; [remote:52.58.56.244:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (23:55:25:350 |    0) 302551; [remote:52.58.56.244:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (23:55:25:350 |    0) 302551; [remote:52.58.56.244:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (23:55:25:350 |    0) 302551; [remote:52.58.56.244:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (23:55:25:354 |    4) 302551; [remote:52.58.56.244:8443] create connection 0x7fd6e997b200, self initial seq: 16079341, initial rtt: 289ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (23:55:25:354 |    0) 302551; [remote:52.58.56.244:8443] create session 0x7fd6e7cfb210
+INFO    (23:55:25:354 |    0) 302551; [remote:52.58.56.244:8443] destroy session 0x7fd6e7cfb210
+INFO    (23:55:25:354 |    0) 302551; destroy dangling client connection 0x7fd6eba28530
+INFO    (23:55:25:354 |    0) 302551; [remote:52.58.56.244:8443] destroy connection 0x7fd6e997b200
+INFO    (23:55:25:473 |  119) 302551; [remote:103.98.18.189:8130] receive server hello piece id: 0, 1/10, not complete
+INFO    (23:55:25:473 |    0) 302551; [remote:103.98.18.189:8130] receive server hello piece id: 1, 2/10, not complete
+INFO    (23:55:25:473 |    0) 302551; [remote:103.98.18.189:8130] receive server hello piece id: 2, 3/10, not complete
+INFO    (23:55:25:473 |    0) 302551; [remote:103.98.18.189:8130] receive server hello piece id: 3, 4/10, not complete
+INFO    (23:55:25:473 |    0) 302551; [remote:103.98.18.189:8130] receive server hello piece id: 4, 5/10, complete
+INFO    (23:55:25:477 |    4) 302551; [remote:103.98.18.189:8130] create connection 0x7fd7026dbe00, self initial seq: 6413543, initial rtt: 321ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (23:55:25:477 |    0) 302551; [remote:103.98.18.189:8130] create session 0x7fd6eb0f6490
+INFO    (23:55:25:477 |    0) 302551; [rs] link aut to 103.98.18.189:8130 connected
+INFO    (23:55:25:478 |    1) 302551; destroy dangling client connection 0x7fd6e4ed9f90
+INFO    (23:55:25:530 |   52) 302551; [remote:112.126.96.46:8443] start 2th connect, send client hello 1770498|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:626 |   96) 302551; [remote:112.126.96.46:8443] start 2th connect, send client hello 12212530|syn, tags: SNI :3131322d3132...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:659 |   33) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (23:55:25:659 |    0) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (23:55:25:659 |    0) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (23:55:25:659 |    0) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (23:55:25:659 |    0) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (23:55:25:662 |    3) 302551; [remote:112.126.96.46:8443] create connection 0x7fd6f802e000, self initial seq: 1770499, initial rtt: 605ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (23:55:25:662 |    0) 302551; [remote:112.126.96.46:8443] create session 0x7fd6ebab8880
+INFO    (23:55:25:662 |    0) 302551; [rlbs] request rs list from 112.126.96.46:8443 with fake ch report_lbs_1630508125662.......
+INFO    (23:55:25:662 |    0) 302551; destroy dangling client connection 0x7fd6eba31660
+INFO    (23:55:25:693 |   31) 302551; [rlbs] [report servers]: 129.227.69.26
+INFO    (23:55:25:693 |    0) 302551; [rlbs] [report servers]: 103.104.168.244
+INFO    (23:55:25:693 |    0) 302551; [rlbs] [report servers]: 122.10.255.165
+INFO    (23:55:25:693 |    0) 302551; [rlbs/t] responsed from 101.132.108.165:8443 with servers 129.227.69.26:8130
+INFO    (23:55:25:693 |    0) 302551; [rs] updateServers 129.227.69.26:8130, priority 3
+INFO    (23:55:25:693 |    0) 302551; [rs] updateServers 103.104.168.244:8130, priority 3
+INFO    (23:55:25:693 |    0) 302551; [rs] updateServers 122.10.255.165:8130, priority 3
+INFO    (23:55:25:693 |    0) 302551; create session builder 0x7fd6eb0eb460
+INFO    (23:55:25:693 |    0) 302551; [remote:103.98.18.189:8130] destroy session 0x7fd6eb0f6490
+INFO    (23:55:25:694 |    1) 302551; [remote:103.98.18.189:8130] destroy connection 0x7fd7026dbe00
+INFO    (23:55:25:694 |    0) 302551; [remote:112.126.96.46:8443] destroy session 0x7fd6ebab8880
+INFO    (23:55:25:694 |    0) 302551; [remote:112.126.96.46:8443] destroy connection 0x7fd6f802e000
+INFO    (23:55:25:694 |    0) 302551; create dangling client connection 0x7fd6eb0eda90
+INFO    (23:55:25:697 |    3) 302551; [remote:129.227.69.26:8130] start 0th connect, send client hello 753591|syn, tags: SNI :3132392d3232...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:760 |   63) 302551; [remote:50.17.126.121:8443] start 2th connect, send client hello 5375409|syn, tags: SNI :35302d31372d...(27), PDMD:, CPTO:4e4f4e432000...(129)
+INFO    (23:55:25:801 |   41) 302551; [remote:129.227.69.26:8130] receive server hello piece id: 0, 1/10, not complete
+INFO    (23:55:25:801 |    0) 302551; [remote:129.227.69.26:8130] receive server hello piece id: 1, 2/10, not complete
+INFO    (23:55:25:801 |    0) 302551; [remote:129.227.69.26:8130] receive server hello piece id: 2, 3/10, not complete
+INFO    (23:55:25:801 |    0) 302551; [remote:129.227.69.26:8130] receive server hello piece id: 3, 4/10, not complete
+INFO    (23:55:25:802 |    1) 302551; [remote:129.227.69.26:8130] receive server hello piece id: 4, 5/10, complete
+INFO    (23:55:25:804 |    2) 302551; [remote:129.227.69.26:8130] create connection 0x7fd6e5ca7800, self initial seq: 753592, initial rtt: 107ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (23:55:25:804 |    0) 302551; [remote:129.227.69.26:8130] create session 0x7fd6ea587300
+INFO    (23:55:25:804 |    0) 302551; [rs] link aut to 129.227.69.26:8130 connected
+INFO    (23:55:25:805 |    1) 302551; destroy dangling client connection 0x7fd6eb0eda90
+INFO    (23:55:25:952 |  147) 302551; [dns] parsed ip 54.150.29.65
+INFO    (23:55:25:952 |    0) 302551; [dns] parsed ip 52.231.182.176
+INFO    (23:55:25:952 |    0) 302551; [ap] onParsedDns succeed, ap3-tls.agora.io
+INFO    (23:55:25:973 |   21) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 0, 1/10, not complete
+INFO    (23:55:25:973 |    0) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 1, 2/10, not complete
+INFO    (23:55:25:973 |    0) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 2, 3/10, not complete
+INFO    (23:55:25:973 |    0) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 3, 4/10, not complete
+INFO    (23:55:25:973 |    0) 302551; [remote:112.126.96.46:8443] receive server hello piece id: 4, 5/10, complete
+INFO    (23:55:25:977 |    4) 302551; [remote:112.126.96.46:8443] create connection 0x7fd6f9039000, self initial seq: 12212531, initial rtt: 916ms, git tag: Unknown, perspective: Perspective::kClient, cc: BBRv1, pacing: enable
+INFO    (23:55:25:977 |    0) 302551; [remote:112.126.96.46:8443] create session 0x7fd6f6d1a720
+INFO    (23:55:25:977 |    0) 302551; [remote:112.126.96.46:8443] destroy session 0x7fd6f6d1a720
+INFO    (23:55:25:977 |    0) 302551; destroy dangling client connection 0x7fd6eba09800
+INFO    (23:55:25:977 |    0) 302551; [remote:112.126.96.46:8443] destroy connection 0x7fd6f9039000
+INFO    (23:55:26: 25 |    0) 302551; destroy dangling client connection 0x7fd6ebaa6cf0
+INFO    (23:55:30: 10 |    0) 302551; [remote:129.227.69.26:8130] path MTU to remote increased: 1280 --> 1365
+INFO    (23:55:30: 10 |    0) 302551; [remote:129.227.69.26:8130] on max stream frame length changed from 1204 to 1339
+INFO    (23:55:34:668 |  658)    259; [API][rtc_engine_impl.cpp:790][leaveChannel]
+INFO    (23:55:34:668 |    0)    259; API call to leave channel 
+INFO    (23:55:34:668 |    0)    259; [API][rtc_engine_impl.cpp:3185][clearVideoWatermarks]
+INFO    (23:55:34:668 |    0)    259; [API][rtc_engine_impl.cpp:3185][clearVideoWatermarks]
+INFO    (23:55:34:668 |    0) 302551; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:34:668 |    0) 302551; [API][rtc_engine_impl.cpp:1203][setParameters]
+INFO    (23:55:34:668 |    0)    259; [API][media_engine_impl.cpp:61][registerVideoFrameObserver]
+ERROR   (23:55:34:668 |    0) 302551; failed to leave channel due to NOT in CALL
