@@ -161,8 +161,7 @@ public class ShowBoard : MonoBehaviour
         var json = new JObject();
         string method = "board/list";
 
-        //json.Add("boardRoom", Utility.roomName);
-        json.Add("boardRoom", "linker_test");
+        json.Add("boardRoom", Utility.roomName);
 
         var boardList = JObject.Parse(Utility.request_server(json, method));
         createBoardButton(boardList["result"]);
