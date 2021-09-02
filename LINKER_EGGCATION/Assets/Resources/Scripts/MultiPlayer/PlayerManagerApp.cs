@@ -50,6 +50,8 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
     static public AudioSource VoiceAudioSource;
 
+    static public AudioListener AudioListener;
+
     public bool emotionIsChange = false;
 
     public bool[] IsEmotionsActive;
@@ -148,6 +150,7 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
             VoiceRecorder = LocalPlayerInstance.GetComponent<Recorder>();
             VoiceAudioSource = LocalPlayerInstance.GetComponent<AudioSource>();
+            AudioListener = fpCamera.GetComponent<AudioListener>();
             VoiceRecorder.TransmitEnabled = true;
             VoiceAudioSource.mute = false;
 
