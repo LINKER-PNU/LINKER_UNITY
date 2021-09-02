@@ -750,7 +750,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 161573033}
   m_HandleRect: {fileID: 161573032}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0.11
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -9620,7 +9620,7 @@ GameObject:
   - component: {fileID: 567662770}
   - component: {fileID: 567662769}
   m_Layer: 5
-  m_Name: Mute
+  m_Name: MicOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10801,7 +10801,7 @@ GameObject:
   - component: {fileID: 593152328}
   - component: {fileID: 593152327}
   m_Layer: 5
-  m_Name: Voice
+  m_Name: HeadsetOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14241,7 +14241,7 @@ GameObject:
   - component: {fileID: 772925705}
   - component: {fileID: 772925704}
   m_Layer: 5
-  m_Name: NoVoice
+  m_Name: HeadsetOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28141,7 +28141,7 @@ GameObject:
   - component: {fileID: 1550126383}
   - component: {fileID: 1550126382}
   m_Layer: 5
-  m_Name: NoMute
+  m_Name: MicOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
