@@ -20703,7 +20703,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 240643476}
   m_HandleRect: {fileID: 240643475}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 0.99999964
   m_Size: 0.10999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -24148,7 +24148,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 40
   m_Viewport: {fileID: 1510119823}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1643098408}
@@ -29114,7 +29114,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1795410094}
   m_HandleRect: {fileID: 1795410093}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
