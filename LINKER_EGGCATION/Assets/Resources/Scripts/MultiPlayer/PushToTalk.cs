@@ -26,37 +26,47 @@ public class PushToTalk : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-      if(Input.GetKeyDown(SpeakBtn))
-      {
-        if(photonView.IsMine)
+        if (GameManager.boardPanelObject.activeInHierarchy)
         {
-          if(VoiceRecorder.TransmitEnabled == true){
-            VoiceRecorder.TransmitEnabled = false;
-            VoiceAudioSource.volume = 0;
-            GameManager.micOnObject.SetActive(false);
-            GameManager.micOffObject.SetActive(true);
-          }else{
-            VoiceAudioSource.volume = 1;
-            VoiceRecorder.TransmitEnabled = true;
-            GameManager.micOnObject.SetActive(true);
-            GameManager.micOffObject.SetActive(false);
-          }
+            return;
         }
-      }
-      if(Input.GetKeyDown(ListenBtn))
-      {
-        if(photonView.IsMine)
+        if (Input.GetKeyDown(SpeakBtn))
         {
-          if(AudioListener.volume == 0){
-            GameManager.headsetOnObject.SetActive(true);
-            GameManager.headsetOffObject.SetActive(false);
-            AudioListener.volume = 1;
-          }else{
-            GameManager.headsetOnObject.SetActive(false);
-            GameManager.headsetOffObject.SetActive(true);
-            AudioListener.volume = 0;
-          }
+            if (photonView.IsMine)
+            {
+                if (VoiceRecorder.TransmitEnabled == true)
+                {
+                    VoiceRecorder.TransmitEnabled = false;
+                    VoiceAudioSource.volume = 0;
+                    GameManager.micOnObject.SetActive(false);
+                    GameManager.micOffObject.SetActive(true);
+                }
+                else
+                {
+                    VoiceAudioSource.volume = 1;
+                    VoiceRecorder.TransmitEnabled = true;
+                    GameManager.micOnObject.SetActive(true);
+                    GameManager.micOffObject.SetActive(false);
+                }
+            }
         }
-      }    
+        if (Input.GetKeyDown(ListenBtn))
+        {
+            if (photonView.IsMine)
+            {
+                if (AudioListener.volume == 0)
+                {
+                    GameManager.headsetOnObject.SetActive(true);
+                    GameManager.headsetOffObject.SetActive(false);
+                    AudioListener.volume = 1;
+                }
+                else
+                {
+                    GameManager.headsetOnObject.SetActive(false);
+                    GameManager.headsetOffObject.SetActive(true);
+                    AudioListener.volume = 0;
+                }
+            }
+        }
     }
 }

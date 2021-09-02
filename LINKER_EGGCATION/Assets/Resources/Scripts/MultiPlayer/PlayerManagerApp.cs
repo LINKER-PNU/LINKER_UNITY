@@ -21,21 +21,14 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(IsEmotionsActive);
-            // We own this player: send the others our data
-            //for (int i = 0; i < Emotions.Length; i++)
-            //{
-            //    Debug.LogFormat("{0} send", IsEmotionsActive[i]);
-            //}
+            stream.SendNext(emotionIsChange);
         }
         else
         {
-            Debug.Log("!!!receive!!!");
+            Debug.Log(IsEmotionsActive);
+            Debug.Log(emotionIsChange);
             IsEmotionsActive = (bool[])stream.ReceiveNext();
-            // Network player, receive data
-            //for (int i = 0; i < Emotions.Length; i++)
-            //{
-            //    Debug.LogFormat("{0} receive", IsEmotionsActive[i]);
-            //}
+            emotionIsChange = (bool)stream.ReceiveNext();
         }
     }
 
@@ -57,6 +50,10 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
 
     static public AudioSource VoiceAudioSource;
 
+    public bool emotionIsChange = false;
+
+    public bool[] IsEmotionsActive;
+
     #endregion
 
 
@@ -67,7 +64,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     //private GameObject beams;
 
     ////True, when the user is firing
-    static public bool[] IsEmotionsActive;
 
     [SerializeField]
     const int MaximumEmotionCount = 10;
@@ -116,9 +112,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField]
     private float moveSpeed = 5.0f;
 
-    //[Tooltip("The Player's UI GameObject Prefab")]
-    //[SerializeField]
-    //private GameObject playerUiPrefab;
     #endregion
 
 
@@ -322,6 +315,19 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             {
                 return;
             }
+            else if (GameManagerApp.DeskModeObject.activeInHierarchy)
+            {
+                return;
+            }
+            else if (GameManagerApp.timerObject.activeInHierarchy)
+            {
+                return;
+            }
+            else if (GameManagerApp.ServerCanvasObject.activeInHierarchy ||
+                    GameManagerApp.ClientCanvasObject.activeInHierarchy)
+            {
+                return;
+            }
 
             bool isEscActive = GameManagerApp.escPanelObject.activeInHierarchy;
             GameManagerApp.DisplayCanvas(isEscActive, "esc");
@@ -348,4 +354,24 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
     }
     #endregion
 
+    public IEnumerator CoroutineEmotion(int i)
+    {
+        emotionIsChange = true;
+        IsEmotionsActive[i] = true;
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1f);
+
+        emotionIsChange = false;
+        IsEmotionsActive[i] = false;
+    }
+
+    public bool IsAllEmotionInactive()
+    {
+        foreach (var EmotionActive in IsEmotionsActive)
+        {
+            if (EmotionActive) return false;
+        }
+        return true;
+    }
 }
