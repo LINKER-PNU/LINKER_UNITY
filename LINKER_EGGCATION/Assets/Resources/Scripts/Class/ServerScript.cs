@@ -40,8 +40,9 @@ public class ServerScript : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        CHANNEL_NAME = Utility.roomName;
-        TOKEN = get_token();
+        JToken result = get_token();
+        CHANNEL_NAME = (string)result["roomId"];
+        TOKEN = (string)result["agoraToken"];
         //CHANNEL_NAME = ControlServerInMain.roomName;
 
         _logger = new Logger(logText);
@@ -58,13 +59,13 @@ public class ServerScript : MonoBehaviour
     void Update()
     {
     }
-    private string get_token()
+    private JToken get_token()
     {
         var json = new JObject();
         string method = "get_token";
 
-        json.Add("roomName", CHANNEL_NAME);
-        return Utility.request_server(json, method);
+        json.Add("roomName", Utility.roomName);
+        return JObject.Parse(Utility.request_server(json, method));
     }
     private void CheckAppId()
     {
@@ -380,8 +381,8 @@ public class ServerScript : MonoBehaviour
         go.transform.Rotate(0.0f, 0.0f, 180.0f);
         var xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
         var yPos = Random.Range(Offset, Screen.height / 2f - Offset);
-        go.transform.localPosition = new Vector3(-750, 400, 0f);
-        go.transform.localScale = new Vector3(4f, 2.25f, 1f);
+        go.transform.localPosition = new Vector3(-400, 400, 0f);
+        go.transform.localScale = new Vector3(2f, 1.125f, 1f);
 
         var videoSurface = go.AddComponent<VideoSurface>();
         return videoSurface;

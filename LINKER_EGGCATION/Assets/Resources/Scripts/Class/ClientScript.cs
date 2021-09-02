@@ -44,8 +44,9 @@ public class ClientScript : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        CHANNEL_NAME = Utility.roomName;
-        TOKEN = get_token();
+        JToken result = get_token();
+        CHANNEL_NAME = (string)result["roomId"];
+        TOKEN = (string)result["agoraToken"];
         //CHANNEL_NAME = ControlServerInMain.roomName;
 
         _logger = new Logger(logText);
@@ -62,13 +63,13 @@ public class ClientScript : MonoBehaviour
     {
     }
 
-    private string get_token()
+    private JToken get_token()
     {
         var json = new JObject();
         string method = "get_token";
 
-        json.Add("roomName", CHANNEL_NAME);
-        return Utility.request_server(json, method);
+        json.Add("roomName", Utility.roomName);
+        return JObject.Parse(Utility.request_server(json, method));
     }
     private void CheckAppId()
     {
