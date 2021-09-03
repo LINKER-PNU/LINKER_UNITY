@@ -41,9 +41,7 @@ public class BellControl : MonoBehaviour
 
         if(time == "00" || time =="50"){
           m_MyAudioSource.Play();
-          Debug.Log("audioplay : "+ time);
         }
-        Debug.Log( string.Format("{0}\n{1}", date, time)); 
 
     }
     // private void Get_Time()

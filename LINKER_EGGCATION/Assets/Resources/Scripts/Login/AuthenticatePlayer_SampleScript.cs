@@ -65,13 +65,11 @@ public class AuthenticatePlayer_SampleScript : MonoBehaviour
                     json.Add("userId", Utility.userId);
 
                     Utility.request_server(json, "login");
-                    Debug.Log("로그인 성공...");
                     SceneManager.LoadScene("MoMainScene");
                 }
                 else
                 {
                     StartCoroutine(Error());
-                    Debug.Log("로그인 실패..." + response.Errors.JSON.ToString());
                 }
             });
     }

@@ -62,14 +62,6 @@ public class RegisterPlayer_SampleScript : MonoBehaviour
                     }else{
                       userRole ="T";
                     }
-                    
-                
-
-                    Debug.Log("authToken " + authToken);
-                    Debug.Log("displayName " + displayName);
-                    Debug.Log("newPlayer " + newPlayer);
-                    Debug.Log("userId " + userId);
-                    Debug.Log("skinRole " + userRole);
 
                     json.Add("authToken", authToken);
                     json.Add("displayName", displayName);

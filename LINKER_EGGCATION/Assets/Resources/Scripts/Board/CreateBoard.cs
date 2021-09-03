@@ -111,13 +111,6 @@ public class CreateBoard : MonoBehaviour
                             : "2001-01-01 00:00:00";
         bool boardNotice = NoticeToggle.isOn;
         bool boardAssignment = HomeworkToggle.isOn;
-        Debug.LogFormat("boardRoom {0}", Utility.roomName);
-        Debug.LogFormat("boardWriterId {0}", Utility.userId);
-        Debug.LogFormat("boardTitle {0}", boardTitle);
-        Debug.LogFormat("boardContent {0}", boardContent);
-        Debug.LogFormat("boardDeadline {0}", boardDeadline);
-        Debug.LogFormat("boardNotice {0}", boardNotice);
-        Debug.LogFormat("boardAssignment {0}", boardAssignment);
 
         json.Add("boardRoom", Utility.roomName);
         json.Add("boardWriterId", Utility.userId);

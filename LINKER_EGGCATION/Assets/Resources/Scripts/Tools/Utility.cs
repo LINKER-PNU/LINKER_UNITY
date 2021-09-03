@@ -32,7 +32,6 @@ namespace eggcation
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream(), System.Text.Encoding.UTF8, true))
             {
                 var result = streamReader.ReadToEnd();
-                Debug.Log(result);
                 return result;
             }
         }

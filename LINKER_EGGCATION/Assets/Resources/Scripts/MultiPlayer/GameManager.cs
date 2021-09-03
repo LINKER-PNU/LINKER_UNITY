@@ -154,7 +154,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         AimObject= canvasObject.transform.Find("Aim").gameObject;
         timerObject = canvasObject.transform.Find("Timer").gameObject;
         newTimerPanelObject = canvasObject.transform.Find("NewTimerPanel").gameObject;
-        Debug.Log(this.name,DeskModeObject);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         deleteTimerlist = new List<string>();
@@ -162,7 +161,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         micOffObject = soundObject.transform.Find("MicOff").gameObject;
         headsetOnObject = soundObject.transform.Find("HeadsetOn").gameObject;
         headsetOffObject = soundObject.transform.Find("HeadsetOff").gameObject;
-        Debug.Log("??");
 
 
         TeacherChairObject = GameObject.Find("TeacherChair").gameObject;
@@ -176,7 +174,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         totalTime += Time.deltaTime;
         TotalTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(totalTime));
         SubjectTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(currentTime));
-        Debug.Log(currentTime);
       }
     }
  
@@ -220,7 +217,7 @@ public class GameManager : MonoBehaviourPunCallbacks
       json.Add("timerRoom", PhotonNetwork.CurrentRoom.Name);
 
       var result = JArray.Parse(Utility.request_server(json, method));
-      Debug.Log(Utility.request_server(json, method));
+      Utility.request_server(json, method);
 
       foreach (Transform child in TimerBtnContentObject.transform) {
         if(child.gameObject != CreateBtnObject){
@@ -345,7 +342,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     // 과목 타이머 보여줌
     public void OnShowTimer(string timerTitle,int time){
-      Debug.Log("show timer"+timerTitle);
       SubjectTimerObject.SetActive(true);
       SubjectObject.GetComponent<Text>().text = timerTitle;
       TotalTimeObject.GetComponent<Text>().text = FormatTime(Mathf.FloorToInt(totalTime));
@@ -368,7 +364,6 @@ public class GameManager : MonoBehaviourPunCallbacks
       json.Add("timerId", currentTimerId);
       json.Add("timerStudyTime",(Mathf.FloorToInt(currentTime)).ToString());
       var result = JObject.Parse(Utility.request_server(json, method));
-      Debug.Log("timer 저장"+currentTimerId+": " +(Mathf.FloorToInt(currentTime)).ToString());
     }
 
     
@@ -396,7 +391,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (!ServerCanvasObject.activeInHierarchy) // 책상이면
         {
-            Debug.Log("책");
             if (checkClassExist())
             {
                 DeskModeObject.SetActive(false);
@@ -411,7 +405,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     public void OnCreateClassConfirm()
     {
-        Debug.Log("교");
         if (checkClassExist())
         {
             Instance.StartCoroutineAlreadyExist();

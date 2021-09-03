@@ -188,7 +188,6 @@ public class ClientScript : MonoBehaviour
         go = ClientObject.transform.Find(uid.ToString()).gameObject;
         if (!ReferenceEquals(go, null))
         {
-            Debug.Log(go);
             DestroyImmediate(go);
         }
     }
@@ -212,7 +211,6 @@ public class ClientScript : MonoBehaviour
             videoSurface.SetGameFps(30);
             videoSurface.EnableFilpTextureApply(true, false);
         }
-        Debug.Log("HERE?");
     }
 
     // VIDEO TYPE 1: 3D Object

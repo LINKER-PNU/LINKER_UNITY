@@ -140,7 +140,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             PlayerManager.LocalPlayerInstance = this.gameObject;
-            Debug.Log("Control My Camera");
             LocalPlayerInstance.GetComponent<Movement3D>().enabled = true;
             CamMode = 0;
             fpCamera.SetActive(true);
@@ -233,8 +232,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         string cloth = user_info["user_skin_cloth"].ToString();
         myMat = Resources.Load(cloth, typeof(Material)) as Material;
         Cloth.GetComponent<Renderer>().material = myMat;
-        Debug.Log(Cloth.GetComponent<Renderer>().material);
-        Debug.Log(myMat);
     }
     /// <summary>
     /// MonoBehaviour method called when the Collider 'other' enters the trigger.
@@ -293,7 +290,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         foreach(var EmotionActive in IsEmotionsActive)
         {
-            Debug.Log(EmotionActive);
             if (EmotionActive) return false;
         }
         return true;
@@ -329,7 +325,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 // 클릭 시 앞에 물건이 있을 때
                 if (Physics.Raycast(ray, out hit, MaxDistance))
                 {
-                    Debug.Log(hit.transform?.name);
                     if (!GameManager.ClientCanvasObject.activeInHierarchy && isTeacherDesk()) // 교탁이면
                     {
                         if (!GameManager.createClassPanel.activeInHierarchy)
@@ -344,7 +339,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                     GameObject tempChair = null;
 
                     tempChair = GameObject.Find("chair" + hit.transform.name.Substring(4));
-                    Debug.Log("chair" + hit.transform.name.Substring(4));
 
                     if (isDesk())
                     {
@@ -355,13 +349,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
                         LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
 
-                        Debug.Log(LocalPlayerInstance.transform.rotation);
                         LocalPlayerInstance.transform.position = newPos;
                         // var relativePos = tempChair.transform.position - LocalPlayerInstance.transform.position; 
                         // var rotation = Quaternion.LookRotation(relativePos);
                         // LocalPlayerInstance.transform.LookAt(Vector3.zero);
                         LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
-                        Debug.Log(LocalPlayerInstance.transform.rotation);
 
 
 

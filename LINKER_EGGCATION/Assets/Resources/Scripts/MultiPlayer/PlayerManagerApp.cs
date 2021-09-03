@@ -25,8 +25,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            Debug.Log(IsEmotionsActive);
-            Debug.Log(emotionIsChange);
             IsEmotionsActive = (bool[])stream.ReceiveNext();
             emotionIsChange = (bool)stream.ReceiveNext();
         }
@@ -142,7 +140,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
             JoyStickCamera.Player = LocalPlayerInstance;
             GameManagerApp.fpCamera = fpCamera;
             GameManagerApp.fpCameraController = fpCamera.GetComponent<CameraController>();
-            Debug.Log("Control My Camera");
             CamMode = 1;
             fpCamera.SetActive(true);
             MainCamera = fpCamera.GetComponent<Camera>();
@@ -225,7 +222,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (IsEmotionsActive != null && IsEmotionsActive[i] != Emotions[i].activeInHierarchy)
             {
-                Debug.Log(IsEmotionsActive[i]);
                 Emotions[i].SetActive(IsEmotionsActive[i]);
             }
         }
@@ -286,8 +282,6 @@ public class PlayerManagerApp : MonoBehaviourPunCallbacks, IPunObservable
         string cloth = user_info["user_skin_cloth"].ToString();
         myMat = Resources.Load(cloth, typeof(Material)) as Material;
         Cloth.GetComponent<Renderer>().material = myMat;
-        Debug.Log(Cloth.GetComponent<Renderer>().material);
-        Debug.Log(myMat);
     }
 
 
