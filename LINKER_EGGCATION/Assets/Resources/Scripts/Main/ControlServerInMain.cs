@@ -87,8 +87,6 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
       ColorObject = EventSystem.current.currentSelectedGameObject;
       Color newColor = ColorObject.GetComponentInChildren<Image>().color;
 
-      Debug.Log(newColor);
-      Debug.Log("parsed "+ColorUtility.ToHtmlStringRGBA(newColor));
 
       EggObject.GetComponent<Renderer>().material.color = newColor;
 
@@ -114,14 +112,12 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
 
       json.Add("userId", Utility.userId);
       json.Add("skinCloth", ClothesObject.name);
-      Debug.Log(ClothesObject.name);
       var result = JObject.Parse(Utility.request_server(json, method));
 
     }
 
     public void CreateNewRoomBttn()
     {
-        Debug.Log("Click Create New Room");
         RoomNamePanelObject.SetActive(true);
     }
 
@@ -252,14 +248,12 @@ public class ControlServerInMain : MonoBehaviourPunCallbacks
             Vector3 classBttnNewPosition = new Vector3(classBttnTranform.position.x, classBttnTranform.position.y - count * y_offset, classBttnTranform.position.z);
             classBttnTranform.localPosition = classBttnNewPosition;
             classBttnTranform.localScale = new Vector3(1, 1, 1);
-            Debug.Log(classBttnTranform.localScale);
             count += 1;
 
             // onClick 추가
             Button classBttnComp = classBttn.GetComponent<Button>();
             classBttnComp.onClick.AddListener(() => JoinRoomByRoomName(room["room_name"].ToString()));
 
-            Debug.LogFormat("방 목록에 추가 : {0}", room["room_name"].ToString());
         }
         RectTransform ContentTransform = ClassBttnContentObject.GetComponent<RectTransform>();
         ContentTransform.sizeDelta = new Vector2(0, offset * 2 + y_offset * (count - 1));

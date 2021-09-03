@@ -59,7 +59,6 @@ namespace GameSparks.Editor
 
     	public static String getApi(){
     		string url = HOST + GameSparksSettings.ApiKey + "/sdk/" + GameSparksSettings.ApiSecret + "/GameSparksCustomSDK501.cs";
-    		Debug.Log(url);
     		WebClient wc = new WebClient();
     		String ret = null;
     		try{

@@ -134,13 +134,6 @@ public class ShowBoard : MonoBehaviour
         bool boardNotice = NoticeToggle.isOn;
         bool boardAssignment = HomeworkToggle.isOn;
 
-        Debug.LogFormat("boardWriterId", Utility.userId);
-        Debug.LogFormat("boardTitle", boardTitle);
-        Debug.LogFormat("boardContent", boardContent);
-        Debug.LogFormat("boardDeadline", boardDeadline);
-        Debug.LogFormat("boardNotice", boardNotice);
-        Debug.LogFormat("boardAssignment", boardAssignment);
-
 
         //json.Add("boardRoom", Utility.roomName);
         json.Add("boardId", currentBoardId);
@@ -176,7 +169,6 @@ public class ShowBoard : MonoBehaviour
             GameObject BoardBttn = Instantiate(BoardBttnObject);
             BoardBttn.transform.SetParent(BoardBttnContentObject.transform);
             TMP_Text[] BoardBttnText = BoardBttn.GetComponentsInChildren<TMP_Text>();
-            Debug.Log(board["boardTitle"]);
             BoardBttnText[0].text = (string)board["boardTitle"];
             string[] boardDeadline = ((string)board["boardEditDt"]).Split(' ');
             string[] boardDate = boardDeadline[0].Split('-');
@@ -185,18 +177,13 @@ public class ShowBoard : MonoBehaviour
             BoardBttnText[2].text = (string)board["boardWriter"];
             RectTransform BoardBttnTranform = BoardBttn.GetComponent<RectTransform>();
             Vector3 BoardBttnNewPosition = new Vector3(BoardBttnTranform.position.x, BoardBttnTranform.position.y - count * y_offset, BoardBttnTranform.position.z);
-            Debug.Log(y_offset);
             BoardBttnTranform.localPosition = BoardBttnNewPosition;
             BoardBttnTranform.localScale = new Vector3(1, 1, 1);
-            Debug.Log(BoardBttnTranform.localPosition);
-            Debug.Log(BoardBttnTranform.position);
             count += 1;
 
             // onClick 추가
             Button BoardBttnComp = BoardBttn.GetComponent<Button>();
             BoardBttnComp.onClick.AddListener(() => ShowBoardById(board));
-
-            Debug.LogFormat("방 목록에 추가 : {0}", (string)board["boardTitle"]);
         }
         RectTransform ContentTransform = BoardBttnContentObject.GetComponent<RectTransform>();
         ContentTransform.sizeDelta = new Vector2(0, offset * 2 + y_offset * (count - 1));

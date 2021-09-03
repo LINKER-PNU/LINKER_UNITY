@@ -216,7 +216,6 @@ public class ServerScript : MonoBehaviour
                     mRtcEngine = null;
                     DestroyVideoView();
                 }
-                Debug.Log("이미 수업 중입니다!");
             }
             // Scene 돌아가기
         }
@@ -300,7 +299,6 @@ public class ServerScript : MonoBehaviour
         go = ServerObject.transform.Find("0").gameObject;
         if (!ReferenceEquals(go, null))
         {
-            Debug.Log(go);
             Destroy(go);
         }
     }

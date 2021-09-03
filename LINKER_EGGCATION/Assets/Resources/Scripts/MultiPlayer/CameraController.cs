@@ -28,9 +28,7 @@ public class CameraController : MonoBehaviour
     {
         player.transform.rotation = Quaternion.Euler(0, 180, 0);
         transform.localPosition = new Vector3(0f, 6f, 0f);
-        Debug.Log(transform.localPosition);
         transform.localRotation = Quaternion.Euler(30, 0, 0);
-        Debug.Log(transform.rotation.eulerAngles);
     }
     public void PositionNormalMode()
     {
